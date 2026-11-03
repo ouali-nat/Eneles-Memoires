@@ -38,11 +38,25 @@
     return;
   }
 
+  // Même palette chromatique qu'Eneles Archives : 18 choix harmonisés.
   var themes = [
-    "violet", "rouge", "vert", "bleu", "orange", "rose", "indigo", "emeraude", "lime",
-    "corail", "bordeaux", "azur", "petrole-cuivre", "nuit-peche", "prune-rouge",
-    "terre-orange", "rose-sable", "sarcelle-creme"
+    "violet", "rouge", "vert", "bleu", "orange", "rose", "lime", "bordeaux", "azur",
+    "jaune", "olive", "chocolat", "sauge", "magenta", "petrole-cuivre", "prune-rouge",
+    "rose-sable", "sarcelle-creme"
   ];
+  var themeLabels = {
+    violet:"Violet",rouge:"Rouge",vert:"Vert",bleu:"Bleu",orange:"Orange",rose:"Rose",
+    lime:"Citron vert",bordeaux:"Bordeaux",azur:"Azur",jaune:"Jaune",olive:"Olive",
+    chocolat:"Chocolat",sauge:"Sauge",magenta:"Magenta", "petrole-cuivre":"Pétrole",
+    "prune-rouge":"Prune","rose-sable":"Rose poudré","sarcelle-creme":"Sarcelle"
+  };
+  var themeSwatches = {
+    violet:"#6D28D9",rouge:"#B91C1C",vert:"#15803D",bleu:"#1D4ED8",orange:"#C85C0D",rose:"#BE185D",
+    lime:"#65A30D",bordeaux:"#8B1E3F",azur:"#0369A1",jaune:"#A87B05",olive:"#4A5520",
+    chocolat:"#5C300F",sauge:"#4A7A5C",magenta:"#A21CAF", "petrole-cuivre":"#104C64",
+    "prune-rouge":"#341A2C","rose-sable":"#EFC1B5","sarcelle-creme":"#0D6B70"
+  };
+  var legacyThemeAliases = {indigo:"violet",emeraude:"vert",corail:"rouge","terre-orange":"orange","nuit-peche":"petrole-cuivre"};
   var root = document.documentElement;
   var themeToggle = document.getElementById("themeToggle");
   var colorToggle = document.getElementById("colorThemeToggle");
@@ -235,16 +249,44 @@
     }
   }
 
+  function renderColorPalette() {
+    if (!colorPanel) return;
+    var head = colorPanel.querySelector(".color-theme-head");
+    if (!head) { head = document.createElement("div"); head.className = "color-theme-head"; colorPanel.insertBefore(head, colorPanel.firstChild); }
+    head.innerHTML = '<span>Couleur du site</span><strong id="colorThemeCurrent">—</strong>';
+    var grid = colorPanel.querySelector(".color-theme-grid");
+    if (!grid) { grid = document.createElement("div"); grid.className = "color-theme-grid"; colorPanel.appendChild(grid); }
+    grid.setAttribute("aria-label", "Palette Eneles des 18 couleurs");
+    grid.innerHTML = themes.map(function (name) {
+      var label = themeLabels[name] || name;
+      return '<button type="button" class="color-theme-choice theme-color-swatch" data-color-choice="' + name + '" title="' + label + '" aria-label="Couleur ' + label + '" aria-pressed="false" style="--swatch-color:' + themeSwatches[name] + '"></button>';
+    }).join("");
+  }
+
   function setColor(name, persist) {
-    var value = themes.indexOf(name) !== -1 ? name : "rose";
+    var requested = String(name || "");
+    var hasLegacyAlias = Object.prototype.hasOwnProperty.call(legacyThemeAliases, requested);
+    var value = hasLegacyAlias ? legacyThemeAliases[requested] : requested;
+    if (themes.indexOf(value) === -1) value = "rose";
     root.dataset.colorTheme = value;
     document.querySelectorAll("[data-color-choice]").forEach(function (button) {
       button.setAttribute("aria-pressed", button.dataset.colorChoice === value ? "true" : "false");
     });
-    if (persist) {
+    var currentLabel = document.getElementById("colorThemeCurrent");
+    if (currentLabel) currentLabel.textContent = themeLabels[value] || value;
+    var flyoutLabel = document.getElementById("colorThemeFlyoutCurrent");
+    if (flyoutLabel) flyoutLabel.textContent = themeLabels[value] || value;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", themeSwatches[value] || "#BE185D");
+    if (persist || hasLegacyAlias) {
       try { localStorage.setItem("aurore-memory-color-theme", value); } catch (e) {}
     }
   }
+  // Le menu latéral délègue à ces mêmes commandes que la barre d'en-tête.
+  window.auroreSetMemoryTheme = function (mode) { setTheme(mode, true); };
+  window.auroreSetMemoryColor = function (name) { setColor(name, true); };
+
+  renderColorPalette();
 
   if (themeToggle && themeToggle.parentElement && !document.querySelector(".theme-mode-choices")) {
     var themeChoices = document.createElement("div");
@@ -627,9 +669,9 @@
   function load(){
     if(!document.body||!document.querySelector('.topbar'))return;
     var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/eneles-archives-alignment.css','css/eneles-mobile-polish.css'];
-    css.forEach(function(h){if(document.querySelector('link[href*="'+h+'"]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='./'+h+'?v=20261103-centered-hero-v5';document.head.appendChild(l)});
+    css.forEach(function(h){if(document.querySelector('link[href*="'+h+'"]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='./'+h+'?v=20261103-palette-sidebar-v6';document.head.appendChild(l)});
     if(document.querySelector('script[src*="eneles-sidebar.js"]'))return;
-    var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261103-centered-hero-v5';document.body.appendChild(s);
+    var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261103-palette-sidebar-v6';document.body.appendChild(s);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();
 })();
