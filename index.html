@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-theme="dark" data-color-theme="rose">
+<html lang="fr" data-theme="dark" data-color-theme="violet">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -20,8 +20,9 @@
   <title>Accueil — Eneles Mémoire</title>
   <link rel="preconnect" href="https://oegxxndiuovisustjstp.supabase.co" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261103-sidebar-hero-complete-v2">
-  <link rel="stylesheet" href="css/eneles-archives-topblock.css?v=20261103-topblock-polygons-v2">
+  <link rel="stylesheet" href="style.css?v=20261103-floating-home-v3">
+  <link rel="stylesheet" href="css/eneles-archives-topblock.css?v=20261103-archives-header-v3">
+  <link rel="stylesheet" href="css/eneles-memory-floating.css?v=20261103-floating-blocks-v1" data-eneles-floating>
   <link rel="stylesheet" href="memory-access.css?v=20261025-original-logo">
   <!-- L'accueil n'a pas besoin de memoire.css?v=20261026-sitewide-math-v1 pour s'afficher : chargement non bloquant, prêt pour les pages suivantes. -->
   <link rel="stylesheet" href="memoire.css?v=20261026-sitewide-math-v1" media="print" onload="this.media='all'">
@@ -104,10 +105,24 @@
   </div></header>
   <main class="wrap main-content">
   <section class="eneles-archives-topblock" id="enelesArchivesTopblock" aria-label="Navigation et recherche Eneles Mémoire">
-    <a class="eneles-topblock-brand" href="index.html" aria-label="Eneles Mémoire, accueil"><span class="eneles-topblock-mark" aria-hidden="true">E</span><span><strong>Eneles Mémoire</strong><small>Votre espace d’apprentissage</small></span></a>
-    <form class="eneles-topblock-search" id="enelesTopblockSearch" role="search"><span aria-hidden="true" class="eneles-topblock-search-icon">⌕</span><input id="enelesTopblockSearchInput" type="search" autocomplete="off" placeholder="Rechercher une mémorisation, une carte…" aria-label="Rechercher dans Eneles Mémoire"><button type="submit" aria-label="Lancer la recherche">Rechercher</button></form>
-    <nav class="eneles-topblock-nav" aria-label="Navigation principale"><a class="is-current" href="index.html">Accueil</a><a href="choisir.html">Bibliothèque</a><a href="revisions.html">Révisions</a></nav>
-    <div class="eneles-topblock-palette-slot" id="enelesTopblockPaletteSlot" aria-label="Palette de couleurs"></div>
+    <div class="eneles-topblock-head">
+      <a class="eneles-topblock-brand" href="index.html" aria-label="Eneles Mémoire, accueil">
+        <span class="eneles-topblock-mark"><img src="/assets/aurore-logo.png" alt="" width="48" height="48"></span>
+        <span class="eneles-topblock-brand-copy"><strong>Eneles Mémoire</strong><small>Apprendre et mémoriser</small></span>
+      </a>
+      <nav class="eneles-topblock-nav" aria-label="Navigation principale">
+        <a class="is-current" href="index.html">Accueil</a><a href="choisir.html">Bibliothèque</a><a href="revisions.html">Révisions</a>
+      </nav>
+    </div>
+    <form class="eneles-topblock-search" id="enelesTopblockSearch" role="search">
+      <span aria-hidden="true" class="eneles-topblock-search-icon"><svg viewBox="0 0 24 24" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg></span>
+      <input id="enelesTopblockSearchInput" type="search" autocomplete="off" placeholder="Rechercher une mémorisation, une carte…" aria-label="Rechercher dans Eneles Mémoire">
+      <button type="submit" aria-label="Lancer la recherche"><svg viewBox="0 0 24 24" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg></button>
+    </form>
+    <div class="eneles-topblock-tools">
+      <div class="eneles-topblock-mode-slot" id="enelesTopblockModeSlot" aria-label="Mode d’affichage"></div>
+      <div class="eneles-topblock-palette-slot" id="enelesTopblockPaletteSlot" aria-label="Palette de couleurs"></div>
+    </div>
   </section>
   <div class="eneles-hero-controls"><button type="button" class="eneles-hero-toggle" id="enelesHeroToggle" aria-expanded="true" aria-controls="enelesMemoryHero">Masquer l’accueil</button></div>
   <section class="hero eneles-memory-hero aurore-hero-morph" id="enelesMemoryHero" aria-labelledby="enelesMemoryHeroTitle">
@@ -118,7 +133,7 @@
       <div class="hero-rule" aria-hidden="true"></div>
       <p class="eyebrow">ENELES MÉMOIRE</p>
       <h1 id="enelesMemoryHeroTitle">Retenir, <span class="accentword">tout simplement.</span></h1>
-      <p class="sub">Retrouvez vos mémorisations et révisez à votre rythme.</p>
+      <p class="sub">Vos contenus, prêts à être révisés.</p>
       <form class="eneles-memory-search" id="enelesMemorySearch" role="search"><input id="enelesMemorySearchInput" type="search" autocomplete="off" placeholder="Rechercher une mémorisation, une carte ou un cours…" aria-label="Rechercher dans Eneles Mémoire"><button type="submit">Rechercher</button></form><p class="eneles-memory-search-status" id="enelesMemorySearchStatus" aria-live="polite"></p>
     </div>
   </section>
@@ -127,31 +142,31 @@
     <div class="home-cards">
       <a class="home-card" href="mes-memoires.html">
         <span class="card-symbol symbol-notes" aria-hidden="true">▤</span>
-        <span class="home-card-copy"><strong>Mes mémorisations</strong><small>Accédez à vos textes, passages et séries de cartes.</small><span class="card-stat"><b id="homeMemoryCount">0 mémoire</b> · <b id="homeCardCount">0 carte</b></span></span>
+        <span class="home-card-copy"><strong>Mes mémorisations</strong><small>Textes à mémoriser et séries de cartes.</small><span class="card-stat"><b id="homeMemoryCount">0 mémoire</b> · <b id="homeCardCount">0 carte</b></span></span>
         <span class="card-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="home-card" href="revisions.html">
         <span class="card-symbol symbol-review" aria-hidden="true">↻</span>
-        <span class="home-card-copy"><strong>Révisions du jour</strong><small>Révisez les contenus arrivés à échéance.</small><span class="card-stat"><b id="homeDueCount">0 carte à réviser aujourd’hui</b></span></span>
+        <span class="home-card-copy"><strong>Révisions du jour</strong><small>Vos cartes à revoir aujourd’hui.</small><span class="card-stat"><b id="homeDueCount">0 carte à réviser aujourd’hui</b></span></span>
         <span class="card-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="home-card" href="assistant.html">
         <span class="card-symbol symbol-review" aria-hidden="true">A</span>
-        <span class="home-card-copy"><strong>Assistante Eneles</strong><small>Comprenez vos cours, créez des cartes, des mémoires et des QCM, puis préparez des audios avec votre assistante pédagogique.</small></span>
+        <span class="home-card-copy"><strong>Assistante Eneles</strong><small>Cours, cartes, QCM et audio avec l’assistante pédagogique.</small></span>
         <span class="card-arrow" aria-hidden="true">↗</span>
       </a>
     </div>
   </section>
   <a class="create-banner" href="creer.html">
     <span class="create-plus" aria-hidden="true">＋</span>
-    <span class="create-copy"><strong>Ajouter un contenu</strong><small>Ajoutez un texte à mémoriser ou une série de questions et de réponses.</small></span>
+    <span class="create-copy"><strong>Ajouter un contenu</strong><small>Texte, cartes ou questions-réponses.</small></span>
     <span class="create-arrow" aria-hidden="true">→</span>
   </a>
   <section class="home-section" aria-labelledby="home-discover-title">
     <div class="section-heading"><div><p class="section-kicker">AUTRES POSSIBILITÉS</p><h2 id="home-discover-title">Allez plus loin</h2></div></div>
     <div class="home-action-grid">
-      <a class="home-action-card" href="groupes.html"><span class="action-icon" aria-hidden="true">♧</span><span class="action-arrow" aria-hidden="true">↗</span><strong>Rejoindre ou créer un groupe</strong><small>Découvrez les groupes publics ou préparez votre espace privé.</small></a>
-      <a class="home-action-card" href="cartes-publiques.html"><span class="action-icon" aria-hidden="true">⌕</span><span class="action-arrow" aria-hidden="true">↗</span><strong>Explorer les cartes et mémorisations</strong><small>Découvrez les cartes partagées et ajoutez celles qui vous intéressent.</small></a>
+      <a class="home-action-card" href="groupes.html"><span class="action-icon" aria-hidden="true">♧</span><span class="action-arrow" aria-hidden="true">↗</span><strong>Rejoindre ou créer un groupe</strong><small>Travaillez ensemble dans un espace dédié.</small></a>
+      <a class="home-action-card" href="cartes-publiques.html"><span class="action-icon" aria-hidden="true">⌕</span><span class="action-arrow" aria-hidden="true">↗</span><strong>Explorer les cartes et mémorisations</strong><small>Parcourez et ajoutez des contenus partagés.</small></a>
       <div class="home-action-card is-coming"><span class="action-icon" aria-hidden="true">≡</span><strong>Faire mon résumé</strong><small>Préparez un résumé clair à partir de vos notes.</small><span class="coming-label">Bientôt disponible</span></div>
       <div class="home-action-card is-coming"><span class="action-icon" aria-hidden="true">✎</span><strong>Produire ma dissertation</strong><small>Organisez une problématique, un plan et vos arguments.</small><span class="coming-label">Bientôt disponible</span></div>
     </div>
@@ -164,8 +179,8 @@
   <script src="auth.js?v=20261023-canonical-lock-v2"></script>
   <script src="memory-access.js?v=20261018-auth-menu-fix2"></script>
   <script src="network-status.js?v=20261021-menu-right-v3"></script>
-  <script src="app.js?v=20261103-palette-polygons-render-v9"></script>
-  <script src="eneles-archives-topblock.js?v=20261103-topblock-polygons-v2"></script>
+  <script src="app.js?v=20261103-compact-archives-header-v10"></script>
+  <script src="eneles-archives-topblock.js?v=20261103-archives-header-v3"></script>
   <script src="home-stats.js?v=20261015-nav-stats-cache"></script>
   <script src="spa-router.js?v=20261023-login-gate-route-fix"></script>
   <script src="app-menu.js?v=20261103-archives-sidebar-v1"></script>

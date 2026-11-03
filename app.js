@@ -15,6 +15,14 @@
   pill.setAttribute("data-aurore-pill", "1");
   document.head.appendChild(pill);
 })();
+(function () {
+  if (document.querySelector("link[data-eneles-floating]")) return;
+  var link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "css/eneles-memory-floating.css?v=20261103-floating-blocks-v1";
+  link.setAttribute("data-eneles-floating", "1");
+  document.head.appendChild(link);
+})();
 
 (function () {
   "use strict";
@@ -252,8 +260,7 @@
   function renderColorPalette() {
     if (!colorPanel) return;
     var head = colorPanel.querySelector(".color-theme-head");
-    if (!head) { head = document.createElement("div"); head.className = "color-theme-head"; colorPanel.insertBefore(head, colorPanel.firstChild); }
-    head.innerHTML = '<span>Couleur du site</span><strong id="colorThemeCurrent">—</strong>';
+    if (head) head.remove();
     var grid = colorPanel.querySelector(".color-theme-grid");
     if (!grid) { grid = document.createElement("div"); grid.className = "color-theme-grid"; colorPanel.appendChild(grid); }
     grid.setAttribute("aria-label", "Palette Eneles des 18 couleurs");
@@ -267,7 +274,7 @@
     var requested = String(name || "");
     var hasLegacyAlias = Object.prototype.hasOwnProperty.call(legacyThemeAliases, requested);
     var value = hasLegacyAlias ? legacyThemeAliases[requested] : requested;
-    if (themes.indexOf(value) === -1) value = "rose";
+    if (themes.indexOf(value) === -1) value = "violet";
     root.dataset.colorTheme = value;
     document.querySelectorAll("[data-color-choice]").forEach(function (button) {
       button.setAttribute("aria-pressed", button.dataset.colorChoice === value ? "true" : "false");
@@ -293,7 +300,7 @@
     themeChoices.className = "theme-mode-choices";
     themeChoices.setAttribute("role", "group");
     themeChoices.setAttribute("aria-label", "Choisir le thème d’affichage");
-    themeChoices.innerHTML = '<button type="button" data-theme-choice="light" aria-pressed="false">Clair</button><button type="button" data-theme-choice="dark" aria-pressed="false">Sombre</button><button type="button" data-theme-choice="system" aria-pressed="false">Auto</button>';
+    themeChoices.innerHTML = '<button type="button" data-theme-choice="dark" aria-label="Mode sombre" title="Sombre" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.2A8.8 8.8 0 0 1 9.8 3.8 8.8 8.8 0 1 0 20.2 14.2Z"></path></svg></button><button type="button" data-theme-choice="light" aria-label="Mode clair" title="Clair" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg></button><button type="button" data-theme-choice="system" aria-label="Mode adaptatif" title="Adaptatif" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></button>';
     themeToggle.parentElement.insertBefore(themeChoices, themeToggle);
     themeToggle.hidden = true;
     themeChoices.addEventListener("click", function (event) { var choice = event.target.closest("[data-theme-choice]"); if (choice) setTheme(choice.dataset.themeChoice, true); });
@@ -302,11 +309,15 @@
   document.querySelectorAll(".top-actions a[href=\"mes-memoires.html\"]").forEach(function (link) { link.href = "choisir.html"; link.textContent = "Bibliothèque"; });
 
   try {
+    if (localStorage.getItem("eneles-memory-palette-design") !== "20261103-v1") {
+      localStorage.setItem("aurore-memory-color-theme", "violet");
+      localStorage.setItem("eneles-memory-palette-design", "20261103-v1");
+    }
     setTheme(localStorage.getItem("aurore-memory-theme") || "system", false);
-    setColor(localStorage.getItem("aurore-memory-color-theme") || "rose", false);
+    setColor(localStorage.getItem("aurore-memory-color-theme") || "violet", false);
   } catch (e) {
     setTheme("system", false);
-    setColor("rose", false);
+    setColor("violet", false);
   }
 
   if (themeToggle) {
