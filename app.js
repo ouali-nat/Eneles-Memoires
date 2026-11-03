@@ -626,10 +626,10 @@
   window.__enelesSidebarAssetsRequested=true;
   function load(){
     if(!document.body||!document.querySelector('.topbar'))return;
-    var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/eneles-archives-alignment.css'];
-    css.forEach(function(h){if(document.querySelector('link[href*="'+h+'"]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='./'+h+'?v=20261103-archives-hero-mobilefix-v4';document.head.appendChild(l)});
+    var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/eneles-archives-alignment.css','css/eneles-mobile-polish.css'];
+    css.forEach(function(h){if(document.querySelector('link[href*="'+h+'"]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='./'+h+'?v=20261103-centered-hero-v5';document.head.appendChild(l)});
     if(document.querySelector('script[src*="eneles-sidebar.js"]'))return;
-    var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261103-archives-hero-mobilefix-v4';document.body.appendChild(s);
+    var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261103-centered-hero-v5';document.body.appendChild(s);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();
 })();
