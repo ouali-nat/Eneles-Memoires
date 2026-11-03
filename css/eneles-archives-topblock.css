@@ -286,3 +286,6 @@ body[data-page="home"] .eneles-archives-topblock{
 @media(max-width:560px){
  #enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph{min-height:390px!important;padding:42px 20px 58px!important}
 }
+
+/* La silhouette capsule reste identique sur téléphone et grand écran. */
+@media(max-width:900px){body[data-page="home"] .eneles-archives-topblock{border-radius:999px!important}}
