@@ -234,3 +234,23 @@ html[data-color-theme] body{background:radial-gradient(circle at 8% 0%,color-mix
 @media (pointer:coarse) and (orientation:portrait) and (max-width:420px){
   .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:32px!important}
 }
+
+
+/* Finition cohérente avec Archives : mêmes dégradés de palette et espace plus généreux avant la recherche. */
+.asb .asb-sw{background:var(--asb-swatch,var(--asb-p))!important}
+.asb .asb-sw[data-color-choice="petrole-cuivre"]{background:#104C64!important}
+.asb .asb-sw[data-color-choice="prune-rouge"]{background:#341A2C!important}
+.asb .asb-sw[data-color-choice="rose-sable"]{background:#EFC1B5!important}
+.asb .asb-sw[data-color-choice="sarcelle-creme"]{background:#0D6B70!important}
+.asb .asb-sw:focus-visible{outline:2px solid var(--asb-s)!important;outline-offset:3px!important}
+.asb #enelesSidebarShortcuts{margin-top:4px!important;border:1px solid color-mix(in srgb,var(--accent) 18%,transparent)!important;background:color-mix(in srgb,var(--accent) 6%,transparent)!important;border-radius:12px!important}
+.eneles-memory-hero.hero.aurore-hero-morph{width:min(calc(100% - 44px),730px)!important;max-width:730px!important;margin-left:auto!important;margin-right:auto!important}
+.eneles-memory-hero .eneles-memory-search{margin-top:48px!important}
+@media(pointer:coarse) and (orientation:portrait){
+ .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 36px)!important;max-width:690px!important}
+ .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:40px!important}
+}
+@media(pointer:coarse) and (orientation:portrait) and (max-width:420px){
+ .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 32px)!important;max-width:100%!important}
+ .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:38px!important}
+}
