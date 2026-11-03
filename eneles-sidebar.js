@@ -2,26 +2,51 @@
   'use strict';
   if(window.__enelesMemorySidebarReady)return;
   window.__enelesMemorySidebarReady=true;
-  function init(){
-    var oldToggle=document.getElementById('appMenuToggle');
-    var oldPanel=document.getElementById('appMenuPanel');
-    if(oldPanel)oldPanel.hidden=true;
-    var nav=document.createElement('aside');nav.className='eneles-sidebar';nav.id='enelesSidebar';nav.setAttribute('aria-label','Navigation Eneles Mémoire');
-    nav.innerHTML='<div class="eneles-sidebar-topdots" aria-hidden="true"><i></i><i></i><i></i></div><div class="eneles-sidebar-head"><div class="eneles-sidebar-brand"><img src="/assets/aurore-logo.png" alt=""><span>Eneles Mémoire</span></div><button class="eneles-sidebar-collapse" type="button" aria-label="Réduire ou agrandir la barre latérale" title="Réduire / agrandir">‹</button></div><div class="eneles-sidebar-caption">Votre espace</div><nav class="eneles-sidebar-links" aria-label="Sections"><a class="eneles-sidebar-link" data-page="home" href="index.html"><span class="eneles-sidebar-icon">⌂</span><span class="eneles-sidebar-label">Accueil</span></a><a class="eneles-sidebar-link" href="mes-memoires.html"><span class="eneles-sidebar-icon">▤</span><span class="eneles-sidebar-label">Mes mémorisations</span></a><a class="eneles-sidebar-link" href="choisir.html"><span class="eneles-sidebar-icon">▣</span><span class="eneles-sidebar-label">Bibliothèque</span></a><a class="eneles-sidebar-link" href="revisions.html"><span class="eneles-sidebar-icon">↻</span><span class="eneles-sidebar-label">Révisions</span></a><a class="eneles-sidebar-link" href="creer.html"><span class="eneles-sidebar-icon">＋</span><span class="eneles-sidebar-label">Créer un contenu</span></a><a class="eneles-sidebar-link" href="groupes.html"><span class="eneles-sidebar-icon">♧</span><span class="eneles-sidebar-label">Groupes d’étude</span></a><a class="eneles-sidebar-link" href="cartes-publiques.html"><span class="eneles-sidebar-icon">⌕</span><span class="eneles-sidebar-label">Ressources partagées</span></a><a class="eneles-sidebar-link" href="assistant.html"><span class="eneles-sidebar-icon">✳</span><span class="eneles-sidebar-label">Eneles · Assistante</span></a></nav><div class="eneles-sidebar-bottom"><button type="button" data-side-action="theme"><span class="eneles-sidebar-icon">◐</span><span class="eneles-sidebar-label">Mode clair / sombre</span></button><button type="button" data-side-action="color"><span class="eneles-sidebar-icon">◉</span><span class="eneles-sidebar-label">Couleur du site</span></button><button type="button" data-side-action="account"><span class="eneles-sidebar-icon">◎</span><span class="eneles-sidebar-label">Compte Eneles ID</span></button></div>';
-    var scrim=document.createElement('div');scrim.className='eneles-sidebar-scrim';scrim.setAttribute('aria-hidden','true');document.body.appendChild(scrim);document.body.appendChild(nav);
-    var path=location.pathname.split('/').pop()||'index.html';nav.querySelectorAll('.eneles-sidebar-link').forEach(function(a){if(a.getAttribute('href')===path){a.classList.add('is-active');a.setAttribute('aria-current','page')}});
-    var collapsed=false;try{collapsed=localStorage.getItem('eneles:sidebar-collapsed')==='1'}catch(e){};
-    function setCollapsed(v){collapsed=v;nav.classList.toggle('is-collapsed',v);document.body.classList.toggle('eneles-sidebar-collapsed',v);try{localStorage.setItem('eneles:sidebar-collapsed',v?'1':'0')}catch(e){}}
-    function setOpen(v){nav.classList.toggle('is-open',v);scrim.classList.toggle('is-open',v);document.body.classList.toggle('eneles-sidebar-open',v);if(oldToggle)oldToggle.setAttribute('aria-expanded',String(v))}
-    setCollapsed(collapsed);document.body.classList.add('eneles-has-sidebar');
-    nav.querySelector('.eneles-sidebar-collapse').addEventListener('click',function(){if(matchMedia('(max-width:900px)').matches){setOpen(false);return}setCollapsed(!collapsed)});
-    if(oldToggle){oldToggle.addEventListener('click',function(e){e.preventDefault();e.stopImmediatePropagation();setOpen(!nav.classList.contains('is-open'))},true);oldToggle.setAttribute('aria-label','Ouvrir la barre latérale')}
-    scrim.addEventListener('click',function(){setOpen(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false)});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setOpen(false)})});
-    nav.querySelector('[data-side-action="theme"]').addEventListener('click',function(){var b=document.getElementById('themeToggle');if(b)b.click()});
-    nav.querySelector('[data-side-action="color"]').addEventListener('click',function(){var b=document.getElementById('colorThemeToggle');if(b)b.click()});
-    nav.querySelector('[data-side-action="account"]').addEventListener('click',function(){if(typeof window.auroreShowAccessGate==='function')window.auroreShowAccessGate();else{var b=document.getElementById('appMenuSignIn');if(b)b.click()}});
-    var form=document.getElementById('enelesMemorySearch'),input=document.getElementById('enelesMemorySearchInput'),status=document.getElementById('enelesMemorySearchStatus');
-    if(form&&input){form.addEventListener('submit',function(e){e.preventDefault();var q=input.value.trim().toLocaleLowerCase('fr');var cards=Array.prototype.slice.call(document.querySelectorAll('.home-card,.home-action-card'));var shown=0;if(!q){cards.forEach(function(c){c.hidden=false});if(status)status.textContent='';return}cards.forEach(function(c){var hit=c.innerText.toLocaleLowerCase('fr').indexOf(q)!==-1;c.hidden=!hit;if(hit)shown++});if(status)status.textContent=shown?shown+' ressource(s) trouvée(s).':'Aucune ressource trouvée sur cette page. Essayez un autre terme.';var target=cards.find(function(c){return !c.hidden});if(target)target.scrollIntoView({behavior:'smooth',block:'center'});});input.addEventListener('input',function(){if(!input.value.trim()){document.querySelectorAll('.home-card,.home-action-card').forEach(function(c){c.hidden=false});if(status)status.textContent=''}})}
+  var KEY='eneles_memory_sidebar_collapsed_v1';
+  var ICONS={
+    home:'<path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    book:'<path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/>',
+    recent:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    create:'<path d="M12 5v14M5 12h14"/>',
+    group:'<circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.5a3 3 0 0 1 0 5.8M17 14a5 5 0 0 1 4 5"/>',
+    search:'<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
+    spark:'<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>',
+    palette:'<path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-.9 2-1.8 0-1.2-1-1.5-1-2.6 0-.9.7-1.6 1.7-1.6H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/>',
+    moon:'<path d="M20 14.2A8 8 0 1 1 9.8 4a6.3 6.3 0 0 0 10.2 10.2z"/>',
+    chevron:'<path d="m9 6 6 6-6 6"/>',
+    collapse:'<path d="m15 6-6 6 6 6"/>',
+    user:'<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/>'
+  };
+  function svg(name,size){return '<svg viewBox="0 0 24 24" width="'+(size||20)+'" height="'+(size||20)+'" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICONS[name]+'</svg>'}
+  var ITEMS=[
+    {id:'home',label:'Accueil',icon:'home',url:'index.html'},
+    {id:'memories',label:'Mes mémorisations',icon:'book',url:'mes-memoires.html'},
+    {id:'library',label:'Bibliothèque',icon:'recent',url:'choisir.html'},
+    {id:'reviews',label:'Révisions',icon:'recent',url:'revisions.html'},
+    {id:'create',label:'Créer un contenu',icon:'create',url:'creer.html'},
+    {id:'groups',label:'Groupes d’étude',icon:'group',url:'groupes.html'},
+    {id:'shared',label:'Ressources partagées',icon:'search',url:'cartes-publiques.html'},
+    {id:'assistant',label:'Eneles · Assistante',icon:'spark',url:'assistant.html'}
+  ];
+  var nav,scrim,toggle;
+  function item(it){var a=document.createElement('a');a.className='asb-item';a.dataset.asb=it.id;a.href=it.url;a.title=it.label;a.setAttribute('aria-label',it.label);a.innerHTML='<span class="asb-ico">'+svg(it.icon)+'</span><span class="asb-label">'+it.label+'</span><span class="asb-arrow">'+svg('chevron',16)+'</span>';if((location.pathname.split('/').pop()||'index.html')===it.url){a.classList.add('is-active');a.setAttribute('aria-current','page')}a.addEventListener('click',closeOnMobile);return a}
+  function closeOnMobile(){if(matchMedia('(max-width:900px)').matches)setOpen(false)}
+  function setOpen(v){nav.classList.toggle('is-open',v);scrim.classList.toggle('is-on',v);toggle.setAttribute('aria-expanded',v?'true':'false')}
+  function setCollapsed(v){document.documentElement.classList.toggle('asb-collapsed',v);try{localStorage.setItem(KEY,v?'1':'0')}catch(e){}}
+  function access(){if(typeof window.auroreShowAccessGate==='function'){window.auroreShowAccessGate();return}var lock=document.getElementById('memoryAccessLock');if(lock){lock.hidden=false;document.body.classList.add('memory-access-open');return}var b=document.getElementById('appMenuSignIn');if(b)b.click();else location.href='index.html'}
+  function build(){
+    nav=document.createElement('nav');nav.id='enelesMemorySidebar';nav.className='asb';nav.setAttribute('aria-label','Navigation principale Eneles Mémoire');
+    nav.innerHTML='<div class="asb-dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="asb-head"><div class="asb-brand">Eneles <small>Mémoire</small></div><button type="button" class="asb-collapse" aria-label="Réduire le menu" title="Réduire / agrandir">'+svg('collapse',16)+'</button></div><div class="asb-sep"></div><div class="asb-scroll"><div class="asb-section">Menu</div><div class="asb-group" data-group="main"></div><div class="asb-sep"></div><div class="asb-section">Préférences et compte</div><div class="asb-group" data-group="more"><button type="button" class="asb-item" data-action="theme"><span class="asb-ico">'+svg('moon')+'</span><span class="asb-label">Mode clair / sombre</span><span class="asb-arrow">'+svg('chevron',16)+'</span></button><button type="button" class="asb-item" data-action="color"><span class="asb-ico">'+svg('palette')+'</span><span class="asb-label">Couleur du site</span><span class="asb-arrow">'+svg('chevron',16)+'</span></button></div></div><div class="asb-sep"></div><button type="button" class="asb-user" id="enelesSidebarAccount"><span class="asb-avatar">'+svg('user',20)+'</span><span class="asb-user-text"><strong>Compte Eneles ID</strong><small>Connexion et compte</small></span></button>';
+    scrim=document.createElement('div');scrim.className='asb-scrim';scrim.addEventListener('click',function(){setOpen(false)});
+    toggle=document.createElement('button');toggle.type='button';toggle.className='asb-toggle';toggle.setAttribute('aria-label','Ouvrir la barre latérale');toggle.setAttribute('aria-expanded','false');toggle.innerHTML=svg('chevron',16);toggle.addEventListener('click',function(){setOpen(!nav.classList.contains('is-open'))});
+    document.body.appendChild(scrim);document.body.appendChild(nav);document.body.appendChild(toggle);
+    var group=nav.querySelector('[data-group="main"]');ITEMS.forEach(function(it){group.appendChild(item(it))});
+    nav.querySelector('.asb-collapse').addEventListener('click',function(){if(matchMedia('(max-width:900px)').matches){setOpen(false);return}setCollapsed(!document.documentElement.classList.contains('asb-collapsed'))});
+    nav.querySelector('[data-action="theme"]').addEventListener('click',function(){var b=document.getElementById('themeToggle');if(b)b.click()});
+    nav.querySelector('[data-action="color"]').addEventListener('click',function(){var b=document.getElementById('colorThemeToggle');if(b)b.click()});
+    nav.querySelector('#enelesSidebarAccount').addEventListener('click',access);
+    try{setCollapsed(localStorage.getItem(KEY)==='1')}catch(e){setCollapsed(false)}
   }
+  function init(){if(!document.body||!document.querySelector('.topbar')||document.getElementById('enelesMemorySidebar'))return;build();document.documentElement.classList.add('has-asb');document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false)});}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

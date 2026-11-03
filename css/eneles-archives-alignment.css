@@ -1,0 +1,25 @@
+/* Mémoire reprend le composant et les points de rupture de la barre latérale Archives. */
+.asb{--asb-p:var(--accent,#8B5CF6);--asb-s:var(--accent-light,#C084FC);background:radial-gradient(120% 70% at 0 0,color-mix(in srgb,#000 32%,transparent),transparent 55%),radial-gradient(100% 60% at 100% 100%,color-mix(in srgb,#000 38%,transparent),transparent 58%),linear-gradient(165deg,color-mix(in srgb,var(--asb-p) 24%,var(--surface,#11101C)),color-mix(in srgb,var(--asb-p) 7%,var(--surface,#11101C)))}
+.asb-toggle{border-color:color-mix(in srgb,var(--accent,#8B5CF6) 55%,transparent)!important;background:color-mix(in srgb,var(--accent,#8B5CF6) 34%,var(--surface,#11101C))!important;box-shadow:0 8px 20px -8px color-mix(in srgb,var(--accent,#8B5CF6) 60%,transparent)!important}
+.asb-brand{display:flex;align-items:baseline;gap:6px}.asb-brand small{font-size:.72rem;font-weight:600;opacity:.62;letter-spacing:0}
+html.has-asb body{padding-left:256px!important;transition:padding-left .25s ease}html.has-asb.asb-collapsed body{padding-left:92px!important}
+@media(min-width:901px){.asb-toggle,.asb-scrim{display:none!important}}
+@media(max-width:900px){.asb{z-index:2147483001}.asb-toggle{z-index:2147482999}}
+/* Aligner le Hero sur les dimensions et le cadrage d’Archives. */
+.eneles-memory-hero.hero.aurore-hero-morph{min-height:520px!important;height:auto!important;padding:76px 56px!important;border-radius:28px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}
+.eneles-memory-hero.hero.aurore-hero-morph[hidden],.eneles-memory-hero.hero.aurore-hero-morph[aria-hidden="true"]{display:none!important;visibility:hidden!important}
+.eneles-memory-hero.hero.aurore-hero-morph .hero-inner{max-width:980px!important;width:100%!important;text-align:center!important;margin:0 auto!important;padding:12px 0!important;display:flex!important;flex-direction:column!important;align-items:center!important}
+.eneles-memory-hero.hero.aurore-hero-morph h1{margin:0!important;max-width:100%!important;font-size:clamp(2rem,5vw,3.5rem)!important;line-height:1.04!important;text-align:center!important}
+.eneles-memory-hero.hero.aurore-hero-morph p.sub{max-width:760px!important;margin:14px auto 0!important;text-align:center!important;font-size:.94rem!important;line-height:1.6!important}
+.eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{width:100%!important;max-width:980px!important;min-width:0!important;min-height:68px!important;box-sizing:border-box!important;margin:42px auto 0!important;padding:12px 16px!important;flex-wrap:nowrap!important;border-radius:20px!important}
+.eneles-memory-hero .eneles-memory-search input{min-width:0!important;min-height:42px!important}
+.eneles-memory-hero .eneles-memory-search button{min-height:44px!important;white-space:nowrap!important}
+.eneles-memory-hero .eneles-memory-search-status{margin:7px auto 0!important;min-height:1em!important;text-align:center!important}
+.eneles-memory-hero.hero.aurore-hero-morph[hidden]{display:none!important}
+@media(max-width:760px){.eneles-memory-hero.hero.aurore-hero-morph{min-height:600px!important;padding:72px 22px!important}.eneles-memory-hero.hero.aurore-hero-morph .hero-inner{width:100%!important;max-width:100%!important}.eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{max-width:100%!important;padding:12px 14px!important;margin-top:38px!important}}
+@media(max-width:430px){.eneles-memory-hero.hero.aurore-hero-morph{min-height:650px!important;padding:70px 16px!important}.eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:34px!important}}
+@media(prefers-reduced-motion:reduce){.asb,.asb-item,html.has-asb body{transition:none!important}}
+
+.app-menu-wrap{display:none!important}
+#enelesSidebarAccount{width:100%;font:inherit;color:inherit;text-align:left;cursor:pointer}
+#enelesSidebarAccount:focus-visible{outline:2px solid var(--asb-s);outline-offset:2px}
