@@ -6,7 +6,17 @@
     bar.dataset.ready='1';
     var slot=document.getElementById('enelesTopblockPaletteSlot');
     var palette=document.querySelector('.topbar .color-theme-wrap');
-    if(palette&&slot){slot.appendChild(palette);var trigger=palette.querySelector('#colorThemeToggle');if(trigger){trigger.setAttribute('aria-label','Choisir une couleur du site');trigger.title='Palette de couleurs';var label=trigger.querySelector('.color-btn-label');if(label)label.textContent='Couleurs';}}
+    if(palette&&slot){
+      slot.appendChild(palette);
+      var trigger=palette.querySelector('#colorThemeToggle');
+      var panel=palette.querySelector('#colorThemePanel');
+      var modeChoices=document.querySelector('.theme-mode-choices');
+      if(modeChoices&&panel&&!panel.contains(modeChoices)){
+        panel.insertBefore(modeChoices,panel.firstChild);
+        modeChoices.setAttribute('aria-label','Mode d’affichage');
+      }
+      if(trigger){trigger.setAttribute('aria-label','Choisir une couleur du site');trigger.title='Palette de couleurs';var label=trigger.querySelector('.color-btn-label');if(label)label.textContent='Couleurs';}
+    }
     var topInput=document.getElementById('enelesTopblockSearchInput');
     var heroInput=document.getElementById('enelesMemorySearchInput');
     var heroForm=document.getElementById('enelesMemorySearch');

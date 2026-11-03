@@ -111,15 +111,25 @@
       button.addEventListener("click", function () { resolveConflict(button.dataset.cloudAction); });
     });
   }
+  var statusDismissTimer = null;
   function status(message, kind, actions) {
     mountPanel();
     var panel = document.getElementById("auroreMemoryCloudPanel");
     var text = document.getElementById("auroreMemoryCloudStatus");
     var buttons = document.getElementById("auroreMemoryCloudActions");
+    if (statusDismissTimer) clearTimeout(statusDismissTimer);
     if (text) text.textContent = message;
-    if (panel) panel.dataset.state = kind || "info";
+    if (panel) { panel.dataset.state = kind || "info"; panel.hidden = false; }
     if (buttons) buttons.hidden = !actions;
     lastMessage = message;
+    // Une confirmation réussie ne doit pas occuper le haut de la page durablement.
+    // Les avertissements et les conflits restent visibles jusqu’à résolution.
+    if (panel && kind === "ok" && !actions) {
+      statusDismissTimer = setTimeout(function () {
+        var current = document.getElementById("auroreMemoryCloudPanel");
+        if (current && current.dataset.state === "ok") current.hidden = true;
+      }, 2600);
+    }
   }
   function setButtonsDisabled(disabled) {
     var panel = document.getElementById("auroreMemoryCloudPanel");

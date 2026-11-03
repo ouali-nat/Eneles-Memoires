@@ -259,7 +259,7 @@
     grid.setAttribute("aria-label", "Palette Eneles des 18 couleurs");
     grid.innerHTML = themes.map(function (name) {
       var label = themeLabels[name] || name;
-      return '<button type="button" class="color-theme-choice theme-color-swatch" data-color-choice="' + name + '" title="' + label + '" aria-label="Couleur ' + label + '" aria-pressed="false" style="--swatch-color:' + themeSwatches[name] + '"></button>';
+      return '<button type="button" class="color-theme-choice theme-color-swatch" data-color-choice="' + name + '" title="' + label + '" aria-label="Couleur ' + label + '" aria-pressed="false" style="--swatch-color:' + themeSwatches[name] + '"><span aria-hidden="true"></span></button>';
     }).join("");
   }
 
@@ -437,7 +437,7 @@
       // Otherwise sync can start too early and miss the initial sync for a signed-in user.
       if (window.auroreAuthReady) await window.auroreAuthReady;
       if (!window.__auroreMemoryCloudSyncLoaded) {
-        await loadScript("memory-cloud-sync.js?v=20261029-connector-backup-import-v1");
+        await loadScript("memory-cloud-sync.js?v=20261103-compact-success-status-v1");
       }
     } catch (error) {
       console.warn("Eneles Mémoire : la sauvegarde cloud n’est pas initialisée. Les données locales restent disponibles.", error);

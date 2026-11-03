@@ -18,3 +18,14 @@ body[data-page="home"] .eneles-archives-topblock{position:relative;z-index:40;di
 @media(max-width:900px){body[data-page="home"] .eneles-archives-topblock{grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:11px}.eneles-topblock-search{grid-column:1/-1;grid-row:2}.eneles-topblock-nav{grid-column:1/-1;grid-row:3;justify-content:center;border-top:1px solid var(--line);padding-top:7px}.eneles-topblock-palette-slot{grid-column:2;grid-row:1}.eneles-topblock-brand{grid-column:1;grid-row:1}}
 @media(max-width:420px){body[data-page="home"] .eneles-archives-topblock{margin-bottom:17px;border-radius:18px}.eneles-topblock-brand strong{font-size:.82rem}.eneles-topblock-brand small{font-size:.62rem}.eneles-topblock-mark{width:36px;height:36px;flex-basis:36px}.eneles-topblock-search button{padding:0 9px;font-size:.68rem}.eneles-topblock-nav{justify-content:space-between}.eneles-topblock-nav a{padding:8px 9px;font-size:.7rem}}
 @media(prefers-reduced-motion:reduce){.eneles-topblock-search,.eneles-topblock-palette-slot .color-theme-choice span,.eneles-topblock-nav a{transition:none!important}}
+
+/* Les modes Clair/Sombre/Auto sont regroupés dans le panneau de palette : plus de rangée isolée au-dessus de l’en-tête. */
+.eneles-topblock-palette-slot .color-theme-panel .theme-mode-choices{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px!important;margin:0 0 10px!important;padding:4px!important;border:1px solid var(--line);border-radius:11px;background:color-mix(in srgb,var(--bg,#100f18) 48%,transparent)}
+.eneles-topblock-palette-slot .color-theme-panel .theme-mode-choices button{min-width:0;min-height:30px;padding:5px 3px!important;border-radius:8px;font-size:.69rem!important}
+.eneles-topblock-palette-slot .color-theme-panel .color-theme-head{border-top:1px solid var(--line);padding-top:9px!important}
+@media(max-width:560px){.eneles-topblock-palette-slot .color-theme-panel{max-height:min(72vh,360px)!important;overflow-y:auto!important}.eneles-topblock-palette-slot .color-theme-panel .theme-mode-choices button{font-size:.67rem!important}}
+
+/* Les pastilles sont rendues dans le bouton par app.js : cette règle garantit leur couleur réelle et la forme hexagonale. */
+.eneles-topblock-palette-slot .color-theme-choice.theme-color-swatch{background:transparent!important;border:0!important;box-shadow:none!important}
+.eneles-topblock-palette-slot .color-theme-choice.theme-color-swatch span{background:var(--swatch-color)!important;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)!important;border-radius:0!important}
+.eneles-topblock-palette-slot .color-theme-choice.theme-color-swatch[aria-pressed="true"] span{outline:2px solid var(--accent)!important;outline-offset:3px!important;filter:brightness(1.06)}
