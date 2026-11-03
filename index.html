@@ -20,7 +20,7 @@
   <title>Accueil — Eneles Mémoire</title>
   <link rel="preconnect" href="https://oegxxndiuovisustjstp.supabase.co" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261026-navigation-spacing-v1">
+  <link rel="stylesheet" href="style.css?v=20261103-archives-home-clone-v1">
   <link rel="stylesheet" href="memory-access.css?v=20261025-original-logo">
   <!-- L'accueil n'a pas besoin de memoire.css?v=20261026-sitewide-math-v1 pour s'afficher : chargement non bloquant, prêt pour les pages suivantes. -->
   <link rel="stylesheet" href="memoire.css?v=20261026-sitewide-math-v1" media="print" onload="this.media='all'">
@@ -101,10 +101,15 @@
       </div>
     </div>
   </div></header>
-  <main class="wrap main-content"><section class="mini-hero">
-    <p class="eyebrow"><span class="eyebrow-mark"></span> SE SOUVENIR</p>
-    <h1>Se souvenir tout simplement.</h1>
-    <p>Organisez vos connaissances, retrouvez vos contenus et consolidez vos acquis à votre rythme.</p>
+  <main class="wrap main-content">
+  <div class="eneles-hero-controls"><button type="button" class="eneles-hero-toggle" id="enelesHeroToggle" aria-expanded="true" aria-controls="enelesMemoryHero">Masquer l’accueil</button></div>
+  <section class="eneles-memory-hero" id="enelesMemoryHero" aria-labelledby="enelesMemoryHeroTitle">
+    <div class="eneles-hero-motif" aria-hidden="true"></div>
+    <div class="eneles-hero-rule" aria-hidden="true"></div>
+    <p class="eneles-hero-eyebrow">ENELES MÉMOIRE</p>
+    <h1 id="enelesMemoryHeroTitle">Le savoir, <span>tout simplement.</span></h1>
+    <p class="eneles-hero-sub">Organisez vos connaissances, retrouvez vos contenus et consolidez vos acquis à votre rythme.</p>
+    <a class="eneles-hero-action" href="choisir.html">Explorer ma bibliothèque <span aria-hidden="true">→</span></a>
   </section>
   <section class="home-section" aria-labelledby="home-tools-title">
     <div class="section-heading"><div><p class="section-kicker">ESPACE PERSONNEL</p><h2 id="home-tools-title">Quel espace souhaitez-vous consulter&nbsp;?</h2></div></div>
@@ -139,7 +144,37 @@
       <div class="home-action-card is-coming"><span class="action-icon" aria-hidden="true">≡</span><strong>Faire mon résumé</strong><small>Préparez un résumé clair à partir de vos notes.</small><span class="coming-label">Bientôt disponible</span></div>
       <div class="home-action-card is-coming"><span class="action-icon" aria-hidden="true">✎</span><strong>Produire ma dissertation</strong><small>Organisez une problématique, un plan et vos arguments.</small><span class="coming-label">Bientôt disponible</span></div>
     </div>
-  </section></main>
+  </section>
+  <section class="eneles-learning-doors" aria-labelledby="enelesLearningDoorsTitle">
+    <div class="eneles-learning-heading">
+      <p class="section-kicker">PARCOURS PÉDAGOGIQUES</p>
+      <h2 id="enelesLearningDoorsTitle">Explorez par niveau</h2>
+      <p>Choisissez une grande porte pour retrouver les ressources de votre parcours.</p>
+    </div>
+    <div class="eneles-learning-grid">
+      <article class="eneles-learning-card" style="--door-accent:#C084FC">
+        <span class="eneles-learning-kicker">Premiers apprentissages</span><h3>Préscolaire</h3><p>Petite, moyenne et grande section</p>
+        <div class="eneles-learning-docs"><span>Première page · SVG fiche</span><span>Première page · Test QR</span></div>
+      </article>
+      <article class="eneles-learning-card" style="--door-accent:#A78BFA">
+        <span class="eneles-learning-kicker">Du CP au CM2</span><h3>Primaire</h3><p>CP1 à CM2</p>
+        <div class="eneles-learning-docs"><span>Première page · Loc</span><span>Première page · SVG fiche</span></div>
+      </article>
+      <article class="eneles-learning-card" style="--door-accent:#8B7CFF">
+        <span class="eneles-learning-kicker">De la 6e au lycée</span><h3>Secondaire</h3><p>1er et 2nd cycle</p>
+        <div class="eneles-learning-docs"><span>Première page · Maths 1re G</span><span>Courbes paramétrées et géométrie dans l’espace</span></div>
+      </article>
+      <article class="eneles-learning-card" style="--door-accent:#C084FC">
+        <span class="eneles-learning-kicker">Classes préparatoires</span><h3>CPGE</h3><p>MPSI, BCPST et PCSI</p>
+        <div class="eneles-learning-docs"><span>Parcours scientifique</span><span>Préparation aux grandes écoles</span></div>
+      </article>
+      <article class="eneles-learning-card eneles-learning-card-wide" style="--door-accent:#E879F9">
+        <span class="eneles-learning-kicker">Enseignement supérieur</span><h3>Supérieur</h3><p>Licence, Master, Doctorat et MPCI</p>
+        <div class="eneles-learning-docs"><span>Ressources universitaires</span><span>Parcours Licence et Master</span></div>
+      </article>
+    </div>
+  </section>
+  </main>
   <footer class="site-footer"><div class="wrap footer-inner"><strong>Eneles Mémoire</strong><small>Apprendre à son rythme, sans frais pour les fonctions essentielles.</small></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -149,6 +184,6 @@
   <script src="app.js?v=20261026-sitewide-math-v3"></script>
   <script src="home-stats.js?v=20261015-nav-stats-cache"></script>
   <script src="spa-router.js?v=20261023-login-gate-route-fix"></script>
-  <script src="app-menu.js?v=20261023-menu-fit-v1"></script>
-<script src="compact-actions.js?v=20261025-compact-actions-v1"></script></body>
+  <script src="app-menu.js?v=20261103-archives-sidebar-v1"></script>
+<script src="compact-actions.js?v=20261025-compact-actions-v1"></script><script src="eneles-home-polish.js?v=20261103-archives-home-clone-v1"></script></body>
 </html>
