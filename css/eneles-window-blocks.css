@@ -24,3 +24,11 @@ html:root:root body :is(.home-card,.home-action-card,.library-choice-card,.choos
 html body .home-card .card-arrow,html body .home-action-card .action-arrow{top:50px!important}
 html body .library-choice-card .library-choice-top{margin-top:0}
 html body .create-banner{padding-top:52px!important}
+
+/* Héros plus long : le contenu reste en haut, le bloc s'étire vers le bas. */
+html body .eneles-memory-hero.hero.aurore-hero-morph{
+  min-height:clamp(640px,80vw,760px)!important;
+  align-items:flex-start!important}
+@media(max-width:560px){
+  html body .eneles-memory-hero.hero.aurore-hero-morph{min-height:640px!important}
+}
