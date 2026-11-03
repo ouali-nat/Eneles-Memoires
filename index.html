@@ -20,7 +20,7 @@
   <title>Accueil — Eneles Mémoire</title>
   <link rel="preconnect" href="https://oegxxndiuovisustjstp.supabase.co" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261103-archives-home-clone-v1">
+  <link rel="stylesheet" href="style.css?v=20261103-sidebar-hero-complete-v2">
   <link rel="stylesheet" href="memory-access.css?v=20261025-original-logo">
   <!-- L'accueil n'a pas besoin de memoire.css?v=20261026-sitewide-math-v1 pour s'afficher : chargement non bloquant, prêt pour les pages suivantes. -->
   <link rel="stylesheet" href="memoire.css?v=20261026-sitewide-math-v1" media="print" onload="this.media='all'">
@@ -112,6 +112,7 @@
       <p class="eyebrow">ENELES MÉMOIRE</p>
       <h1 id="enelesMemoryHeroTitle">Le savoir, <span class="accentword">tout simplement.</span></h1>
       <p class="sub">Un espace vivant pour organiser vos mémorisations, créer des cartes, réviser efficacement et retrouver vos contenus à votre rythme.</p>
+      <form class="eneles-memory-search" id="enelesMemorySearch" role="search"><input id="enelesMemorySearchInput" type="search" autocomplete="off" placeholder="Rechercher une mémorisation, une carte ou un cours…" aria-label="Rechercher dans Eneles Mémoire"><button type="submit">Rechercher</button></form><p class="eneles-memory-search-status" id="enelesMemorySearchStatus" aria-live="polite"></p>
       <div class="eneles-hero-highlights" aria-label="Fonctions de Mémoire"><span>Mes mémorisations</span><span>Cartes et QCM</span><span>Révisions personnalisées</span></div>
       <a class="eneles-hero-action" href="choisir.html">Explorer ma bibliothèque <span aria-hidden="true">→</span></a>
     </div>
@@ -161,6 +162,6 @@
   <script src="app.js?v=20261026-sitewide-math-v3"></script>
   <script src="home-stats.js?v=20261015-nav-stats-cache"></script>
   <script src="spa-router.js?v=20261023-login-gate-route-fix"></script>
-  <script src="app-menu.js?v=20261103-archives-sidebar-v1"></script>
+  <script src="app-menu.js?v=20261103-archives-sidebar-v1"></script><script src="eneles-sidebar.js?v=20261103-sidebar-archives-shape-v2"></script>
 <script src="compact-actions.js?v=20261025-compact-actions-v1"></script><script src="eneles-home-polish.js?v=20261103-archives-home-clone-v2"></script><script src="eneles-hero-morph.js?v=20261103-archives-hero-morph-v1"></script></body>
 </html>
