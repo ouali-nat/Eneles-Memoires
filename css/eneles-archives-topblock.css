@@ -170,10 +170,10 @@ body[data-page="home"] .home-action-card small{font-size:.69rem!important}
 
 /* Finition commune Eneles : logo horizontal plus lisible et palette adoucie. */
 .eneles-topblock-mark{
- width:82px!important;height:48px!important;flex:0 0 82px!important;
+ width:90px!important;height:50px!important;flex:0 0 90px!important;
  border-radius:14px!important;overflow:hidden!important;
 }
-.eneles-topblock-mark img{width:100%!important;height:100%!important;object-fit:contain!important;padding:1px!important;border-radius:12px!important}
+.eneles-topblock-mark img{width:100%!important;height:100%!important;object-fit:fill!important;padding:1px!important;border-radius:12px!important}
 .eneles-topblock-palette-slot .color-theme-choice.theme-color-swatch{
  width:29px!important;height:29px!important;min-width:29px!important;min-height:29px!important;
  border:1px solid transparent!important;border-radius:10px!important;overflow:visible!important;
@@ -188,5 +188,5 @@ body[data-page="home"] .home-action-card small{font-size:.69rem!important}
 }
 .eneles-topblock-palette-slot .color-theme-choice.theme-color-swatch[aria-pressed="true"]::after{content:none!important;display:none!important}
 @media(max-width:560px){
- .eneles-topblock-mark{width:72px!important;height:44px!important;flex-basis:72px!important}
+ .eneles-topblock-mark{width:76px!important;height:44px!important;flex-basis:76px!important}
 }
