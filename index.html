@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://oegxxndiuovisustjstp.supabase.co" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="style.css?v=20261103-sidebar-hero-complete-v2">
+  <link rel="stylesheet" href="css/eneles-archives-topblock.css?v=20261103-topblock-polygons-v1">
   <link rel="stylesheet" href="memory-access.css?v=20261025-original-logo">
   <!-- L'accueil n'a pas besoin de memoire.css?v=20261026-sitewide-math-v1 pour s'afficher : chargement non bloquant, prêt pour les pages suivantes. -->
   <link rel="stylesheet" href="memoire.css?v=20261026-sitewide-math-v1" media="print" onload="this.media='all'">
@@ -102,6 +103,12 @@
     </div>
   </div></header>
   <main class="wrap main-content">
+  <section class="eneles-archives-topblock" id="enelesArchivesTopblock" aria-label="Navigation et recherche Eneles Mémoire">
+    <a class="eneles-topblock-brand" href="index.html" aria-label="Eneles Mémoire, accueil"><span class="eneles-topblock-mark" aria-hidden="true">E</span><span><strong>Eneles Mémoire</strong><small>Votre espace d’apprentissage</small></span></a>
+    <form class="eneles-topblock-search" id="enelesTopblockSearch" role="search"><span aria-hidden="true" class="eneles-topblock-search-icon">⌕</span><input id="enelesTopblockSearchInput" type="search" autocomplete="off" placeholder="Rechercher une mémorisation, une carte…" aria-label="Rechercher dans Eneles Mémoire"><button type="submit" aria-label="Lancer la recherche">Rechercher</button></form>
+    <nav class="eneles-topblock-nav" aria-label="Navigation principale"><a class="is-current" href="index.html">Accueil</a><a href="choisir.html">Bibliothèque</a><a href="revisions.html">Révisions</a></nav>
+    <div class="eneles-topblock-palette-slot" id="enelesTopblockPaletteSlot" aria-label="Palette de couleurs"></div>
+  </section>
   <div class="eneles-hero-controls"><button type="button" class="eneles-hero-toggle" id="enelesHeroToggle" aria-expanded="true" aria-controls="enelesMemoryHero">Masquer l’accueil</button></div>
   <section class="hero eneles-memory-hero aurore-hero-morph" id="enelesMemoryHero" aria-labelledby="enelesMemoryHeroTitle">
     <div class="hero-motif" aria-hidden="true"></div>
@@ -158,6 +165,7 @@
   <script src="memory-access.js?v=20261018-auth-menu-fix2"></script>
   <script src="network-status.js?v=20261021-menu-right-v3"></script>
   <script src="app.js?v=20261103-palette-sidebar-v8"></script>
+  <script src="eneles-archives-topblock.js?v=20261103-topblock-polygons-v1"></script>
   <script src="home-stats.js?v=20261015-nav-stats-cache"></script>
   <script src="spa-router.js?v=20261023-login-gate-route-fix"></script>
   <script src="app-menu.js?v=20261103-archives-sidebar-v1"></script>
