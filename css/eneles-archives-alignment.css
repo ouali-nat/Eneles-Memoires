@@ -20,6 +20,6 @@ html.has-asb body{padding-left:256px!important;transition:padding-left .25s ease
 @media(max-width:430px){.eneles-memory-hero.hero.aurore-hero-morph{min-height:650px!important;padding:70px 16px!important}.eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:34px!important}}
 @media(prefers-reduced-motion:reduce){.asb,.asb-item,html.has-asb body{transition:none!important}}
 
-.app-menu-wrap{display:none!important}
+#appMenuToggle,#appMenuPanel{display:none!important}
 #enelesSidebarAccount{width:100%;font:inherit;color:inherit;text-align:left;cursor:pointer}
 #enelesSidebarAccount:focus-visible{outline:2px solid var(--asb-s);outline-offset:2px}
