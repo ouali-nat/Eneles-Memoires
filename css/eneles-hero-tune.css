@@ -75,3 +75,16 @@ html[data-theme="light"] body .eneles-memory-hero.hero.aurore-hero-morph .eyebro
   html.asb-collapsed .asb .asb-net span{display:none}
   html.asb-collapsed .asb .asb-badge{position:absolute;top:6px;right:9px;min-width:9px;width:9px;height:9px;padding:0;font-size:0;box-shadow:0 0 0 2px var(--surface,#11101C)}
 }
+
+
+/* Dernière passe : réduire légèrement les deux côtés du héros et abaisser la recherche. */
+html body .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - clamp(40px,8vw,84px))!important;max-width:none!important;margin-left:auto!important;margin-right:auto!important}
+html body .eneles-memory-hero .eneles-memory-search{margin-top:clamp(44px,5.2vw,58px)!important}
+@media(max-width:560px){
+ html body .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 32px)!important;padding:48px 14px 32px!important}
+ html body .eneles-memory-hero .eneles-memory-search{margin-top:42px!important}
+}
+@media(max-width:380px){
+ html body .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 24px)!important;padding-inline:10px!important}
+ html body .eneles-memory-hero .eneles-memory-search{margin-top:38px!important}
+}

@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   /* Feuilles de style chargées en dernier + bloc de présentation de l'accueil. */
-  var V='20261103-hero-sidebar-v3';
+  var V='20261103-hero-sidebar-v4';
   function loadExtras(){
     if(!document.head||!document.body)return;
     ['eneles-final-layout.css','eneles-window-blocks.css','eneles-hero-tune.css'].forEach(function(f){
