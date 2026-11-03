@@ -254,3 +254,20 @@ html[data-color-theme] body{background:radial-gradient(circle at 8% 0%,color-mix
  .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 32px)!important;max-width:100%!important}
  .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:38px!important}
 }
+
+
+/* Ajustement final demandé : héros légèrement plus étroit, recherche descendue et côtés équilibrés. */
+.eneles-memory-hero.hero.aurore-hero-morph{width:min(calc(100% - 56px),700px)!important;max-width:700px!important;margin-left:auto!important;margin-right:auto!important}
+.eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:58px!important}
+@media(pointer:coarse) and (orientation:portrait){
+ .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 40px)!important;max-width:660px!important}
+ .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:46px!important}
+}
+@media(pointer:coarse) and (orientation:portrait) and (max-width:420px){
+ .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 28px)!important;max-width:100%!important}
+ .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:42px!important}
+}
+/* Contrôles latéraux : cibles tactiles nettes et feedback visible au clavier. */
+.asb .asb-item:focus-visible,.asb .asb-theme-btn:focus-visible,.asb .asb-collapse:focus-visible,.asb-toggle:focus-visible{outline:2px solid var(--asb-s,var(--accent-light))!important;outline-offset:2px!important}
+.asb .asb-theme-btn[aria-pressed="true"]{border-color:var(--asb-p,var(--accent))!important;background:color-mix(in srgb,var(--asb-p,var(--accent)) 18%,var(--surface))!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--asb-p,var(--accent)) 38%,transparent)!important}
+.asb .asb-item:active,.asb .asb-theme-btn:active,.asb .asb-sw:active{transform:scale(.98)}
