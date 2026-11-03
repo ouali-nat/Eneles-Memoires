@@ -1,0 +1,77 @@
+/* Eneles Mémoire — réglages finaux : héros, palette Archives et barre latérale.
+   Chargé en dernier par eneles-sidebar.js : même spécificité que eneles-final-layout.css, l'ordre fait la priorité. */
+
+/* ---------- 1. Héros : un peu plus étroit, recherche ancrée plus bas ---------- */
+html body .eneles-memory-hero.hero.aurore-hero-morph{
+  width:calc(100% - clamp(24px,6vw,64px))!important;max-width:none!important;
+  margin-left:auto!important;margin-right:auto!important;align-items:stretch!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph .hero-inner{align-self:stretch!important;justify-content:flex-start!important}
+/* L'espace libre du héros se répartit au-dessus du texte (un peu) et entre le texte et la recherche (beaucoup) */
+html body .eneles-memory-hero.hero.aurore-hero-morph .hero-inner::before{content:""!important;display:block!important;flex:.5 1 0!important;min-height:0!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph p.sub{flex:1.5 1 auto!important}
+html body .eneles-memory-hero .eneles-memory-search{margin-top:clamp(28px,4vw,40px)!important}
+@media(max-width:560px){
+  html body .eneles-memory-hero.hero.aurore-hero-morph{padding:52px 12px 34px!important}
+}
+
+/* ---------- 2. Palette : mêmes réglages que la palette actuelle d'Archives ---------- */
+/* Pétrole et Prune étaient presque invisibles en mode sombre : teintes éclaircies, comme dans Archives. */
+html[data-theme="dark"][data-color-theme="petrole-cuivre"]{--theme-primary:#3A9BC1;--theme-strong:#1B6E92;--accent:#3A9BC1;--accent-deep:#1B6E92}
+html[data-theme="dark"][data-color-theme="prune-rouge"]{--theme-primary:#B5456F;--theme-secondary:#E4586A;--theme-strong:#8E2F57;--accent:#B5456F;--accent-light:#E4586A;--accent-deep:#8E2F57}
+
+/* Mot d'accent et étiquette du héros : ils suivent la couleur choisie (une seule teinte lisible par mode). */
+html[data-color-theme]{--hero-word-light:var(--theme-strong);--hero-word-dark:color-mix(in srgb,var(--theme-secondary) 86%,#fff)}
+html[data-color-theme="petrole-cuivre"]{--hero-word-light:#104C64;--hero-word-dark:#D59D80}
+html[data-color-theme="prune-rouge"]{--hero-word-light:#7A2F63;--hero-word-dark:#E4586A}
+html[data-color-theme="rose-sable"]{--hero-word-light:#B5705C;--hero-word-dark:#EFC1B5}
+html[data-color-theme="sarcelle-creme"]{--hero-word-light:#0D6B70;--hero-word-dark:#3FB8BE}
+html[data-theme="dark"] body .eneles-memory-hero.hero.aurore-hero-morph h1 .accentword{background:none!important;color:var(--hero-word-dark)!important;-webkit-text-fill-color:var(--hero-word-dark)!important}
+html[data-theme="light"] body .eneles-memory-hero.hero.aurore-hero-morph h1 .accentword{background:none!important;color:var(--hero-word-light)!important;-webkit-text-fill-color:var(--hero-word-light)!important}
+html[data-theme="dark"] body .eneles-memory-hero.hero.aurore-hero-morph .eyebrow{color:var(--hero-word-dark)!important}
+html[data-theme="light"] body .eneles-memory-hero.hero.aurore-hero-morph .eyebrow{color:var(--hero-word-light)!important}
+
+/* Pastilles à teinte très claire ou très sombre : anneau gris pour rester visibles (comme Archives). */
+:is(.asb .asb-sw,.color-theme-choice.theme-color-swatch):is([data-color-choice="petrole-cuivre"],[data-color-choice="prune-rouge"],[data-color-choice="rose-sable"],[data-color-choice="sarcelle-creme"]):not([aria-pressed="true"]){
+  box-shadow:0 0 0 1px rgba(150,150,160,.6),0 3px 8px rgba(0,0,0,.18)!important}
+
+/* ---------- 3. Barre latérale : nouveaux éléments ---------- */
+/* Carte « Aujourd'hui » */
+.asb .asb-today{margin:2px 2px 10px;padding:12px;border-radius:20px;border:1px solid color-mix(in srgb,var(--asb-p) 34%,transparent);
+  background:linear-gradient(145deg,color-mix(in srgb,var(--asb-p) 24%,transparent),color-mix(in srgb,var(--asb-s) 10%,transparent));
+  box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 14%,transparent),0 8px 22px -12px color-mix(in srgb,var(--asb-p) 55%,transparent)}
+.asb .asb-today-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.asb .asb-today-label{font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.72}
+.asb .asb-today-due{min-width:30px;height:26px;padding:0 9px;display:inline-grid;place-items:center;border-radius:99px;font-size:.82rem;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,var(--asb-p),color-mix(in srgb,var(--asb-p) 55%,#000));text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.asb .asb-today-text{margin:9px 0;font-size:.84rem;font-weight:650;line-height:1.35}
+.asb .asb-today-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+.asb .asb-today-chips span{padding:4px 9px;border-radius:99px;font-size:.66rem;font-weight:700;border:1px solid color-mix(in srgb,var(--asb-p) 26%,transparent);background:color-mix(in srgb,var(--asb-p) 10%,transparent)}
+.asb .asb-today-cta{display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 10px;border-radius:13px;font-size:.8rem;font-weight:800;text-decoration:none;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);
+  background:linear-gradient(135deg,var(--asb-p),color-mix(in srgb,var(--asb-p) 60%,#000));box-shadow:0 6px 16px color-mix(in srgb,var(--asb-p) 32%,transparent);transition:transform .15s ease,filter .15s ease}
+.asb .asb-today-cta:hover{filter:brightness(1.08)}
+.asb .asb-today-cta:active{transform:scale(.98)}
+.asb .asb-today-cta:focus-visible{outline:2px solid var(--asb-s);outline-offset:2px}
+
+/* Pastille de révisions */
+.asb .asb-badge{flex:0 0 auto;margin-left:auto;min-width:20px;height:20px;padding:0 6px;display:inline-grid;place-items:center;border-radius:99px;
+  font-size:.68rem;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--asb-p),color-mix(in srgb,var(--asb-p) 55%,#000));text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.asb .asb-badge[hidden]{display:none!important}
+.asb .asb-item.is-active .asb-badge{margin-left:0}
+
+/* État de la connexion */
+.asb .asb-net{display:flex;align-items:center;gap:8px;margin:0 4px 8px;padding:7px 12px;border-radius:99px;font-size:.72rem;font-weight:700;
+  border:1px solid color-mix(in srgb,var(--asb-p) 24%,transparent);background:color-mix(in srgb,var(--asb-p) 8%,transparent)}
+.asb .asb-net i{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:#35C97A;box-shadow:0 0 0 3px color-mix(in srgb,#35C97A 26%,transparent)}
+.asb .asb-net[data-state="offline"] i{background:#F59E0B;box-shadow:0 0 0 3px color-mix(in srgb,#F59E0B 28%,transparent)}
+.asb .asb-net span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Compte : initiale de l'utilisateur connecté */
+.asb .asb-avatar{font-size:1rem}
+
+/* Bureau, menu réduit : seules les icônes et les points restent */
+@media(min-width:901px){
+  html.asb-collapsed .asb .asb-today{display:none!important}
+  html.asb-collapsed .asb .asb-net{justify-content:center;margin-inline:0;padding:8px 0;border-radius:14px}
+  html.asb-collapsed .asb .asb-net span{display:none}
+  html.asb-collapsed .asb .asb-badge{position:absolute;top:6px;right:9px;min-width:9px;width:9px;height:9px;padding:0;font-size:0;box-shadow:0 0 0 2px var(--surface,#11101C)}
+}
