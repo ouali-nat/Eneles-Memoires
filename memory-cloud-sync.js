@@ -6,7 +6,7 @@
   var DATA_KEY = "aurore-memory-cards-v1";
   var BASE_ETAG_KEY = "aurore-memory-cloud-etag-v1";
   var CLOUD_KEY = "sauvegarde-memorisations.json";
-  // Compatibility import for cards previously written by the Aurore connector
+  // Compatibility import for cards previously written by the Eneles connector
   // to its legacy key. The source is retained; unique content is merged into
   // the active app backup with an ETag condition before becoming visible here.
   var CONNECTOR_BACKUP_KEY = "sauvegarde-automatique/memoires-et-cartes.json";
@@ -71,7 +71,7 @@
   function finishLegacyMigration() {
     if (window.location.hostname !== "aurore-memories-mu.vercel.app") return;
     // La sauvegarde est terminée : rester sur le domaine canonique, sans redirection.
-    status("Sauvegarde vérifiée. Vous pouvez continuer sur Aurore Mémoire.", "ok");
+    status("Sauvegarde vérifiée. Vous pouvez continuer sur Eneles Mémoire.", "ok");
   }
 
   function mountPanel() {
@@ -126,7 +126,7 @@
     if (panel) panel.querySelectorAll("button").forEach(function (button) { button.disabled = disabled; });
   }
   async function api(path, options) {
-    if (!window.auroreAuth) throw new Error("Connexion Aurore ID pas encore initialisée.");
+    if (!window.auroreAuth) throw new Error("Connexion Eneles ID pas encore initialisée.");
     return window.auroreAuth.api(path, options || {});
   }
   async function listCloud() {
@@ -212,7 +212,7 @@
     if (!session || !session.user) {
       active = false;
       conflict = null;
-      status("Vos cartes et mémoires sont conservées sur cet appareil. Connectez-vous avec Aurore ID pour les enregistrer dans votre espace privé en ligne.", "info");
+      status("Vos cartes et mémoires sont conservées sur cet appareil. Connectez-vous avec Eneles ID pour les enregistrer dans votre espace privé en ligne.", "info");
       return;
     }
     active = true;
@@ -283,7 +283,7 @@
         savedSetItem.call(localStorage, DATA_KEY, JSON.stringify(normalizeData(remote.data)));
         saveBase(remoteEtag);
         conflict = null;
-        status("Tes cartes, mémorisations et ta progression ont été récupérées depuis ton compte Aurore ID.", "ok");
+        status("Tes cartes, mémorisations et ta progression ont été récupérées depuis ton compte Eneles ID.", "ok");
         window.setTimeout(function () { window.location.reload(); }, 250);
         return;
       }
@@ -298,7 +298,7 @@
         savedSetItem.call(localStorage, DATA_KEY, JSON.stringify(migrated));
         saveBase(migratedWrite.etag);
         conflict = null;
-        status("Vos contenus ont été réunis et sauvegardés en toute sécurité. Vous pouvez continuer sur Aurore Mémoire.", "ok");
+        status("Vos contenus ont été réunis et sauvegardés en toute sécurité. Vous pouvez continuer sur Eneles Mémoire.", "ok");
         return;
       }
 
@@ -337,7 +337,7 @@
       }
       await showConflict(local, remote.data, remoteEtag);
     } catch (error) {
-      if (error.status === 401) status("La session a expiré. Reconnecte-toi avec Aurore ID ; les données locales sont intactes.", "warn");
+      if (error.status === 401) status("La session a expiré. Reconnecte-toi avec Eneles ID ; les données locales sont intactes.", "warn");
       else status("Enregistrement non confirmé. Vos contenus restent sur cet appareil ; vérifiez votre connexion et réessayez.", "warn");
     } finally {
       busy = false;
@@ -536,7 +536,7 @@
       if (!active) {
         freshSession().then(function (session) {
           if (session && session.user) runSync();
-          else status("Modifications conservées sur cet appareil. Connectez-vous avec Aurore ID pour les retrouver sur vos autres appareils.", "info");
+          else status("Modifications conservées sur cet appareil. Connectez-vous avec Eneles ID pour les retrouver sur vos autres appareils.", "info");
         }).catch(function () {});
         return;
       }
@@ -551,7 +551,7 @@
       return result;
     };
   } catch (error) {
-    console.warn("Aurore Mémoire : suivi automatique des sauvegardes locales indisponible.", error);
+    console.warn("Eneles Mémoire : suivi automatique des sauvegardes locales indisponible.", error);
   }
 
   window.auroreMemoryCloudSync = {
@@ -575,10 +575,10 @@
     if (session && session.user) scheduleStartupSync();
     else {
       startupSyncFinished = true;
-      status("Connectez-vous avec Aurore ID pour enregistrer automatiquement vos cartes, mémoires et progrès.", "info");
+      status("Connectez-vous avec Eneles ID pour enregistrer automatiquement vos cartes, mémoires et progrès.", "info");
     }
   }).catch(function () {
     startupSyncFinished = true;
-    status("La connexion Aurore ID sera vérifiée à l’ouverture de session. Tes données locales restent intactes.", "warn");
+    status("La connexion Eneles ID sera vérifiée à l’ouverture de session. Tes données locales restent intactes.", "warn");
   });
 })();

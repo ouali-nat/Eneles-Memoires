@@ -12,7 +12,7 @@ var ov=el('div','voice-help');ov.id='voiceHelp';ov.hidden=true;ov.setAttribute('
 var card=el('div','form-panel voice-help-card');
 var kick=el('p','section-kicker','VOIX NATURELLES');
 var title=el('h2','','Des voix plus humaines');title.id='voiceHelpTitle';
-var intro=el('p','','Les voix de lecture viennent de ton téléphone. Installe les voix françaises de haute qualité de Google : elles apparaîtront ensuite dans la liste des voix d’Aurore.');
+var intro=el('p','','Les voix de lecture viennent de ton téléphone. Installe les voix françaises de haute qualité de Google : elles apparaîtront ensuite dans la liste des voix d’Eneles.');
 var steps=el('ol');
 var list=android?['Touche « Ouvrir les réglages vocaux » ci-dessous.','Choisis « Synthèse vocale Google » comme moteur, puis touche l’engrenage ⚙ → « Installer les données vocales » → Français.','Télécharge une voix de haute qualité (la plus complète), reviens ici et touche « Actualiser les voix ».']:(ios?['Ouvre Réglages → Accessibilité → Contenu énoncé → Voix.','Choisis Français puis une voix « Améliorée » ou « Premium » et télécharge-la.','Reviens ici et touche « Actualiser les voix ».']:['Installe des voix françaises « naturelles » dans les paramètres vocaux de ton système (Windows : Paramètres → Heure et langue → Voix).','Reviens ici et touche « Actualiser les voix ».']);
 list.forEach(function(t){steps.appendChild(el('li','',t));});
@@ -28,7 +28,7 @@ function shut(){ov.hidden=true;}
 btn.addEventListener('click',open);close.addEventListener('click',shut);
 ov.addEventListener('click',function(e){if(e.target===ov)shut();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.isConnected)shut();});
-refresh.addEventListener('click',function(){var before=frCount();try{speechSynthesis.cancel();if(typeof speechSynthesis.onvoiceschanged==='function')speechSynthesis.onvoiceschanged();}catch(e){}setTimeout(function(){var n=update();if(n<=before)count.textContent+=' Si tu viens d’installer une voix, ferme puis rouvre Aurore pour qu’elle apparaisse.';},700);});
+refresh.addEventListener('click',function(){var before=frCount();try{speechSynthesis.cancel();if(typeof speechSynthesis.onvoiceschanged==='function')speechSynthesis.onvoiceschanged();}catch(e){}setTimeout(function(){var n=update();if(n<=before)count.textContent+=' Si tu viens d’installer une voix, ferme puis rouvre Eneles pour qu’elle apparaisse.';},700);});
 if(window.speechSynthesis&&speechSynthesis.addEventListener)speechSynthesis.addEventListener('voiceschanged',update);
 setTimeout(function(){var n=update(),seen=false;try{seen=localStorage.getItem('aurore-voice-help-seen')==='1';}catch(e){}if(android&&!n&&!seen)open();},2500);
 })();

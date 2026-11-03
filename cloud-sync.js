@@ -47,12 +47,12 @@
     copy.appendChild(title); copy.appendChild(description); copy.appendChild(statusNode);
     signInButton = document.createElement("button");
     signInButton.type = "button";
-    signInButton.textContent = "Se connecter avec Aurore ID";
+    signInButton.textContent = "Se connecter avec Eneles ID";
     signInButton.style.cssText = "padding:9px 12px;border-radius:10px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;";
     signInButton.addEventListener("click", async function () {
       signInButton.disabled = true;
       try { await window.auroreAuth.signIn("fichiers.html"); }
-      catch (error) { show("Connexion non disponible : " + (error.message || "vérifiez la configuration Aurore ID."), true); signInButton.disabled = false; }
+      catch (error) { show("Connexion non disponible : " + (error.message || "vérifiez la configuration Eneles ID."), true); signInButton.disabled = false; }
     });
     mergeButton = document.createElement("button");
     mergeButton.type = "button";
@@ -75,7 +75,7 @@
     return JSON.stringify({ schema: "aurore-memory-backup-v1", savedAt: new Date().toISOString(), payload: state });
   }
   async function api(path, options) {
-    if (!window.auroreAuth) throw new Error("Le module Aurore ID n’est pas chargé.");
+    if (!window.auroreAuth) throw new Error("Le module Eneles ID n’est pas chargé.");
     return window.auroreAuth.api(path, options || {});
   }
   async function readCloud() {
@@ -203,6 +203,6 @@
     window.addEventListener("aurore:auth-changed", function () { initialize().catch(function (error) { show("Cloud non disponible : " + error.message, true); }); });
     initialize().catch(function (error) { show("Cloud non disponible : " + (error.message || "erreur inconnue"), true); });
   } else {
-    show("Le module Aurore ID n’est pas disponible. Les données locales restent intactes.", true);
+    show("Le module Eneles ID n’est pas disponible. Les données locales restent intactes.", true);
   }
 })();

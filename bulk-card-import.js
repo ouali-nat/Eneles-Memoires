@@ -25,7 +25,7 @@
   panel.innerHTML =
     '<p class="section-kicker">IMPORTATION EN LOT</p>' +
     '<h2 id="bulkCardImportTitle">Créer plusieurs cartes depuis un texte</h2>' +
-    '<p class="bulk-help">Colle ici le texte complet d’une IA ou de tes notes. Aurore reconnaît les titres « Carte 1 », « Recto : » et « Verso : », puis prépare les cartes sans les enregistrer automatiquement.</p>' +
+    '<p class="bulk-help">Colle ici le texte complet d’une IA ou de tes notes. Eneles reconnaît les titres « Carte 1 », « Recto : » et « Verso : », puis prépare les cartes sans les enregistrer automatiquement.</p>' +
     '<label class="field-label" for="bulkCardImportText">Texte à importer</label>' +
     '<textarea class="text-area" id="bulkCardImportText" maxlength="100000" placeholder="Carte 1&#10;Recto : formule ou question&#10;Verso : explication&#10;&#10;Carte 2&#10;Recto : …&#10;Verso : …"></textarea>' +
     '<div class="bulk-import-actions"><button class="secondary-btn" type="button" id="bulkCardAnalyze">Analyser le texte</button></div>' +

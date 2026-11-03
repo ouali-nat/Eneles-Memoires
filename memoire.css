@@ -762,7 +762,7 @@ html[data-theme="light"] .latex-preview,body[data-theme="light"] .latex-preview{
 @media(max-width:480px){.science-dock-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}.science-placeholder-hint{font-size:.63rem}}
 
 
-/* Groupes d'étude — fondation responsive, thème hérité d'Aurore Mémoire. */
+/* Groupes d'étude — fondation responsive, thème hérité d'Eneles Mémoire. */
 .groups-main{padding-top:22px;padding-bottom:48px}
 .groups-hero{padding:24px 0 18px}
 .groups-hero .eyebrow{color:var(--accent-light);font-size:.72rem;font-weight:850;letter-spacing:.12em}
@@ -813,7 +813,7 @@ html[data-theme="light"] .latex-preview,body[data-theme="light"] .latex-preview{
 @media(min-width:621px){.groups-modal-backdrop{place-items:center}}
 
 
-/* Cartes publiques — même langage visuel que les vignettes PDF d'Aurore Archives :
+/* Cartes publiques — même langage visuel que les vignettes PDF d'Eneles Archives :
    couverture carrée indépendante, puis bloc de contenu lisible en dessous. */
 body[data-page="public-cards"] #publicCardFeed,
 body[data-page="public-cards"] .public-card-feed-grid,
@@ -1129,7 +1129,7 @@ body[data-page="library"] .memory-series-card .series-sharing-status{display:fle
 .public-card-details>div:last-child{border-bottom:0;padding-bottom:0}
 
 
-/* Certification Aurore — identifiant et attribution discrets sur la carte et ses exports. */
+/* Certification Eneles — identifiant et attribution discrets sur la carte et ses exports. */
 .public-card-attribution{display:flex;flex-direction:column;gap:3px;min-width:0;max-width:70%;font-size:.61rem;line-height:1.25;opacity:.82;overflow-wrap:anywhere}
 .public-card-attribution span:last-child{font-size:.53rem;letter-spacing:.035em;opacity:.78}
 .public-flashcard-bottom{align-items:flex-end}

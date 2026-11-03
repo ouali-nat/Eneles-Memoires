@@ -31,7 +31,7 @@
     });
   }
   function openModal() {
-    if (!signedIn()) { toast("Connecte-toi avec Aurore ID pour créer un groupe."); startAuroreIdSignIn(); return; }
+    if (!signedIn()) { toast("Connecte-toi avec Eneles ID pour créer un groupe."); startAuroreIdSignIn(); return; }
     status.textContent = "";
     modal.hidden = false;
     var name = form.querySelector('[name="name"]'); if(name) name.focus();
@@ -46,8 +46,8 @@
       });
       if (result.error) throw result.error;
     } catch (error) {
-      console.error("Aurore ID sign-in:", error);
-      toast("La connexion Aurore ID a échoué. Vérifie la configuration du fournisseur dans Supabase Mémoire.");
+      console.error("Eneles ID sign-in:", error);
+      toast("La connexion Eneles ID a échoué. Vérifie la configuration du fournisseur dans Supabase Mémoire.");
     }
   }
   async function loadSession() {
@@ -64,8 +64,8 @@
     updateAuthButtons();
   }
   function updateAuthButtons() {
-    loginButton.textContent = signedIn() ? "Connecté · " + (session.user.user_metadata && (session.user.user_metadata.full_name || session.user.user_metadata.name) || session.user.email || "Compte") : "Connexion Aurore ID";
-    loginButton.title = signedIn() ? "Compte connecté" : "Se connecter avec Aurore ID";
+    loginButton.textContent = signedIn() ? "Connecté · " + (session.user.user_metadata && (session.user.user_metadata.full_name || session.user.user_metadata.name) || session.user.email || "Compte") : "Connexion Eneles ID";
+    loginButton.title = signedIn() ? "Compte connecté" : "Se connecter avec Eneles ID";
     createButton.textContent = signedIn() ? "＋ Créer un groupe" : "＋ Créer un groupe";
   }
   var PUBLIC_CACHE_KEY = "aurore-groups-public-cache-v1";
@@ -166,7 +166,7 @@
     });
     if(!visible.length) {
       var title=activeFilter==="mine"?"Aucun groupe à afficher":"Aucun groupe public pour le moment";
-      var desc=activeFilter==="mine"?(signedIn()?"Créez un groupe pour commencer à apprendre à plusieurs.":"Connectez-vous avec Aurore ID pour retrouver vos groupes."):"Les groupes publics apparaîtront ici dès leur publication.";
+      var desc=activeFilter==="mine"?(signedIn()?"Créez un groupe pour commencer à apprendre à plusieurs.":"Connectez-vous avec Eneles ID pour retrouver vos groupes."):"Les groupes publics apparaîtront ici dès leur publication.";
       grid.innerHTML='<div class="groups-empty"><strong>'+escapeHtml(title)+'</strong><p>'+escapeHtml(desc)+'</p><button class="groups-btn primary" type="button" id="emptyCreateGroup">＋ Créer un groupe</button></div>';
       var create=document.getElementById("emptyCreateGroup"); if(create)create.addEventListener("click",openModal);
       return;
@@ -177,7 +177,7 @@
       if(g.level)meta.push('<span>'+escapeHtml(g.level)+'</span>');
       var isOwner=signedIn()&&g.created_by===session.user.id, isMember=!!joinedGroupIds[g.id]||isOwner;
       var visibilityLabel=g.visibility==="private"?"🔒 Privé":"🌐 Public";
-      var action=isMember?'<button class="groups-btn" type="button" data-open-group="'+escapeHtml(g.id)+'">Ouvrir le groupe ↗</button>':'<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px"><button class="groups-btn" type="button" data-open-group="'+escapeHtml(g.id)+'">Détails</button><button class="groups-btn primary" type="button" data-join-group="'+escapeHtml(g.id)+'">'+(signedIn()?(g.join_policy==="open"?"Rejoindre":"Demander à rejoindre"):"Connexion Aurore ID")+'</button></div>';
+      var action=isMember?'<button class="groups-btn" type="button" data-open-group="'+escapeHtml(g.id)+'">Ouvrir le groupe ↗</button>':'<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px"><button class="groups-btn" type="button" data-open-group="'+escapeHtml(g.id)+'">Détails</button><button class="groups-btn primary" type="button" data-join-group="'+escapeHtml(g.id)+'">'+(signedIn()?(g.join_policy==="open"?"Rejoindre":"Demander à rejoindre"):"Connexion Eneles ID")+'</button></div>';
       var cover = g.cover_url
         ? '<div class="group-cover"><img src="' + escapeHtml(g.cover_url) + '" alt="Couverture du groupe ' + escapeHtml(g.name) + '" loading="lazy"></div>'
         : '<div class="group-cover group-cover-placeholder" aria-hidden="true"><span>AURORE · ÉTUDE</span><b>♧</b></div>';
@@ -213,7 +213,7 @@
   }
   async function createGroup(event) {
     event.preventDefault();
-    if(!signedIn()){status.textContent="Une connexion Aurore ID est nécessaire pour créer un groupe.";startAuroreIdSignIn();return;}
+    if(!signedIn()){status.textContent="Une connexion Eneles ID est nécessaire pour créer un groupe.";startAuroreIdSignIn();return;}
     var data=new FormData(form);
     var payload={
       name:String(data.get("name")||"").trim(),

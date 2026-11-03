@@ -142,14 +142,14 @@
     if (!request || busy) { if (!request) message("Décris le sujet ou colle les éléments du cours à transformer.", true); return; }
     setBusy(true); message("Connexion à Aurora…");
     try {
-      if (!window.auroreAuthReady) throw new Error("Le service Aurore ID n’est pas prêt. Recharge la page puis réessaie.");
+      if (!window.auroreAuthReady) throw new Error("Le service Eneles ID n’est pas prêt. Recharge la page puis réessaie.");
       var auth = await window.auroreAuthReady;
       var session = await auth.getSession();
-      if (!session || !session.access_token) throw new Error("Connecte-toi avec Aurore ID pour demander à Aurora de créer tes cartes.");
+      if (!session || !session.access_token) throw new Error("Connecte-toi avec Eneles ID pour demander à Aurora de créer tes cartes.");
       var mode = document.querySelector('input[name="cardMode"]:checked')?.value || "simple";
       var count = countInput.value === "auto" ? "un nombre adapté au contenu (maximum 20)" : countInput.value;
       var instructions = [
-        "Tu es Aurora, l'assistante pédagogique d'Aurore Mémoire.",
+        "Tu es Aurora, l'assistante pédagogique d'Eneles Mémoire.",
         "Prépare des cartes recto-verso pour l'éditeur existant.",
         "Retourne un objet JSON valide, sans Markdown, conforme à cette enveloppe exacte : {\"reply\":\"Proposition prête à vérifier\",\"action\":{\"type\":\"create_flashcards\",\"title\":\"titre court\",\"cards\":[{\"front\":\"question ou notion au recto\",\"back\":\"réponse exacte et pédagogique au verso\"}]}}. Le tableau cards doit être dans action, pas à la racine. N’ajoute aucun texte hors JSON.",
         "Chaque carte doit être autonome, exacte, concise et utile pour le rappel actif. N'invente pas de faits. Si le cours est insuffisant ou ambigu, précise les limites dans les réponses plutôt que de fabriquer des informations.",

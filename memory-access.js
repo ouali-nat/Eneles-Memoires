@@ -51,8 +51,8 @@
         }
         await auth.signIn("index.html");
       }catch(error){
-        showMessage("Impossible de démarrer la connexion Aurore ID : "+(error && error.message ? error.message : "erreur inconnue"));
-        if(label) label.textContent="Continuer avec Aurore ID";
+        showMessage("Impossible de démarrer la connexion Eneles ID : "+(error && error.message ? error.message : "erreur inconnue"));
+        if(label) label.textContent="Continuer avec Eneles ID";
         button.disabled=false;
         busy=false;
       }
@@ -71,7 +71,7 @@
       if(window.auroreAuthReady) auth=await window.auroreAuthReady;
       if(auth && typeof auth.getSession==="function") handleSession(await auth.getSession());
     }catch(error){
-      console.warn("Aurore Mémoire : la vérification de session n’a pas abouti. L’accueil reste accessible.",error);
+      console.warn("Eneles Mémoire : la vérification de session n’a pas abouti. L’accueil reste accessible.",error);
     }
   })();
 })();

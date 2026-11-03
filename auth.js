@@ -78,12 +78,12 @@
         var providerError = callback.searchParams.get("error_description") ||
           callback.searchParams.get("error");
         if (providerError) {
-          toast("La connexion Aurore ID a échoué : " + providerError);
+          toast("La connexion Eneles ID a échoué : " + providerError);
           return;
         }
         var code = callback.searchParams.get("code");
         if (!code) {
-          toast("Aurore ID est revenu dans l’application sans code de connexion.");
+          toast("Eneles ID est revenu dans l’application sans code de connexion.");
           return;
         }
         try {
@@ -93,11 +93,11 @@
           // Efface tout paramètre d'authentification de l'adresse affichée dans la WebView.
           try { history.replaceState(history.state, document.title, window.location.pathname + window.location.search); } catch (_) {}
         } catch (error) {
-          toast(error && error.message ? error.message : "Impossible de terminer la connexion Aurore ID dans l’application.");
+          toast(error && error.message ? error.message : "Impossible de terminer la connexion Eneles ID dans l’application.");
         }
       });
     }).catch(function (error) {
-      console.error("Aurore Mémoire : gestion du retour Aurore ID indisponible.", error);
+      console.error("Eneles Mémoire : gestion du retour Eneles ID indisponible.", error);
     });
   }
 
@@ -111,7 +111,7 @@
   async function api(path, options) {
     var session = await currentSession();
     if (!session || !session.access_token) {
-      var authError = new Error("Connectez-vous avec Aurore ID pour accéder à vos fichiers privés.");
+      var authError = new Error("Connectez-vous avec Eneles ID pour accéder à vos fichiers privés.");
       authError.status = 401;
       throw authError;
     }
@@ -154,7 +154,7 @@
     box.id = "auroreAuthControls";
     box.className = "aurore-auth-controls";
     box.innerHTML =
-      '<button class="aurore-auth-button" id="auroreAuthButton" type="button">Connexion Aurore ID</button>';
+      '<button class="aurore-auth-button" id="auroreAuthButton" type="button">Connexion Eneles ID</button>';
     header.insertBefore(box, header.firstChild || null);
 
     var button = document.getElementById("auroreAuthButton");
@@ -164,7 +164,7 @@
         try {
           var result = await client.auth.signOut();
           if (result.error) throw result.error;
-          toast("Vous êtes déconnecté d’Aurore Mémoire.");
+          toast("Vous êtes déconnecté d’Eneles Mémoire.");
         } catch (error) {
           toast(error.message || "La déconnexion a échoué.");
         } finally {
@@ -185,11 +185,11 @@
         });
         if (result.error) throw result.error;
         if (!result.data || !result.data.url) {
-          throw new Error("Aurore ID n’a pas pu démarrer la connexion. Réessayez dans quelques instants.");
+          throw new Error("Eneles ID n’a pas pu démarrer la connexion. Réessayez dans quelques instants.");
         }
       } catch (error) {
         button.disabled = false;
-        button.textContent = "Connexion Aurore ID";
+        button.textContent = "Connexion Eneles ID";
         toast("Connexion impossible. Vérifiez votre connexion et réessayez.");
       }
     });
@@ -205,7 +205,7 @@
       button.hidden = true;
       button.disabled = false;
     } else {
-      button.textContent = "Connexion Aurore ID";
+      button.textContent = "Connexion Eneles ID";
       button.dataset.action = "signin";
       button.hidden = true;
       button.disabled = false;
@@ -239,7 +239,7 @@
         });
         if (result.error) throw result.error;
         if (!result.data || !result.data.url) {
-          throw new Error("Aurore ID n’a pas renvoyé d’adresse de connexion. Vérifiez le fournisseur custom:aurore-id dans Supabase Mémoire.");
+          throw new Error("Eneles ID n’a pas renvoyé d’adresse de connexion. Vérifiez le fournisseur custom:aurore-id dans Supabase Mémoire.");
         }
         return result.data;
       },
@@ -255,7 +255,7 @@
     try {
       updateHeader(await currentSession());
     } catch (error) {
-      console.warn("Aurore Mémoire : lecture de la session impossible.", error);
+      console.warn("Eneles Mémoire : lecture de la session impossible.", error);
       updateHeader(null);
     }
     return authApi;
@@ -264,6 +264,6 @@
   window.auroreAuthReady = initializeAuth();
   window.auroreAuthReady.catch(function (error) {
     window.auroreAuthInitError = error;
-    console.error("Aurore Mémoire : initialisation de l’authentification impossible.", error);
+    console.error("Eneles Mémoire : initialisation de l’authentification impossible.", error);
   });
 })();

@@ -1,4 +1,4 @@
-// Aurore Mémoire — notifications réseau, adaptées du composant Aurore Archives.
+// Eneles Mémoire — notifications réseau, adaptées du composant Eneles Archives.
 (function initAuroreNetworkStatus() {
   "use strict";
   if (window.__auroreNetworkStatusInstalled) return;
@@ -108,7 +108,7 @@
       document.documentElement.classList.remove("aurore-offline");
       scheduleProbe();
       if (previous === "offline") {
-        show("online", "Connexion rétablie", "Internet est de nouveau disponible. Aurore peut reprendre la synchronisation de votre espace.", true);
+        show("online", "Connexion rétablie", "Internet est de nouveau disponible. Eneles peut reprendre la synchronisation de votre espace.", true);
       } else if (previous === "unknown") {
         hide();
       } else {

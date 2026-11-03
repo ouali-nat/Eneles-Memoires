@@ -1,4 +1,4 @@
-/* Aurore Mémoire — navigation fiable par document complet.
+/* Eneles Mémoire — navigation fiable par document complet.
    Le routeur SPA précédent remplaçait seulement <main>, chargeait les scripts
    séquentiellement et pouvait laisser l'interface dans un état partiellement
    initialisé sur les connexions mobiles lentes. On conserve l'API appelée par

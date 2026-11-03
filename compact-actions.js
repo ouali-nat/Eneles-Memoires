@@ -22,7 +22,7 @@
   }
   function itemTitle(item) {
     var h = item.querySelector(".memory-row-main h3, .memory-row-main h2, .audio-item-main strong, .public-learning-card h2, .community-imported-item h3, .community-imported-item h4, .group-card h4, .memory-block-text, .memory-block-number");
-    return (h && h.textContent || "Contenu Aurore").trim();
+    return (h && h.textContent || "Contenu Eneles").trim();
   }
   function importedItem(item) {
     var type = item.dataset.communityType, id = item.dataset.communityId;
@@ -50,7 +50,7 @@
               var audioExt = /ogg/i.test(audioType) ? ".ogg" : /mp4/i.test(audioType) ? ".m4a" : /mpeg|mp3/i.test(audioType) ? ".mp3" : ".webm";
               saveFile(trackName + audioExt, audioBlob, audioType || "application/octet-stream");
             } catch (_) { saveJson(trackName + ".json", { name: trackName, text: track.text || "", language: track.language || "fr-FR", voice: track.voice || "", rate: track.rate || 1, source: track.url || null }); }
-          } else saveJson(trackName + ".json", { format: "Aurore audio text", name: trackName, text: track.text || "", language: track.language || "fr-FR", voice: track.voice || "", rate: track.rate || 1 });
+          } else saveJson(trackName + ".json", { format: "Eneles audio text", name: trackName, text: track.text || "", language: track.language || "fr-FR", voice: track.voice || "", rate: track.rate || 1 });
           if (ti < tracks.length - 1) await new Promise(function (resolve) { window.setTimeout(resolve, 260); });
         }
         return;
@@ -86,7 +86,7 @@
         if (got.blob) {
           var mime = rec.mime || got.blob.type || "", ext = /ogg/i.test(mime) ? ".ogg" : /mp4/i.test(mime) ? ".m4a" : /mpeg|mp3/i.test(mime) ? ".mp3" : ".webm";
           saveFile(filename + ext, got.blob, mime || "application/octet-stream");
-        } else saveJson(filename + ".json", { format: "Aurore audio text", name: rec.name || filename, text: rec.text || "", language: rec.language || "fr-FR", voice: rec.voice || "", rate: rec.rate || 1, createdAt: rec.createdAt || null });
+        } else saveJson(filename + ".json", { format: "Eneles audio text", name: rec.name || filename, text: rec.text || "", language: rec.language || "fr-FR", voice: rec.voice || "", rate: rec.rate || 1, createdAt: rec.createdAt || null });
         if (i < seq.tracks.length - 1) await new Promise(function (resolve) { window.setTimeout(resolve, 260); });
       }
       return;

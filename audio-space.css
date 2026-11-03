@@ -1,4 +1,4 @@
-/* Aurore Mémoire — espace audio. Les blocs réutilisent .form-panel / .draft-card : le design « pilule flottante » (aurore-pill.css) s'applique donc comme dans la création de cartes et suit la couleur du site. */
+/* Eneles Mémoire — espace audio. Les blocs réutilisent .form-panel / .draft-card : le design « pilule flottante » (aurore-pill.css) s'applique donc comme dans la création de cartes et suit la couleur du site. */
 .audio-page{padding-bottom:3rem}
 .audio-page [hidden]{display:none!important}
 .audio-create-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:8px 0 18px;align-items:start}
@@ -82,7 +82,7 @@
 @media(max-width:520px){.cloudflare-test-dialog{padding:17px;border-radius:16px}.cloudflare-options{grid-template-columns:1fr;gap:2px}.cloudflare-actions>*{flex:1}.cloudflare-dialog-foot{align-items:stretch;flex-direction:column}.cloudflare-dialog-foot button{width:100%}}
 
 
-/* Bloc de choix vocal : même langage visuel que les cartes Aurore Mémoire. */
+/* Bloc de choix vocal : même langage visuel que les cartes Eneles Mémoire. */
 .audio-page .audio-alternative-card{
   display:grid;gap:15px;margin-top:18px;padding:16px;
   border:1px solid var(--border,rgba(255,255,255,.22));
@@ -151,7 +151,7 @@
 }
 @media(prefers-reduced-motion:reduce){.audio-voice-quota-track span,.cloudflare-test-dialog .voice-quota-track span{transition:none}}
 
-/* Sélecteur vocal Aurore : menus natifs remplacés par des options aux couleurs du site. */
+/* Sélecteur vocal Eneles : menus natifs remplacés par des options aux couleurs du site. */
 .audio-page .audio-voice-native{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
 .audio-page .audio-voice-picker-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:46px;text-align:left;cursor:pointer}
 .audio-page .audio-voice-picker-trigger span:first-child{min-width:0;overflow-wrap:anywhere}

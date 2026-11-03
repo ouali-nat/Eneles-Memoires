@@ -9,7 +9,7 @@ var id=new URLSearchParams(window.location.search).get("id"),inviteToken=new URL
 function escapeHtml(value){return String(value==null?"":value).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch];});}
 function message(t){status.textContent=t;}
 function toast(t){if(window.auroreToast)window.auroreToast(t);else message(t);}
-async function signIn(){try{var r=await client.auth.signInWithOAuth({provider:"custom:aurore-id",options:{redirectTo:window.location.origin+window.location.pathname+window.location.search,scopes:"openid email profile"}});if(r.error)throw r.error;}catch(e){console.error(e);toast("Connexion Aurore ID impossible. Vérifie le fournisseur configuré dans Supabase Mémoire.");}}
+async function signIn(){try{var r=await client.auth.signInWithOAuth({provider:"custom:aurore-id",options:{redirectTo:window.location.origin+window.location.pathname+window.location.search,scopes:"openid email profile"}});if(r.error)throw r.error;}catch(e){console.error(e);toast("Connexion Eneles ID impossible. Vérifie le fournisseur configuré dans Supabase Mémoire.");}}
 async function hashToken(token){var bytes=new TextEncoder().encode(token);var digest=await crypto.subtle.digest("SHA-256",bytes);return Array.from(new Uint8Array(digest)).map(function(b){return b.toString(16).padStart(2,"0");}).join("");}
 async function redeemInvitation(){
 if(!inviteToken||!session)return false;
@@ -83,7 +83,7 @@ async function loadGroup(){
 if(!id){
  title.textContent="Invitation ou groupe introuvable";
  message("Aucun groupe n’a été sélectionné.");
- if(inviteToken&&!session){message("Connectez-vous avec Aurore ID pour accepter cette invitation privée.");joinButton.hidden=false;joinButton.textContent="Connexion Aurore ID";}
+ if(inviteToken&&!session){message("Connectez-vous avec Eneles ID pour accepter cette invitation privée.");joinButton.hidden=false;joinButton.textContent="Connexion Eneles ID";}
  return;
 }
 if(!client){title.textContent="Service indisponible";message("Le service des groupes n’a pas pu être initialisé.");return;}
@@ -96,9 +96,9 @@ try{
   }catch(authError){session=null;}
   if(!session){
    title.textContent="Invitation à un groupe privé";
-   message("Connectez-vous avec Aurore ID pour accepter cette invitation et accéder au groupe.");
+   message("Connectez-vous avec Eneles ID pour accepter cette invitation et accéder au groupe.");
    joinButton.hidden=false;
-   joinButton.textContent="Connexion Aurore ID";
+   joinButton.textContent="Connexion Eneles ID";
    return;
   }
   await redeemInvitation();
@@ -121,7 +121,7 @@ try{
  }
  if(result.error||!result.data){
   title.textContent="Groupe inaccessible";
-  message("Ce groupe n’existe pas, est privé, ou nécessite une connexion Aurore ID.");
+  message("Ce groupe n’existe pas, est privé, ou nécessite une connexion Eneles ID.");
   joinButton.hidden=true;
   return;
  }
@@ -135,7 +135,7 @@ try{
  if(currentGroup.visibility==="public"){
   joinButton.hidden=false;
   joinButton.disabled=false;
-  joinButton.textContent="Connexion Aurore ID";
+  joinButton.textContent="Connexion Eneles ID";
   message("Groupe public · connectez-vous pour rejoindre le groupe ou envoyer une demande.");
  }else{
   joinButton.hidden=true;
@@ -153,7 +153,7 @@ try{
   session=sr.data.session||null;
  }catch(sessionError){
   session=null;
-  console.warn("Session Aurore ID indisponible ; affichage du groupe public en mode visiteur.",sessionError);
+  console.warn("Session Eneles ID indisponible ; affichage du groupe public en mode visiteur.",sessionError);
  }
  var isOwner=!!(session&&session.user&&session.user.id===currentGroup.created_by),isMember=false;
  if(session&&session.user){
@@ -173,8 +173,8 @@ try{
   }else{
    joinButton.hidden=false;
    joinButton.disabled=false;
-   joinButton.textContent=!session?"Connexion Aurore ID":currentGroup.join_policy==="open"?"Rejoindre le groupe":"Demander à rejoindre";
-   message(!session?"Groupe public · connectez-vous avec Aurore ID pour participer.":currentGroup.join_policy==="open"?"Groupe public · adhésion libre jusqu’à la capacité maximale.":"Groupe public · l’adhésion nécessite l’approbation du propriétaire.");
+   joinButton.textContent=!session?"Connexion Eneles ID":currentGroup.join_policy==="open"?"Rejoindre le groupe":"Demander à rejoindre";
+   message(!session?"Groupe public · connectez-vous avec Eneles ID pour participer.":currentGroup.join_policy==="open"?"Groupe public · adhésion libre jusqu’à la capacité maximale.":"Groupe public · l’adhésion nécessite l’approbation du propriétaire.");
   }
  }else{
   joinButton.hidden=true;
@@ -215,7 +215,7 @@ finally{button.disabled=false;}
 }
 document.getElementById("createInviteButton").addEventListener("click",createInvite);
 document.getElementById("copyInviteButton").addEventListener("click",async function(){if(!createdInviteUrl)return;try{await navigator.clipboard.writeText(createdInviteUrl);toast("Lien copié.");}catch(e){inviteStatus.textContent=createdInviteUrl;toast("Copie automatique indisponible : sélectionne le lien affiché.");}});
-document.getElementById("shareInviteButton").addEventListener("click",function(){if(!createdInviteUrl)return;var text="Je t’invite à rejoindre le groupe privé « "+currentGroup.name+" » sur Aurore Mémoire : "+createdInviteUrl;if(navigator.share){navigator.share({title:"Invitation au groupe "+currentGroup.name,text:text,url:createdInviteUrl}).catch(function(e){if(e&&e.name!=="AbortError")window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank","noopener,noreferrer");});}else{window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank","noopener,noreferrer");}});
+document.getElementById("shareInviteButton").addEventListener("click",function(){if(!createdInviteUrl)return;var text="Je t’invite à rejoindre le groupe privé « "+currentGroup.name+" » sur Eneles Mémoire : "+createdInviteUrl;if(navigator.share){navigator.share({title:"Invitation au groupe "+currentGroup.name,text:text,url:createdInviteUrl}).catch(function(e){if(e&&e.name!=="AbortError")window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank","noopener,noreferrer");});}else{window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank","noopener,noreferrer");}});
 joinButton.addEventListener("click",function(){if(inviteToken&&!session){signIn();return;}joinGroup();});
 if(window.supabase&&window.supabase.createClient){
  client=window.supabase.createClient(URL_BASE,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});

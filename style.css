@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Aurore Mémoire — système de design
-   Modèle : Aurore Archives (palette sombre profonde, surfaces en dossiers
+   Eneles Mémoire — système de design
+   Modèle : Eneles Archives (palette sombre profonde, surfaces en dossiers
    organiques, couverture + fiche séparées, lueur d'accent, header vitré).
    Les 18 thèmes de couleur sont conservés (variable --accent).
    ========================================================================== */
@@ -512,7 +512,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 
-/* ---------- Navigation en capsule — rendu pilule Aurore ---------- */
+/* ---------- Navigation en capsule — rendu pilule Eneles ---------- */
 /* Adaptation du rendu fourni pour Mémoire : conserve les liens et les contrôles existants. */
 .topbar .brand-mark {
   flex: 0 0 54px;
@@ -642,7 +642,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 
-/* Aurore Mémoire — ajustements de finition : palette contenue et compte discret. */
+/* Eneles Mémoire — ajustements de finition : palette contenue et compte discret. */
 .color-theme-panel {
   position: fixed;
   top: calc(env(safe-area-inset-top, 0px) + 76px);
@@ -752,7 +752,7 @@ body[data-page="home"] .app-menu-panel {
 }
 
 
-/* Aurore Mémoire — notification réseau : copie du composant Archives. */
+/* Eneles Mémoire — notification réseau : copie du composant Archives. */
 .aurore-network-status{
   position:fixed!important;top:max(10px,calc(10px + env(safe-area-inset-top,0px)))!important;
   left:50%!important;right:auto!important;bottom:auto!important;transform:translateX(-50%)!important;
@@ -841,7 +841,7 @@ html[data-theme="dark"] .aurore-network-status-copy span{color:var(--muted,#b8b2
   body[data-page="home"] .coming-label { align-self: flex-start; margin-top: 1px; padding: 4px 7px; border-radius: 999px; font-size: .62rem; }
 }
 
-/* Logo Aurore original : utiliser la même identité sur les pages du site. */
+/* Logo Eneles original : utiliser la même identité sur les pages du site. */
 .brand-mark{overflow:hidden;background:var(--surface);border:1px solid var(--soft-border);box-shadow:none;border-radius:11px;flex:0 0 40px}
 .brand-mark .brand-logo{display:block;width:100%;height:100%;object-fit:contain;border-radius:inherit}
 
@@ -879,7 +879,7 @@ html[data-theme="dark"] .aurore-network-status-copy span{color:var(--muted,#b8b2
 .has-compact-actions.public-learning-card>.section-kicker{padding-right:38px;}
 
 
-/* Aurore Mémoire — refined, compact options menu (library only). */
+/* Eneles Mémoire — refined, compact options menu (library only). */
 body[data-page="library"] .compact-action-dialog{
   width:min(400px,calc(100vw - 24px));max-width:400px;max-height:min(82dvh,680px);
   border-radius:18px;box-shadow:0 22px 64px rgba(0,0,0,.32);
@@ -918,7 +918,7 @@ body[data-page="library"] .compact-action-error{font-size:.76rem;}
 }
 
 
-/* Aurore Mémoire — breathing room between navigation actions, including refresh. */
+/* Eneles Mémoire — breathing room between navigation actions, including refresh. */
 .topbar .top-actions{
   gap:8px;
   padding:6px 8px;
@@ -946,7 +946,7 @@ body[data-page="library"] .compact-action-error{font-size:.76rem;}
   .topbar .top-actions .nav-link.aurore-refresh-app{flex:0 0 94px;}
 }
 
-/* Aurore Mémoire — clearer spacing in the community library and its resource tabs. */
+/* Eneles Mémoire — clearer spacing in the community library and its resource tabs. */
 body[data-page="public-cards"] .topbar .top-actions{
   gap:9px;
   padding:6px 8px;

@@ -25,8 +25,8 @@
     var upload = byId("cloudFilesUpload");
     var signIn = byId("cloudFilesSignIn");
     if (state) state.textContent = session && session.user
-      ? "Connecté : " + (session.user.email || "compte Aurore") + ". Les fichiers ci-dessous sont privés."
-      : "Connectez-vous avec Aurore ID pour gérer vos fichiers privés.";
+      ? "Connecté : " + (session.user.email || "compte Eneles") + ". Les fichiers ci-dessous sont privés."
+      : "Connectez-vous avec Eneles ID pour gérer vos fichiers privés.";
     if (upload) upload.hidden = !(session && session.user);
     if (signIn) signIn.hidden = !!(session && session.user);
   }
@@ -185,7 +185,7 @@
     var signIn = byId("cloudFilesSignIn");
     if (signIn) signIn.addEventListener("click", async function () {
       signIn.disabled = true;
-      setStatus("Redirection vers Aurore ID…");
+      setStatus("Redirection vers Eneles ID…");
       try {
         var auth = window.auroreAuth || (window.auroreAuthReady ? await window.auroreAuthReady : null);
         if (!auth || typeof auth.signIn !== "function") throw new Error("Le service de connexion n’est pas prêt. Rechargez la page.");
