@@ -1,0 +1,26 @@
+/* Eneles Mémoire — design « fenêtre à 3 points » appliqué aux autres blocs du site.
+   Barre dessinée en arrière-plan (aucun changement de structure HTML). */
+html:root:root body :is(.home-card,.home-action-card,.library-choice-card,.chooser-card,.creation-choice,.library-shortcut,.create-banner,.form-panel,.study-card,.progress-panel,.workspace-panel,.memory-block-card,.groups-detail-content,.empty-state,.public-learning-card){
+  --ewc-dot-a:var(--accent-light,var(--accent));--ewc-dot-b:var(--accent);--ewc-dot-c:var(--accent-deep,var(--accent));
+  --ewc-line:color-mix(in srgb,var(--accent) 20%,var(--border));
+  padding-top:58px!important;
+  background-color:var(--surface)!important;
+  background-image:
+    radial-gradient(circle at 18px 19px,var(--ewc-dot-a) 0 5px,transparent 5.5px),
+    radial-gradient(circle at 36px 19px,var(--ewc-dot-b) 0 5px,transparent 5.5px),
+    radial-gradient(circle at 54px 19px,var(--ewc-dot-c) 0 5px,transparent 5.5px),
+    linear-gradient(var(--ewc-line),var(--ewc-line)),
+    linear-gradient(150deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 70%)!important;
+  background-size:100% 38px,100% 38px,100% 38px,100% 1px,100% 100%!important;
+  background-position:0 0,0 0,0 0,0 38px,0 0!important;
+  background-repeat:no-repeat!important}
+html:root:root body :is(.home-card,.home-action-card,.library-choice-card,.chooser-card,.creation-choice,.library-shortcut,.create-banner):hover{
+  background-image:
+    radial-gradient(circle at 18px 19px,var(--ewc-dot-a) 0 5px,transparent 5.5px),
+    radial-gradient(circle at 36px 19px,var(--ewc-dot-b) 0 5px,transparent 5.5px),
+    radial-gradient(circle at 54px 19px,var(--ewc-dot-c) 0 5px,transparent 5.5px),
+    linear-gradient(var(--ewc-line),var(--ewc-line)),
+    linear-gradient(150deg,color-mix(in srgb,var(--accent) 13%,var(--surface)),var(--surface) 70%)!important}
+html body .home-card .card-arrow,html body .home-action-card .action-arrow{top:50px!important}
+html body .library-choice-card .library-choice-top{margin-top:0}
+html body .create-banner{padding-top:52px!important}

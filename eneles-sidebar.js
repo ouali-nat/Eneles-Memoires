@@ -1,12 +1,13 @@
 (function(){
   'use strict';
-  /* Correctif final : feuille de style chargée en dernier + bloc de présentation de l'accueil. */
-  var V='20261103-hero-center-v1';
+  /* Correctif final : feuilles de style chargées en dernier + bloc de présentation de l'accueil. */
+  var V='20261103-window-blocks-v1';
   function loadExtras(){
     if(!document.head||!document.body)return;
-    if(!document.querySelector('link[href*="eneles-final-layout.css"]')){
-      var l=document.createElement('link');l.rel='stylesheet';l.href='./css/eneles-final-layout.css?v='+V;document.head.appendChild(l);
-    }
+    ['eneles-final-layout.css','eneles-window-blocks.css'].forEach(function(f){
+      if(document.querySelector('link[href*="'+f+'"]'))return;
+      var l=document.createElement('link');l.rel='stylesheet';l.href='./css/'+f+'?v='+V;document.head.appendChild(l);
+    });
     if(document.body.dataset.page==='home'&&!document.querySelector('script[src*="eneles-home-presentation.js"]')){
       var s=document.createElement('script');s.src='./eneles-home-presentation.js?v='+V;document.body.appendChild(s);
     }
