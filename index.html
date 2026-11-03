@@ -20,9 +20,9 @@
   <title>Accueil — Eneles Mémoire</title>
   <link rel="preconnect" href="https://oegxxndiuovisustjstp.supabase.co" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261103-floating-home-v3">
-  <link rel="stylesheet" href="css/eneles-archives-topblock.css?v=20261103-archives-header-v3">
-  <link rel="stylesheet" href="css/eneles-memory-floating.css?v=20261103-floating-blocks-v1" data-eneles-floating>
+  <link rel="stylesheet" href="style.css?v=20261103-level-panels-v4">
+  <link rel="stylesheet" href="css/eneles-archives-topblock.css?v=20261103-header-upload-octagon-v4">
+  <link rel="stylesheet" href="css/eneles-memory-floating.css?v=20261103-level-panels-v2" data-eneles-floating>
   <link rel="stylesheet" href="memory-access.css?v=20261025-original-logo">
   <!-- L'accueil n'a pas besoin de memoire.css?v=20261026-sitewide-math-v1 pour s'afficher : chargement non bloquant, prêt pour les pages suivantes. -->
   <link rel="stylesheet" href="memoire.css?v=20261026-sitewide-math-v1" media="print" onload="this.media='all'">
@@ -90,7 +90,6 @@
     </div>
     <a class="brand" href="index.html" aria-label="Eneles Mémoire, accueil"><span class="brand-mark" aria-hidden="true"><img class="brand-logo" src="/assets/aurore-logo.png" alt=""></span><span class="brand-copy"><strong>Eneles</strong><small>Mémoire</small></span></a>
     <div class="header-right">
-      <nav class="top-actions" aria-label="Navigation principale"><a class="nav-link active" data-nav="home" href="index.html">Accueil</a><a class="nav-link" data-nav="library" href="choisir.html">Bibliothèque</a><a class="nav-link" data-nav="reviews" href="revisions.html">Révisions</a></nav>
       <div class="appearance">
         <button class="theme-btn" id="themeToggle" type="button" aria-label="Basculer entre le thème sombre et le thème clair" title="Mode clair / sombre">◐</button>
         <div class="color-theme-wrap">
@@ -108,11 +107,12 @@
     <div class="eneles-topblock-head">
       <a class="eneles-topblock-brand" href="index.html" aria-label="Eneles Mémoire, accueil">
         <span class="eneles-topblock-mark"><img src="/assets/aurore-logo.png" alt="" width="48" height="48"></span>
-        <span class="eneles-topblock-brand-copy"><strong>Eneles Mémoire</strong><small>Apprendre et mémoriser</small></span>
+        <span class="eneles-topblock-brand-copy"><strong>Eneles Mémoire</strong></span>
       </a>
-      <nav class="eneles-topblock-nav" aria-label="Navigation principale">
-        <a class="is-current" href="index.html">Accueil</a><a href="choisir.html">Bibliothèque</a><a href="revisions.html">Révisions</a>
-      </nav>
+      <a class="eneles-add-content-btn" href="creer.html" aria-label="Ajouter du contenu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        <span>Ajouter du contenu</span>
+      </a>
     </div>
     <form class="eneles-topblock-search" id="enelesTopblockSearch" role="search">
       <span aria-hidden="true" class="eneles-topblock-search-icon"><svg viewBox="0 0 24 24" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg></span>
@@ -179,8 +179,8 @@
   <script src="auth.js?v=20261023-canonical-lock-v2"></script>
   <script src="memory-access.js?v=20261018-auth-menu-fix2"></script>
   <script src="network-status.js?v=20261021-menu-right-v3"></script>
-  <script src="app.js?v=20261103-compact-archives-header-v10"></script>
-  <script src="eneles-archives-topblock.js?v=20261103-archives-header-v3"></script>
+  <script src="app.js?v=20261103-compact-archives-header-v11"></script>
+  <script src="eneles-archives-topblock.js?v=20261103-header-upload-octagon-v4"></script>
   <script src="home-stats.js?v=20261015-nav-stats-cache"></script>
   <script src="spa-router.js?v=20261023-login-gate-route-fix"></script>
   <script src="app-menu.js?v=20261103-archives-sidebar-v1"></script>
