@@ -55,8 +55,8 @@
       signIn.textContent = activeSession ? "Se déconnecter" : "Se connecter";
       signIn.dataset.action = activeSession ? "signout" : "signin";
       signIn.setAttribute("aria-label", activeSession
-        ? "Se déconnecter de Aurore Mémoire"
-        : "Se connecter avec Aurore ID");
+        ? "Se déconnecter de Eneles Mémoire"
+        : "Se connecter avec Eneles ID");
     }
     toggle.addEventListener("click", function (event) {
       event.preventDefault();
@@ -93,7 +93,7 @@
           var result = await auth.signOut();
           if (result && result.error) throw result.error;
           updateAuthMenu(null);
-          if (typeof window.auroreToast === "function") window.auroreToast("Vous êtes déconnecté d’Aurore Mémoire.");
+          if (typeof window.auroreToast === "function") window.auroreToast("Vous êtes déconnecté d’Eneles Mémoire.");
           return;
         }
         if (typeof window.auroreShowAccessGate === "function") {
@@ -122,7 +122,7 @@
         else updateAuthMenu(null);
       } catch (error) {
         updateAuthMenu(null);
-        console.warn("Aurore Mémoire : état du menu de compte indisponible.", error);
+        console.warn("Eneles Mémoire : état du menu de compte indisponible.", error);
       }
     })();
   }

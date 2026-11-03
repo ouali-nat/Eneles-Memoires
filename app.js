@@ -6,7 +6,7 @@
   script.defer = true;
   document.head.appendChild(script);
 })();
-// Aurore Mémoire — design « pilule flottante » : feuille de style chargée sur toutes les pages, en dernier.
+// Eneles Mémoire — design « pilule flottante » : feuille de style chargée sur toutes les pages, en dernier.
 (function () {
   if (document.querySelector('link[data-aurore-pill]')) return;
   var pill = document.createElement("link");
@@ -19,7 +19,7 @@
 (function () {
   "use strict";
 
-  // Keep every Aurore Mémoire page on the stable production domain.
+  // Keep every Eneles Mémoire page on the stable production domain.
   // Deployment-specific Vercel URLs are temporary and must never become navigation/share origins.
   var AURORE_CANONICAL_HOST = "aurore-memories-mu.vercel.app";
   var currentHost = String(window.location.hostname || "").toLowerCase();
@@ -365,7 +365,7 @@
 
 })();
 
-// Aurore Mémoire: load private cloud backup only on pages that work with personal memorisations.
+// Eneles Mémoire: load private cloud backup only on pages that work with personal memorisations.
 (function () {
   "use strict";
   var page = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
@@ -398,13 +398,13 @@
         await loadScript("memory-cloud-sync.js?v=20261029-connector-backup-import-v1");
       }
     } catch (error) {
-      console.warn("Aurore Mémoire : la sauvegarde cloud n’est pas initialisée. Les données locales restent disponibles.", error);
+      console.warn("Eneles Mémoire : la sauvegarde cloud n’est pas initialisée. Les données locales restent disponibles.", error);
     }
   })();
 })();
 
 
-// Aurore Mémoire — action explicite pour actualiser la version installée sans toucher aux données.
+// Eneles Mémoire — action explicite pour actualiser la version installée sans toucher aux données.
 (function installAuroreRefreshAction() {
   "use strict";
   if (window.__auroreRefreshActionInstalled) return;
@@ -426,7 +426,7 @@
     button.id = "auroreRefreshApp";
     button.className = "nav-link aurore-refresh-app";
     button.textContent = "↻ Actualiser";
-    button.setAttribute("aria-label", "Actualiser Aurore Mémoire et charger la version la plus récente");
+    button.setAttribute("aria-label", "Actualiser Eneles Mémoire et charger la version la plus récente");
     button.title = "Actualiser l’application sans effacer vos cartes ni vos mémorisations";
     button.addEventListener("click", async function () {
       if (!navigator.onLine) {
@@ -453,7 +453,7 @@
         announce("Actualisation en cours… vos cartes et mémorisations ne sont pas effacées.");
         window.location.replace(url.toString());
       } catch (error) {
-        console.warn("Actualisation Aurore Mémoire :", error);
+        console.warn("Actualisation Eneles Mémoire :", error);
         button.disabled = false;
         button.textContent = "↻ Actualiser";
         announce("L’actualisation automatique a échoué. Réessayez avec une connexion active.");
@@ -471,7 +471,7 @@
 })();
 
 
-// Aurore Mémoire — notifications réseau, adaptées du composant Aurore Archives.
+// Eneles Mémoire — notifications réseau, adaptées du composant Eneles Archives.
 (function initAuroreNetworkStatus() {
   "use strict";
   if (window.__auroreNetworkStatusInstalled) return;
@@ -581,7 +581,7 @@
       document.documentElement.classList.remove("aurore-offline");
       scheduleProbe();
       if (previous === "offline") {
-        show("online", "Connexion rétablie", "Internet est de nouveau disponible. Aurore peut reprendre la synchronisation de votre espace.", true);
+        show("online", "Connexion rétablie", "Internet est de nouveau disponible. Eneles peut reprendre la synchronisation de votre espace.", true);
       } else if (previous === "unknown") {
         hide();
       } else {

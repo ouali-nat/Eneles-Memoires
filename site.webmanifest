@@ -1,7 +1,7 @@
 {
-  "name": "Aurore Mémoire",
-  "short_name": "Aurore",
-  "description": "Apprendre à son rythme avec Aurore Mémoire.",
+  "name": "Eneles Mémoire",
+  "short_name": "Eneles",
+  "description": "Apprendre à son rythme avec Eneles Mémoire.",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",

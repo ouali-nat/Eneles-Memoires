@@ -63,14 +63,14 @@ async function authApi(path, options) {
   // le client Supabase n'a pas encore fini de s'initialiser.
   if (window.auroreAuthReady && typeof window.auroreAuthReady.then === "function") {
     try { await window.auroreAuthReady; } catch (error) {
-      throw Error("Initialisation Aurore ID impossible : " + (error && error.message ? error.message : "vérifie la connexion puis actualise la page."));
+      throw Error("Initialisation Eneles ID impossible : " + (error && error.message ? error.message : "vérifie la connexion puis actualise la page."));
     }
   }
   if (!window.auroreAuth && typeof window.auroreAuthReady !== "undefined") {
-    throw Error("Aurore ID n’a pas pu initialiser la session. Actualise la page ; si le problème persiste, reconnecte-toi à Aurore ID.");
+    throw Error("Eneles ID n’a pas pu initialiser la session. Actualise la page ; si le problème persiste, reconnecte-toi à Eneles ID.");
   }
   if (!window.auroreAuth || typeof window.auroreAuth.api !== "function") {
-    throw Error("Le module Aurore ID n’est pas chargé sur cette page. Actualise la page pour charger la version corrigée.");
+    throw Error("Le module Eneles ID n’est pas chargé sur cette page. Actualise la page pour charger la version corrigée.");
   }
   return window.auroreAuth.api(path, options || {});
 }
@@ -142,12 +142,12 @@ async function refreshVoiceQuota() {
       try { await window.auroreAuthReady; } catch (_) {}
     }
     if (!window.auroreAuth || typeof window.auroreAuth.getSession !== "function") {
-      updateQuotaView(null, "Connecte-toi avec Aurore ID pour afficher le compteur.", true);
+      updateQuotaView(null, "Connecte-toi avec Eneles ID pour afficher le compteur.", true);
       return null;
     }
     const session = await window.auroreAuth.getSession();
     if (!session || !session.user) {
-      updateQuotaView(null, "Connecte-toi avec Aurore ID pour afficher le compteur.", true);
+      updateQuotaView(null, "Connecte-toi avec Eneles ID pour afficher le compteur.", true);
       return null;
     }
     const response = await authApi("/api/tts/quota", { method: "GET" });
@@ -159,7 +159,7 @@ async function refreshVoiceQuota() {
     const requiresLogin = Number(error && error.status) === 401 ||
       /connecte|session|authentification/i.test(error && error.message || "");
     updateQuotaView(null,
-      requiresLogin ? "Connecte-toi avec Aurore ID pour afficher le compteur." :
+      requiresLogin ? "Connecte-toi avec Eneles ID pour afficher le compteur." :
         "Le compteur est momentanément indisponible. Réessaie avant de générer une voix.",
       requiresLogin);
     return null;
@@ -170,7 +170,7 @@ async function connectVoiceAccount(button) {
   try {
     if (window.auroreAuthReady && typeof window.auroreAuthReady.then === "function") await window.auroreAuthReady;
     if (!window.auroreAuth || typeof window.auroreAuth.signIn !== "function") {
-      throw Error("La connexion Aurore ID n’est pas disponible sur cette page. Actualise puis réessaie.");
+      throw Error("La connexion Eneles ID n’est pas disponible sur cette page. Actualise puis réessaie.");
     }
     await window.auroreAuth.signIn("audio.html");
   } catch (error) {
@@ -221,7 +221,7 @@ function cloudflareDialog() {
     '<div class="cloudflare-dialog-head"><div><p class="section-kicker">CHOIX DE LA VOIX</p><h2 id="audioCloudflareTitle">Utiliser une autre voix</h2></div><button type="button" class="secondary-btn cloudflare-close" aria-label="Fermer la fenêtre">✕</button></div>' +
     '<p class="cloudflare-intro">Choisis une voix complémentaire à celle de ton téléphone. Tu vois le temps disponible avant chaque génération.</p>' +
     '<label class="field-label" for="audioCloudflareName">Nom de la piste</label><input class="text-field" id="audioCloudflareName" maxlength="100" value="Voix alternative" placeholder="Ex. : Révision de biologie">' +
-    '<label class="field-label" for="audioCloudflareText">Texte d’essai</label><textarea class="text-area" id="audioCloudflareText" rows="5" maxlength="5000">Bonjour et bienvenue dans Aurore Mémoire. Apprendre, répéter et mémoriser devient plus simple avec une voix claire et naturelle.</textarea><p id="audioCloudflareEstimate" class="form-help">La durée estimée apparaîtra ici.</p>' +
+    '<label class="field-label" for="audioCloudflareText">Texte d’essai</label><textarea class="text-area" id="audioCloudflareText" rows="5" maxlength="5000">Bonjour et bienvenue dans Eneles Mémoire. Apprendre, répéter et mémoriser devient plus simple avec une voix claire et naturelle.</textarea><p id="audioCloudflareEstimate" class="form-help">La durée estimée apparaîtra ici.</p>' +
     '<div class="voice-choice-section"><p class="voice-choice-title">Style de voix</p><div id="audioCloudflareModelChoices" class="voice-choice-grid" role="group" aria-label="Choisir un style de voix">' +
     '<button type="button" class="voice-choice-card" data-voice-model="melotts" aria-pressed="true"><strong>Voix multilingue</strong><small>Français, anglais et plusieurs langues</small></button>' +
     '<button type="button" class="voice-choice-card" data-voice-model="aura-1" aria-pressed="false"><strong>Voix anglaise expressive</strong><small>Pour les textes en anglais</small></button>' +
@@ -233,7 +233,7 @@ function cloudflareDialog() {
     '<p id="audioCloudflareLanguageFixed" class="form-help" hidden></p><select class="voice-hidden-select" id="audioCloudflareLanguage" aria-hidden="true" tabindex="-1"><option value="fr">Français</option><option value="en">Anglais</option><option value="es">Espagnol</option><option value="zh">Chinois</option><option value="jp">Japonais</option><option value="kr">Coréen</option></select></div>' +
     '<div id="audioCloudflareSpeakerWrap" class="voice-choice-section" hidden><p class="voice-choice-title">Choix de la voix</p><div id="audioCloudflareSpeakerChoices" class="voice-speaker-grid" role="group" aria-label="Choisir une voix"></div><select class="voice-hidden-select" id="audioCloudflareSpeaker" aria-hidden="true" tabindex="-1"></select></div>' +
     '<div class="voice-rate-control"><label class="field-label" for="audioCloudflareRate">Vitesse de lecture <span id="audioCloudflareRateLabel">1×</span></label><input id="audioCloudflareRate" type="range" min="0.7" max="1.3" step="0.1" value="1"></div>' +
-    '<section class="voice-quota-card" aria-label="Quota quotidien de voix"><div class="voice-quota-head"><strong>Temps vocal disponible aujourd’hui</strong><span id="audioCloudflareQuotaText">Chargement du compteur…</span></div><div class="voice-quota-track" role="progressbar" aria-label="Temps vocal utilisé" aria-valuemin="0" aria-valuemax="180" aria-valuenow="0"><span id="audioCloudflareQuotaBar"></span></div><p class="form-help">Limite stricte : 3 minutes d’audio par jour. Le temps est décompté dès que la piste est générée, même si tu ne l’ajoutes pas à la bibliothèque.</p><button type="button" class="secondary-btn voice-quota-connect" id="audioCloudflareQuotaConnect" hidden>Se connecter avec Aurore ID</button></section>' +
+    '<section class="voice-quota-card" aria-label="Quota quotidien de voix"><div class="voice-quota-head"><strong>Temps vocal disponible aujourd’hui</strong><span id="audioCloudflareQuotaText">Chargement du compteur…</span></div><div class="voice-quota-track" role="progressbar" aria-label="Temps vocal utilisé" aria-valuemin="0" aria-valuemax="180" aria-valuenow="0"><span id="audioCloudflareQuotaBar"></span></div><p class="form-help">Limite stricte : 3 minutes d’audio par jour. Le temps est décompté dès que la piste est générée, même si tu ne l’ajoutes pas à la bibliothèque.</p><button type="button" class="secondary-btn voice-quota-connect" id="audioCloudflareQuotaConnect" hidden>Se connecter avec Eneles ID</button></section>' +
     '<p class="form-help" id="audioCloudflareVoiceNote">La voix multilingue est celle à choisir pour le français.</p>' +
     '<div class="cloudflare-actions"><button type="button" class="secondary-btn" id="audioCloudflareBrowserPreview">▶ Écouter avec le téléphone</button><button type="button" class="primary-btn" id="audioCloudflareGenerate" disabled>Générer la voix</button><button type="button" class="secondary-btn" id="audioCloudflareRetry">↻ Actualiser le compteur</button><button type="button" class="secondary-btn" id="audioCloudflareStop" disabled>■ Arrêter</button></div>' +
     '<audio id="audioCloudflarePlayer" controls hidden></audio><p id="audioCloudflareStatus" class="audio-status" role="status" aria-live="polite">Prêt à générer une voix.</p>' +
@@ -388,7 +388,7 @@ function cloudflareDialog() {
     if (prompt.length > 5000) return setStatus("Le texte ne doit pas dépasser 5 000 caractères.", true);
     if (!quotaSnapshot) {
       await refreshVoiceQuota();
-      if (!quotaSnapshot) return setStatus("Connecte-toi avec Aurore ID pour utiliser une autre voix.", true);
+      if (!quotaSnapshot) return setStatus("Connecte-toi avec Eneles ID pour utiliser une autre voix.", true);
     }
     if (quotaSnapshot.inProgress) return setStatus("Une génération est déjà en cours sur ton compte. Patiente puis actualise le compteur.", true);
     if (estimate > quotaSnapshot.remainingSeconds) {
@@ -426,7 +426,7 @@ function cloudflareDialog() {
       saveButton.disabled = false;
       try { await player.play(); $("audioCloudflareStop").disabled = false; } catch (_) {}
       await refreshVoiceQuota();
-      const headerSeconds = Number(response.headers.get("X-Aurore-Audio-Seconds"));
+      const headerSeconds = Number(response.headers.get("X-Eneles-Audio-Seconds"));
       const mediaSeconds = Number.isFinite(player.duration) && player.duration > 0 ? Math.ceil(player.duration) : 0;
       const generatedSeconds = headerSeconds > 0 ? headerSeconds : mediaSeconds;
       setStatus(generatedSeconds > 0

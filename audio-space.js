@@ -7,7 +7,7 @@ if (!document.getElementById("audioLibraryList")) return;
 var DB = "aurore-audio-library-v1", STORE = "blobs", MANIFEST_KEY = "aurore-audio-manifest-v1", CLOUD_MANIFEST = "audios/manifest.json", PENDING_SYNC_KEY = "aurore-audio-manifest-needs-sync-v1";
 var MAX_MS = 10 * 60 * 1000, MAX_BYTES = 10 * 1024 * 1024;
 var PROFILES = [
-  { id: "aurore", label: "Aurore · naturelle", gender: "f", pitch: 1, rate: 1 },
+  { id: "aurore", label: "Eneles · naturelle", gender: "f", pitch: 1, rate: 1 },
   { id: "claire", label: "Claire · claire et vive", gender: "f", pitch: 1.18, rate: 1.05 },
   { id: "lea", label: "Léa · douce et posée", gender: "f", pitch: 0.98, rate: 0.9 },
   { id: "marc", label: "Marc · voix grave", gender: "m", pitch: 0.82, rate: 1 },
@@ -39,8 +39,8 @@ function writeLocal() { try { localStorage.setItem(MANIFEST_KEY, JSON.stringify(
 var AUDIO_PROGRESS_KEY = "aurore-audio-learning-progress-v1";
 function recordAudioLearning(record, type, parent) { if (!record || !record.id) return; try { var history=JSON.parse(localStorage.getItem(AUDIO_PROGRESS_KEY)||"[]"); if(!Array.isArray(history))history=[]; history.push({id:uid(),audioId:String(record.id),audioName:String(record.name||"Audio sans titre"),audioKind:String(record.kind||"audio"),parentType:type==="sequence"?"sequence":"audio",parentId:String(parent&&parent.id||record.id),parentName:String(parent&&(parent.name||parent.title)||record.name||"Audio"),timestamp:Date.now(),day:String(Math.floor(Date.now()/86400000))}); if(history.length>5000)history=history.slice(-5000);localStorage.setItem(AUDIO_PROGRESS_KEY,JSON.stringify(history));}catch(_){} }
 
-/* ---------- Cloud (facultatif, si Aurore ID est connecté) ---------- */
-async function api(path, opts) { if (!window.auroreAuth || !window.auroreAuth.api) throw Error("Connecte-toi avec Aurore ID pour synchroniser le cloud."); return window.auroreAuth.api(path, opts || {}); }
+/* ---------- Cloud (facultatif, si Eneles ID est connecté) ---------- */
+async function api(path, opts) { if (!window.auroreAuth || !window.auroreAuth.api) throw Error("Connecte-toi avec Eneles ID pour synchroniser le cloud."); return window.auroreAuth.api(path, opts || {}); }
 async function uploadBlob(record, blob) { if (!navigator.onLine) throw Error("Hors ligne : audio conservé sur cet appareil."); var r = await api("/api/storage?key=" + encodeURIComponent(record.key), { method: "POST", headers: { "Content-Type": blob.type || "application/octet-stream" }, body: blob }); if (!r.ok) throw Error("Envoi impossible (" + r.status + ")."); record.synced = true; }
 function publicMeta(r) { var c = Object.assign({}, r); delete c.localOnly; return c; }
 async function syncManifest() {
@@ -114,7 +114,7 @@ function fillVoices() {
   var previous=select.value, picker=$("audioVoicePickerOptions"), selectedLabel=$("audioVoiceSelectedLabel");
   select.textContent="";
   var options=[];
-  PROFILES.forEach(function(p){options.push({value:"profile:"+p.id,label:p.label,group:"Voix Aurore"});});
+  PROFILES.forEach(function(p){options.push({value:"profile:"+p.id,label:p.label,group:"Voix Eneles"});});
   options.push({value:"",label:"Voix par défaut du téléphone",group:"Téléphone"});
   allVoices().forEach(function(v){options.push({value:"voice:"+v.name,label:v.name+" · "+v.lang+(v.localService?" · locale":" · réseau"),group:"Autres voix installées"});});
   options.forEach(function(item){var o=document.createElement("option");o.value=item.value;o.textContent=item.label;select.appendChild(o);});
@@ -129,7 +129,7 @@ function fillVoices() {
     });
   }
   var note=$("audioVoiceNote");
-  if(note)note.textContent=window.speechSynthesis?(allVoices().length?allVoices().length+" voix du téléphone détectée(s). Les profils Aurore ajustent le timbre et le rythme de la meilleure voix disponible.":"Aucune voix système détectée pour le moment : installe un moteur vocal dans les réglages Android (Synthèse vocale)."):"Synthèse vocale indisponible sur ce navigateur.";
+  if(note)note.textContent=window.speechSynthesis?(allVoices().length?allVoices().length+" voix du téléphone détectée(s). Les profils Eneles ajustent le timbre et le rythme de la meilleure voix disponible.":"Aucune voix système détectée pour le moment : installe un moteur vocal dans les réglages Android (Synthèse vocale)."):"Synthèse vocale indisponible sur ce navigateur.";
 }
 function initVoicePicker(){
   var trigger=$("audioVoicePicker"),panel=$("audioVoicePickerPanel"),options=$("audioVoicePickerOptions"),select=$("audioVoice");
@@ -199,7 +199,7 @@ function tick() {
 function releaseStream() { if (stream) { stream.getTracks().forEach(function (t) { try { t.stop(); } catch (_) {} }); stream = null; } clearInterval(tickTimer); clearTimeout(stopTimer); }
 function micError(e) {
   var n = e && e.name;
-  if (n === "NotAllowedError" || n === "SecurityError") return "Micro refusé. Autorise le micro pour Aurore dans les réglages du navigateur (ou de l’application), puis réessaie.";
+  if (n === "NotAllowedError" || n === "SecurityError") return "Micro refusé. Autorise le micro pour Eneles dans les réglages du navigateur (ou de l’application), puis réessaie.";
   if (n === "NotFoundError" || n === "OverconstrainedError") return "Aucun micro détecté sur cet appareil.";
   if (n === "NotReadableError" || n === "AbortError") return "Le micro est utilisé par une autre application. Ferme-la puis réessaie.";
   return (e && e.message) || "Impossible de démarrer l’enregistrement.";
@@ -474,7 +474,7 @@ function render() {
 async function downloadAudio(r) {
   try {
     var blob, ext = ".webm";
-    if (r.kind === "speech") { blob = new Blob([JSON.stringify({ format: "Aurore audio text", id: r.id, name: r.name, text: r.text, language: r.language, voice: r.voice || "", rate: r.rate || 1, createdAt: r.createdAt }, null, 2)], { type: "application/json;charset=utf-8" }); ext = ".json"; }
+    if (r.kind === "speech") { blob = new Blob([JSON.stringify({ format: "Eneles audio text", id: r.id, name: r.name, text: r.text, language: r.language, voice: r.voice || "", rate: r.rate || 1, createdAt: r.createdAt }, null, 2)], { type: "application/json;charset=utf-8" }); ext = ".json"; }
     else { blob = await loadBlob(r); var mt = r.mime || blob.type || ""; ext = mt.indexOf("ogg") >= 0 ? ".ogg" : mt.indexOf("mp4") >= 0 ? ".m4a" : mt.indexOf("mpeg") >= 0 ? ".mp3" : ".webm"; }
     var url = URL.createObjectURL(blob), a = document.createElement("a"); a.href = url; a.download = r.name.replace(/[\\\/:*?"<>|]/g, "-") + ext; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
   } catch (e) { status("audioAccountStatus", e.message, true); }

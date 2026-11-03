@@ -1,4 +1,4 @@
-# Aurore Mémoire — application Android
+# Eneles Mémoire — application Android
 
 Ce dossier prépare une application Capacitor dont les pages HTML, CSS et JavaScript sont embarquées dans l'APK. Le site web existant n'est pas remplacé.
 
@@ -13,7 +13,7 @@ Le workflow `.github/workflows/android-apk.yml` se lance manuellement depuis Git
 - Les cartes et la progression sont conservées dans `localStorage` et recopiées dans une base IndexedDB persistante. Sur « Mes mémorisations », le panneau « Stockage sur cet appareil » indique les contenus locaux et permet de préparer une copie hors ligne ou de télécharger une sauvegarde JSON.
 - À la première connexion sur une installation Android vide, si le compte connecté possède une sauvegarde R2 et que l'appareil ne contient aucune donnée, la sauvegarde cloud est restaurée automatiquement. Une copie locale non vide n'est jamais remplacée automatiquement.
 - Les pages, KaTeX, le client Supabase et les moteurs d'export PDF/images sont embarqués dans l'APK. Les exports de cartes essaient les ressources locales en premier sur Android.
-- Aurore ID, les groupes, les fichiers privés R2 et la synchronisation cloud exigent encore une connexion. Une sauvegarde JSON est une copie de secours exportable, pas un remplacement de la synchronisation.
+- Eneles ID, les groupes, les fichiers privés R2 et la synchronisation cloud exigent encore une connexion. Une sauvegarde JSON est une copie de secours exportable, pas un remplacement de la synchronisation.
 - La compilation ne suffit pas à prouver le mode avion : il faut encore tester une nouvelle installation, la récupération cloud, la création/révision sans réseau, la fermeture/réouverture, les exports PDF/images hors ligne et la synchronisation après reconnexion.
 
 ## Signature Android

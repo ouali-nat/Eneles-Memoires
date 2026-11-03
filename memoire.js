@@ -367,7 +367,7 @@
       '<label for="publishAuthor">Auteur ou autrice <span>*</span><input id="publishAuthor" type="text" maxlength="120" required value="' + escapeHtml(author) + '" placeholder="Nom affiché dans les informations"></label>' +
       '<label for="publishDomain">Domaine ou matière <span>*</span><input id="publishDomain" type="text" maxlength="100" required value="' + escapeHtml(domain) + '" placeholder="Ex. : Biologie, Histoire, Mathématiques"></label>' +
       '<label for="publishDescription">Description (facultatif)<textarea id="publishDescription" maxlength="600" rows="3" placeholder="Précisions sur le contenu">' + escapeHtml(description) + '</textarea></label>' +
-      '<p class="sharing-modal-note">Le nom de l’auteur est déclaré par la personne qui publie ; il n’est pas vérifié par Aurore.</p>' +
+      '<p class="sharing-modal-note">Le nom de l’auteur est déclaré par la personne qui publie ; il n’est pas vérifié par Eneles.</p>' +
       '<div class="sharing-modal-actions"><button type="button" class="secondary-btn" data-act="close-sharing-modal">Annuler</button><button type="button" class="primary-btn" data-act="confirm-publication" data-deck="' + safeDeck + '">Publier les cartes</button></div>' +
       '</div>');
   }
@@ -514,7 +514,7 @@
     }
     return {
       name: String(deck || "").trim().slice(0, 120),
-      authorName: String(settings.authorName || "Auteur Aurore").trim().slice(0, 120),
+      authorName: String(settings.authorName || "Auteur Eneles").trim().slice(0, 120),
       domain: String(settings.domain || "Révisions").trim().slice(0, 100),
       description: String(settings.description || "").trim().slice(0, 600),
       cards: payloadCards,
@@ -644,17 +644,17 @@
   async function shareLinkToChannel(button, channel) {
     var url = currentShareUrl(button);
     if (!url) { notify("Le lien complet n’est pas disponible sur cet appareil."); return; }
-    var title = "Cartes partagées sur Aurore Mémoire";
+    var title = "Cartes partagées sur Eneles Mémoire";
     if (channel === "native") {
       if (navigator.share) {
-        try { await navigator.share({ title: title, text: "Consulte cette série sur Aurore Mémoire.", url: url }); return; }
+        try { await navigator.share({ title: title, text: "Consulte cette série sur Eneles Mémoire.", url: url }); return; }
         catch (error) { if (error && error.name === "AbortError") return; }
       }
       channel = "whatsapp";
     }
     var target = channel === "facebook"
       ? "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url)
-      : "https://wa.me/?text=" + encodeURIComponent("Découvre cette série de cartes sur Aurore Mémoire : " + url);
+      : "https://wa.me/?text=" + encodeURIComponent("Découvre cette série de cartes sur Eneles Mémoire : " + url);
     window.open(target, "_blank", "noopener,noreferrer");
   }
 
@@ -702,23 +702,23 @@
   async function loadGroupsForSharing(){
     var box=$("#seriesGroupsList");if(!box)return;
     try{if(window.auroreAuthReady)await window.auroreAuthReady;var client=await getGroupSharingClient(),auth=await client.auth.getSession(),session=auth.data&&auth.data.session;
-      if(!session){box.innerHTML='<div class="sharing-empty"><strong>Connexion Aurore ID requise</strong><p>Connectez-vous avec Aurore ID pour choisir vos groupes.</p><button type="button" class="primary-btn" data-act="group-signin">Se connecter</button></div>';return;}
+      if(!session){box.innerHTML='<div class="sharing-empty"><strong>Connexion Eneles ID requise</strong><p>Connectez-vous avec Eneles ID pour choisir vos groupes.</p><button type="button" class="primary-btn" data-act="group-signin">Se connecter</button></div>';return;}
       var memberships=await client.from("study_group_members").select("group_id,role").eq("user_id",session.user.id);if(memberships.error)throw memberships.error;
       var owned=await client.from("study_groups").select("id,name,subject,level,visibility").eq("created_by",session.user.id);if(owned.error)throw owned.error;
       var ids=(memberships.data||[]).map(function(m){return m.group_id;});(owned.data||[]).forEach(function(g){ids.push(g.id);});ids=ids.filter(function(id,index,all){return all.indexOf(id)===index;});
       if(!ids.length){box.innerHTML='<div class="sharing-empty"><strong>Aucun groupe disponible</strong><p>Rejoignez ou créez un groupe avant de partager cette série.</p><a class="secondary-btn" href="groupes.html">Découvrir les groupes</a></div>';return;}
       var groups=await client.from("study_groups").select("id,name,subject,level,visibility").in("id",ids).order("name");if(groups.error)throw groups.error;
-      if(!groups.data||!groups.data.length){box.innerHTML='<div class="sharing-empty"><strong>Aucun groupe accessible</strong><p>Reconnectez-vous à Aurore ID puis réessayez.</p><button type="button" class="secondary-btn" data-act="reload-series-groups">Réessayer</button></div>';return;}
+      if(!groups.data||!groups.data.length){box.innerHTML='<div class="sharing-empty"><strong>Aucun groupe accessible</strong><p>Reconnectez-vous à Eneles ID puis réessayez.</p><button type="button" class="secondary-btn" data-act="reload-series-groups">Réessayer</button></div>';return;}
       box.innerHTML=groups.data.map(function(g){return '<label class="series-group-choice"><input type="checkbox" value="'+escapeHtml(g.id)+'" data-group-choice><span><strong>'+escapeHtml(g.name)+'</strong><small>'+escapeHtml([g.subject,g.level,g.visibility==="private"?"Privé":"Public"].filter(Boolean).join(" · "))+'</small></span></label>';}).join("");
-    }catch(error){console.error(error);box.innerHTML='<div class="sharing-empty"><strong>Impossible de charger les groupes</strong><p>Vérifiez la connexion Aurore ID et réessayez.</p><button type="button" class="secondary-btn" data-act="reload-series-groups">Réessayer</button></div>';}
+    }catch(error){console.error(error);box.innerHTML='<div class="sharing-empty"><strong>Impossible de charger les groupes</strong><p>Vérifiez la connexion Eneles ID et réessayez.</p><button type="button" class="secondary-btn" data-act="reload-series-groups">Réessayer</button></div>';}
   }
   async function shareDeckWithSelectedGroups(deck){
     var modal=$("#sharingModal"),status=$("#seriesGroupShareStatus",modal),button=modal&&$("[data-act='confirm-group-share']",modal),selected=Array.prototype.slice.call(modal?modal.querySelectorAll("[data-group-choice]:checked"):[]).map(function(i){return i.value;});
     if(!selected.length){if(status)status.textContent="Sélectionnez au moins un groupe.";return;}var cards=state.cards.filter(function(card){return isFlashcard(card)&&card.deck===deck;});if(!cards.length){if(status)status.textContent="Cette série ne contient aucune carte.";return;}
     if(button){button.disabled=true;button.textContent="Partage…";}
-    try{var client=await getGroupSharingClient(),auth=await client.auth.getSession(),session=auth.data&&auth.data.session;if(!session)throw new Error("Connectez-vous avec Aurore ID pour partager dans un groupe.");
+    try{var client=await getGroupSharingClient(),auth=await client.auth.getSession(),session=auth.data&&auth.data.session;if(!session)throw new Error("Connectez-vous avec Eneles ID pour partager dans un groupe.");
       var payloadCards=cards.map(function(card){return {front:String(card.front||""),back:String(card.back||""),cardMode:card.cardMode==="scientific"?"scientific":"simple",backgroundMode:card.backgroundMode==="image"?"image":"color",backgroundColor:card.backgroundColor||"",backgroundImage:/^data:image\/(?:jpeg|png|webp);base64,/i.test(card.backgroundImage||"")?card.backgroundImage:""};}),failed=[];
-      for(var i=0;i<selected.length;i++){var result=await client.from("study_group_shared_series").insert({group_id:selected[i],title:deck,description:"Série de cartes partagée depuis la bibliothèque Aurore Mémoire.",subject:(deckSettingsFor(deck).domain||""),cards:payloadCards,shared_by:session.user.id});if(result.error)failed.push(result.error.message||"erreur");}
+      for(var i=0;i<selected.length;i++){var result=await client.from("study_group_shared_series").insert({group_id:selected[i],title:deck,description:"Série de cartes partagée depuis la bibliothèque Eneles Mémoire.",subject:(deckSettingsFor(deck).domain||""),cards:payloadCards,shared_by:session.user.id});if(result.error)failed.push(result.error.message||"erreur");}
       if(failed.length)throw new Error("Certaines destinations ont refusé le partage. Vérifiez vos droits de membre et réessayez.");closeSharingDialog();notify("Série partagée dans "+selected.length+" groupe"+(selected.length>1?"s":"")+".");
     }catch(error){console.error(error);if(status)status.textContent=String(error.message||"Le partage a échoué.");if(button){button.disabled=false;button.textContent="Réessayer le partage";}}
   }
@@ -732,7 +732,7 @@
     var image = card.backgroundMode === "image" && validImage(card.backgroundImage) ? card.backgroundImage :
       (validImage(style.backgroundImage) ? style.backgroundImage : "");
     var value = side === "front" ? card.front : card.back;
-    var provenance = includeProvenance === false ? "" : '<span class="deck-export-provenance" style="position:absolute;left:2mm;bottom:1mm;max-width:78%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:4.5pt/1.1 Arial,sans-serif;letter-spacing:.01em;text-align:left;opacity:.58;color:rgba(255,255,255,.86)">' + escapeHtml(auroreCardIdentifier(card, index)) + ' · ' + escapeHtml(card.sourceAuthor || card.authorName || (card.deck && deckSettingsFor(card.deck).authorName) || "Aurore Mémoire") + '</span>';
+    var provenance = includeProvenance === false ? "" : '<span class="deck-export-provenance" style="position:absolute;left:2mm;bottom:1mm;max-width:78%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:4.5pt/1.1 Arial,sans-serif;letter-spacing:.01em;text-align:left;opacity:.58;color:rgba(255,255,255,.86)">' + escapeHtml(auroreCardIdentifier(card, index)) + ' · ' + escapeHtml(card.sourceAuthor || card.authorName || (card.deck && deckSettingsFor(card.deck).authorName) || "Eneles Mémoire") + '</span>';
     return '<article class="deck-export-card" data-card-index="' + index + '" data-side="' + side + '" style="--card-bg:' + background + ';' + (image ? 'background-image:linear-gradient(0deg,rgba(0,0,0,.12),rgba(0,0,0,.12)),url(&quot;' + escapeHtml(image) + '&quot;);' : '') + '">' +
       '<span class="deck-export-label">' + (side === "front" ? "RECTO · QUESTION" : "VERSO · RÉPONSE") + '</span><div class="deck-export-content">' + formatCardMathText(value, card) + '</div><span class="deck-export-number">' + (index + 1) + '</span>' + provenance + '</article>';
   }
@@ -828,11 +828,11 @@
         var cardMarkup = exportCardMarkup(card, index, side, false).replace('class="deck-export-card"', 'class="deck-export-card deck-pdf-card"');
         var label = side === "front" ? "RECTO · QUESTION" : "VERSO · RÉPONSE";
         var identifier = auroreCardIdentifier(card, index);
-        var author = card.sourceAuthor || card.authorName || deckSettingsFor(deck).authorName || "Aurore Mémoire";
+        var author = card.sourceAuthor || card.authorName || deckSettingsFor(deck).authorName || "Eneles Mémoire";
         pages.push('<section class="deck-export-page deck-pdf-sheet">' +
           '<header class="deck-pdf-heading"><strong>' + escapeHtml(deck) + '</strong><span>' + label + ' · CARTE ' + (index + 1) + ' / ' + cards.length + '</span></header>' +
           '<div class="deck-pdf-card-holder">' + cardMarkup + '</div>' +
-          '<footer class="deck-pdf-identifier"><span>Identifiant Aurore</span><strong>' + escapeHtml(identifier) + '</strong><span class="deck-pdf-author">Auteur : ' + escapeHtml(author) + '</span></footer></section>');
+          '<footer class="deck-pdf-identifier"><span>Identifiant Eneles</span><strong>' + escapeHtml(identifier) + '</strong><span class="deck-pdf-author">Auteur : ' + escapeHtml(author) + '</span></footer></section>');
       });
     });
     var css = 'html,body{margin:0;padding:0;color:#171421;font-family:Georgia,"Times New Roman",serif;background:#fff}*{box-sizing:border-box}.deck-export-page{width:210mm;height:297mm;min-height:297mm;max-height:297mm;padding:12mm 14mm 10mm;position:relative;page-break-after:always;break-after:page;background:#fff;overflow:hidden}.deck-export-page:last-child{page-break-after:auto;break-after:auto}.deck-export-card{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0;min-height:0;overflow:hidden;padding:6mm;border:.5mm solid rgba(255,255,255,.45);border-radius:7mm;background-color:var(--card-bg,#4937a6);background-size:cover;background-position:center;color:#fff;text-align:center;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}.deck-export-label{position:absolute;top:5mm;left:6mm;right:6mm;font:700 9pt Arial,sans-serif;letter-spacing:.08em;opacity:.9}.deck-export-content{width:100%;max-height:100%;overflow:hidden;font-size:25pt;line-height:1.35;overflow-wrap:anywhere;word-break:break-word}.deck-export-content .katex-display{margin:.3em 0}.deck-export-content .katex{font-size:1em}.deck-export-number{position:absolute;right:5mm;bottom:4mm;font:9pt Arial,sans-serif;opacity:.9}.deck-export-card .katex,.deck-export-card .katex *{color:inherit}.deck-pdf-sheet{display:flex;flex-direction:column}.deck-pdf-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:10mm;color:#625c70;font:8pt Arial,sans-serif}.deck-pdf-heading strong{max-width:66%;color:#171421;font-size:10pt;overflow-wrap:anywhere}.deck-pdf-heading span{text-align:right}.deck-pdf-card-holder{display:flex;flex:1;min-height:0;margin:8mm 0 6mm}.deck-pdf-card{width:100%;height:100%;min-height:0;flex:1;padding:18mm 15mm;border-radius:8mm}.deck-pdf-card .deck-export-content{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;max-height:none;overflow:hidden;font-size:25pt;line-height:1.4}.deck-pdf-identifier{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;min-height:11mm;padding:2mm 1mm 0;border-top:.3mm solid #ddd;color:#514c5c;font:9pt/1.35 Arial,sans-serif;overflow-wrap:anywhere}.deck-pdf-identifier>span:first-child{font-weight:700;color:#767082}.deck-pdf-identifier strong{font-size:10pt;color:#1d1830;letter-spacing:.025em}.deck-pdf-author{margin-left:auto;color:#767082}@page{size:A4 portrait;margin:0}@media screen{body{background:#eceaf1}.deck-export-page{margin:12px auto;box-shadow:0 4px 22px #0002}}';
@@ -985,11 +985,11 @@
     var licenseLabel = card.license || (card.allowVariants ? "Variantes autorisées par l’auteur" : "Non précisée — variante non autorisée");
     var certificateCode = auroreCardIdentifier(card, index);
     var certificateLink = /^AUR-MEM-[0-9A-F]{16}$/i.test(certificateCode)
-      ? '<p><a class="secondary-btn" href="https://aurore-id.vercel.app/verification.html?code=' + encodeURIComponent(certificateCode) + '" target="_blank" rel="noopener noreferrer">Vérifier dans Aurore ID ↗</a></p>'
+      ? '<p><a class="secondary-btn" href="https://aurore-id.vercel.app/verification.html?code=' + encodeURIComponent(certificateCode) + '" target="_blank" rel="noopener noreferrer">Vérifier dans Eneles ID ↗</a></p>'
       : '';
     openSharingDialog("Informations sur la carte", 
       '<div class="public-card-user-content">' +
-      '<dl class="public-card-details"><div><dt>Identifiant Aurore</dt><dd>' + escapeHtml(certificateCode) + '</dd></div>' +
+      '<dl class="public-card-details"><div><dt>Identifiant Eneles</dt><dd>' + escapeHtml(certificateCode) + '</dd></div>' +
       '<div><dt>Statut du registre</dt><dd>Consultez le registre pour connaître le statut actuel</dd></div>' +
       '<div><dt>Série</dt><dd>' + escapeHtml(card.seriesName) + '</dd></div>' +
       '<div><dt>Auteur</dt><dd>' + escapeHtml(card.authorName) + '</dd></div>' +
@@ -1394,7 +1394,7 @@
       if (allKicker) allKicker.textContent = "BIBLIOTHÈQUE PERSONNELLE";
       if (allHeading) allHeading.textContent = "Ma bibliothèque";
       if (allDescription) allDescription.textContent = "Organisez vos textes à mémoriser et vos séries de cartes au même endroit.";
-      document.title = "Ma bibliothèque — Aurore Mémoire";
+      document.title = "Ma bibliothèque — Eneles Mémoire";
       var memoryCountForChoice = Object.keys(memoryGroups(memories)).length;
       var cardCountForChoice = Object.keys(memoryGroups(flashcards)).length;
       var qcmCountForChoice = (state.qcms||[]).length;
@@ -1426,7 +1426,7 @@
     if (kickerNode) kickerNode.textContent = kicker;
     if (headingNode) headingNode.textContent = heading;
     if (descriptionNode) descriptionNode.textContent = description;
-    document.title = heading + " — Aurore Mémoire";
+    document.title = heading + " — Eneles Mémoire";
     root.innerHTML = '<div class="library-summary">' + summary + '</div>' + shortcuts + '<div class="library-toolbar"><label class="search-field"><span aria-hidden="true">⌕</span><input id="memorySearch" type="search" placeholder="' + placeholder + '" aria-label="' + placeholder.replace("…","") + '"></label><button class="secondary-btn" type="button" data-act="export">Exporter les données</button></div><div id="memoryList" aria-live="polite"></div>';
     renderMemoryList();
     renderUncachedLibraryMath();
@@ -1966,7 +1966,7 @@
       if (state.mode === "Association") html += '<p class="study-tip">Cherche un lien, une image ou une histoire qui relie la question à la réponse.</p>';
       if (state.mode === "Palais mental") html += '<p class="study-tip">Associe cette notion à un lieu familier ou à un objet précis dans ton imagination.</p>';
       if (state.mode === "Première lettre" && !session.shown) {
-        html += '<p class="study-tip">Complète chaque mot à partir de sa première lettre. Aurore vérifiera l’ensemble à la fin.</p><div class="first-letter-words" aria-label="Complète les mots">';
+        html += '<p class="study-tip">Complète chaque mot à partir de sa première lettre. Eneles vérifiera l’ensemble à la fin.</p><div class="first-letter-words" aria-label="Complète les mots">';
         html += card.back.split(/\s+/).map(function (word, index) {
           var first = word ? word.charAt(0) : "";
           var rest = word ? word.slice(1) : "";
@@ -2142,7 +2142,7 @@
     } else if (action === "reload-series-groups") {
       loadGroupsForSharing();
     } else if (action === "group-signin") {
-      if(window.auroreAuth&&typeof window.auroreAuth.signIn==="function")window.auroreAuth.signIn("mes-memoires.html?view=cards");else notify("Ouvrez la connexion Aurore ID depuis le menu du site.");
+      if(window.auroreAuth&&typeof window.auroreAuth.signIn==="function")window.auroreAuth.signIn("mes-memoires.html?view=cards");else notify("Ouvrez la connexion Eneles ID depuis le menu du site.");
     } else if (action === "export-series-pdf") {
       exportDeckPdf(button.dataset.deck || "");
     } else if (action === "print-series") {
