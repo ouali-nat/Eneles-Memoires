@@ -190,3 +190,10 @@ body[data-page="home"] .home-action-card small{font-size:.69rem!important}
 @media(max-width:560px){
  .eneles-topblock-mark{width:76px!important;height:44px!important;flex-basis:76px!important}
 }
+
+/* Correctif demandé : logo rétabli sans étirement, héros plus long horizontalement. */
+.eneles-topblock-mark{width:48px!important;height:48px!important;flex:0 0 48px!important;border-radius:13px!important}
+.eneles-topblock-mark img{object-fit:contain!important;padding:2px!important}
+#enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% + clamp(0px,8vw,120px))!important;max-width:none!important;position:relative!important;left:50%!important;transform:translateX(-50%)!important;box-sizing:border-box!important}
+#enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph .hero-inner{max-width:980px!important}
+@media(max-width:560px){.eneles-topblock-mark{width:42px!important;height:42px!important;flex-basis:42px!important}#enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph{width:100%!important;left:auto!important;transform:none!important}}
