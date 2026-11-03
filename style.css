@@ -1142,3 +1142,21 @@ body[data-page="home"] .home-card:focus-visible,body[data-page="home"] .home-act
 /* Ajustement du canevas : le padding du body réserve déjà la place de la barre. */
 @media(min-width:901px){body.eneles-has-sidebar .topbar,body.eneles-has-sidebar .main-content,body.eneles-has-sidebar .site-footer,body.eneles-has-sidebar.eneles-sidebar-collapsed .topbar,body.eneles-has-sidebar.eneles-sidebar-collapsed .main-content,body.eneles-has-sidebar.eneles-sidebar-collapsed .site-footer{margin-left:0!important}}
 body[data-page="home"] .home-card[hidden],body[data-page="home"] .home-action-card[hidden]{display:none!important}
+
+/* Hero Mémoire : recentré visuellement malgré le décalage réservé à la sidebar. */
+@media(min-width:901px){
+  body.eneles-has-sidebar #enelesMemoryHero{
+    position:relative!important;
+    left:-130px!important;
+    filter:drop-shadow(0 18px 28px color-mix(in srgb,var(--accent) 22%,rgba(0,0,0,.24)))!important;
+  }
+}
+#enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph::before{
+  filter:drop-shadow(0 17px 24px color-mix(in srgb,var(--hero-theme-accent,var(--accent)) 27%,rgba(0,0,0,.2)))!important;
+}
+#enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph::after{
+  box-shadow:0 20px 48px color-mix(in srgb,var(--hero-theme-accent,var(--accent)) 25%,transparent),inset 0 1px 0 rgba(255,255,255,.12)!important;
+}
+@media(max-width:900px){
+  #enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph{left:0!important;filter:drop-shadow(0 16px 26px color-mix(in srgb,var(--accent) 22%,rgba(0,0,0,.2)))!important}
+}
