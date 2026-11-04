@@ -1,0 +1,49 @@
+/* Eneles Mémoire — même silhouette et même hiérarchie visuelle que Archives. */
+body[data-page="home"] .eneles-archives-topblock{
+ position:relative!important;isolation:isolate!important;overflow:visible!important;display:grid!important;
+ width:100%!important;max-width:1280px!important;margin:0 auto 15px!important;padding:14px 18px 28px!important;
+ grid-template-columns:minmax(0,1fr) auto!important;grid-template-rows:46px 40px 40px 36px!important;
+ grid-template-areas:"brand tools" "add add" "search search" "mode palette"!important;
+ align-items:center!important;justify-items:stretch!important;gap:8px 12px!important;
+ background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+body[data-page="home"] .eneles-archives-topblock::before{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));
+ background:radial-gradient(ellipse at 18% 4%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 55%),color-mix(in srgb,var(--surface) 96%,transparent);
+ box-shadow:0 16px 38px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.10);
+ -webkit-backdrop-filter:blur(20px) saturate(1.25);backdrop-filter:blur(20px) saturate(1.25);
+ -webkit-mask:url("./eneles-organic-header-mask-20261104-final2.svg") 0 0/100% 100% no-repeat;
+ mask:url("./eneles-organic-header-mask-20261104-final2.svg") 0 0/100% 100% no-repeat;
+}
+body[data-page="home"] .eneles-archives-topblock .eneles-topblock-head,
+body[data-page="home"] .eneles-archives-topblock .eneles-topblock-tools{display:contents!important}
+body[data-page="home"] .eneles-archives-topblock .eneles-topblock-brand{grid-area:brand!important;min-width:0!important;justify-self:start!important}
+body[data-page="home"] .eneles-archives-topblock .eneles-topblock-mode-slot{grid-area:mode!important;justify-self:start!important}
+body[data-page="home"] .eneles-archives-topblock .eneles-topblock-palette-slot{grid-area:palette!important;justify-self:end!important}
+body[data-page="home"] .eneles-archives-topblock .eneles-add-content-btn{grid-area:add!important;justify-self:start!important;width:min(72%,430px)!important;min-height:40px!important}
+body[data-page="home"] .eneles-archives-topblock .eneles-topblock-search{
+ grid-area:search!important;width:min(58%,520px)!important;max-width:520px!important;min-width:0!important;
+ justify-self:start!important;align-self:center!important;position:relative!important;
+}
+body[data-page="home"] .eneles-archives-topblock>*{position:relative;z-index:1}
+@media(max-width:900px){
+ body[data-page="home"] .eneles-archives-topblock{
+  width:100%!important;max-width:none!important;margin:0 auto 13px!important;padding:11px 13px 26px!important;
+  grid-template-columns:minmax(0,1fr) auto!important;grid-template-rows:42px 38px 38px 36px!important;
+  grid-template-areas:"brand tools" "add add" "search search" "mode palette"!important;gap:7px 9px!important;
+ }
+ body[data-page="home"] .eneles-archives-topblock .eneles-topblock-mark{width:40px!important;height:40px!important;flex-basis:40px!important}
+ body[data-page="home"] .eneles-archives-topblock .eneles-topblock-brand-copy strong{font-size:.86rem!important}
+ body[data-page="home"] .eneles-archives-topblock .eneles-add-content-btn{width:min(72%,430px)!important;min-height:37px!important;padding:7px 12px!important;font-size:.73rem!important}
+ body[data-page="home"] .eneles-archives-topblock .eneles-topblock-search{width:min(58vw,430px)!important;max-width:430px!important;min-height:38px!important}
+ body[data-page="home"] .eneles-archives-topblock .eneles-topblock-mode-slot{justify-self:start!important}
+ body[data-page="home"] .eneles-archives-topblock .eneles-topblock-palette-slot{justify-self:end!important}
+}
+@media(max-width:380px){
+ body[data-page="home"] .eneles-archives-topblock{padding-inline:9px!important;column-gap:6px!important}
+ body[data-page="home"] .eneles-archives-topblock .eneles-topblock-brand-copy strong{font-size:.78rem!important}
+ body[data-page="home"] .eneles-archives-topblock .eneles-add-content-btn{width:min(78%,430px)!important;font-size:.69rem!important;padding-inline:8px!important}
+ body[data-page="home"] .eneles-archives-topblock .eneles-topblock-search{width:min(58vw,430px)!important}
+}
