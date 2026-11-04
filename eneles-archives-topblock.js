@@ -56,8 +56,8 @@
       function syncTopblockAuth(session){
         var connected=!!(session&&session.user);
         var label=authButton.querySelector('span:last-child');
-        if(label)label.textContent=connected?'Mon compte · Déconnexion':'Se connecter avec Eneles ID';
-        authButton.setAttribute('aria-label',connected?'Ouvrir les options du compte Eneles ID':'Se connecter avec Eneles ID');
+        if(label)label.textContent=connected?'Déconnexion':'Se connecter';
+        authButton.setAttribute('aria-label',connected?'Se déconnecter du compte Eneles ID':'Se connecter avec Eneles ID');
       }
       authButton.addEventListener('click',function(){
         var account=document.getElementById('enelesSidebarAccount');

@@ -123,3 +123,207 @@ body[data-page="home"] .main-content{padding-top:12px!important;width:min(calc(1
   body[data-page="home"] .eneles-topblock-search input{font-size:.76rem!important}
 }
 @media(prefers-reduced-motion:reduce){.asb,body>header.eneles-organic-site-header,body[data-page="home"] .eneles-archives-topblock{transition:none!important}}
+
+
+/* ===== Correction ciblée v2 — Eneles Mémoire, grille du bandeau =====
+   Les noms de zones reprennent les contrats de final2.css :
+   brand / auth / add / search / mode / palette.
+   Le bouton de palette reste dans la partie haute du panneau; les trois
+   modes rejoignent la languette inférieure gauche.
+*/
+html body[data-page="home"] #enelesArchivesTopblock{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  grid-template-rows:52px 48px 54px minmax(84px,1fr)!important;
+  grid-template-areas:"brand auth" "add add" "search search" "mode ."!important;
+  align-content:stretch!important;
+  align-items:center!important;
+  justify-items:stretch!important;
+  gap:10px 14px!important;
+  height:360px!important;
+  min-height:360px!important;
+  padding:16px 22px 18px!important;
+  box-sizing:border-box!important;
+  border:0!important;
+  border-radius:0!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-head,
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-tools{
+  display:contents!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-brand{
+  grid-area:brand!important;
+  position:relative!important;
+  z-index:4!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-self:start!important;
+  min-width:0!important;
+  gap:11px!important;
+  color:var(--text)!important;
+  text-decoration:none!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mark{
+  width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;
+  flex:0 0 52px!important;border-radius:16px!important;overflow:hidden!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mark img{
+  display:block!important;width:100%!important;height:100%!important;
+  object-fit:contain!important;padding:3px!important;transform:none!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-brand-copy{
+  display:block!important;min-width:0!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-brand-copy strong{
+  display:block!important;font-size:1.12rem!important;line-height:1.12!important;
+  white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-auth{
+  grid-area:auth!important;position:relative!important;z-index:4!important;
+  justify-self:end!important;align-self:center!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:8px!important;width:auto!important;min-width:132px!important;max-width:220px!important;
+  min-height:43px!important;padding:8px 14px!important;box-sizing:border-box!important;
+  border:1px solid rgba(255,255,255,.24)!important;border-radius:999px!important;
+  background:#fff!important;color:#17131f!important;
+  font:inherit!important;font-size:.78rem!important;font-weight:750!important;
+  line-height:1.15!important;white-space:nowrap!important;text-overflow:ellipsis!important;
+  overflow:hidden!important;box-shadow:0 6px 18px rgba(0,0,0,.14)!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-auth-mark{
+  display:grid!important;place-items:center!important;flex:0 0 21px!important;
+  width:21px!important;height:21px!important;border-radius:50%!important;
+  background:linear-gradient(135deg,#4285F4 0 25%,#34A853 25% 50%,#FBBC05 50% 75%,#EA4335 75%)!important;
+  color:#fff!important;font-size:.65rem!important;font-weight:900!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-add-content-btn{
+  grid-area:add!important;position:relative!important;z-index:4!important;
+  justify-self:start!important;align-self:center!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:auto!important;min-width:205px!important;max-width:270px!important;
+  min-height:45px!important;padding:10px 16px!important;gap:8px!important;
+  border-radius:15px!important;white-space:nowrap!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-add-content-btn span{
+  display:inline!important;visibility:visible!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-search{
+  grid-area:search!important;position:relative!important;z-index:4!important;
+  justify-self:stretch!important;align-self:center!important;
+  width:100%!important;max-width:none!important;min-width:0!important;min-height:52px!important;
+  margin:0!important;padding:6px 8px 6px 12px!important;border-radius:17px!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-search input{
+  width:100%!important;min-width:0!important;font-size:.88rem!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mode-slot{
+  grid-area:mode!important;position:relative!important;z-index:5!important;
+  justify-self:start!important;align-self:end!important;
+  display:flex!important;align-items:center!important;margin:0 0 1px 0!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mode-slot .theme-mode-choices{
+  display:flex!important;align-items:center!important;gap:3px!important;padding:4px!important;
+  border-radius:999px!important;background:color-mix(in srgb,var(--surface) 82%,transparent)!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mode-slot .theme-mode-choices button{
+  display:grid!important;place-items:center!important;
+  width:28px!important;height:28px!important;min-width:28px!important;min-height:28px!important;
+  padding:0!important;border-radius:50%!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-palette-slot{
+  position:absolute!important;z-index:6!important;
+  right:16px!important;left:auto!important;top:auto!important;
+  bottom:calc(20% + 8px)!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-palette-slot #colorThemeToggle{
+  display:grid!important;place-items:center!important;
+  width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;
+  border-radius:50%!important;
+}
+html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-palette-slot .color-theme-panel{
+  z-index:10050!important;
+}
+html body[data-page="home"] .topbar{display:none!important}
+
+@media(max-width:900px){
+  html body[data-page="home"] #enelesArchivesTopblock{
+    width:calc(100% - 14px)!important;max-width:820px!important;
+    height:274px!important;min-height:274px!important;margin:8px auto 12px!important;
+    grid-template-rows:42px 40px 44px minmax(64px,1fr)!important;
+    gap:7px 9px!important;padding:12px 13px 10px!important;
+  }
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mark{
+    width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;flex-basis:42px!important;
+  }
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-brand-copy strong{font-size:.9rem!important}
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-auth{
+    min-width:116px!important;max-width:156px!important;min-height:36px!important;
+    padding:6px 9px!important;gap:6px!important;font-size:.68rem!important;
+  }
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-auth-mark{
+    width:18px!important;height:18px!important;flex-basis:18px!important;
+  }
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-add-content-btn{
+    min-width:184px!important;max-width:250px!important;min-height:39px!important;
+    padding:8px 13px!important;font-size:.76rem!important;
+  }
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-search{
+    width:100%!important;max-width:none!important;min-height:44px!important;
+  }
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mode-slot .theme-mode-choices button{
+    width:26px!important;height:26px!important;min-width:26px!important;min-height:26px!important;
+  }
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-palette-slot{
+    right:12px!important;bottom:calc(20% + 6px)!important;
+  }
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-palette-slot #colorThemeToggle{
+    width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;
+  }
+}
+@media(max-width:560px){
+  html body[data-page="home"] #enelesArchivesTopblock{padding-inline:10px!important;column-gap:7px!important}
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-brand{gap:7px!important}
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-brand-copy strong{font-size:.82rem!important}
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-search input{font-size:.76rem!important}
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mode-slot .theme-mode-choices{gap:2px!important;padding:3px!important}
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-mode-slot .theme-mode-choices button{
+    width:25px!important;height:25px!important;min-width:25px!important;min-height:25px!important;
+  }
+}
+@media(max-width:380px){
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-brand-copy strong{font-size:.76rem!important}
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-topblock-auth{min-width:108px!important;max-width:135px!important;font-size:.63rem!important}
+  html body[data-page="home"] #enelesArchivesTopblock .eneles-add-content-btn{min-width:170px!important}
+}
+
+/* ===== Sidebar Mémoire : liens sans soulignement ni décoration parasite ===== */
+html body #enelesMemorySidebar a,
+html body #enelesMemorySidebar a:hover,
+html body #enelesMemorySidebar a:focus,
+html body #enelesMemorySidebar a:active,
+html body #enelesMemorySidebar .asb-item,
+html body #enelesMemorySidebar .asb-item *{
+  text-decoration:none!important;
+  text-decoration-line:none!important;
+  text-decoration-style:solid!important;
+  text-underline-offset:0!important;
+}
+
+/* ===== Hero Mémoire : prolongement vers le bas, sans déplacer ses contrôles ===== */
+html body[data-page="home"] #enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph{
+  box-sizing:border-box!important;
+  min-height:530px!important;height:auto!important;
+  padding:48px 22px 104px!important;
+  margin-bottom:32px!important;
+}
+@media(max-width:760px){
+  html body[data-page="home"] #enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph{
+    min-height:530px!important;padding:46px 20px 104px!important;
+  }
+}
+@media(max-width:420px){
+  html body[data-page="home"] #enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph{
+    min-height:515px!important;padding:42px 16px 96px!important;
+  }
+}

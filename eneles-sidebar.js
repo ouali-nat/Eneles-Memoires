@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   /* Feuilles de style chargées en dernier + bloc de présentation de l'accueil. */
-  var V='20261104-reference-layout-v1';
+  var V='20261104-reference-layout-v2';
   function loadExtras(){
     if(!document.head||!document.body)return;
     ['eneles-final-layout.css','eneles-window-blocks.css','eneles-hero-tune.css','eneles-header-presentation-20261104.css'].forEach(function(f){
@@ -206,7 +206,7 @@
     openState=read(OPEN_KEY,{});if(!openState||typeof openState!=='object'||Array.isArray(openState))openState={};
     nav=document.createElement('nav');nav.id='enelesMemorySidebar';nav.className='asb';nav.setAttribute('aria-label','Navigation principale Eneles Mémoire');
     nav.innerHTML='<div class="asb-dots" aria-hidden="true"><i></i><i></i><i></i></div>'+
-      '<div class="asb-head"><div class="asb-brand"><img src="/assets/aurore-logo.png" alt=""><span>Aurore</span></div><button type="button" class="asb-collapse" aria-label="Réduire le menu" title="Réduire / agrandir">'+svg('collapse',16)+'</button></div>'+
+      '<div class="asb-head"><div class="asb-brand"><img src="/assets/aurore-logo.png" alt=""><span>Eneles</span></div><button type="button" class="asb-collapse" aria-label="Réduire le menu" title="Réduire / agrandir">'+svg('collapse',16)+'</button></div>'+
       '<div class="asb-sep"></div>'+
       '<div class="asb-scroll">'+
         '<div class="asb-today" id="enelesSidebarToday"><div class="asb-today-top"><span class="asb-today-label">Aujourd’hui</span><b class="asb-today-due" id="enelesTodayDue">0</b></div><p class="asb-today-text" id="enelesTodayText">Chargement…</p><div class="asb-today-chips"><span id="enelesTodayMemories">0 mémorisation</span><span id="enelesTodaySeries">0 série</span></div><a class="asb-today-cta" id="enelesTodayCta" href="creer.html"><span>Ajouter un contenu</span>'+svg('chevron',14)+'</a></div>'+
