@@ -51,6 +51,29 @@
         heroForm.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
       });
     }
+    var authButton=document.getElementById('enelesTopblockAuth');
+    if(authButton){
+      function syncTopblockAuth(session){
+        var connected=!!(session&&session.user);
+        var label=authButton.querySelector('span:last-child');
+        if(label)label.textContent=connected?'Mon compte · Déconnexion':'Se connecter avec Eneles ID';
+        authButton.setAttribute('aria-label',connected?'Ouvrir les options du compte Eneles ID':'Se connecter avec Eneles ID');
+      }
+      authButton.addEventListener('click',function(){
+        var account=document.getElementById('enelesSidebarAccount');
+        if(account)account.click();
+        else if(typeof window.auroreShowAccessGate==='function')window.auroreShowAccessGate();
+      });
+      window.addEventListener('aurore:auth-changed',function(e){syncTopblockAuth(e&&e.detail?e.detail.session:null)});
+      (async function(){
+        try{
+          var auth=window.auroreAuth;
+          if(window.auroreAuthReady)auth=await window.auroreAuthReady;
+          if(auth&&typeof auth.getSession==='function')syncTopblockAuth(await auth.getSession());
+          else syncTopblockAuth(null);
+        }catch(_){syncTopblockAuth(null)}
+      })();
+    }
     var active=bar.querySelector('.eneles-topblock-nav .is-current');
     if(active)active.setAttribute('aria-current','page');
   }
