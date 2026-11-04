@@ -1,10 +1,10 @@
 (function(){
   'use strict';
   /* Feuilles de style chargées en dernier + bloc de présentation de l'accueil. */
-  var V='20261104-reference-layout-v2';
+  var V='20261104-material-flat-v1';
   function loadExtras(){
     if(!document.head||!document.body)return;
-    ['eneles-final-layout.css','eneles-window-blocks.css','eneles-hero-tune.css','eneles-header-presentation-20261104.css'].forEach(function(f){
+    ['eneles-final-layout.css','eneles-window-blocks.css','eneles-hero-tune.css','eneles-header-presentation-20261104.css','eneles-material-home-20261104.css'].forEach(function(f){
       if(document.querySelector('link[href*="'+f+'"]'))return;
       var l=document.createElement('link');l.rel='stylesheet';l.href='./css/'+f+'?v='+V;document.head.appendChild(l);
     });
