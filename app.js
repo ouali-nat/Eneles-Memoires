@@ -387,7 +387,7 @@
     }
     function label(url){var p=url.pathname.split("/").pop()||"index.html",v=url.searchParams.get("view")||"all";
       if(p==="index.html")return "Accueil";if(p==="choisir.html")return "Choisir un espace";
-      if(p==="mes-memoires.html")return v==="memories"?"← Mes mémoires":v==="cards"?"← Mes cartes":"← Bibliothèque";
+      if(p==="mes-memoires.html")return v==="memories"?"Mes mémoires":v==="cards"?"Mes cartes":"Bibliothèque";
       if(p==="cartes-publiques.html")return "Bibliothèque communautaire";if(p==="revisions.html")return "Révisions";
       if(p==="reviser-cartes.html")return "Étude des cartes";if(p==="memoire-blocs.html")return "Passages à mémoriser";
       if(p==="creer-cartes.html")return "Mes cartes";if(p==="editer-memoire.html")return "Mes mémoires";return "Retour";
@@ -682,7 +682,7 @@
     var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/eneles-archives-alignment.css','css/eneles-mobile-polish.css'];
     css.forEach(function(h){if(document.querySelector('link[href*="'+h+'"]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='./'+h+'?v=20261103-palette-sidebar-v8';document.head.appendChild(l)});
     if(document.querySelector('script[src*="eneles-sidebar.js"]'))return;
-    var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261104-material-flat-v1';document.body.appendChild(s);
+    var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261107-theme-switch-fit-v1';document.body.appendChild(s);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();
 })();

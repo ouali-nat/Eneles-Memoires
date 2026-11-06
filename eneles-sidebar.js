@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   /* Feuilles de style chargées en dernier + bloc de présentation de l'accueil. */
-  var V='20261104-material-flat-v1';
+  var V='20261107-theme-switch-fit-v1';
   function loadExtras(){
     if(!document.head||!document.body)return;
     ['eneles-final-layout.css','eneles-window-blocks.css','eneles-hero-tune.css','eneles-header-presentation-20261104.css','eneles-material-home-20261104.css'].forEach(function(f){
@@ -102,8 +102,11 @@
   }
   /* ---------- Recherche ---------- */
   function focusSearch(){
-    var hero=document.getElementById('enelesMemoryHero'),heroToggle=document.getElementById('enelesHeroToggle');
-    if(hero&&hero.hidden&&heroToggle)heroToggle.click();
+    var hero=document.getElementById('enelesMemoryHero');
+    if(hero&&hero.hidden){
+      if(typeof window.enelesSetHeroVisible==='function')window.enelesSetHeroVisible(true);
+      else{hero.hidden=false;hero.setAttribute('aria-hidden','false');try{localStorage.setItem(HERO_KEY,'0')}catch(e){}}
+    }
     var input=document.getElementById('enelesMemorySearchInput')||document.querySelector('input[type="search"]');
     if(input){input.scrollIntoView({behavior:'smooth',block:'center'});window.setTimeout(function(){input.focus()},220);return}
     try{sessionStorage.setItem('eneles:focus-memory-search','1')}catch(e){}
@@ -187,10 +190,13 @@
     var grid=document.createElement('div');grid.className='asb-sw-grid';grid.setAttribute('aria-label','Palette Eneles de 18 couleurs');
     COLORS.forEach(function(c){var b=document.createElement('button');b.type='button';b.className='asb-sw';b.dataset.colorChoice=c[0];b.title=c[1];b.setAttribute('aria-label','Couleur '+c[1]);b.setAttribute('aria-pressed','false');b.style.setProperty('--asb-swatch',c[2]);b.addEventListener('click',function(){if(typeof window.auroreSetMemoryColor==='function')window.auroreSetMemoryColor(c[0]);syncAppearance()});grid.appendChild(b)});body.appendChild(grid);
     var options=document.createElement('div');options.style.marginTop='12px';body.appendChild(options);
-    addSwitch(options,'enelesSidebarHeroSwitch','Bloc d’accueil','Affiché en haut de l’accueil',heroVisible,function(show){
-      var heroToggle=document.getElementById('enelesHeroToggle');
-      if(heroToggle){if(heroVisible()!==show)heroToggle.click();return}
+    addSwitch(options,'enelesSidebarHeroSwitch','Bloc d’accueil','Affiché en haut de l’accueil',function(){
+      return typeof window.enelesIsHeroVisible==='function'?window.enelesIsHeroVisible():heroVisible();
+    },function(show){
+      if(typeof window.enelesSetHeroVisible==='function'){window.enelesSetHeroVisible(show);return}
       try{localStorage.setItem(HERO_KEY,show?'0':'1')}catch(e){}
+      var hero=document.getElementById('enelesMemoryHero');
+      if(hero){hero.hidden=!show;hero.setAttribute('aria-hidden',String(!show))}
       toast(show?'Le bloc d’accueil sera affiché sur l’accueil.':'Le bloc d’accueil sera masqué sur l’accueil.');
     });
     if(document.fullscreenEnabled){
