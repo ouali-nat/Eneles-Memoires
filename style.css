@@ -1296,3 +1296,26 @@ html body .toast{
   box-shadow:0 3px 12px rgba(0,0,0,.12)!important;
   font-size:.76rem!important;
 }
+
+
+/* Eneles Mémoire — confinement du sélecteur d’apparence sur petits écrans. */
+.topbar .header-right,.topbar .appearance,.topbar .color-theme-wrap{
+  min-width:0!important;max-width:100%!important;box-sizing:border-box!important;
+}
+.topbar .appearance{flex:0 1 auto!important;}
+.topbar .theme-mode-choices{
+  display:flex!important;flex:0 1 auto!important;width:max-content!important;
+  max-width:100%!important;min-width:0!important;box-sizing:border-box!important;
+  flex-wrap:nowrap!important;overflow:hidden!important;gap:2px!important;
+}
+.topbar .theme-mode-choices button{
+  min-width:0!important;max-width:100%!important;flex:1 1 auto!important;
+  box-sizing:border-box!important;white-space:nowrap!important;
+  padding-inline:clamp(4px,1.4vw,8px)!important;
+}
+.color-theme-panel,.color-theme-grid,.color-theme-choice{
+  box-sizing:border-box;min-width:0;max-width:100%;
+}
+/* Les liens conservent leur zone cliquable, sans flèche décorative. */
+.card-arrow,.action-arrow,.create-arrow,.chooser-arrow,
+.library-choice-arrow,.library-shortcut-arrow{display:none!important;}

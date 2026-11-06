@@ -10,6 +10,6 @@ document.getElementById("editMemoryLink").href="editer-memoire.html?deck="+encod
 if(!cards.length){root.innerHTML='<div class="empty-state"><h2>Aucun bloc enregistré</h2><p>Découpe ton texte pour créer les passages à mémoriser.</p><a class="primary-btn" href="editer-memoire.html?deck='+encodeURIComponent(deck)+'">Éditer la mémoire</a></div>';return}
 root.innerHTML=cards.map(function(c,i){
 var href="revisions.html?deck="+encodeURIComponent(deck)+"&card="+encodeURIComponent(c.id);
-return '<article class="memory-block-card"><div class="memory-block-card-head"><span class="memory-block-number">BLOC '+(i+1)+'</span><span class="memory-block-method">'+esc(c.preferredMode||"Première lettre")+'</span></div><p class="memory-block-text">'+esc(c.back).replace(/\n/g,"<br>")+'</p><div class="memory-block-actions"><a class="primary-btn" href="'+href+'">Ouvrir la méthode <span aria-hidden="true">→</span></a><a class="secondary-btn" href="editer-memoire.html?deck='+encodeURIComponent(deck)+'">Modifier</a></div></article>'
+return '<article class="memory-block-card"><div class="memory-block-card-head"><span class="memory-block-number">BLOC '+(i+1)+'</span><span class="memory-block-method">'+esc(c.preferredMode||"Première lettre")+'</span></div><p class="memory-block-text">'+esc(c.back).replace(/\n/g,"<br>")+'</p><div class="memory-block-actions"><a class="primary-btn" href="'+href+'">Ouvrir la méthode </a><a class="secondary-btn" href="editer-memoire.html?deck='+encodeURIComponent(deck)+'">Modifier</a></div></article>'
 }).join("");
 })();

@@ -345,7 +345,7 @@
   function openVisibilityDialog(deck) {
     var settings = deckSettingsFor(deck);
     var safeDeck = escapeHtml(deck);
-    openSharingDialog("Visibilité de la série", 
+    openSharingDialog("Visibilité de la série",
       '<p class="sharing-modal-intro">Choisissez qui peut consulter cette série de questions-réponses.</p>' +
       '<div class="visibility-choice-list">' +
       '<button type="button" class="visibility-choice" data-act="choose-visibility" data-value="public" data-deck="' + safeDeck + '">' +
@@ -361,7 +361,7 @@
     var author = settings.authorName || "";
     var domain = settings.domain || "";
     var description = settings.description || "";
-    openSharingDialog("Publier « " + deck + " »", 
+    openSharingDialog("Publier « " + deck + " »",
       '<p class="sharing-modal-intro">Les cartes de cette série apparaîtront individuellement dans l’espace public. Renseignez les informations affichées avec votre publication.</p>' +
       '<div class="sharing-form">' +
       '<label for="publishAuthor">Auteur ou autrice <span>*</span><input id="publishAuthor" type="text" maxlength="120" required value="' + escapeHtml(author) + '" placeholder="Nom affiché dans les informations"></label>' +
@@ -722,7 +722,7 @@
       if(failed.length)throw new Error("Certaines destinations ont refusé le partage. Vérifiez vos droits de membre et réessayez.");closeSharingDialog();notify("Série partagée dans "+selected.length+" groupe"+(selected.length>1?"s":"")+".");
     }catch(error){console.error(error);if(status)status.textContent=String(error.message||"Le partage a échoué.");if(button){button.disabled=false;button.textContent="Réessayer le partage";}}
   }
-  function openSeriesShareOptions(deck){openSharingDialog("Partager « "+deck+" »",'<p class="sharing-modal-intro">Téléchargez d’abord vos cartes ou choisissez de les imprimer.</p><div class="series-export-options"><button type="button" class="series-export-choice" data-act="export-series-pdf" data-deck="'+escapeHtml(deck)+'"><span>⬇</span><strong>Télécharger le PDF</strong><small>Enregistre un fichier PDF sur votre appareil.</small></button><button type="button" class="series-export-choice" data-act="print-series" data-deck="'+escapeHtml(deck)+'"><span>▤</span><strong>Imprimer les cartes</strong><small>Ouvre les réglages d’impression séparément.</small></button><button type="button" class="series-export-choice" data-act="export-series-images" data-deck="'+escapeHtml(deck)+'"><span>▧</span><strong>Télécharger les images</strong><small>Une image PNG par recto et par verso.</small></button><button type="button" class="series-export-choice" data-act="share-deck" data-deck="'+escapeHtml(deck)+'"><span>↗</span><strong>Partager le lien</strong><small>Partager le lien public de la série.</small></button></div>');}
+  function openSeriesShareOptions(deck){openSharingDialog("Partager « "+deck+" »",'<p class="sharing-modal-intro">Téléchargez d’abord vos cartes ou choisissez de les imprimer.</p><div class="series-export-options"><button type="button" class="series-export-choice" data-act="export-series-pdf" data-deck="'+escapeHtml(deck)+'"><strong>Télécharger le PDF</strong><small>Enregistre un fichier PDF sur votre appareil.</small></button><button type="button" class="series-export-choice" data-act="print-series" data-deck="'+escapeHtml(deck)+'"><span>▤</span><strong>Imprimer les cartes</strong><small>Ouvre les réglages d’impression séparément.</small></button><button type="button" class="series-export-choice" data-act="export-series-images" data-deck="'+escapeHtml(deck)+'"><span>▧</span><strong>Télécharger les images</strong><small>Une image PNG par recto et par verso.</small></button><button type="button" class="series-export-choice" data-act="share-deck" data-deck="'+escapeHtml(deck)+'"><strong>Partager le lien</strong><small>Partager le lien public de la série.</small></button></div>');}
   function exportCardMarkup(card, index, side, includeProvenance) {
     var style = state.deckStyles && state.deckStyles["flashcard:" + card.deck] || {};
     var background = /^#[0-9a-f]{6}$/i.test(card.backgroundColor || "") ? card.backgroundColor :
@@ -985,9 +985,9 @@
     var licenseLabel = card.license || (card.allowVariants ? "Variantes autorisées par l’auteur" : "Non précisée — variante non autorisée");
     var certificateCode = auroreCardIdentifier(card, index);
     var certificateLink = /^AUR-MEM-[0-9A-F]{16}$/i.test(certificateCode)
-      ? '<p><a class="secondary-btn" href="https://aurore-id.vercel.app/verification.html?code=' + encodeURIComponent(certificateCode) + '" target="_blank" rel="noopener noreferrer">Vérifier dans Eneles ID ↗</a></p>'
+      ? '<p><a class="secondary-btn" href="https://aurore-id.vercel.app/verification.html?code=' + encodeURIComponent(certificateCode) + '" target="_blank" rel="noopener noreferrer">Vérifier dans Eneles ID</a></p>'
       : '';
-    openSharingDialog("Informations sur la carte", 
+    openSharingDialog("Informations sur la carte",
       '<div class="public-card-user-content">' +
       '<dl class="public-card-details"><div><dt>Identifiant Eneles</dt><dd>' + escapeHtml(certificateCode) + '</dd></div>' +
       '<div><dt>Statut du registre</dt><dd>Consultez le registre pour connaître le statut actuel</dd></div>' +
@@ -1313,8 +1313,8 @@
       }).join("") + '</div>';
     }
 
-    var memoryAction = view === "all" ? '<a class="section-link" href="mes-memoires.html?view=memories">Toutes les mémoires <span aria-hidden="true">↗</span></a>' : '<a class="primary-btn" href="editer-memoire.html">＋ Créer une mémoire</a>';
-    var cardsAction = view === "all" ? '<a class="section-link" href="mes-memoires.html?view=cards">Toutes les séries <span aria-hidden="true">↗</span></a>' : '<a class="primary-btn" href="creer-cartes.html">＋ Créer une série</a>';
+    var memoryAction = view === "all" ? '<a class="section-link" href="mes-memoires.html?view=memories">Toutes les mémoires </a>' : '<a class="primary-btn" href="editer-memoire.html">＋ Créer une mémoire</a>';
+    var cardsAction = view === "all" ? '<a class="section-link" href="mes-memoires.html?view=cards">Toutes les séries </a>' : '<a class="primary-btn" href="creer-cartes.html">＋ Créer une série</a>';
     var memorySection = '<section class="library-section"><div class="library-section-head"><div><p class="section-kicker">TEXTES À MÉMORISER</p><h2>' + (view === "memories" ? "Tous les textes" : "Mes mémoires") + '</h2><p>Des textes organisés en passages avec un suivi individuel.</p></div>' + memoryAction + '</div>' + rows(memoryNames,memoryGroupsByDeck,"memory") + '</section>';
     var cardRows = '<section class="library-subsection"><h3>Mes cartes créées</h3><p>Les séries que vous avez composées vous-même.</p>' + rows(personalFlashNames,personalFlashGroups,"flashcard") + '</section>';
     if (communityFlashNames.length) cardRows += '<section class="library-subsection"><h3>Cartes de la communauté ajoutées</h3><p>Ces cartes ajoutées sont conservées séparément de vos créations personnelles.</p>' + rows(communityFlashNames,communityFlashGroups,"flashcard") + '</section>';
@@ -1399,9 +1399,9 @@
       var cardCountForChoice = Object.keys(memoryGroups(flashcards)).length;
       var qcmCountForChoice = (state.qcms||[]).length;
       root.innerHTML = '<section class="library-choice-grid" aria-label="Choisir un espace de bibliothèque">' +
-        '<a class="library-choice-card memory-choice" href="mes-memoires.html?view=memories"><span class="library-choice-top"><span class="library-choice-icon" aria-hidden="true">▤</span><span class="library-choice-arrow" aria-hidden="true">↗</span></span><span class="library-choice-copy"><strong>Mes mémorisations</strong><small>Retrouvez vos textes, passages et suivis individuels.</small><span class="library-choice-count">' + memoryCountForChoice + (memoryCountForChoice === 1 ? ' mémoire' : ' mémoires') + '</span></span></a>' +
-        '<a class="library-choice-card cards-choice" href="mes-memoires.html?view=cards"><span class="library-choice-top"><span class="library-choice-icon" aria-hidden="true">▧</span><span class="library-choice-arrow" aria-hidden="true">↗</span></span><span class="library-choice-copy"><strong>Mes cartes</strong><small>Accédez aux séries de questions-réponses et aux révisions.</small><span class="library-choice-count">' + cardCountForChoice + (cardCountForChoice === 1 ? ' série de cartes' : ' séries de cartes') + '</span></span></a>' +
-        '<a class="library-choice-card" href="mes-memoires.html?view=qcm"><span class="library-choice-top"><span class="library-choice-icon" aria-hidden="true">✓</span><span class="library-choice-arrow" aria-hidden="true">↗</span></span><span class="library-choice-copy"><strong>Mes QCM</strong><small>Modifiez vos séquences et auto-évaluez-vous.</small><span class="library-choice-count">' + qcmCountForChoice + (qcmCountForChoice === 1 ? ' séquence' : ' séquences') + '</span></span></a>' +
+        '<a class="library-choice-card memory-choice" href="mes-memoires.html?view=memories"><span class="library-choice-top"><span class="library-choice-icon" aria-hidden="true">▤</span></span><span class="library-choice-copy"><strong>Mes mémorisations</strong><small>Retrouvez vos textes, passages et suivis individuels.</small><span class="library-choice-count">' + memoryCountForChoice + (memoryCountForChoice === 1 ? ' mémoire' : ' mémoires') + '</span></span></a>' +
+        '<a class="library-choice-card cards-choice" href="mes-memoires.html?view=cards"><span class="library-choice-top"><span class="library-choice-icon" aria-hidden="true">▧</span></span><span class="library-choice-copy"><strong>Mes cartes</strong><small>Accédez aux séries de questions-réponses et aux révisions.</small><span class="library-choice-count">' + cardCountForChoice + (cardCountForChoice === 1 ? ' série de cartes' : ' séries de cartes') + '</span></span></a>' +
+        '<a class="library-choice-card" href="mes-memoires.html?view=qcm"><span class="library-choice-top"><span class="library-choice-icon" aria-hidden="true">✓</span></span><span class="library-choice-copy"><strong>Mes QCM</strong><small>Modifiez vos séquences et auto-évaluez-vous.</small><span class="library-choice-count">' + qcmCountForChoice + (qcmCountForChoice === 1 ? ' séquence' : ' séquences') + '</span></span></a>' +
         '</section>';
       return;
     }
@@ -1414,10 +1414,10 @@
       summary = view==="qcm"?'<div><strong>'+(state.qcms||[]).length+'</strong><span>séquences</span></div><div><strong>'+(state.qcms||[]).reduce(function(n,q){return n+(q.questions||[]).length},0)+'</strong><span>questions</span></div><div><strong>'+(state.qcms||[]).reduce(function(n,q){return n+(q.attempts||[]).length},0)+'</strong><span>tentatives</span></div>':'<div><strong>'+memoryCount+'</strong><span>mémoires</span></div><div><strong>'+cardSeriesCount+'</strong><span>séries de cartes</span></div><div><strong>'+state.cards.length+'</strong><span>éléments enregistrés</span></div>';
     }
     var shortcuts = view === "all" ? '<nav class="library-shortcuts" aria-label="Actions principales">' +
-      '<a class="library-shortcut" href="editer-memoire.html"><span class="library-shortcut-top"><span class="library-shortcut-symbol" aria-hidden="true">▤</span><span class="library-shortcut-arrow" aria-hidden="true">↗</span></span><span class="library-shortcut-copy"><strong>Créer une mémoire</strong><small>Préparer un texte à mémoriser.</small></span></a>' +
-      '<a class="library-shortcut" href="creer-cartes.html"><span class="library-shortcut-top"><span class="library-shortcut-symbol" aria-hidden="true">▧</span><span class="library-shortcut-arrow" aria-hidden="true">↗</span></span><span class="library-shortcut-copy"><strong>Créer une série</strong><small>Créer des cartes question-réponse.</small></span></a>' +
-      '<a class="library-shortcut" href="qcm.html"><span class="library-shortcut-top"><span class="library-shortcut-symbol" aria-hidden="true">✓</span><span class="library-shortcut-arrow" aria-hidden="true">↗</span></span><span class="library-shortcut-copy"><strong>Créer un QCM</strong><small>Questions, réponses et explications.</small></span></a>' +
-      '<a class="library-shortcut" href="progression.html"><span class="library-shortcut-top"><span class="library-shortcut-symbol" aria-hidden="true">↗</span><span class="library-shortcut-arrow" aria-hidden="true">↗</span></span><span class="library-shortcut-copy"><strong>Progression</strong><small>Consulter les résultats d’apprentissage.</small></span></a></nav>' : "";
+      '<a class="library-shortcut" href="editer-memoire.html"><span class="library-shortcut-top"><span class="library-shortcut-symbol" aria-hidden="true">▤</span></span><span class="library-shortcut-copy"><strong>Créer une mémoire</strong><small>Préparer un texte à mémoriser.</small></span></a>' +
+      '<a class="library-shortcut" href="creer-cartes.html"><span class="library-shortcut-top"><span class="library-shortcut-symbol" aria-hidden="true">▧</span></span><span class="library-shortcut-copy"><strong>Créer une série</strong><small>Créer des cartes question-réponse.</small></span></a>' +
+      '<a class="library-shortcut" href="qcm.html"><span class="library-shortcut-top"><span class="library-shortcut-symbol" aria-hidden="true">✓</span></span><span class="library-shortcut-copy"><strong>Créer un QCM</strong><small>Questions, réponses et explications.</small></span></a>' +
+      '<a class="library-shortcut" href="progression.html"><span class="library-shortcut-top"><span class="library-shortcut-symbol" aria-hidden="true">▤</span></span><span class="library-shortcut-copy"><strong>Progression</strong><small>Consulter les résultats d’apprentissage.</small></span></a></nav>' : "";
     var placeholder = view==="memories"?"Rechercher une mémoire ou un passage…":view==="cards"?"Rechercher une série, une question ou une réponse…":view==="qcm"?"Rechercher un QCM…":"Rechercher dans les mémoires, cartes et QCM…";
     var kicker = view==="memories"?"BIBLIOTHÈQUE DE TEXTES":view==="cards"?"SÉRIES DE CARTES":view==="qcm"?"QUESTIONS À CHOIX MULTIPLES":"BIBLIOTHÈQUE PERSONNELLE";
     var heading = view==="memories"?"Mes mémoires":view==="cards"?"Mes cartes":view==="qcm"?"Mes QCM":"Ma bibliothèque";
@@ -2132,7 +2132,7 @@
     } else if (action === "share-link-native") {
       shareLinkToChannel(button, "native");
     } else if (action === "series-menu") {
-      openSharingDialog("Options de la série", '<p class="sharing-modal-intro">Que souhaitez-vous faire avec cette série ?</p><div class="series-export-options"><button type="button" class="series-export-choice" data-act="visibility" data-deck="'+escapeHtml(button.dataset.deck||"")+'"> <span>◎</span><strong>Publier / gérer la visibilité</strong><small>Rendre les cartes publiques ou les conserver en privé.</small></button><button type="button" class="series-export-choice" data-act="group-deck" data-deck="'+escapeHtml(button.dataset.deck||"")+'"><span>♧</span><strong>Partager avec un groupe</strong><small>Sélectionner un ou plusieurs groupes.</small></button><button type="button" class="series-export-choice" data-act="series-share-options" data-deck="'+escapeHtml(button.dataset.deck||"")+'"><span>↗</span><strong>Partager la série</strong><small>Télécharger le PDF, les images ou partager un lien.</small></button><button type="button" class="series-export-choice" data-act="print-series" data-deck="'+escapeHtml(button.dataset.deck||"")+'"><span>▤</span><strong>Imprimer les cartes</strong><small>Ouvrir l’aperçu d’impression sans lancer de téléchargement.</small></button></div>');
+      openSharingDialog("Options de la série", '<p class="sharing-modal-intro">Que souhaitez-vous faire avec cette série ?</p><div class="series-export-options"><button type="button" class="series-export-choice" data-act="visibility" data-deck="'+escapeHtml(button.dataset.deck||"")+'"> <span>◎</span><strong>Publier / gérer la visibilité</strong><small>Rendre les cartes publiques ou les conserver en privé.</small></button><button type="button" class="series-export-choice" data-act="group-deck" data-deck="'+escapeHtml(button.dataset.deck||"")+'"><span>♧</span><strong>Partager avec un groupe</strong><small>Sélectionner un ou plusieurs groupes.</small></button><button type="button" class="series-export-choice" data-act="series-share-options" data-deck="'+escapeHtml(button.dataset.deck||"")+'"><strong>Partager la série</strong><small>Télécharger le PDF, les images ou partager un lien.</small></button><button type="button" class="series-export-choice" data-act="print-series" data-deck="'+escapeHtml(button.dataset.deck||"")+'"><span>▤</span><strong>Imprimer les cartes</strong><small>Ouvrir l’aperçu d’impression sans lancer de téléchargement.</small></button></div>');
     } else if (action === "group-deck") {
       openGroupDialog(button.dataset.deck || "");
     } else if (action === "series-share-options") {
