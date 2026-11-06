@@ -177,7 +177,7 @@
       if(g.level)meta.push('<span>'+escapeHtml(g.level)+'</span>');
       var isOwner=signedIn()&&g.created_by===session.user.id, isMember=!!joinedGroupIds[g.id]||isOwner;
       var visibilityLabel=g.visibility==="private"?"🔒 Privé":"🌐 Public";
-      var action=isMember?'<button class="groups-btn" type="button" data-open-group="'+escapeHtml(g.id)+'">Ouvrir le groupe ↗</button>':'<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px"><button class="groups-btn" type="button" data-open-group="'+escapeHtml(g.id)+'">Détails</button><button class="groups-btn primary" type="button" data-join-group="'+escapeHtml(g.id)+'">'+(signedIn()?(g.join_policy==="open"?"Rejoindre":"Demander à rejoindre"):"Connexion Eneles ID")+'</button></div>';
+      var action=isMember?'<button class="groups-btn" type="button" data-open-group="'+escapeHtml(g.id)+'">Ouvrir le groupe</button>':'<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px"><button class="groups-btn" type="button" data-open-group="'+escapeHtml(g.id)+'">Détails</button><button class="groups-btn primary" type="button" data-join-group="'+escapeHtml(g.id)+'">'+(signedIn()?(g.join_policy==="open"?"Rejoindre":"Demander à rejoindre"):"Connexion Eneles ID")+'</button></div>';
       var cover = g.cover_url
         ? '<div class="group-cover"><img src="' + escapeHtml(g.cover_url) + '" alt="Couverture du groupe ' + escapeHtml(g.name) + '" loading="lazy"></div>'
         : '<div class="group-cover group-cover-placeholder" aria-hidden="true"><span>AURORE · ÉTUDE</span><b>♧</b></div>';
