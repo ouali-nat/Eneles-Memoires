@@ -1,0 +1,42 @@
+/* Eneles Mémoire — animation morphique identique au rythme d'Archives. */
+html body .eneles-memory-hero.hero.aurore-hero-morph::before,
+html body .eneles-memory-hero.hero.aurore-hero-morph::after{
+  clip-path:var(--hero-clip)!important;
+  border-radius:var(--hero-radius,50%)!important;
+  transition:clip-path 1s cubic-bezier(.22,.61,.36,1),border-radius 1s cubic-bezier(.22,.61,.36,1),opacity 1s ease!important;
+  will-change:clip-path,border-radius;
+}
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split::before,
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split::after{opacity:.14!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob{
+  position:absolute!important;top:50%!important;left:50%!important;
+  width:50%!important;height:50%!important;z-index:3!important;pointer-events:none!important;
+  transform:translate(-50%,-50%) scale(.0001)!important;
+  transition:transform 1s cubic-bezier(.22,.61,.36,1)!important;will-change:transform;
+}
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="1"]{transform:translate(-128%,-58%) scale(.58)!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="2"]{transform:translate(38%,-114%) scale(.52)!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="3"]{transform:translate(74%,68%) scale(.66)!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob-core{
+  display:block!important;width:100%!important;height:100%!important;opacity:0!important;
+  border-radius:44% 56% 58% 42% / 48% 42% 58% 52%!important;
+  background:linear-gradient(135deg,var(--hero-theme-mid),var(--hero-theme-accent) 75%)!important;
+  filter:drop-shadow(0 10px 26px color-mix(in srgb,var(--hero-theme-accent) 28%,transparent))!important;
+  transition:opacity 350ms ease!important;
+}
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob-core{opacity:.92!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="1"] .hero-split-blob-core{animation:enelesHeroSplitFloat 2.2s ease-in-out 1!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="2"] .hero-split-blob-core{animation:enelesHeroSplitFloat 2.6s ease-in-out 1 .15s!important}
+html body .eneles-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="3"] .hero-split-blob-core{animation:enelesHeroSplitFloat 2.4s ease-in-out 1 .3s!important}
+@keyframes enelesHeroSplitFloat{
+  0%{opacity:.88}
+  33%{transform:translate(-5%,7%) rotate(-7deg) scale(1.06);border-radius:58% 42% 46% 54% / 40% 55% 45% 60%}
+  66%{transform:translate(6%,-6%) rotate(6deg) scale(.94);border-radius:50% 50% 40% 60% / 55% 45% 55% 45%}
+  100%{opacity:.88;transform:translate(0,0) rotate(0deg);border-radius:44% 56% 58% 42% / 48% 42% 58% 52%}
+}
+@media(prefers-reduced-motion:reduce){
+  html body .eneles-memory-hero.hero.aurore-hero-morph::before,
+  html body .eneles-memory-hero.hero.aurore-hero-morph::after,
+  html body .eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob,
+  html body .eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob-core{transition:none!important;animation:none!important}
+}

@@ -8,6 +8,9 @@
       if(document.querySelector('link[href*="'+f+'"]'))return;
       var l=document.createElement('link');l.rel='stylesheet';l.href='./css/'+f+'?v='+V;document.head.appendChild(l);
     });
+    // Le morphing reste au-dessus des feuilles de finition injectées ensuite.
+    var heroMotion=document.querySelector('link[href*="eneles-memory-hero-motion.css"]');
+    if(heroMotion)document.head.appendChild(heroMotion);
     if(document.body.dataset.page==='home'&&!document.querySelector('script[src*="eneles-home-presentation.js"]')){
       var s=document.createElement('script');s.src='./eneles-home-presentation.js?v='+V;document.body.appendChild(s);
     }
