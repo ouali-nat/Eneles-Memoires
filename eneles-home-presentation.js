@@ -4,7 +4,9 @@
     if(!document.body||document.body.dataset.page!=='home')return;
     if(document.getElementById('enelesWindowCard'))return;
     var hero=document.getElementById('enelesMemoryHero');
-    var anchor=hero||document.querySelector('.home-section');
+    // Conserver la lecture naturelle : espaces -> action principale -> présentation.
+    var anchor=document.querySelector('body[data-page="home"] .create-banner')||
+      document.querySelector('body[data-page="home"] .home-section')||hero;
     if(!anchor||!anchor.parentNode)return;
     var card=document.createElement('section');
     card.id='enelesWindowCard';

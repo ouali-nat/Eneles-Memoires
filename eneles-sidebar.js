@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   /* Feuilles de style chargées en dernier + bloc de présentation de l'accueil. */
-  var V='20261107-theme-switch-fit-v1';
+  var V='20261107-memory-home-refine-v1';
   function loadExtras(){
     if(!document.head||!document.body)return;
     ['eneles-final-layout.css','eneles-window-blocks.css','eneles-hero-tune.css','eneles-header-presentation-20261104.css','eneles-material-home-20261104.css'].forEach(function(f){
@@ -11,6 +11,8 @@
     // Le morphing reste au-dessus des feuilles de finition injectées ensuite.
     var heroMotion=document.querySelector('link[href*="eneles-memory-hero-motion.css"]');
     if(heroMotion)document.head.appendChild(heroMotion);
+    var homeRefine=document.querySelector('link[href*="eneles-memory-home-refine.css"]');
+    if(homeRefine)document.head.appendChild(homeRefine);
     if(document.body.dataset.page==='home'&&!document.querySelector('script[src*="eneles-home-presentation.js"]')){
       var s=document.createElement('script');s.src='./eneles-home-presentation.js?v='+V;document.body.appendChild(s);
     }
