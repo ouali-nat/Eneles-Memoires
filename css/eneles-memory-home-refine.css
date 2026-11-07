@@ -333,3 +333,77 @@ html body[data-page="home"] .home-action-card .coming-label{
   html body[data-page="home"] .home-card,
   html body[data-page="home"] .home-action-card{transition:none!important}
 }
+
+/* Finition chromatique : un seul filet coloré, teinte du thème et relief léger. */
+html body[data-page="home"] .home-cards{
+  border:1.5px solid color-mix(in srgb,var(--accent) 58%,var(--border))!important;
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb,var(--accent) 10%,var(--surface)),
+      color-mix(in srgb,var(--accent-light,var(--accent)) 5%,var(--surface)) 54%,
+      color-mix(in srgb,var(--accent) 7%,var(--surface)))!important;
+  box-shadow:0 7px 20px color-mix(in srgb,var(--accent) 10%,rgba(0,0,0,.10)),
+             0 2px 6px rgba(0,0,0,.035)!important;
+}
+html body[data-page="home"] .home-cards>.home-card,
+html body[data-page="home"] .home-action-grid>.home-action-card{
+  border:1px solid color-mix(in srgb,var(--accent) 34%,var(--border))!important;
+  background:
+    radial-gradient(115% 85% at 100% 0%,
+      color-mix(in srgb,var(--accent-light,var(--accent)) 20%,transparent),transparent 66%),
+    linear-gradient(145deg,
+      color-mix(in srgb,var(--accent) 17%,var(--surface)),
+      color-mix(in srgb,var(--accent-light,var(--accent)) 10%,var(--surface)) 58%,
+      color-mix(in srgb,var(--accent) 13%,var(--surface)))!important;
+  box-shadow:0 7px 17px color-mix(in srgb,var(--accent) 11%,rgba(0,0,0,.10)),
+             0 2px 5px rgba(0,0,0,.035),
+             inset 0 1px 0 rgba(255,255,255,.24)!important;
+  transform:translateY(0)!important;
+}
+html body[data-page="home"] .home-card::after,
+html body[data-page="home"] .home-action-card::after{
+  background:linear-gradient(180deg,var(--accent-light,var(--accent)),var(--accent-deep,var(--accent)))!important;
+  opacity:1!important;
+}
+html body[data-page="home"] .home-card .card-symbol,
+html body[data-page="home"] .home-action-card .action-icon{
+  border-color:color-mix(in srgb,var(--accent) 38%,var(--border))!important;
+  background:color-mix(in srgb,var(--accent) 20%,var(--surface))!important;
+  box-shadow:0 4px 11px color-mix(in srgb,var(--accent) 12%,transparent),
+             inset 0 1px 0 rgba(255,255,255,.22)!important;
+}
+html body[data-page="home"] .home-card:hover,
+html body[data-page="home"] .home-action-card:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 11px 23px color-mix(in srgb,var(--accent) 15%,rgba(0,0,0,.12)),
+             0 3px 7px rgba(0,0,0,.045),
+             inset 0 1px 0 rgba(255,255,255,.25)!important;
+}
+html body[data-page="home"] .create-banner,
+html body[data-page="home"] .eneles-window-card{
+  border:1px solid color-mix(in srgb,var(--accent) 40%,var(--border))!important;
+  box-shadow:0 8px 20px color-mix(in srgb,var(--accent) 10%,rgba(0,0,0,.10)),
+             0 2px 6px rgba(0,0,0,.035)!important;
+}
+html body[data-page="home"] .create-banner{
+  background:linear-gradient(110deg,
+    color-mix(in srgb,var(--accent) 19%,var(--surface)),
+    color-mix(in srgb,var(--accent-light,var(--accent)) 10%,var(--surface)) 76%)!important;
+}
+html body[data-page="home"] .eneles-window-card{
+  background:linear-gradient(145deg,
+    color-mix(in srgb,var(--accent) 9%,var(--surface)),
+    var(--surface) 72%)!important;
+}
+@media(max-width:600px){
+  html body[data-page="home"] .home-cards{
+    border-width:1.5px!important;
+    box-shadow:0 6px 16px color-mix(in srgb,var(--accent) 10%,rgba(0,0,0,.09))!important;
+  }
+  html body[data-page="home"] .home-cards>.home-card,
+  html body[data-page="home"] .home-action-grid>.home-action-card{
+    box-shadow:0 6px 14px color-mix(in srgb,var(--accent) 12%,rgba(0,0,0,.09)),
+               0 2px 4px rgba(0,0,0,.03),
+               inset 0 1px 0 rgba(255,255,255,.2)!important;
+  }
+}
