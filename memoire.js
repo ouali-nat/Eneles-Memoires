@@ -1428,10 +1428,14 @@
     if (descriptionNode) descriptionNode.textContent = description;
     document.title = heading + " — Eneles Mémoire";
     root.innerHTML = '<div class="library-summary">' + summary + '</div>' + shortcuts + '<div class="library-toolbar"><label class="search-field"><span aria-hidden="true">⌕</span><input id="memorySearch" type="search" placeholder="' + placeholder + '" aria-label="' + placeholder.replace("…","") + '"></label><button class="secondary-btn" type="button" data-act="export">Exporter les données</button></div><div id="memoryList" aria-live="polite"></div>';
+    var searchInput = $("#memorySearch");
+    if (searchInput) {
+      var initialQuery = new URLSearchParams(window.location.search).get("q") || "";
+      if (initialQuery) searchInput.value = initialQuery;
+      searchInput.addEventListener("input", renderMemoryList);
+    }
     renderMemoryList();
     renderUncachedLibraryMath();
-    var searchInput = $("#memorySearch");
-    if (searchInput) searchInput.addEventListener("input", renderMemoryList);
   }
 
   window.auroreDeleteQcm=function(id){state.qcms=(state.qcms||[]).filter(function(q){return String(q.id)!==String(id)});try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){}renderLibrary()};

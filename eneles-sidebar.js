@@ -58,8 +58,7 @@
   function svg(name,size){return '<svg viewBox="0 0 24 24" width="'+(size||20)+'" height="'+(size||20)+'" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICONS[name]+'</svg>'}
   var ITEMS=[
     {id:'home',label:'Accueil',icon:'home',url:'index.html'},
-    {id:'library',label:'Ma bibliothèque',icon:'library',url:'choisir.html'},
-    {id:'library',label:'Bibliothèque',icon:'library',url:'choisir.html'},
+    {id:'library',label:'Ma bibliothèque',icon:'library',url:'mes-memoires.html'},
     {id:'reviews',label:'Révisions',icon:'refresh',url:'revisions.html'},
     {id:'groups',label:'Groupes d’étude',icon:'group',url:'groupes.html'},
     {id:'shared',label:'Ressources partagées',icon:'share',url:'cartes-publiques.html'},
