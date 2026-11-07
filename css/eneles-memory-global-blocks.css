@@ -1,0 +1,126 @@
+/* Eneles Mémoire — identité commune des cartes sur toutes les pages. */
+html body .memory-row,
+html body .memory-series-card,
+html body .memory-block-card,
+html body .memory-block-link,
+html body .chooser-card,
+html body .creation-choice,
+html body .workspace-chunk,
+html body .draft-card,
+html body .mode-link,
+html body .mode-area,
+html body .public-memory-reader-block,
+html body .public-audio-preview-track,
+html body .audio-library-card,
+html body .audio-track-card,
+html body .qcm-question-card,
+html body .progress-card{
+  position:relative!important;
+  min-width:0!important;
+  border:1px solid color-mix(in srgb,var(--accent) 34%,var(--border))!important;
+  background:
+    radial-gradient(115% 85% at 100% 0%,color-mix(in srgb,var(--accent-light,var(--accent)) 17%,transparent),transparent 68%),
+    linear-gradient(145deg,color-mix(in srgb,var(--accent) 15%,var(--surface)),color-mix(in srgb,var(--accent-light,var(--accent)) 8%,var(--surface)) 58%,color-mix(in srgb,var(--accent) 11%,var(--surface)))!important;
+  box-shadow:0 7px 17px color-mix(in srgb,var(--accent) 10%,rgba(0,0,0,.11)),
+             0 2px 5px rgba(0,0,0,.035),
+             inset 0 1px 0 rgba(255,255,255,.2)!important;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease!important;
+}
+html body .memory-row:nth-child(odd),
+html body .memory-series-card:nth-child(odd),
+html body .memory-block-card:nth-child(odd),
+html body .memory-block-link:nth-child(odd),
+html body .chooser-card:nth-child(odd),
+html body .creation-choice:nth-child(odd),
+html body .workspace-chunk:nth-child(odd),
+html body .draft-card:nth-child(odd),
+html body .mode-link:nth-child(odd){
+  border-radius:12px 28px!important;
+}
+html body .memory-row:nth-child(even),
+html body .memory-series-card:nth-child(even),
+html body .memory-block-card:nth-child(even),
+html body .memory-block-link:nth-child(even),
+html body .chooser-card:nth-child(even),
+html body .creation-choice:nth-child(even),
+html body .workspace-chunk:nth-child(even),
+html body .draft-card:nth-child(even),
+html body .mode-link:nth-child(even){
+  border-radius:0 40px!important;
+}
+html body .memory-row:hover,
+html body .memory-series-card:hover,
+html body .memory-block-card:hover,
+html body .memory-block-link:hover,
+html body .chooser-card:hover,
+html body .creation-choice:hover,
+html body .workspace-chunk:hover,
+html body .draft-card:hover,
+html body .mode-link:hover{
+  transform:translateY(-2px)!important;
+  border-color:color-mix(in srgb,var(--accent) 58%,var(--border))!important;
+  box-shadow:0 11px 23px color-mix(in srgb,var(--accent) 14%,rgba(0,0,0,.12)),
+             0 3px 7px rgba(0,0,0,.04),
+             inset 0 1px 0 rgba(255,255,255,.24)!important;
+}
+html body .memory-row-mark,
+html body .chooser-icon,
+html body .creation-choice-icon,
+html body .memory-block-number,
+html body .memory-block-method{
+  border-color:color-mix(in srgb,var(--accent) 34%,var(--border))!important;
+  background:color-mix(in srgb,var(--accent) 18%,var(--surface))!important;
+  box-shadow:0 4px 11px color-mix(in srgb,var(--accent) 10%,transparent)!important;
+}
+html body .memory-row-main h2,
+html body .memory-row-main h3,
+html body .chooser-copy strong,
+html body .creation-choice h2{
+  letter-spacing:-.025em!important;
+}
+html body .memory-row-actions,
+html body .memory-block-actions{
+  border-color:color-mix(in srgb,var(--accent) 24%,var(--border))!important;
+}
+html body .page-heading,
+html body .library-section,
+html body .memory-list{
+  min-width:0!important;
+}
+html body .memory-list{gap:13px!important}
+html body .memory-series-card{padding:17px!important}
+html body .memory-series-card .memory-row-actions{margin-top:auto!important}
+html body .memory-block-card{padding:clamp(16px,3vw,23px)!important}
+html body .memory-block-actions{padding-top:12px!important}
+html body .workspace-chunk,
+html body .draft-card{padding:16px!important}
+html body .memory-row:focus-within,
+html body .chooser-card:focus-visible,
+html body .creation-choice:focus-visible,
+html body .memory-block-link:focus-visible{
+  outline:2px solid color-mix(in srgb,var(--accent) 48%,transparent)!important;
+  outline-offset:3px!important;
+}
+
+/* En-tête institutionnel toujours visible, avec logo et accès au compte. */
+html body>.topbar{
+  position:sticky!important;
+  top:0!important;
+  z-index:1200!important;
+  isolation:isolate!important;
+  background:color-mix(in srgb,var(--surface) 88%,transparent)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.25)!important;
+  backdrop-filter:blur(18px) saturate(1.25)!important;
+  border-bottom:1px solid color-mix(in srgb,var(--accent) 22%,var(--border))!important;
+  box-shadow:0 5px 18px rgba(0,0,0,.055)!important;
+}
+html body>.topbar .brand{flex-shrink:0!important}
+html body>.topbar .header-right{min-width:0!important}
+@media(max-width:900px){
+  html body>.topbar{z-index:1200!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body .memory-row,html body .memory-series-card,html body .memory-block-card,
+  html body .memory-block-link,html body .chooser-card,html body .creation-choice,
+  html body .workspace-chunk,html body .draft-card,html body .mode-link{transition:none!important}
+}

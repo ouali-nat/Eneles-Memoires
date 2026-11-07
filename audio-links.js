@@ -1,6 +1,6 @@
 (function () {
 "use strict";
-/* Ajoute une carte « Mes audios » dans Ma bibliothèque, au même format que « Mes mémorisations » et « Mes cartes ». */
+/* Ajoute une carte « Mes audios » dans Ma bibliothèque, au même format que « Ma bibliothèque » et « Mes cartes ». */
 var KEY = "aurore-audio-manifest-v1";
 function count() { try { var m = JSON.parse(localStorage.getItem(KEY) || "{}"); return Array.isArray(m.records) ? m.records.length : 0; } catch (_) { return 0; } }
 function inject() {

@@ -306,7 +306,7 @@
     themeChoices.addEventListener("click", function (event) { var choice = event.target.closest("[data-theme-choice]"); if (choice) setTheme(choice.dataset.themeChoice, true); });
   }
 
-  document.querySelectorAll(".top-actions a[href=\"mes-memoires.html\"]").forEach(function (link) { link.href = "choisir.html"; link.textContent = "Bibliothèque"; });
+  document.querySelectorAll(".top-actions a[href=\"mes-memoires.html\"]").forEach(function (link) { link.href = "choisir.html"; link.textContent = "Ma bibliothèque"; });
 
   try {
     if (localStorage.getItem("eneles-memory-palette-design") !== "20261103-v1") {
@@ -387,10 +387,10 @@
     }
     function label(url){var p=url.pathname.split("/").pop()||"index.html",v=url.searchParams.get("view")||"all";
       if(p==="index.html")return "Accueil";if(p==="choisir.html")return "Choisir un espace";
-      if(p==="mes-memoires.html")return v==="memories"?"Mes mémoires":v==="cards"?"Mes cartes":"Bibliothèque";
+      if(p==="mes-memoires.html")return "Ma bibliothèque";
       if(p==="cartes-publiques.html")return "Bibliothèque communautaire";if(p==="revisions.html")return "Révisions";
       if(p==="reviser-cartes.html")return "Étude des cartes";if(p==="memoire-blocs.html")return "Passages à mémoriser";
-      if(p==="creer-cartes.html")return "Mes cartes";if(p==="editer-memoire.html")return "Mes mémoires";return "Retour";
+      if(p==="creer-cartes.html")return "Mes cartes";if(p==="editer-memoire.html")return "Ma bibliothèque";return "Retour";
     }
     function configureBackLink(){
       var current=currentRoute(),back=document.querySelector(".page-heading .back-link");if(!current||!back)return;
@@ -682,7 +682,7 @@
     var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/eneles-archives-alignment.css','css/eneles-mobile-polish.css'];
     css.forEach(function(h){if(document.querySelector('link[href*="'+h+'"]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='./'+h+'?v=20261103-palette-sidebar-v8';document.head.appendChild(l)});
     if(document.querySelector('script[src*="eneles-sidebar.js"]'))return;
-    var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261107-memory-home-refine-v1';document.body.appendChild(s);
+    var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261107-global-library-header-v1';document.body.appendChild(s);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();
 })();

@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   /* Feuilles de style chargées en dernier + bloc de présentation de l'accueil. */
-  var V='20261107-memory-home-refine-v1';
+  var V='20261107-global-library-header-v1';
   function loadExtras(){
     if(!document.head||!document.body)return;
     ['eneles-final-layout.css','eneles-window-blocks.css','eneles-hero-tune.css','eneles-header-presentation-20261104.css','eneles-material-home-20261104.css'].forEach(function(f){
@@ -13,6 +13,9 @@
     if(heroMotion)document.head.appendChild(heroMotion);
     var homeRefine=document.querySelector('link[href*="eneles-memory-home-refine.css"]');
     if(homeRefine)document.head.appendChild(homeRefine);
+    var globalBlocks=document.querySelector('link[href*="eneles-memory-global-blocks.css"]');
+    if(!globalBlocks){globalBlocks=document.createElement('link');globalBlocks.rel='stylesheet';globalBlocks.href='./css/eneles-memory-global-blocks.css?v='+V;document.head.appendChild(globalBlocks)}
+    else document.head.appendChild(globalBlocks);
     if(document.body.dataset.page==='home'&&!document.querySelector('script[src*="eneles-home-presentation.js"]')){
       var s=document.createElement('script');s.src='./eneles-home-presentation.js?v='+V;document.body.appendChild(s);
     }
@@ -55,7 +58,7 @@
   function svg(name,size){return '<svg viewBox="0 0 24 24" width="'+(size||20)+'" height="'+(size||20)+'" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICONS[name]+'</svg>'}
   var ITEMS=[
     {id:'home',label:'Accueil',icon:'home',url:'index.html'},
-    {id:'memories',label:'Mes mémorisations',icon:'book',url:'mes-memoires.html'},
+    {id:'library',label:'Ma bibliothèque',icon:'library',url:'choisir.html'},
     {id:'library',label:'Bibliothèque',icon:'library',url:'choisir.html'},
     {id:'reviews',label:'Révisions',icon:'refresh',url:'revisions.html'},
     {id:'groups',label:'Groupes d’étude',icon:'group',url:'groupes.html'},
@@ -89,7 +92,7 @@
   function setOpen(value){nav.classList.toggle('is-open',value);scrim.classList.toggle('is-on',value);toggle.setAttribute('aria-expanded',value?'true':'false');document.body.classList.toggle('eneles-sidebar-open',value)}
   function setCollapsed(value){document.documentElement.classList.toggle('asb-collapsed',value);try{localStorage.setItem(KEY,value?'1':'0')}catch(e){}}
   function accountAction(){var b=document.getElementById('appMenuSignIn');if(b){b.click();return}if(typeof window.auroreShowAccessGate==='function'){window.auroreShowAccessGate();return}var gate=document.getElementById('memoryAccessLock');if(gate){gate.hidden=false;document.body.classList.add('memory-access-open')}}
-  function addItem(parent,it){var a=document.createElement('a');a.className='asb-item';a.href=it.url;a.dataset.asb=it.id;a.title=it.label;a.setAttribute('aria-label',it.label);a.innerHTML='<span class="asb-ico">'+svg(it.icon)+'</span><span class="asb-label">'+it.label+'</span>'+(it.id==='reviews'?'<span class="asb-badge" hidden>0</span>':'')+'<span class="asb-arrow">'+svg('chevron',16)+'</span>';if(page()===it.url){a.classList.add('is-active');a.setAttribute('aria-current','page')}a.addEventListener('click',closeOnMobile);parent.appendChild(a);return a}
+  function addItem(parent,it){var a=document.createElement('a');a.className='asb-item';a.href=it.url;a.dataset.asb=it.id;a.title=it.label;a.setAttribute('aria-label',it.label);a.innerHTML='<span class="asb-ico">'+svg(it.icon)+'</span><span class="asb-label">'+it.label+'</span>'+(it.id==='reviews'?'<span class="asb-badge" hidden>0</span>':'')+'<span class="asb-arrow">'+svg('chevron',16)+'</span>';if(page()===it.url||(it.id==='library'&&page()==='mes-memoires.html')){a.classList.add('is-active');a.setAttribute('aria-current','page')}a.addEventListener('click',closeOnMobile);parent.appendChild(a);return a}
   function addAction(parent,id,label,icon,fn){var b=document.createElement('button');b.type='button';b.className='asb-item';b.id=id;b.title=label;b.setAttribute('aria-label',label);b.innerHTML='<span class="asb-ico">'+svg(icon)+'</span><span class="asb-label">'+label+'</span><span class="asb-arrow">'+svg('chevron',16)+'</span>';b.addEventListener('click',function(){fn();closeOnMobile()});parent.appendChild(b);return b}
   function makeAccordion(id,title,icon,defaultOpen){
     var d=document.createElement('details');d.className='asb-acc';d.id=id;
@@ -130,7 +133,7 @@
     nav.querySelector('#enelesTodayMemories').textContent=plural(s.memories,'mémorisation','mémorisations');
     nav.querySelector('#enelesTodaySeries').textContent=plural(s.series,'série','séries');
     if(due>0){cta.href='revisions.html';cta.firstChild.textContent='Réviser maintenant'}
-    else if(total>0){cta.href='mes-memoires.html';cta.firstChild.textContent='Ouvrir mes mémorisations'}
+    else if(total>0){cta.href='choisir.html';cta.firstChild.textContent='Ouvrir ma bibliothèque'}
     else{cta.href='creer.html';cta.firstChild.textContent='Ajouter un contenu'}
     var badge=nav.querySelector('[data-asb="reviews"] .asb-badge');
     if(badge){badge.hidden=due<=0;badge.textContent=due>99?'99+':String(due)}

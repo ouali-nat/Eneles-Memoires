@@ -56,7 +56,7 @@ return{id:makeId("question"),prompt:String(q.prompt||q.question).trim().slice(0,
 }).filter(function(q){return q.options.length>=2}),attempts:[],createdAt:now,updatedAt:now};
 if(!qcm.questions.length)throw new Error("Les questions du QCM ne sont pas valides.");
 state.qcms=Array.isArray(state.qcms)?state.qcms:[];state.qcms.push(qcm);storeMemoryState(state);
-return "QCM « "+qcm.title+" » enregistré avec "+qcm.questions.length+" question(s). Ouvre Mes mémorisations puis Mes QCM pour le retrouver.";
+return "QCM « "+qcm.title+" » enregistré avec "+qcm.questions.length+" question(s). Ouvre Ma bibliothèque puis Mes QCM pour le retrouver.";
 }
 if(action.type==="create_audio"){
 var audioTitle=String(action.title||action.name||"Audio Aurora").trim().slice(0,100)||"Audio Aurora";
