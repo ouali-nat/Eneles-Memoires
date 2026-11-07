@@ -2,7 +2,7 @@
   'use strict';
   function init(){
     var bar=document.getElementById('enelesArchivesTopblock');
-    if(!bar||bar.dataset.ready==='1')return;
+    if(!bar||bar.dataset.sharedReady==='1'||bar.dataset.ready==='1')return;
     bar.dataset.ready='1';
     var paletteSlot=document.getElementById('enelesTopblockPaletteSlot');
     var modeSlot=document.getElementById('enelesTopblockModeSlot');

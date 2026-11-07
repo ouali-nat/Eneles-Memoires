@@ -59,3 +59,115 @@ html body>.topbar.eneles-unified-topbar{
   .eneles-unified-account{max-width:78px!important;padding-inline:7px!important}
 }
 @media(prefers-reduced-motion:reduce){.eneles-unified-topbar *{transition:none!important}}
+
+/* En-tête global unique : même composition sur toutes les pages Mémoire. */
+.eneles-archives-topblock.eneles-shared-site-header{
+  position:sticky!important;top:max(5px,env(safe-area-inset-top))!important;z-index:1300!important;
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto auto auto!important;
+  grid-template-areas:"brand context account add" "search search search search" "tools tools tools tools"!important;
+  align-items:center!important;gap:9px 10px!important;
+  width:min(100% - 24px,1200px)!important;max-width:1200px!important;
+  margin:8px auto 16px!important;padding:10px 13px!important;
+  border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line))!important;
+  border-radius:24px!important;
+  background:color-mix(in srgb,var(--surface) 94%,transparent)!important;
+  box-shadow:0 11px 27px color-mix(in srgb,var(--accent) 10%,rgba(0,0,0,.13)),inset 0 1px 0 rgba(255,255,255,.16)!important;
+  backdrop-filter:blur(18px) saturate(1.25)!important;-webkit-backdrop-filter:blur(18px) saturate(1.25)!important;
+  box-sizing:border-box!important;
+}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-head{display:contents!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-brand{grid-area:brand!important;display:flex!important;align-items:center!important;gap:9px!important;min-width:0!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-mark{
+  display:grid!important;place-items:center!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+  flex:0 0 44px!important;overflow:hidden!important;border-radius:50%!important;
+  border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line))!important;
+  background:color-mix(in srgb,var(--accent) 12%,var(--surface))!important;
+  box-shadow:0 5px 14px color-mix(in srgb,var(--accent) 13%,transparent)!important;
+}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-mark img{
+  display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;
+  object-fit:contain!important;object-position:center!important;padding:3px!important;margin:0!important;
+}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-brand-copy{display:block!important;min-width:0!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-brand-copy strong{
+  display:block!important;font-size:.9rem!important;font-weight:850!important;line-height:1.15!important;
+  letter-spacing:-.025em!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-brand-copy small{display:block!important;margin-top:3px!important;font-size:.63rem!important;color:var(--muted)!important}
+.eneles-archives-topblock.eneles-shared-site-header #enelesTopblockAuth{
+  grid-area:account!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;
+  min-width:0!important;max-width:145px!important;min-height:38px!important;padding:7px 12px!important;
+  border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line))!important;border-radius:999px!important;
+  background:color-mix(in srgb,var(--accent) 10%,var(--surface))!important;color:var(--text)!important;
+  font:inherit!important;font-size:.69rem!important;font-weight:780!important;white-space:nowrap!important;
+  box-shadow:0 4px 12px color-mix(in srgb,var(--accent) 8%,transparent)!important;cursor:pointer!important;
+}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-auth-mark{font-size:.76rem!important;color:var(--accent-light)!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-add-content-btn{
+  grid-area:add!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;
+  min-width:0!important;min-height:38px!important;padding:8px 13px!important;border:1px solid color-mix(in srgb,var(--accent-light) 34%,var(--accent))!important;
+  border-radius:999px!important;background:linear-gradient(135deg,var(--accent-deep),var(--accent))!important;color:#fff!important;
+  font:inherit!important;font-size:.7rem!important;font-weight:820!important;text-decoration:none!important;white-space:nowrap!important;
+  box-shadow:0 7px 18px color-mix(in srgb,var(--accent) 20%,transparent)!important;
+}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-add-content-btn svg{display:block!important;width:16px!important;height:16px!important;fill:none!important;stroke:currentColor!important;stroke-width:2!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-search{
+  grid-area:search!important;display:flex!important;align-items:center!important;gap:8px!important;width:100%!important;max-width:none!important;
+  min-width:0!important;min-height:40px!important;margin:0!important;padding:4px 5px 4px 10px!important;
+  border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line))!important;border-radius:999px!important;
+  background:color-mix(in srgb,var(--bg) 55%,transparent)!important;box-sizing:border-box!important;
+}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-search-icon{width:28px!important;height:28px!important;min-width:28px!important;min-height:28px!important;flex:0 0 28px!important;border-radius:50%!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-search input{display:block!important;flex:1 1 auto!important;width:100%!important;min-width:0!important;min-height:30px!important;padding:0!important;border:0!important;background:transparent!important;color:var(--text)!important;font:inherit!important;font-size:.75rem!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-search>button{display:grid!important;place-items:center!important;width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;flex:0 0 32px!important;border:0!important;border-radius:50%!important;background:linear-gradient(135deg,var(--accent-deep),var(--accent))!important;color:white!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-tools{
+  grid-area:tools!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;min-height:34px!important;
+}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-mode-slot{display:flex!important;align-items:center!important;min-width:0!important}
+.eneles-archives-topblock.eneles-shared-site-header .theme-mode-choices{display:flex!important;align-items:center!important;gap:3px!important;padding:3px!important;border:1px solid var(--line)!important;border-radius:999px!important;background:color-mix(in srgb,var(--surface) 90%,transparent)!important}
+.eneles-archives-topblock.eneles-shared-site-header .theme-mode-choices button{display:grid!important;place-items:center!important;width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important;padding:0!important;border:1px solid transparent!important;border-radius:50%!important;background:transparent!important;color:var(--muted)!important}
+.eneles-archives-topblock.eneles-shared-site-header .theme-mode-choices button[aria-pressed="true"]{background:var(--accent)!important;color:#fff!important;box-shadow:0 4px 12px color-mix(in srgb,var(--accent) 26%,transparent)!important}
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-palette-slot{display:flex!important;align-items:center!important;justify-content:flex-end!important;min-width:0!important}
+.eneles-archives-topblock.eneles-shared-site-header .color-theme-wrap{position:relative!important}
+.eneles-archives-topblock.eneles-shared-site-header #colorThemeToggle{display:grid!important;place-items:center!important;width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;padding:0!important;border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line))!important;border-radius:50%!important;background:color-mix(in srgb,var(--accent) 9%,var(--surface))!important;color:var(--text)!important}
+.eneles-archives-topblock.eneles-shared-site-header #colorThemeToggle .color-btn-label{display:none!important}
+.eneles-archives-topblock.eneles-shared-site-header #colorThemeToggle .color-dot{width:15px!important;height:15px!important;min-width:15px!important;min-height:15px!important;border-radius:50%!important;background:var(--accent)!important}
+.eneles-archives-topblock.eneles-shared-site-header .color-theme-panel{top:calc(100% + 9px)!important;bottom:auto!important;right:0!important;left:auto!important;z-index:1305!important}
+.eneles-header-control-source{display:none!important}
+@media(max-width:560px){
+ .eneles-archives-topblock.eneles-shared-site-header{width:calc(100% - 14px)!important;gap:7px 7px!important;margin:5px auto 12px!important;padding:8px 9px!important;border-radius:22px!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-mark{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;flex-basis:38px!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-brand-copy strong{font-size:.79rem!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-brand-copy small{font-size:.58rem!important}
+ .eneles-archives-topblock.eneles-shared-site-header #enelesTopblockAuth{min-height:33px!important;max-width:90px!important;padding:6px 8px!important;font-size:.62rem!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-add-content-btn{min-height:33px!important;padding:7px 9px!important;font-size:.62rem!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-search{min-height:37px!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-search>button{width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important;flex-basis:30px!important}
+ .eneles-archives-topblock.eneles-shared-site-header .theme-mode-choices button{width:28px!important;height:28px!important;min-width:28px!important;min-height:28px!important}
+ .eneles-archives-topblock.eneles-shared-site-header #colorThemeToggle{width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important}
+}
+@media(max-width:370px){
+ .eneles-archives-topblock.eneles-shared-site-header{grid-template-columns:minmax(0,1fr) auto auto!important;gap:6px 5px!important;padding:7px!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-brand-copy small{display:none!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-brand-copy strong{font-size:.73rem!important}
+ .eneles-archives-topblock.eneles-shared-site-header #enelesTopblockAuth{font-size:.58rem!important;padding-inline:6px!important}
+ .eneles-archives-topblock.eneles-shared-site-header .eneles-add-content-btn{font-size:.58rem!important;padding-inline:7px!important}
+}
+.aurore-ia-app>.eneles-archives-topblock.eneles-shared-site-header{flex:0 0 auto!important;width:calc(100% - 24px)!important;margin:8px 12px 9px!important}
+.aurore-ia-app .aurore-ia-topbar{flex:0 0 52px!important;height:52px!important;min-height:52px!important;border-radius:14px!important;margin:0 12px!important}
+@media(prefers-reduced-motion:reduce){.eneles-archives-topblock.eneles-shared-site-header *{transition:none!important}}
+
+.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-context-slot{grid-area:context!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;min-width:0!important}
+.eneles-assistant-header-controls{display:flex;align-items:center;justify-content:flex-end;gap:7px;min-width:0}
+.eneles-assistant-header-controls .aurore-ia-status{padding:6px 8px!important;min-width:0!important;white-space:nowrap!important}
+.eneles-assistant-header-controls .aurore-ia-new{min-height:36px!important;padding:7px 10px!important;font-size:.66rem!important;white-space:nowrap!important}
+.eneles-assistant-header-controls .aurore-ia-login{display:none!important}
+@media(max-width:560px){
+ .eneles-archives-topblock.eneles-shared-site-header{grid-template-columns:minmax(0,1fr) auto auto auto!important}
+ .eneles-assistant-header-controls{gap:4px!important}
+ .eneles-assistant-header-controls .aurore-ia-status{padding:5px!important}
+ .eneles-assistant-header-controls .aurore-ia-status>span{display:none!important}
+ .eneles-assistant-header-controls .aurore-ia-status i{margin:0!important}
+ .eneles-assistant-header-controls .aurore-ia-new{min-height:32px!important;padding:6px 7px!important;font-size:.6rem!important}
+ .eneles-assistant-header-controls .aurore-ia-new span:last-child{display:none!important}
+}

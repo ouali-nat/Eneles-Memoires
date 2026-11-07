@@ -214,7 +214,7 @@
     }
   }
   function init(){
-    if(!document.body||!document.querySelector('.topbar')||document.getElementById('enelesMemorySidebar'))return;
+    if(!document.body||document.getElementById('enelesMemorySidebar'))return;
     document.documentElement.classList.add('has-asb');document.body.classList.add('eneles-has-sidebar');
     openState=read(OPEN_KEY,{});if(!openState||typeof openState!=='object'||Array.isArray(openState))openState={};
     nav=document.createElement('nav');nav.id='enelesMemorySidebar';nav.className='asb';nav.setAttribute('aria-label','Navigation principale Eneles Mémoire');
