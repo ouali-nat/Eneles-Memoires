@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   /* Feuilles de style chargées en dernier + bloc de présentation de l'accueil. */
-  var V='20261107-global-library-header-v1';
+  var V='20261107-ui-cleanup-v1';
   function loadExtras(){
     if(!document.head||!document.body)return;
     ['eneles-final-layout.css','eneles-window-blocks.css','eneles-hero-tune.css','eneles-header-presentation-20261104.css','eneles-material-home-20261104.css'].forEach(function(f){
@@ -16,6 +16,9 @@
     var globalBlocks=document.querySelector('link[href*="eneles-memory-global-blocks.css"]');
     if(!globalBlocks){globalBlocks=document.createElement('link');globalBlocks.rel='stylesheet';globalBlocks.href='./css/eneles-memory-global-blocks.css?v='+V;document.head.appendChild(globalBlocks)}
     else document.head.appendChild(globalBlocks);
+    var uiCleanup=document.querySelector('link[href*="eneles-ui-cleanup.css"]');
+    if(!uiCleanup){uiCleanup=document.createElement('link');uiCleanup.rel='stylesheet';uiCleanup.href='./css/eneles-ui-cleanup.css?v=20261107-ui-cleanup-v1'}
+    document.head.appendChild(uiCleanup);
     if(document.body.dataset.page==='home'&&!document.querySelector('script[src*="eneles-home-presentation.js"]')){
       var s=document.createElement('script');s.src='./eneles-home-presentation.js?v='+V;document.body.appendChild(s);
     }
@@ -157,14 +160,14 @@
   function updateAccount(session){
     if(!nav)return;
     var u=session&&session.user?session.user:null;
-    var strong=nav.querySelector('#enelesSidebarAccount strong'),small=nav.querySelector('#enelesSidebarAccount small'),av=nav.querySelector('.asb-avatar');
+    var strong=nav.querySelector('#enelesSidebarAccount strong'),small=nav.querySelector('#enelesSidebarAccount .asb-user-email'),hint=nav.querySelector('#enelesSidebarAccount .asb-user-hint'),av=nav.querySelector('.asb-avatar');
     if(!strong||!small||!av)return;
     if(u){
       var meta=u.user_metadata||{};
       var name=String(meta.full_name||meta.name||(u.email||'').split('@')[0]||'Compte Eneles ID');
-      strong.textContent=name;small.textContent='Appuyer pour se déconnecter';av.textContent=(name.charAt(0)||'E').toUpperCase();
+      strong.textContent=name;small.textContent=u.email||'Compte connecté';if(hint)hint.textContent='Appuyer pour les options';av.textContent=(name.charAt(0)||'E').toUpperCase();
     }else{
-      strong.textContent='Compte Eneles ID';small.textContent='Se connecter';av.innerHTML=svg('user',20);
+      strong.textContent='Compte Eneles ID';small.textContent='Se connecter';if(hint)hint.textContent='';av.innerHTML=svg('user',20);
     }
   }
   function setNet(state){var n=nav&&nav.querySelector('#enelesSidebarNet');if(!n)return;n.dataset.state=state;n.querySelector('span').textContent=state==='online'?'En ligne':'Hors ligne · données locales'}
@@ -218,8 +221,7 @@
     document.documentElement.classList.add('has-asb');document.body.classList.add('eneles-has-sidebar');
     openState=read(OPEN_KEY,{});if(!openState||typeof openState!=='object'||Array.isArray(openState))openState={};
     nav=document.createElement('nav');nav.id='enelesMemorySidebar';nav.className='asb';nav.setAttribute('aria-label','Navigation principale Eneles Mémoire');
-    nav.innerHTML='<div class="asb-dots" aria-hidden="true"><i></i><i></i><i></i></div>'+
-      '<div class="asb-head"><div class="asb-brand"><img src="/assets/aurore-logo.png" alt=""><span>Eneles</span></div><button type="button" class="asb-collapse" aria-label="Réduire le menu" title="Réduire / agrandir">'+svg('collapse',16)+'</button></div>'+
+    nav.innerHTML='<div class="asb-head"><div class="asb-brand"><img src="/assets/aurore-logo.png" alt=""><span>Eneles</span></div><button type="button" class="asb-collapse" aria-label="Réduire le menu" title="Réduire / agrandir">'+svg('collapse',16)+'</button></div>'+
       '<div class="asb-sep"></div>'+
       '<div class="asb-scroll">'+
         '<div class="asb-today" id="enelesSidebarToday"><div class="asb-today-top"><span class="asb-today-label">Aujourd’hui</span><b class="asb-today-due" id="enelesTodayDue">0</b></div><p class="asb-today-text" id="enelesTodayText">Chargement…</p><div class="asb-today-chips"><span id="enelesTodayMemories">0 mémorisation</span><span id="enelesTodaySeries">0 série</span></div><a class="asb-today-cta" id="enelesTodayCta" href="creer.html"><span>Ajouter un contenu</span>'+svg('chevron',14)+'</a></div>'+
@@ -230,7 +232,7 @@
       '</div>'+
       '<div class="asb-sep"></div>'+
       '<div class="asb-net" id="enelesSidebarNet" data-state="online" role="status"><i aria-hidden="true"></i><span>En ligne</span></div>'+
-      '<button type="button" class="asb-user" id="enelesSidebarAccount"><span class="asb-avatar">'+svg('user',20)+'</span><span class="asb-user-text"><strong>Compte Eneles ID</strong><small>Se connecter</small></span></button>';
+      '<button type="button" class="asb-user" id="enelesSidebarAccount"><span class="asb-avatar">'+svg('user',20)+'</span><span class="asb-user-text"><strong>Compte Eneles ID</strong><small class="asb-user-email">Se connecter</small><small class="asb-user-hint"></small></span></button>';
     scrim=document.createElement('div');scrim.className='asb-scrim';scrim.addEventListener('click',function(){setOpen(false)});
     toggle=document.createElement('button');toggle.type='button';toggle.className='asb-toggle';toggle.setAttribute('aria-label','Ouvrir la barre latérale');toggle.setAttribute('aria-expanded','false');toggle.innerHTML=svg('chevron',16);toggle.addEventListener('click',function(){setOpen(!nav.classList.contains('is-open'))});
     document.body.appendChild(scrim);document.body.appendChild(nav);document.body.appendChild(toggle);

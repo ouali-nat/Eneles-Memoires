@@ -25,7 +25,7 @@
         '<div class="eneles-topblock-context-slot" id="enelesTopblockContextSlot"></div>'+
       '</div>'+
       '<button class="eneles-topblock-auth" id="enelesTopblockAuth" type="button">'+
-        '<span class="eneles-topblock-auth-mark" aria-hidden="true">●</span><span>Connexion</span>'+
+        '<span class="eneles-topblock-auth-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20a7 7 0 0 1 14 0"></path></svg></span><span class="eneles-topblock-auth-copy"><strong class="eneles-topblock-auth-name">Connexion</strong><small class="eneles-topblock-auth-email">Eneles ID</small></span>'+
       '</button>'+
       '<a class="eneles-add-content-btn" href="creer.html" aria-label="Ajouter du contenu">'+
         '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span>Ajouter</span>'+
@@ -113,8 +113,12 @@
       window.__enelesLegacyHeaderObserver.observe(document.body,{childList:true,subtree:true});
     }
 
-    var label=bar.querySelector('#enelesTopblockAuth span:last-child');
     var authButton=bar.querySelector('#enelesTopblockAuth');
+    if(authButton&&!authButton.querySelector('.eneles-topblock-auth-copy')){
+      authButton.innerHTML='<span class="eneles-topblock-auth-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20a7 7 0 0 1 14 0"></path></svg></span><span class="eneles-topblock-auth-copy"><strong class="eneles-topblock-auth-name">Connexion</strong><small class="eneles-topblock-auth-email">Accès à votre espace</small></span>';
+    }
+    var label=bar.querySelector('#enelesTopblockAuth .eneles-topblock-auth-name');
+    var emailLabel=bar.querySelector('#enelesTopblockAuth .eneles-topblock-auth-email');
     function syncAuth(value){
       var session=sessionFrom(value),user=session&&session.user;
       var text='Connexion';
@@ -123,8 +127,11 @@
         text=meta.full_name||meta.name||meta.preferred_username||
           (user.email?user.email.split('@')[0]:'Mon compte');
       }
-      if(label)label.textContent=text.length>15?text.slice(0,14)+'…':text;
-      if(authButton)authButton.setAttribute('aria-label',user?'Ouvrir le compte '+text:'Se connecter avec Eneles ID');
+      if(label)label.textContent=text.length>18?text.slice(0,17)+'…':text;
+      if(emailLabel)emailLabel.textContent=user?(user.email||'Compte connecté'):'Accès à votre espace';
+      if(emailLabel)emailLabel.title=user?(user.email||''):'Connexion Eneles ID';
+      if(authButton)authButton.title=user?(user.email||text):'Connexion Eneles ID';
+      if(authButton)authButton.setAttribute('aria-label',user?'Ouvrir le compte '+text+(user.email?' · '+user.email:''):'Se connecter avec Eneles ID');
       if(authButton)authButton.dataset.connected=user?'true':'false';
     }
     if(authButton&&!authButton.dataset.bound){

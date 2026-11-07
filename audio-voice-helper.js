@@ -6,7 +6,7 @@ var ua=navigator.userAgent||'',android=/Android/i.test(ua),ios=/iPhone|iPad|iPod
 if(!document.getElementById('voiceHelpStyle')){var st=document.createElement('style');st.id='voiceHelpStyle';st.textContent='.voice-help{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.6)}.voice-help[hidden]{display:none}.voice-help-card{width:min(520px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:22px;margin:0}.voice-help-card h2{margin:4px 0 8px;font-size:1.15rem}.voice-help-card p{font-size:.82rem;line-height:1.6}.voice-help-card ol{margin:10px 0 14px;padding-left:20px;line-height:1.7;font-size:.82rem}.voice-help-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.voice-help-actions a,.voice-help-actions button{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 14px;font-size:.78rem}.voice-help-count{margin:10px 0 0;font-size:.78rem;font-weight:700}';document.head.appendChild(st);}
 function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;}
 function frCount(){var l=window.speechSynthesis&&speechSynthesis.getVoices?speechSynthesis.getVoices():[];return l.filter(function(v){return /^fr/i.test(String(v.lang||'').replace('_','-'));}).length;}
-var btn=el('button','secondary-btn','🎙 Améliorer les voix');btn.type='button';btn.id='voiceHelpBtn';btn.style.marginTop='8px';
+var btn=el('button','secondary-btn','Améliorer les voix');btn.type='button';btn.id='voiceHelpBtn';btn.style.marginTop='8px';
 note.parentNode.insertBefore(btn,note.nextSibling);
 var ov=el('div','voice-help');ov.id='voiceHelp';ov.hidden=true;ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-labelledby','voiceHelpTitle');
 var card=el('div','form-panel voice-help-card');
@@ -22,7 +22,7 @@ if(android){var a1=el('a','primary-btn','Ouvrir les réglages vocaux');a1.href='
 var refresh=el('button','secondary-btn','↻ Actualiser les voix');refresh.type='button';actions.appendChild(refresh);
 var close=el('button','secondary-btn','Fermer');close.type='button';actions.appendChild(close);
 card.append(kick,title,intro,steps,count,actions);ov.appendChild(card);(document.querySelector('main')||document.body).appendChild(ov);
-function update(){var n=frCount();count.textContent=n?n+' voix française(s) détectée(s) sur cet appareil.':'Aucune voix française détectée pour le moment.';btn.textContent=(!n&&android)?'🎙 Installer des voix françaises':'🎙 Améliorer les voix';return n;}
+function update(){var n=frCount();count.textContent=n?n+' voix française(s) détectée(s) sur cet appareil.':'Aucune voix française détectée pour le moment.';btn.textContent=(!n&&android)?'Installer des voix françaises':'Améliorer les voix';return n;}
 function open(){update();ov.hidden=false;try{localStorage.setItem('aurore-voice-help-seen','1');}catch(e){}}
 function shut(){ov.hidden=true;}
 btn.addEventListener('click',open);close.addEventListener('click',shut);

@@ -162,7 +162,7 @@
     item.dataset.compactMenuReady = "true"; item.classList.add("has-compact-actions");
     var button = item.querySelector(":scope > .series-menu-trigger");
     if (!button) {
-      button = document.createElement("button"); button.type = "button"; button.className = "compact-action-trigger"; button.textContent = "•••"; button.setAttribute("aria-label", "Ouvrir les options de " + itemTitle(item)); button.setAttribute("aria-haspopup", "dialog");
+      button = document.createElement("button"); button.type = "button"; button.className = "compact-action-trigger"; button.innerHTML = '<svg class="eneles-options-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>'; button.setAttribute("aria-label", "Ouvrir les options de " + itemTitle(item)); button.setAttribute("aria-haspopup", "dialog");
       item.insertBefore(button, item.firstChild);
     } else {
       button.classList.add("compact-action-trigger"); button.setAttribute("aria-label", "Ouvrir les options de " + itemTitle(item));

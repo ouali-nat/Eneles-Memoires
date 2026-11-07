@@ -15,13 +15,13 @@ function inject() {
   a.innerHTML = tpl.innerHTML;
   var w = document.createTreeWalker(a, NodeFilter.SHOW_TEXT), n, nodes = [];
   while ((n = w.nextNode())) { if (n.nodeValue.trim()) nodes.push(n); }
-  var c = count();
+  var c = count(), icon = a.querySelector(".chooser-icon,.library-choice-icon,.memory-row-mark");
+  if (icon) icon.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/><path d="M17 19a5 5 0 0 1-5 3h-1"/></svg>';
   nodes.forEach(function (t) {
-    var s = t.nodeValue.trim();
-    if (/^[▤▧◎]$/.test(s)) t.nodeValue = "♫";
-    else if (/^[↗→]$/.test(s)) return;
-    else if (/\d/.test(s) && s.length < 30) t.nodeValue = c + (c > 1 ? " audios" : " audio");
-    else if (s.length > 22) t.nodeValue = "Enregistrements, textes lus et séquences d’écoute.";
+    var value = t.nodeValue.trim();
+    if (/^[▤▧◎]$/.test(value) || /^[↗→]$/.test(value)) t.nodeValue = "";
+    else if (/\d/.test(value) && value.length < 30) t.nodeValue = c + (c > 1 ? " audios" : " audio");
+    else if (value.length > 22) t.nodeValue = "Enregistrements, textes lus et séquences d’écoute.";
     else t.nodeValue = "Mes audios";
   });
   tpl.parentNode.appendChild(a);

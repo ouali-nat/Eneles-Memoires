@@ -9,14 +9,14 @@
 <link rel="stylesheet" href="style.css?v=20261106-theme-containment-v1">
 <link rel="stylesheet" href="memoire.css?v=20261026-sitewide-math-v1">
   <link rel="preconnect" href="https://oegxxndiuovisustjstp.supabase.co" crossorigin>
-  <link rel="prefetch" href="groupe.js?v=20261024-shared-resource-types-v1" as="script">
+  <link rel="prefetch" href="groupe.js?v=20261107-clean-icons-v1" as="script">
 </head>
 <body data-page="group-detail">
 <div class="ambient-bg" aria-hidden="true"></div>
 <div class="eneles-header-control-source" hidden aria-hidden="true"><div class="appearance"><button class="theme-btn" id="themeToggle" type="button" aria-label="Basculer entre le thème sombre et clair" title="Mode clair / sombre">◐</button></div></div>
 <main class="wrap groups-main">
 <a class="back-link" href="groupes.html">Tous les groupes</a>
-<section class="groups-detail-hero" id="groupHero"><div class="groups-detail-heading"><div class="groups-detail-cover" id="groupCover" hidden></div><div class="groups-detail-title"><p class="eyebrow">ESPACE COLLECTIF</p><h1 id="groupTitle">Chargement du groupe…</h1><p id="groupDescription" class="groups-detail-description"></p></div><button class="groups-menu-trigger" id="groupMenuButton" type="button" aria-label="Ouvrir le menu du groupe" aria-haspopup="dialog" aria-expanded="false">•••</button></div></section>
+<section class="groups-detail-hero" id="groupHero"><div class="groups-detail-heading"><div class="groups-detail-cover" id="groupCover" hidden></div><div class="groups-detail-title"><p class="eyebrow">ESPACE COLLECTIF</p><h1 id="groupTitle">Chargement du groupe…</h1><p id="groupDescription" class="groups-detail-description"></p></div><button class="groups-menu-trigger" id="groupMenuButton" type="button" aria-label="Ouvrir le menu du groupe" aria-haspopup="dialog" aria-expanded="false"><svg class="eneles-options-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button></div></section>
 <div class="group-settings-backdrop" id="groupSettingsModal" hidden>
 <section class="group-settings-dialog" role="dialog" aria-modal="true" aria-labelledby="groupSettingsTitle">
 <div class="group-settings-header"><h2 id="groupSettingsTitle">Gestion du groupe</h2><button class="groups-icon-btn" id="closeGroupSettings" type="button" aria-label="Fermer">×</button></div>
@@ -48,7 +48,7 @@
 <script src="math-render.js?v=20261026-sitewide-math-v3"></script>
 <script src="network-status.js?v=20261021-network-status-v2"></script>
   <script src="spa-router.js?v=20261021-network-status-v2"></script>
-<script src="app.js?v=20261107-one-shared-header-v3"></script>
+<script src="app.js?v=20261107-ui-cleanup-v1"></script>
 <script>
 (function () {
   "use strict";
@@ -72,7 +72,7 @@
     appStarted = true;
     if (timeoutId) window.clearTimeout(timeoutId);
     var app = document.createElement("script");
-    app.src = "groupe.js?v=20261024-shared-resource-types-v1";
+    app.src = "groupe.js?v=20261107-clean-icons-v1";
     app.onerror = function () {
       showFailure("Service indisponible", "Le script de l’espace collectif n’a pas pu être chargé. Vérifiez la connexion puis rechargez la page.");
     };
@@ -110,5 +110,5 @@
   trySource();
 })();
 </script>
-<script src="compact-actions.js?v=20261025-compact-actions-v1"></script></body>
+<script src="compact-actions.js?v=20261107-clean-options-v1"></script></body>
 </html>

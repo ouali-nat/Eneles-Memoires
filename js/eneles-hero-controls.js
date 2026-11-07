@@ -24,7 +24,7 @@
   }
   trigger.id = "enelesHeroMenuTrigger";
   trigger.classList.add("eneles-hero-menu-trigger");
-  trigger.textContent = "•••";
+  trigger.innerHTML = '<svg class="eneles-options-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>';
   trigger.setAttribute("aria-label", "Options de l’accueil");
   trigger.setAttribute("title", "Options de l’accueil");
   trigger.setAttribute("aria-haspopup", "dialog");

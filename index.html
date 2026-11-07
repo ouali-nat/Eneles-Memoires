@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="memoire.css?v=20261026-sitewide-math-v1" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="cloud-files.css?v=20261017-r2" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="memoire.css?v=20261026-sitewide-math-v1"><link rel="stylesheet" href="cloud-files.css?v=20261017-r2"></noscript>
-  <link rel="prefetch" href="memoire.js?v=20261106-ui-cleanup-v1" as="script">
+  <link rel="prefetch" href="memoire.js?v=20261107-clean-options-v1" as="script">
   <link rel="prefetch" href="math-render.js?v=20261026-sitewide-math-v3" as="script">
   <link rel="prefetch" href="reviser-cartes.js?v=20261026-katex-text-spacing-v2" as="script">
   <link rel="icon" type="image/svg+xml" href="/assets/aurore-logo.png">
@@ -98,8 +98,8 @@
       </a>
     </div>
     <button class="eneles-topblock-auth" id="enelesTopblockAuth" type="button">
-      <span class="eneles-topblock-auth-mark" aria-hidden="true">ID</span>
-      <span>Se connecter avec Eneles ID</span>
+      <span class="eneles-topblock-auth-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20a7 7 0 0 1 14 0"></path></svg></span>
+      <span class="eneles-topblock-auth-copy"><strong class="eneles-topblock-auth-name">Connexion</strong><small class="eneles-topblock-auth-email">Accès à votre espace</small></span>
     </button>
     <a class="eneles-add-content-btn" href="creer.html" aria-label="Ajouter du contenu">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
@@ -115,7 +115,7 @@
       <div class="eneles-topblock-palette-slot" id="enelesTopblockPaletteSlot" aria-label="Palette de couleurs"></div>
     </div>
   </section>
-  <div class="eneles-hero-controls"><button type="button" class="eneles-hero-toggle eneles-hero-menu-trigger" id="enelesHeroMenuTrigger" aria-haspopup="menu" aria-expanded="false" aria-label="Options de l’accueil">•••</button></div>
+  <div class="eneles-hero-controls"><button type="button" class="eneles-hero-toggle eneles-hero-menu-trigger" id="enelesHeroMenuTrigger" aria-haspopup="menu" aria-expanded="false" aria-label="Options de l’accueil"><svg class="eneles-options-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button></div>
   <section class="hero eneles-memory-hero aurore-hero-morph" id="enelesMemoryHero" aria-labelledby="enelesMemoryHeroTitle">
     <div class="hero-motif" aria-hidden="true"></div>
     <div class="hero-glow g1" aria-hidden="true"></div>
@@ -159,7 +159,7 @@
       <a class="home-action-card" href="groupes.html"><span class="action-icon" aria-hidden="true">♧</span><strong>Rejoindre ou créer un groupe</strong><small>Travaillez ensemble dans un espace dédié.</small></a>
       <a class="home-action-card" href="cartes-publiques.html"><span class="action-icon" aria-hidden="true">⌕</span><strong>Explorer les cartes et mémorisations</strong><small>Parcourez et ajoutez des contenus partagés.</small></a>
       <div class="home-action-card is-coming"><span class="action-icon" aria-hidden="true">≡</span><strong>Faire mon résumé</strong><small>Préparez un résumé clair à partir de vos notes.</small><span class="coming-label">Bientôt disponible</span></div>
-      <div class="home-action-card is-coming"><span class="action-icon" aria-hidden="true">✎</span><strong>Produire ma dissertation</strong><small>Organisez une problématique, un plan et vos arguments.</small><span class="coming-label">Bientôt disponible</span></div>
+      <div class="home-action-card is-coming"><span class="action-icon action-document-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/><path d="M14 3.5V8h4M8 12h8M8 16h8"/></svg></span><strong>Produire ma dissertation</strong><small>Organisez une problématique, un plan et vos arguments.</small><span class="coming-label">Bientôt disponible</span></div>
     </div>
   </section>
 
@@ -170,9 +170,9 @@
   <script src="auth.js?v=20261023-canonical-lock-v2"></script>
   <script src="memory-access.js?v=20261018-auth-menu-fix2"></script>
   <script src="network-status.js?v=20261021-menu-right-v3"></script>
-  <script src="app.js?v=20261107-one-shared-header-v3"></script>
+  <script src="app.js?v=20261107-ui-cleanup-v1"></script>
   <script src="home-stats.js?v=20261015-nav-stats-cache"></script>
   <script src="spa-router.js?v=20261023-login-gate-route-fix"></script>
   <script src="app-menu.js?v=20261103-archives-sidebar-v1"></script>
-<script src="compact-actions.js?v=20261025-compact-actions-v1"></script><script src="eneles-home-polish.js?v=20261107-hero-menu-compat-v1"></script><script src="js/eneles-hero-controls.js?v=20261107-floating-controls-v3"></script><script src="eneles-hero-morph.js?v=20261107-motion-restore-v2"></script></body>
+<script src="compact-actions.js?v=20261107-clean-options-v1"></script><script src="eneles-home-polish.js?v=20261107-ui-cleanup-v1"></script><script src="js/eneles-hero-controls.js?v=20261107-ui-cleanup-v1"></script><script src="eneles-hero-morph.js?v=20261107-motion-restore-v2"></script></body>
 </html>
