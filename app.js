@@ -679,13 +679,13 @@
   window.__enelesSidebarAssetsRequested=true;
   function load(){
     if(!document.body)return;
-    var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/eneles-archives-alignment.css','css/eneles-mobile-polish.css','css/eneles-memory-global-header.css'];
+    var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/eneles-archives-alignment.css','css/eneles-mobile-polish.css','css/eneles-memory-global-header.css','css/eneles-memory-global-blocks.css','css/eneles-memory-chooser-layout.css'];
     css.forEach(function(h){if(document.querySelector('link[href*="'+h+'"]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='./'+h+'?v=20261107-global-header-v2';document.head.appendChild(l)});
     if(document.querySelector('.topbar')&&!document.querySelector('script[src*="eneles-sidebar.js"]')){
       var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261107-global-library-header-v2';document.body.appendChild(s);
     }
     if(!document.querySelector('script[src*="eneles-global-header.js"]')){
-      var h=document.createElement('script');h.src='./eneles-global-header.js?v=20261107-global-header-v1';document.body.appendChild(h);
+      var h=document.createElement('script');h.src='./eneles-global-header.js?v=20261107-native-topbar-v2';document.body.appendChild(h);
     }
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();
