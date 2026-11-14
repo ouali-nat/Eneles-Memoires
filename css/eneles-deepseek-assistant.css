@@ -1,0 +1,753 @@
+/* Eneles Mémoire — interface de conversation inspirée de l'ergonomie DeepSeek.
+   Les fonctions, la palette Eneles et le moteur Aurora restent inchangés. */
+#screen-aurore-ia.aurore-ia-screen {
+  background: #101010 !important;
+  color: #f5f5f5;
+}
+#screen-aurore-ia .aurore-ia-app {
+  --ia-bg: #101010;
+  --ia-text: #f5f5f5;
+  --ia-muted: #a1a1a1;
+  --ia-border: #373737;
+  --ia-panel: #242424;
+  --ia-accent: var(--accent, #8B5CF6);
+  --ia-accent-2: var(--accent-deep, #6D28D9);
+  --ia-accent-3: var(--accent-light, #C084FC);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: #101010 !important;
+  color: #f5f5f5;
+}
+
+/* Barre supérieure : menu à gauche, nom de l'espace, nouvelle discussion. */
+#screen-aurore-ia .aurore-ia-topbar {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  flex: 0 0 62px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  height: 62px;
+  min-height: 62px;
+  padding: 0 clamp(12px, 2.5vw, 24px);
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  border-radius: 0;
+  background: #101010;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+#screen-aurore-ia .aurore-ia-left,
+#screen-aurore-ia .aurore-ia-top-actions {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 10px;
+}
+#screen-aurore-ia .aurore-ia-left { flex: 1 1 auto; }
+#screen-aurore-ia .aurore-ia-menu-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #e8e8e8;
+}
+#screen-aurore-ia .aurore-ia-menu-btn:hover {
+  background: rgba(255,255,255,.08);
+}
+#screen-aurore-ia .aurore-ia-menu-btn-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 19px;
+}
+#screen-aurore-ia .aurore-ia-menu-btn-icon span {
+  display: block;
+  width: 19px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+#screen-aurore-ia .aurore-ia-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  text-decoration: none;
+}
+#screen-aurore-ia .aurore-ia-mark {
+  display: block;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: none;
+}
+#screen-aurore-ia .aurore-ia-brand-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.15;
+}
+#screen-aurore-ia .aurore-ia-brand-copy strong {
+  overflow: hidden;
+  color: #f4f4f4;
+  font-size: .88rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#screen-aurore-ia .aurore-ia-brand-copy span {
+  margin-top: 3px;
+  color: #929292;
+  font-size: .65rem;
+}
+#screen-aurore-ia .aurore-ia-current-title {
+  overflow: hidden;
+  margin-left: 12px;
+  color: #c5c5c5;
+  font-size: .82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#screen-aurore-ia .aurore-ia-status {
+  display: inline-flex !important;
+  padding: 6px 9px;
+  border-color: rgba(255,255,255,.09);
+  background: rgba(255,255,255,.035);
+  color: #a9a9a9;
+  font-size: .65rem;
+}
+#screen-aurore-ia .aurore-ia-status i {
+  width: 6px;
+  height: 6px;
+}
+#screen-aurore-ia .aurore-ia-login,
+#screen-aurore-ia .aurore-ia-new {
+  min-height: 36px;
+  padding: 0 11px;
+  border: 1px solid #404040;
+  border-radius: 11px;
+  background: #242424;
+  color: #f2f2f2;
+  font: inherit;
+  font-size: .7rem;
+  font-weight: 650;
+}
+#screen-aurore-ia .aurore-ia-new:hover,
+#screen-aurore-ia .aurore-ia-login:hover {
+  border-color: #666;
+  background: #303030;
+}
+#screen-aurore-ia .aurore-ia-new span:first-child {
+  font-size: 1rem;
+}
+#screen-aurore-ia .aurore-ia-top-actions { flex: 0 0 auto; }
+
+/* Colonne de navigation et conversation principale. */
+#screen-aurore-ia .aurore-ia-main {
+  display: grid !important;
+  grid-template-columns: 258px minmax(0, 1fr) !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0 !important;
+  overflow: hidden;
+  background: #101010;
+}
+#screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex-direction: column;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  padding: 17px 12px;
+  overflow: hidden;
+  transform: none !important;
+  opacity: 1 !important;
+  border: 0;
+  border-right: 1px solid rgba(255,255,255,.075);
+  border-radius: 0;
+  background: #171717;
+  box-shadow: none;
+  pointer-events: auto !important;
+  transition: width .18s ease, opacity .18s ease;
+  z-index: 3;
+}
+#screen-aurore-ia .aurore-ia-history-head {
+  padding: 3px 7px 14px;
+  border-bottom: 0;
+}
+#screen-aurore-ia .aurore-ia-history-head h2 {
+  margin: 4px 0 0;
+  color: #eeeeee;
+  font-size: .9rem;
+  font-weight: 700;
+}
+#screen-aurore-ia .aurore-ia-history-head .aurore-ia-kicker {
+  color: #999;
+  font-size: .58rem;
+  letter-spacing: .1em;
+}
+#screen-aurore-ia .aurore-ia-history-close { display: none; }
+#screen-aurore-ia .aurore-ia-history-new {
+  justify-content: flex-start;
+  min-height: 42px;
+  margin: 2px 0 15px;
+  padding: 0 12px;
+  border: 1px solid #414141;
+  border-radius: 12px;
+  background: #242424;
+  color: #f3f3f3;
+  font-size: .75rem;
+}
+#screen-aurore-ia .aurore-ia-history-new:hover {
+  border-color: #666;
+  background: #2d2d2d;
+}
+#screen-aurore-ia .aurore-ia-history-list {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#screen-aurore-ia .aurore-ia-history-item {
+  display: block;
+  width: 100%;
+  min-height: 39px;
+  padding: 9px 10px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: #c7c7c7;
+  font: inherit;
+  font-size: .72rem;
+  line-height: 1.35;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#screen-aurore-ia .aurore-ia-history-item:hover {
+  border-color: transparent;
+  background: #252525;
+  color: #fff;
+  transform: none;
+}
+#screen-aurore-ia .aurore-ia-history-item[aria-current="true"] {
+  border-color: transparent;
+  background: #2c2c2c;
+  color: #fff;
+}
+#screen-aurore-ia .aurore-ia-history-empty {
+  margin: 12px 8px;
+  color: #858585;
+  font-size: .7rem;
+  text-align: left;
+}
+#screen-aurore-ia .aurore-ia-history-overlay { display: none; }
+#screen-aurore-ia .aurore-ia-history-overlay[hidden] { display: none !important; }
+#screen-aurore-ia .aurore-ia-app.is-history-collapsed .aurore-ia-main {
+  grid-template-columns: 0 minmax(0, 1fr) !important;
+}
+#screen-aurore-ia .aurore-ia-app.is-history-collapsed .aurore-ia-history-panel {
+  width: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Accueil : logo Eneles et invitation centrés, sans grand panneau décoratif. */
+#screen-aurore-ia .aurore-ia-chat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #101010 !important;
+}
+#screen-aurore-ia .aurore-ia-conversation {
+  display: flex;
+  flex: 1 1 auto !important;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 24px clamp(14px, 5vw, 58px) 20px;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  background: transparent;
+  scrollbar-color: #494949 transparent;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+#screen-aurore-ia .aurore-ia-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(650px, 100%);
+  margin: auto;
+  padding: 24px 0 30px;
+  text-align: center;
+}
+#screen-aurore-ia .aurore-ia-welcome-orbit {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+}
+#screen-aurore-ia .aurore-ia-welcome-orbit::before { display: none; }
+#screen-aurore-ia .aurore-ia-welcome-mark {
+  display: block;
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 50%;
+  background: transparent !important;
+  box-shadow: none;
+  color: transparent;
+}
+#screen-aurore-ia .aurore-ia-welcome h1 {
+  margin: 0;
+  color: #f2f2f2;
+  font-size: clamp(1.55rem, 4vw, 2.15rem);
+  font-weight: 650;
+  letter-spacing: -.045em;
+  line-height: 1.2;
+}
+#screen-aurore-ia .aurore-ia-welcome h1 span {
+  color: #f2f2f2;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+#screen-aurore-ia .aurore-ia-welcome-text {
+  max-width: 470px;
+  margin: 11px auto 0;
+  color: #a0a0a0;
+  font-size: .88rem;
+  line-height: 1.55;
+}
+#screen-aurore-ia .aurore-ia-kicker { display: none; }
+#screen-aurore-ia .aurore-ia-tool-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+  max-width: 620px;
+  margin: 22px auto 0;
+}
+#screen-aurore-ia .aurore-ia-tool-actions button {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid #3d3d3d;
+  border-radius: 999px;
+  background: transparent;
+  color: #d0d0d0;
+  font: inherit;
+  font-size: .68rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+#screen-aurore-ia .aurore-ia-tool-actions button:hover {
+  border-color: color-mix(in srgb, var(--ia-accent) 45%, #444);
+  background: color-mix(in srgb, var(--ia-accent) 10%, #202020);
+  color: #fff;
+  transform: none;
+}
+
+/* Conversation : messages utilisateur en bulle, réponse Aurora en flux éditorial. */
+#screen-aurore-ia .aurore-ia-message {
+  width: min(790px, 100%);
+  margin: 0 auto 22px;
+  gap: 8px;
+  animation: auroreIAMsgIn .18s ease both;
+}
+#screen-aurore-ia .aurore-ia-msg-avatar {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  margin-top: 3px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+}
+#screen-aurore-ia .aurore-ia-msg-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+#screen-aurore-ia .aurore-ia-message.user .aurore-ia-msg-avatar { display: none; }
+#screen-aurore-ia .aurore-ia-bubble {
+  max-width: min(720px, 92%);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #e4e4e4;
+  font-size: .88rem;
+  line-height: 1.72;
+  box-shadow: none;
+}
+#screen-aurore-ia .aurore-ia-message.user .aurore-ia-bubble {
+  max-width: min(640px, 86%);
+  padding: 11px 15px;
+  border: 0;
+  border-radius: 17px 17px 5px 17px;
+  background: #303030;
+  color: #f1f1f1;
+  box-shadow: none;
+}
+#screen-aurore-ia .aurore-ia-message.assistant .aurore-ia-bubble {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+#screen-aurore-ia .aurore-ia-markdown {
+  color: #e4e4e4;
+  font-size: .88rem;
+  line-height: 1.72;
+}
+#screen-aurore-ia .aurore-ia-markdown h1,
+#screen-aurore-ia .aurore-ia-markdown h2,
+#screen-aurore-ia .aurore-ia-markdown h3,
+#screen-aurore-ia .aurore-ia-markdown strong { color: #f5f5f5; }
+#screen-aurore-ia .aurore-ia-message.assistant .aurore-ia-copy-action {
+  margin-top: 12px;
+}
+
+/* Compositeur bas d'écran : une seule surface lisible, avec bouton d'envoi. */
+#screen-aurore-ia .aurore-ia-composer-zone {
+  flex: 0 0 auto;
+  padding: 10px clamp(12px, 5vw, 58px) max(12px, env(safe-area-inset-bottom));
+  background: #101010 !important;
+}
+#screen-aurore-ia .aurore-ia-composer {
+  width: min(790px, 100%);
+  margin: 0 auto;
+  padding: 0;
+}
+#screen-aurore-ia .aurore-ia-input-shell {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  min-height: 58px;
+  padding: 9px 10px 9px 16px !important;
+  border: 1px solid #3a3a3a !important;
+  border-radius: 22px !important;
+  background: #242424 !important;
+  box-shadow: none !important;
+}
+#screen-aurore-ia .aurore-ia-input-shell:focus-within {
+  border-color: color-mix(in srgb, var(--ia-accent) 55%, #555) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ia-accent) 13%, transparent) !important;
+}
+#screen-aurore-ia #auroreIAInput {
+  display: block;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  max-height: 144px;
+  padding: 9px 0 6px;
+  overflow-y: auto;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #f0f0f0;
+  font: inherit;
+  font-size: 16px !important;
+  line-height: 1.45;
+  resize: none;
+  field-sizing: content;
+}
+#screen-aurore-ia #auroreIAInput::placeholder {
+  color: #999;
+  opacity: 1;
+}
+#screen-aurore-ia .aurore-ia-send,
+#screen-aurore-ia .aurore-ia-stop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 38px;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 50% !important;
+  background: var(--ia-accent);
+  color: #fff;
+  box-shadow: none !important;
+}
+#screen-aurore-ia .aurore-ia-send:disabled { opacity: .48; }
+#screen-aurore-ia .aurore-ia-stop {
+  border: 1px solid #555;
+  background: #333;
+  color: #fff;
+}
+#screen-aurore-ia .aurore-ia-composer-bottom { display: none !important; }
+#screen-aurore-ia .aurore-ia-disclaimer {
+  margin: 7px auto 0;
+  color: #777;
+  font-size: .6rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Thème clair Eneles : mêmes proportions, surfaces papier et contraste doux. */
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-app,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-chat,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-conversation,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-composer-zone {
+  background: #f7f7f7 !important;
+  color: #242424;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-topbar {
+  background: #f7f7f7;
+  border-bottom-color: #e7e7e7;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-brand-copy strong,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-current-title,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-welcome h1 {
+  color: #252525;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-menu-btn { color: #333; }
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-menu-btn:hover { background: #eaeaea; }
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar {
+  background: #f0f0f0;
+  border-right-color: #e1e1e1;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-history-head h2 { color: #282828; }
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-history-item { color: #555; }
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-history-item:hover,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-history-item[aria-current="true"] {
+  background: #e3e3e3;
+  color: #202020;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-history-new {
+  border-color: #d7d7d7;
+  background: #fff;
+  color: #333;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-tool-actions button {
+  border-color: #d7d7d7;
+  background: #fff;
+  color: #444;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-bubble,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-markdown,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-markdown p,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-markdown li,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-markdown strong,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-markdown h1,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-markdown h2,
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-markdown h3 {
+  color: #292929 !important;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-message.user .aurore-ia-bubble {
+  background: #e7e7e7;
+  color: #292929;
+}
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-input-shell {
+  border-color: #d8d8d8 !important;
+  background: #fff !important;
+}
+html[data-theme="light"] #screen-aurore-ia #auroreIAInput { color: #242424; }
+html[data-theme="light"] #screen-aurore-ia #auroreIAInput::placeholder { color: #777; }
+html[data-theme="light"] #screen-aurore-ia .aurore-ia-disclaimer { color: #777; }
+
+/* Mobile : historique en tiroir, conversation et compositeur en pleine largeur. */
+@media (max-width: 820px) {
+  #screen-aurore-ia .aurore-ia-topbar {
+    flex-basis: 58px;
+    height: 58px;
+    min-height: 58px;
+    padding: 0 9px;
+    gap: 6px;
+  }
+  #screen-aurore-ia .aurore-ia-left { gap: 5px; }
+  #screen-aurore-ia .aurore-ia-menu-btn {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+  }
+  #screen-aurore-ia .aurore-ia-mark {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  #screen-aurore-ia .aurore-ia-brand-copy strong { font-size: .8rem; }
+  #screen-aurore-ia .aurore-ia-brand-copy span { font-size: .58rem; }
+  #screen-aurore-ia .aurore-ia-current-title { display: none; }
+  #screen-aurore-ia .aurore-ia-top-actions { gap: 5px; }
+  #screen-aurore-ia .aurore-ia-status { display: none !important; }
+  #screen-aurore-ia .aurore-ia-login {
+    min-height: 34px;
+    padding: 0 8px;
+    font-size: .62rem;
+  }
+  #screen-aurore-ia .aurore-ia-new {
+    flex: 0 0 36px;
+    width: 36px;
+    min-height: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 0;
+  }
+  #screen-aurore-ia .aurore-ia-new span:first-child { font-size: 1.08rem; }
+  #screen-aurore-ia .aurore-ia-main {
+    display: block !important;
+    position: relative;
+  }
+  #screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 216 !important;
+    width: min(310px, 86vw) !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: max(18px, env(safe-area-inset-top)) 13px max(14px, env(safe-area-inset-bottom));
+    transform: translateX(-105%) !important;
+    opacity: 1 !important;
+    border-right: 1px solid #3b3b3b;
+    background: #171717;
+    box-shadow: 18px 0 45px rgba(0,0,0,.3);
+    pointer-events: none !important;
+    transition: transform .2s ease;
+  }
+  #screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar.is-open {
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
+  }
+  #screen-aurore-ia .aurore-ia-history-close {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    background: transparent;
+    color: #ddd;
+  }
+  #screen-aurore-ia .aurore-ia-history-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 215;
+    display: block;
+    background: rgba(0,0,0,.52);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+  #screen-aurore-ia .aurore-ia-history-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #screen-aurore-ia .aurore-ia-history-overlay[hidden] { display: none !important; }
+  #screen-aurore-ia .aurore-ia-conversation {
+    padding: 16px 14px 18px;
+  }
+  #screen-aurore-ia .aurore-ia-welcome {
+    padding: 18px 0 24px;
+  }
+  #screen-aurore-ia .aurore-ia-tool-actions {
+    gap: 6px;
+    margin-top: 18px;
+  }
+  #screen-aurore-ia .aurore-ia-tool-actions button {
+    min-height: 33px;
+    padding: 6px 9px;
+    font-size: .64rem;
+  }
+  #screen-aurore-ia .aurore-ia-composer-zone {
+    padding: 8px 10px max(10px, env(safe-area-inset-bottom));
+  }
+  #screen-aurore-ia .aurore-ia-input-shell {
+    min-height: 56px;
+    padding: 8px 9px 8px 13px !important;
+    border-radius: 21px !important;
+  }
+  #screen-aurore-ia .aurore-ia-disclaimer {
+    font-size: .56rem;
+  }
+  html[data-theme="light"] #screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar {
+    border-right-color: #ddd;
+    background: #f0f0f0;
+  }
+  html[data-theme="light"] #screen-aurore-ia .aurore-ia-history-close { color: #333; }
+}
+@media (max-width: 390px) {
+  #screen-aurore-ia .aurore-ia-brand-copy span { display: none; }
+  #screen-aurore-ia .aurore-ia-login { padding-inline: 6px; font-size: .58rem; }
+  #screen-aurore-ia .aurore-ia-tool-actions button { font-size: .61rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #screen-aurore-ia .aurore-ia-menu-btn,
+  #screen-aurore-ia .aurore-ia-history-panel,
+  #screen-aurore-ia .aurore-ia-history-overlay,
+  #screen-aurore-ia .aurore-ia-tool-actions button {
+    transition: none !important;
+  }
+  #screen-aurore-ia .aurore-ia-conversation { scroll-behavior: auto; }
+}
+
+
+/* Ajustements de spécificité : repli du panneau sur ordinateur et fermeture sur mobile. */
+#screen-aurore-ia .aurore-ia-app.is-history-collapsed .aurore-ia-main {
+  grid-template-columns: 0 minmax(0, 1fr) !important;
+}
+#screen-aurore-ia .aurore-ia-app.is-history-collapsed .aurore-ia-history-panel.aurore-ia-sidebar {
+  width: 0 !important;
+  min-width: 0 !important;
+  padding-inline: 0 !important;
+  overflow: hidden !important;
+  border-right: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+#screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar .aurore-ia-history-close {
+  display: none !important;
+}
+@media (max-width: 820px) {
+  #screen-aurore-ia .aurore-ia-app.is-history-collapsed .aurore-ia-main {
+    grid-template-columns: 1fr !important;
+  }
+  #screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar .aurore-ia-history-close {
+    display: grid !important;
+  }
+}
