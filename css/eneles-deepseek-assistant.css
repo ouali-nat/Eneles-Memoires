@@ -725,3 +725,29 @@ html[data-theme="light"] #screen-aurore-ia .aurore-ia-disclaimer { color: #777; 
   }
   #screen-aurore-ia .aurore-ia-conversation { scroll-behavior: auto; }
 }
+
+
+/* Ajustements de spécificité : repli du panneau sur ordinateur et fermeture sur mobile. */
+#screen-aurore-ia .aurore-ia-app.is-history-collapsed .aurore-ia-main {
+  grid-template-columns: 0 minmax(0, 1fr) !important;
+}
+#screen-aurore-ia .aurore-ia-app.is-history-collapsed .aurore-ia-history-panel.aurore-ia-sidebar {
+  width: 0 !important;
+  min-width: 0 !important;
+  padding-inline: 0 !important;
+  overflow: hidden !important;
+  border-right: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+#screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar .aurore-ia-history-close {
+  display: none !important;
+}
+@media (max-width: 820px) {
+  #screen-aurore-ia .aurore-ia-app.is-history-collapsed .aurore-ia-main {
+    grid-template-columns: 1fr !important;
+  }
+  #screen-aurore-ia .aurore-ia-history-panel.aurore-ia-sidebar .aurore-ia-history-close {
+    display: grid !important;
+  }
+}
