@@ -1,5 +1,5 @@
-/* Eneles Mémoire — interface de conversation inspirée de l'ergonomie DeepSeek.
-   Les fonctions, la palette Eneles et le moteur Aurora restent inchangés. */
+/* Hesed Mémoire — interface de conversation inspirée de l'ergonomie DeepSeek.
+   Les fonctions, la palette Hesed et le moteur Aurora restent inchangés. */
 #screen-aurore-ia.aurore-ia-screen {
   background: #101010 !important;
   color: #f5f5f5;
@@ -283,7 +283,7 @@
   pointer-events: none !important;
 }
 
-/* Accueil : logo Eneles et invitation centrés, sans grand panneau décoratif. */
+/* Accueil : logo Hesed et invitation centrés, sans grand panneau décoratif. */
 #screen-aurore-ia .aurore-ia-chat {
   display: flex;
   flex-direction: column;
@@ -529,7 +529,7 @@
   text-align: center;
 }
 
-/* Thème clair Eneles : mêmes proportions, surfaces papier et contraste doux. */
+/* Thème clair Hesed : mêmes proportions, surfaces papier et contraste doux. */
 html[data-theme="light"] #screen-aurore-ia .aurore-ia-app,
 html[data-theme="light"] #screen-aurore-ia .aurore-ia-chat,
 html[data-theme="light"] #screen-aurore-ia .aurore-ia-conversation,

@@ -1,7 +1,7 @@
 {
-  "name": "Eneles Mémoire",
-  "short_name": "Eneles",
-  "description": "Apprendre à son rythme avec Eneles Mémoire.",
+  "name": "Hesed Mémoire",
+  "short_name": "Hesed",
+  "description": "Apprendre à son rythme avec Hesed Mémoire.",
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",

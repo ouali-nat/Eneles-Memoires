@@ -12,7 +12,7 @@
     function closeMenu() {
       panel.hidden = true;
       toggle.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("eneles-sidebar-open");
+      document.body.classList.remove("hesed-sidebar-open");
     }
     function positionMenu() {
       if (panel.hidden) return;
@@ -37,8 +37,8 @@
       signIn.textContent = activeSession ? "Se déconnecter" : "Se connecter";
       signIn.dataset.action = activeSession ? "signout" : "signin";
       signIn.setAttribute("aria-label", activeSession
-        ? "Se déconnecter de Eneles Mémoire"
-        : "Se connecter avec Eneles ID");
+        ? "Se déconnecter de Hesed Mémoire"
+        : "Se connecter avec Hesed ID");
     }
     toggle.addEventListener("click", function (event) {
       event.preventDefault();
@@ -46,7 +46,7 @@
       var opening = panel.hidden;
       panel.hidden = !opening;
       toggle.setAttribute("aria-expanded", opening ? "true" : "false");
-      document.body.classList.toggle("eneles-sidebar-open", opening);
+      document.body.classList.toggle("hesed-sidebar-open", opening);
       if (opening) {
         positionMenu();
         requestAnimationFrame(positionMenu);
@@ -75,7 +75,7 @@
           var result = await auth.signOut();
           if (result && result.error) throw result.error;
           updateAuthMenu(null);
-          if (typeof window.auroreToast === "function") window.auroreToast("Vous êtes déconnecté d’Eneles Mémoire.");
+          if (typeof window.auroreToast === "function") window.auroreToast("Vous êtes déconnecté d’Hesed Mémoire.");
           return;
         }
         if (typeof window.auroreShowAccessGate === "function") {
@@ -104,7 +104,7 @@
         else updateAuthMenu(null);
       } catch (error) {
         updateAuthMenu(null);
-        console.warn("Eneles Mémoire : état du menu de compte indisponible.", error);
+        console.warn("Hesed Mémoire : état du menu de compte indisponible.", error);
       }
     })();
   }

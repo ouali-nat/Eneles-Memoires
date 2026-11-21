@@ -1,4 +1,4 @@
-name: Android APK — Aurore Mémoire (Capacitor)
+name: Android APK — Hesed Mémoire (Capacitor)
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: aurore-memoire-android-${{ github.ref }}
+  group: hesed-memoire-android-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -86,7 +86,7 @@ jobs:
               activity_start = xml.find('android:name=".MainActivity"')
               activity_end = xml.find("</activity>", activity_start)
               if activity_start < 0 or activity_end < 0:
-                  raise SystemExit("Impossible de trouver MainActivity pour le retour Aurore ID.")
+                  raise SystemExit("Impossible de trouver MainActivity pour le retour Hesed ID.")
               link = """
                       <intent-filter>
                           <action android:name="android.intent.action.VIEW" />
@@ -97,7 +97,7 @@ jobs:
               """
               xml = xml[:activity_end] + link + xml[activity_end:]
               manifest.write_text(xml)
-          print("Lien profond Aurore ID configuré.")
+          print("Lien profond Hesed ID configuré.")
           PY
           if [ -f assets/icon.png ]; then
             npx capacitor-assets generate
@@ -142,21 +142,21 @@ jobs:
             KEYPASS="$PASS"
             keytool -genkeypair -keystore "$RUNNER_TEMP/aurore-memoire.jks" -storetype PKCS12 -alias "$ALIAS" \
               -keyalg RSA -keysize 2048 -validity 10000 -storepass "$PASS" -keypass "$PASS" \
-              -dname "CN=Aurore Memoire, O=Aurore, C=BF"
+              -dname "CN=Hesed Memoire, O=Hesed, C=BF"
             echo "::warning::Clé temporaire : cet APK est uniquement destiné aux tests et ne pourra pas être mis à jour par une prochaine compilation."
           fi
           "$BT/zipalign" -p -f 4 "$UNSIGNED" "$RUNNER_TEMP/aurore-memoire-aligned.apk"
           "$BT/apksigner" sign --ks "$RUNNER_TEMP/aurore-memoire.jks" --ks-key-alias "$ALIAS" \
-            --ks-pass "pass:$PASS" --key-pass "pass:$KEYPASS" --out Aurore-Memoire.apk "$RUNNER_TEMP/aurore-memoire-aligned.apk"
-          "$BT/apksigner" verify --verbose Aurore-Memoire.apk
+            --ks-pass "pass:$PASS" --key-pass "pass:$KEYPASS" --out Hesed-Memoire.apk "$RUNNER_TEMP/aurore-memoire-aligned.apk"
+          "$BT/apksigner" verify --verbose Hesed-Memoire.apk
           rm -f "$RUNNER_TEMP/aurore-memoire.jks"
 
       - name: Vérifier le fichier livré
         run: |
-          test -s Aurore-Memoire.apk
-          sha256sum Aurore-Memoire.apk
+          test -s Hesed-Memoire.apk
+          sha256sum Hesed-Memoire.apk
           {
-            echo "## Aurore Mémoire — APK de test"
+            echo "## Hesed Mémoire — APK de test"
             echo ""
             echo "- Compilation Capacitor : réussie."
             echo "- Les pages et les dépendances KaTeX/Supabase sont embarquées."
@@ -167,7 +167,7 @@ jobs:
       - name: Déposer l’APK en artefact
         uses: actions/upload-artifact@v4
         with:
-          name: Aurore-Memoire-APK
-          path: Aurore-Memoire.apk
+          name: Hesed-Memoire-APK
+          path: Hesed-Memoire.apk
           if-no-files-found: error
           retention-days: 14

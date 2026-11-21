@@ -1,17 +1,17 @@
-/* Eneles Mémoire — réglages finaux : héros, palette Archives et barre latérale.
-   Chargé en dernier par eneles-sidebar.js : même spécificité que eneles-final-layout.css, l'ordre fait la priorité. */
+/* Hesed Mémoire — réglages finaux : héros, palette Archives et barre latérale.
+   Chargé en dernier par hesed-sidebar.js : même spécificité que hesed-final-layout.css, l'ordre fait la priorité. */
 
 /* ---------- 1. Héros : un peu plus étroit, recherche ancrée plus bas ---------- */
-html body .eneles-memory-hero.hero.aurore-hero-morph{
+html body .hesed-memory-hero.hero.aurore-hero-morph{
   width:calc(100% - clamp(24px,6vw,64px))!important;max-width:none!important;
   margin-left:auto!important;margin-right:auto!important;align-items:stretch!important}
-html body .eneles-memory-hero.hero.aurore-hero-morph .hero-inner{align-self:stretch!important;justify-content:flex-start!important}
+html body .hesed-memory-hero.hero.aurore-hero-morph .hero-inner{align-self:stretch!important;justify-content:flex-start!important}
 /* L'espace libre du héros se répartit au-dessus du texte (un peu) et entre le texte et la recherche (beaucoup) */
-html body .eneles-memory-hero.hero.aurore-hero-morph .hero-inner::before{content:""!important;display:block!important;flex:.5 1 0!important;min-height:0!important}
-html body .eneles-memory-hero.hero.aurore-hero-morph p.sub{flex:1.5 1 auto!important}
-html body .eneles-memory-hero .eneles-memory-search{margin-top:clamp(28px,4vw,40px)!important}
+html body .hesed-memory-hero.hero.aurore-hero-morph .hero-inner::before{content:""!important;display:block!important;flex:.5 1 0!important;min-height:0!important}
+html body .hesed-memory-hero.hero.aurore-hero-morph p.sub{flex:1.5 1 auto!important}
+html body .hesed-memory-hero .hesed-memory-search{margin-top:clamp(28px,4vw,40px)!important}
 @media(max-width:560px){
-  html body .eneles-memory-hero.hero.aurore-hero-morph{padding:52px 12px 34px!important}
+  html body .hesed-memory-hero.hero.aurore-hero-morph{padding:52px 12px 34px!important}
 }
 
 /* ---------- 2. Palette : mêmes réglages que la palette actuelle d'Archives ---------- */
@@ -25,10 +25,10 @@ html[data-color-theme="petrole-cuivre"]{--hero-word-light:#104C64;--hero-word-da
 html[data-color-theme="prune-rouge"]{--hero-word-light:#7A2F63;--hero-word-dark:#E4586A}
 html[data-color-theme="rose-sable"]{--hero-word-light:#B5705C;--hero-word-dark:#EFC1B5}
 html[data-color-theme="sarcelle-creme"]{--hero-word-light:#0D6B70;--hero-word-dark:#3FB8BE}
-html[data-theme="dark"] body .eneles-memory-hero.hero.aurore-hero-morph h1 .accentword{background:none!important;color:var(--hero-word-dark)!important;-webkit-text-fill-color:var(--hero-word-dark)!important}
-html[data-theme="light"] body .eneles-memory-hero.hero.aurore-hero-morph h1 .accentword{background:none!important;color:var(--hero-word-light)!important;-webkit-text-fill-color:var(--hero-word-light)!important}
-html[data-theme="dark"] body .eneles-memory-hero.hero.aurore-hero-morph .eyebrow{color:var(--hero-word-dark)!important}
-html[data-theme="light"] body .eneles-memory-hero.hero.aurore-hero-morph .eyebrow{color:var(--hero-word-light)!important}
+html[data-theme="dark"] body .hesed-memory-hero.hero.aurore-hero-morph h1 .accentword{background:none!important;color:var(--hero-word-dark)!important;-webkit-text-fill-color:var(--hero-word-dark)!important}
+html[data-theme="light"] body .hesed-memory-hero.hero.aurore-hero-morph h1 .accentword{background:none!important;color:var(--hero-word-light)!important;-webkit-text-fill-color:var(--hero-word-light)!important}
+html[data-theme="dark"] body .hesed-memory-hero.hero.aurore-hero-morph .eyebrow{color:var(--hero-word-dark)!important}
+html[data-theme="light"] body .hesed-memory-hero.hero.aurore-hero-morph .eyebrow{color:var(--hero-word-light)!important}
 
 /* Pastilles à teinte très claire ou très sombre : anneau gris pour rester visibles (comme Archives). */
 :is(.asb .asb-sw,.color-theme-choice.theme-color-swatch):is([data-color-choice="petrole-cuivre"],[data-color-choice="prune-rouge"],[data-color-choice="rose-sable"],[data-color-choice="sarcelle-creme"]):not([aria-pressed="true"]){
@@ -78,13 +78,13 @@ html[data-theme="light"] body .eneles-memory-hero.hero.aurore-hero-morph .eyebro
 
 
 /* Dernière passe : réduire légèrement les deux côtés du héros et abaisser la recherche. */
-html body .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - clamp(40px,8vw,84px))!important;max-width:none!important;margin-left:auto!important;margin-right:auto!important}
-html body .eneles-memory-hero .eneles-memory-search{margin-top:clamp(44px,5.2vw,58px)!important}
+html body .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - clamp(40px,8vw,84px))!important;max-width:none!important;margin-left:auto!important;margin-right:auto!important}
+html body .hesed-memory-hero .hesed-memory-search{margin-top:clamp(44px,5.2vw,58px)!important}
 @media(max-width:560px){
- html body .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 32px)!important;padding:48px 14px 32px!important}
- html body .eneles-memory-hero .eneles-memory-search{margin-top:42px!important}
+ html body .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 32px)!important;padding:48px 14px 32px!important}
+ html body .hesed-memory-hero .hesed-memory-search{margin-top:42px!important}
 }
 @media(max-width:380px){
- html body .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 24px)!important;padding-inline:10px!important}
- html body .eneles-memory-hero .eneles-memory-search{margin-top:38px!important}
+ html body .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 24px)!important;padding-inline:10px!important}
+ html body .hesed-memory-hero .hesed-memory-search{margin-top:38px!important}
 }

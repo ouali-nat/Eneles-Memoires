@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Eneles Mémoire — système de design
-   Modèle : Eneles Archives (palette sombre profonde, surfaces en dossiers
+   Hesed Mémoire — système de design
+   Modèle : Hesed Archives (palette sombre profonde, surfaces en dossiers
    organiques, couverture + fiche séparées, lueur d'accent, header vitré).
    Les 18 thèmes de couleur sont conservés (variable --accent).
    ========================================================================== */
@@ -512,7 +512,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 
-/* ---------- Navigation en capsule — rendu pilule Eneles ---------- */
+/* ---------- Navigation en capsule — rendu pilule Hesed ---------- */
 /* Adaptation du rendu fourni pour Mémoire : conserve les liens et les contrôles existants. */
 .topbar .brand-mark {
   flex: 0 0 54px;
@@ -642,7 +642,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 
-/* Eneles Mémoire — ajustements de finition : palette contenue et compte discret. */
+/* Hesed Mémoire — ajustements de finition : palette contenue et compte discret. */
 .color-theme-panel {
   position: fixed;
   top: calc(env(safe-area-inset-top, 0px) + 76px);
@@ -752,7 +752,7 @@ body[data-page="home"] .app-menu-panel {
 }
 
 
-/* Eneles Mémoire — notification réseau : copie du composant Archives. */
+/* Hesed Mémoire — notification réseau : copie du composant Archives. */
 .aurore-network-status{
   position:fixed!important;top:max(10px,calc(10px + env(safe-area-inset-top,0px)))!important;
   left:50%!important;right:auto!important;bottom:auto!important;transform:translateX(-50%)!important;
@@ -841,7 +841,7 @@ html[data-theme="dark"] .aurore-network-status-copy span{color:var(--muted,#b8b2
   body[data-page="home"] .coming-label { align-self: flex-start; margin-top: 1px; padding: 4px 7px; border-radius: 999px; font-size: .62rem; }
 }
 
-/* Logo Eneles original : utiliser la même identité sur les pages du site. */
+/* Logo Hesed original : utiliser la même identité sur les pages du site. */
 .brand-mark{overflow:hidden;background:var(--surface);border:1px solid var(--soft-border);box-shadow:none;border-radius:11px;flex:0 0 40px}
 .brand-mark .brand-logo{display:block;width:100%;height:100%;object-fit:contain;border-radius:inherit}
 
@@ -879,7 +879,7 @@ html[data-theme="dark"] .aurore-network-status-copy span{color:var(--muted,#b8b2
 .has-compact-actions.public-learning-card>.section-kicker{padding-right:38px;}
 
 
-/* Eneles Mémoire — refined, compact options menu (library only). */
+/* Hesed Mémoire — refined, compact options menu (library only). */
 body[data-page="library"] .compact-action-dialog{
   width:min(400px,calc(100vw - 24px));max-width:400px;max-height:min(82dvh,680px);
   border-radius:18px;box-shadow:0 22px 64px rgba(0,0,0,.32);
@@ -918,7 +918,7 @@ body[data-page="library"] .compact-action-error{font-size:.76rem;}
 }
 
 
-/* Eneles Mémoire — breathing room between navigation actions, including refresh. */
+/* Hesed Mémoire — breathing room between navigation actions, including refresh. */
 .topbar .top-actions{
   gap:8px;
   padding:6px 8px;
@@ -946,7 +946,7 @@ body[data-page="library"] .compact-action-error{font-size:.76rem;}
   .topbar .top-actions .nav-link.aurore-refresh-app{flex:0 0 94px;}
 }
 
-/* Eneles Mémoire — clearer spacing in the community library and its resource tabs. */
+/* Hesed Mémoire — clearer spacing in the community library and its resource tabs. */
 body[data-page="public-cards"] .topbar .top-actions{
   gap:9px;
   padding:6px 8px;
@@ -982,133 +982,133 @@ body[data-page="public-cards"] .public-resource-tabs button[aria-pressed="true"]
 }
 
 
-/* Eneles Mémoire — accueil harmonisé avec Eneles Archives. */
-.eneles-hero-controls{display:flex;justify-content:flex-end;margin:0 0 8px}
-.eneles-hero-toggle{appearance:none;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--border));border-radius:999px;padding:7px 12px;background:color-mix(in srgb,var(--surface) 85%,transparent);color:var(--text);font-size:.74rem;font-weight:700;line-height:1.25;cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.eneles-hero-toggle:hover{border-color:var(--accent);background:var(--soft)}
-.eneles-hero-toggle:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px}
-.eneles-memory-hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(30px,5vw,52px);margin:0 0 28px;border:1px solid color-mix(in srgb,var(--accent-light) 20%,var(--border));border-radius:30px;background:radial-gradient(circle at 86% 12%,color-mix(in srgb,var(--accent-light) 22%,transparent),transparent 30%),radial-gradient(circle at 7% 90%,color-mix(in srgb,var(--accent) 24%,transparent),transparent 36%),linear-gradient(145deg,var(--surface),color-mix(in srgb,var(--accent-deep) 18%,var(--bg)) 58%,var(--bg));box-shadow:var(--shadow)}
-.eneles-memory-hero[hidden]{display:none!important}
-.eneles-hero-motif{position:absolute;z-index:-1;right:-44px;top:-78px;width:230px;height:230px;border:1px solid color-mix(in srgb,var(--accent-light) 24%,transparent);border-radius:44% 56% 54% 46%;transform:rotate(24deg);box-shadow:0 0 0 22px color-mix(in srgb,var(--accent) 4%,transparent),0 0 0 46px color-mix(in srgb,var(--accent-light) 3%,transparent)}
-.eneles-hero-rule{width:46px;height:3px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-light));margin-bottom:16px}
-.eneles-hero-eyebrow{position:relative;margin:0 0 10px;color:var(--accent-light);font-size:.68rem;font-weight:850;letter-spacing:.16em}
-.eneles-memory-hero h1{position:relative;margin:0;max-width:760px;font-size:clamp(2rem,5vw,3.5rem);line-height:1.06;letter-spacing:-.055em}
-.eneles-memory-hero h1 span{background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-.eneles-hero-sub{position:relative;max-width:650px;margin:14px 0 0;color:var(--muted);font-size:.94rem;line-height:1.65}
-.eneles-hero-action{position:relative;display:inline-flex;align-items:center;gap:22px;margin-top:22px;padding:11px 15px;border:1px solid color-mix(in srgb,var(--accent) 45%,var(--border));border-radius:13px;background:var(--soft);color:var(--text);font-size:.82rem;font-weight:750;text-decoration:none;transition:transform .18s ease,border-color .18s ease}
-.eneles-hero-action:hover{transform:translateY(-2px);border-color:var(--accent)}
-.eneles-hero-action span{color:var(--accent-light);font-size:1.1rem}
-.eneles-learning-doors{margin-top:36px;padding-top:8px}
-.eneles-learning-heading{margin-bottom:16px}
-.eneles-learning-heading h2{margin:0;font-size:clamp(1.35rem,3vw,1.8rem);letter-spacing:-.04em}
-.eneles-learning-heading>p:last-child{margin:7px 0 0;max-width:660px;color:var(--muted);font-size:.82rem;line-height:1.5}
-.eneles-learning-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:stretch}
-.eneles-learning-card{position:relative;isolation:isolate;overflow:hidden;min-width:0;min-height:164px;padding:14px;border:1px solid color-mix(in srgb,var(--door-accent) 23%,var(--border));border-radius:15px;background:linear-gradient(145deg,color-mix(in srgb,var(--door-accent) 6%,var(--surface)),var(--surface));box-shadow:0 5px 16px rgba(0,0,0,.10);display:flex;flex-direction:column;gap:8px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
-.eneles-learning-card::before{content:"";position:absolute;z-index:-1;right:-30px;top:-36px;width:88px;height:88px;border:1px solid color-mix(in srgb,var(--door-accent) 26%,transparent);border-radius:20px;transform:rotate(24deg)}
-.eneles-learning-card::after{content:"";position:absolute;left:0;top:13px;bottom:13px;width:3px;border-radius:0 3px 3px 0;background:var(--door-accent);opacity:.8}
-.eneles-learning-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--door-accent) 58%,var(--border));box-shadow:var(--shadow-hover)}
-.eneles-learning-kicker{display:inline-flex;align-self:flex-start;max-width:100%;padding:4px 6px;border:1px solid color-mix(in srgb,var(--door-accent) 30%,var(--border));border-radius:6px;color:var(--door-accent);font-size:.57rem;font-weight:850;letter-spacing:.07em;line-height:1.2}
-.eneles-learning-card h3{margin:0;font-size:.95rem;line-height:1.25;letter-spacing:-.02em}
-.eneles-learning-card>p{margin:0;color:var(--muted);font-size:.71rem;line-height:1.45}
-.eneles-learning-docs{display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:8px;border-top:1px solid color-mix(in srgb,var(--door-accent) 16%,var(--border))}
-.eneles-learning-docs span{display:block;min-width:0;overflow-wrap:anywhere;color:var(--muted);font-size:.63rem;line-height:1.35}
-.eneles-learning-card-wide{grid-column:1/-1;min-height:100px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);align-content:center;column-gap:16px}
-.eneles-learning-card-wide .eneles-learning-kicker{grid-column:1/-1}
-.eneles-learning-card-wide .eneles-learning-docs{margin-top:0;align-self:center}
-@media(max-width:850px){.eneles-learning-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.eneles-learning-card-wide{grid-column:1/-1}}
-@media(max-width:560px){.eneles-memory-hero{padding:27px 20px 25px;border-radius:24px}.eneles-memory-hero h1{font-size:clamp(1.8rem,8vw,2.35rem)}.eneles-hero-sub{font-size:.84rem}.eneles-hero-action{margin-top:17px}.eneles-learning-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.eneles-learning-card{min-height:155px;padding:12px 11px;border-radius:13px}.eneles-learning-card-wide{grid-template-columns:1fr;gap:4px}.eneles-learning-card-wide .eneles-learning-docs{margin-top:4px}.eneles-learning-kicker{font-size:.52rem}.eneles-learning-card h3{font-size:.86rem}.eneles-learning-card>p{font-size:.66rem}.eneles-learning-docs span{font-size:.59rem}}
-@media(max-width:360px){.eneles-learning-grid{grid-template-columns:1fr}.eneles-learning-card,.eneles-learning-card-wide{min-height:unset;grid-column:auto}.eneles-learning-card-wide{display:flex}}
+/* Hesed Mémoire — accueil harmonisé avec Hesed Archives. */
+.hesed-hero-controls{display:flex;justify-content:flex-end;margin:0 0 8px}
+.hesed-hero-toggle{appearance:none;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--border));border-radius:999px;padding:7px 12px;background:color-mix(in srgb,var(--surface) 85%,transparent);color:var(--text);font-size:.74rem;font-weight:700;line-height:1.25;cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.hesed-hero-toggle:hover{border-color:var(--accent);background:var(--soft)}
+.hesed-hero-toggle:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px}
+.hesed-memory-hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(30px,5vw,52px);margin:0 0 28px;border:1px solid color-mix(in srgb,var(--accent-light) 20%,var(--border));border-radius:30px;background:radial-gradient(circle at 86% 12%,color-mix(in srgb,var(--accent-light) 22%,transparent),transparent 30%),radial-gradient(circle at 7% 90%,color-mix(in srgb,var(--accent) 24%,transparent),transparent 36%),linear-gradient(145deg,var(--surface),color-mix(in srgb,var(--accent-deep) 18%,var(--bg)) 58%,var(--bg));box-shadow:var(--shadow)}
+.hesed-memory-hero[hidden]{display:none!important}
+.hesed-hero-motif{position:absolute;z-index:-1;right:-44px;top:-78px;width:230px;height:230px;border:1px solid color-mix(in srgb,var(--accent-light) 24%,transparent);border-radius:44% 56% 54% 46%;transform:rotate(24deg);box-shadow:0 0 0 22px color-mix(in srgb,var(--accent) 4%,transparent),0 0 0 46px color-mix(in srgb,var(--accent-light) 3%,transparent)}
+.hesed-hero-rule{width:46px;height:3px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-light));margin-bottom:16px}
+.hesed-hero-eyebrow{position:relative;margin:0 0 10px;color:var(--accent-light);font-size:.68rem;font-weight:850;letter-spacing:.16em}
+.hesed-memory-hero h1{position:relative;margin:0;max-width:760px;font-size:clamp(2rem,5vw,3.5rem);line-height:1.06;letter-spacing:-.055em}
+.hesed-memory-hero h1 span{background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hesed-hero-sub{position:relative;max-width:650px;margin:14px 0 0;color:var(--muted);font-size:.94rem;line-height:1.65}
+.hesed-hero-action{position:relative;display:inline-flex;align-items:center;gap:22px;margin-top:22px;padding:11px 15px;border:1px solid color-mix(in srgb,var(--accent) 45%,var(--border));border-radius:13px;background:var(--soft);color:var(--text);font-size:.82rem;font-weight:750;text-decoration:none;transition:transform .18s ease,border-color .18s ease}
+.hesed-hero-action:hover{transform:translateY(-2px);border-color:var(--accent)}
+.hesed-hero-action span{color:var(--accent-light);font-size:1.1rem}
+.hesed-learning-doors{margin-top:36px;padding-top:8px}
+.hesed-learning-heading{margin-bottom:16px}
+.hesed-learning-heading h2{margin:0;font-size:clamp(1.35rem,3vw,1.8rem);letter-spacing:-.04em}
+.hesed-learning-heading>p:last-child{margin:7px 0 0;max-width:660px;color:var(--muted);font-size:.82rem;line-height:1.5}
+.hesed-learning-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:stretch}
+.hesed-learning-card{position:relative;isolation:isolate;overflow:hidden;min-width:0;min-height:164px;padding:14px;border:1px solid color-mix(in srgb,var(--door-accent) 23%,var(--border));border-radius:15px;background:linear-gradient(145deg,color-mix(in srgb,var(--door-accent) 6%,var(--surface)),var(--surface));box-shadow:0 5px 16px rgba(0,0,0,.10);display:flex;flex-direction:column;gap:8px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.hesed-learning-card::before{content:"";position:absolute;z-index:-1;right:-30px;top:-36px;width:88px;height:88px;border:1px solid color-mix(in srgb,var(--door-accent) 26%,transparent);border-radius:20px;transform:rotate(24deg)}
+.hesed-learning-card::after{content:"";position:absolute;left:0;top:13px;bottom:13px;width:3px;border-radius:0 3px 3px 0;background:var(--door-accent);opacity:.8}
+.hesed-learning-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--door-accent) 58%,var(--border));box-shadow:var(--shadow-hover)}
+.hesed-learning-kicker{display:inline-flex;align-self:flex-start;max-width:100%;padding:4px 6px;border:1px solid color-mix(in srgb,var(--door-accent) 30%,var(--border));border-radius:6px;color:var(--door-accent);font-size:.57rem;font-weight:850;letter-spacing:.07em;line-height:1.2}
+.hesed-learning-card h3{margin:0;font-size:.95rem;line-height:1.25;letter-spacing:-.02em}
+.hesed-learning-card>p{margin:0;color:var(--muted);font-size:.71rem;line-height:1.45}
+.hesed-learning-docs{display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:8px;border-top:1px solid color-mix(in srgb,var(--door-accent) 16%,var(--border))}
+.hesed-learning-docs span{display:block;min-width:0;overflow-wrap:anywhere;color:var(--muted);font-size:.63rem;line-height:1.35}
+.hesed-learning-card-wide{grid-column:1/-1;min-height:100px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);align-content:center;column-gap:16px}
+.hesed-learning-card-wide .hesed-learning-kicker{grid-column:1/-1}
+.hesed-learning-card-wide .hesed-learning-docs{margin-top:0;align-self:center}
+@media(max-width:850px){.hesed-learning-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hesed-learning-card-wide{grid-column:1/-1}}
+@media(max-width:560px){.hesed-memory-hero{padding:27px 20px 25px;border-radius:24px}.hesed-memory-hero h1{font-size:clamp(1.8rem,8vw,2.35rem)}.hesed-hero-sub{font-size:.84rem}.hesed-hero-action{margin-top:17px}.hesed-learning-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.hesed-learning-card{min-height:155px;padding:12px 11px;border-radius:13px}.hesed-learning-card-wide{grid-template-columns:1fr;gap:4px}.hesed-learning-card-wide .hesed-learning-docs{margin-top:4px}.hesed-learning-kicker{font-size:.52rem}.hesed-learning-card h3{font-size:.86rem}.hesed-learning-card>p{font-size:.66rem}.hesed-learning-docs span{font-size:.59rem}}
+@media(max-width:360px){.hesed-learning-grid{grid-template-columns:1fr}.hesed-learning-card,.hesed-learning-card-wide{min-height:unset;grid-column:auto}.hesed-learning-card-wide{display:flex}}
 
-/* Animation du geste d’actualisation, identique à Eneles Archives. */
-#enelesMemoryPull{position:fixed;left:50%;top:clamp(70px,15vh,130px);transform:translate(-50%,-12px) scale(.82);z-index:2147483647;width:62px;height:62px;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .24s cubic-bezier(.2,.8,.2,1);color:var(--accent);filter:drop-shadow(0 5px 14px color-mix(in srgb,var(--accent) 35%,transparent))}
-#enelesMemoryPull svg{width:100%;height:100%;overflow:visible}
-#enelesMemoryPull .eneles-pull-ring{fill:none;stroke:currentColor;stroke-width:1.6;stroke-dasharray:150;stroke-dashoffset:150;stroke-linecap:round}
-#enelesMemoryPull .eneles-pull-moon{fill:none;stroke:var(--accent-light);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:90;stroke-dashoffset:90}
-#enelesMemoryPull .eneles-pull-star{fill:currentColor;transform-origin:center;opacity:.15}
-html.eneles-memory-pulling #enelesMemoryPull{opacity:1;transform:translate(-50%,0) scale(1)}
-html.eneles-memory-pulling #enelesMemoryPull .eneles-pull-ring,html.eneles-memory-refreshing #enelesMemoryPull .eneles-pull-ring{animation:enelesMoonDraw .8s ease-out forwards}
-html.eneles-memory-pulling #enelesMemoryPull .eneles-pull-moon,html.eneles-memory-refreshing #enelesMemoryPull .eneles-pull-moon{animation:enelesMoonDraw .65s .12s ease-out forwards}
-html.eneles-memory-pulling #enelesMemoryPull .eneles-pull-star,html.eneles-memory-refreshing #enelesMemoryPull .eneles-pull-star{animation:enelesStarPulse .8s .2s ease-in-out infinite}
-@keyframes enelesMoonDraw{to{stroke-dashoffset:0}}
-@keyframes enelesStarPulse{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
-@media(prefers-reduced-motion:reduce){#enelesMemoryPull{transition:none}html.eneles-memory-pulling #enelesMemoryPull .eneles-pull-ring,html.eneles-memory-pulling #enelesMemoryPull .eneles-pull-moon{animation-duration:.01ms}}
+/* Animation du geste d’actualisation, identique à Hesed Archives. */
+#hesedMemoryPull{position:fixed;left:50%;top:clamp(70px,15vh,130px);transform:translate(-50%,-12px) scale(.82);z-index:2147483647;width:62px;height:62px;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .24s cubic-bezier(.2,.8,.2,1);color:var(--accent);filter:drop-shadow(0 5px 14px color-mix(in srgb,var(--accent) 35%,transparent))}
+#hesedMemoryPull svg{width:100%;height:100%;overflow:visible}
+#hesedMemoryPull .hesed-pull-ring{fill:none;stroke:currentColor;stroke-width:1.6;stroke-dasharray:150;stroke-dashoffset:150;stroke-linecap:round}
+#hesedMemoryPull .hesed-pull-moon{fill:none;stroke:var(--accent-light);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:90;stroke-dashoffset:90}
+#hesedMemoryPull .hesed-pull-star{fill:currentColor;transform-origin:center;opacity:.15}
+html.hesed-memory-pulling #hesedMemoryPull{opacity:1;transform:translate(-50%,0) scale(1)}
+html.hesed-memory-pulling #hesedMemoryPull .hesed-pull-ring,html.hesed-memory-refreshing #hesedMemoryPull .hesed-pull-ring{animation:hesedMoonDraw .8s ease-out forwards}
+html.hesed-memory-pulling #hesedMemoryPull .hesed-pull-moon,html.hesed-memory-refreshing #hesedMemoryPull .hesed-pull-moon{animation:hesedMoonDraw .65s .12s ease-out forwards}
+html.hesed-memory-pulling #hesedMemoryPull .hesed-pull-star,html.hesed-memory-refreshing #hesedMemoryPull .hesed-pull-star{animation:hesedStarPulse .8s .2s ease-in-out infinite}
+@keyframes hesedMoonDraw{to{stroke-dashoffset:0}}
+@keyframes hesedStarPulse{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+@media(prefers-reduced-motion:reduce){#hesedMemoryPull{transition:none}html.hesed-memory-pulling #hesedMemoryPull .hesed-pull-ring,html.hesed-memory-pulling #hesedMemoryPull .hesed-pull-moon{animation-duration:.01ms}}
 
 
-/* Barre latérale Eneles : tiroir vitré, inspiré de la navigation Archives. */
-body.eneles-sidebar-open::before{content:"";position:fixed;inset:0;z-index:999;background:rgba(3,2,8,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
-.app-menu-panel:not([hidden]){position:fixed!important;inset:0 auto 0 0!important;width:min(320px,88vw)!important;max-width:88vw!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:calc(env(safe-area-inset-top,0px) + 84px) 14px calc(env(safe-area-inset-bottom,0px) + 18px)!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain!important;border:1px solid color-mix(in srgb,var(--accent-light) 22%,var(--border))!important;border-left:0!important;border-radius:0 26px 26px 0!important;background:color-mix(in srgb,var(--bg) 94%,var(--surface))!important;box-shadow:24px 0 80px rgba(0,0,0,.38)!important;z-index:1000!important;animation:enelesSidebarEnter .24s var(--ease) both!important}
+/* Barre latérale Hesed : tiroir vitré, inspiré de la navigation Archives. */
+body.hesed-sidebar-open::before{content:"";position:fixed;inset:0;z-index:999;background:rgba(3,2,8,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.app-menu-panel:not([hidden]){position:fixed!important;inset:0 auto 0 0!important;width:min(320px,88vw)!important;max-width:88vw!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:calc(env(safe-area-inset-top,0px) + 84px) 14px calc(env(safe-area-inset-bottom,0px) + 18px)!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain!important;border:1px solid color-mix(in srgb,var(--accent-light) 22%,var(--border))!important;border-left:0!important;border-radius:0 26px 26px 0!important;background:color-mix(in srgb,var(--bg) 94%,var(--surface))!important;box-shadow:24px 0 80px rgba(0,0,0,.38)!important;z-index:1000!important;animation:hesedSidebarEnter .24s var(--ease) both!important}
 .app-menu-panel[hidden]{display:none!important}
-@keyframes enelesSidebarEnter{from{opacity:.6;transform:translateX(-22px)}to{opacity:1;transform:translateX(0)}}
+@keyframes hesedSidebarEnter{from{opacity:.6;transform:translateX(-22px)}to{opacity:1;transform:translateX(0)}}
 .app-menu-panel .app-menu-item{min-height:48px;border-radius:14px;font-size:.86rem}
 @media(prefers-reduced-motion:reduce){.app-menu-panel:not([hidden]){animation:none!important}}
 
-/* Clone fidèle du Hero morphing d'Eneles Archives, adapté à Mémoire. */
-.eneles-memory-hero.hero.aurore-hero-morph{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;min-height:clamp(340px,42vw,480px)!important;height:auto!important;padding:clamp(36px,5vw,58px) clamp(22px,5vw,56px)!important;margin:0 0 28px!important;border:0!important;border-radius:28px!important;overflow:hidden!important;isolation:isolate!important;background:transparent!important}
-.eneles-memory-hero.hero.aurore-hero-morph::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(145deg,var(--hero-theme-start),var(--hero-theme-mid) 55%,var(--hero-theme-end));clip-path:var(--hero-clip);border-radius:var(--hero-radius,50%);opacity:1;transition:clip-path 1s cubic-bezier(.22,.61,.36,1),border-radius 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1),opacity 1s ease;will-change:clip-path,border-radius}
-.eneles-memory-hero.hero.aurore-hero-morph::after{content:"";position:absolute;inset:7px;z-index:0;pointer-events:none;clip-path:var(--hero-clip);border-radius:var(--hero-radius,50%);background:linear-gradient(135deg,color-mix(in srgb,var(--hero-theme-accent) 22%,transparent),transparent 58%);box-shadow:0 18px 48px color-mix(in srgb,var(--hero-theme-accent) 22%,transparent);filter:drop-shadow(0 0 18px color-mix(in srgb,var(--hero-theme-accent) 18%,transparent));opacity:1;transition:clip-path 1s cubic-bezier(.22,.61,.36,1),border-radius 1s cubic-bezier(.22,.61,.36,1),filter 1s ease,opacity 1s ease}
-.eneles-memory-hero.hero.aurore-hero-morph{--hero-theme-start:color-mix(in srgb,var(--accent) 20%,var(--bg));--hero-theme-mid:color-mix(in srgb,var(--accent) 30%,var(--surface));--hero-theme-end:var(--bg);--hero-theme-accent:var(--accent)}
-.eneles-memory-hero.hero.aurore-hero-morph.is-split::before,.eneles-memory-hero.hero.aurore-hero-morph.is-split::after{opacity:.14}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-inner{position:relative!important;z-index:3!important;width:100%!important;max-width:980px!important;margin:0 auto!important;padding:12px 0!important;box-sizing:border-box!important;text-align:center!important;transform:none!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-motif,.eneles-memory-hero.hero.aurore-hero-morph .hero-glow{position:absolute!important;inset:0!important;pointer-events:none!important;z-index:1!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-glow{border-radius:50%;filter:blur(34px);opacity:.18;background:var(--accent-light)}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-glow.g1{top:-35%;left:55%;width:55%;height:85%;background:var(--accent)}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-glow.g2{top:45%;left:-10%;width:55%;height:70%;background:var(--accent-light)}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-rule{width:46px;height:3px;margin:0 auto 16px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-light))}
-.eneles-memory-hero.hero.aurore-hero-morph .eyebrow{margin:0 0 10px;color:var(--accent-light);font-size:.68rem;font-weight:850;letter-spacing:.16em}
-.eneles-memory-hero.hero.aurore-hero-morph h1{position:relative;max-width:100%!important;margin:0;font-size:clamp(2rem,5vw,3.5rem);line-height:1.04;letter-spacing:-.055em;text-wrap:balance}
-.eneles-memory-hero.hero.aurore-hero-morph h1 .accentword{background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-.eneles-memory-hero.hero.aurore-hero-morph p.sub{position:relative;max-width:100%!important;margin:14px auto 0;color:var(--muted);font-size:.94rem;line-height:1.65;text-wrap:balance}
-.eneles-memory-hero.hero.aurore-hero-morph .eneles-hero-action{margin-top:22px}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob{position:absolute;top:50%;left:50%;width:50%;height:50%;z-index:2;pointer-events:none;transform:translate(-50%,-50%) scale(.0001);transition:transform 1s cubic-bezier(.22,.61,.36,1);will-change:transform}
-.eneles-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="1"]{transform:translate(-128%,-58%) scale(.58)}
-.eneles-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="2"]{transform:translate(38%,-114%) scale(.52)}
-.eneles-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="3"]{transform:translate(74%,68%) scale(.66)}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob-core{width:100%;height:100%;opacity:0;border-radius:44% 56% 58% 42% / 48% 42% 58% 52%;background:linear-gradient(135deg,var(--hero-theme-mid),var(--hero-theme-accent) 75%);filter:drop-shadow(0 10px 26px color-mix(in srgb,var(--hero-theme-accent) 28%,transparent));box-shadow:inset 0 0 24px color-mix(in srgb,var(--hero-theme-accent) 16%,transparent);transition:opacity 350ms ease}
-.eneles-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob-core{opacity:.92}
-.eneles-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="1"] .hero-split-blob-core{animation:enelesHeroSplitFloat 2.2s ease-in-out 1}
-.eneles-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="2"] .hero-split-blob-core{animation:enelesHeroSplitFloat 2.6s ease-in-out 1 .15s}
-.eneles-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="3"] .hero-split-blob-core{animation:enelesHeroSplitFloat 2.4s ease-in-out 1 .3s}
-@keyframes enelesHeroSplitFloat{0%{opacity:.88}100%{opacity:.88;transform:translate(0,0) rotate(0deg);border-radius:44% 56% 58% 42% / 48% 42% 58% 52%}33%{transform:translate(-5%,7%) rotate(-7deg) scale(1.06);border-radius:58% 42% 46% 54% / 40% 55% 45% 60%}66%{transform:translate(6%,-6%) rotate(6deg) scale(.94);border-radius:50% 50% 40% 60% / 55% 45% 55% 45%}}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="triangle"]{--hero-radius:34% 66% 63% 37% / 18% 18% 82% 82%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="square"]{--hero-radius:22px}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="cube"]{--hero-radius:18px 32px 18px 32px}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="hexagon"]{--hero-radius:26% 74% 68% 32% / 38% 38% 62% 62%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="octagon"]{--hero-radius:30% 70% 70% 30% / 30% 30% 70% 70%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="dodecagon"]{--hero-radius:38% 62% 58% 42% / 45% 34% 66% 55%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="polygon24"]{--hero-radius:44% 56% 55% 45% / 46% 42% 58% 54%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="circle"]{--hero-radius:50%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="drop"]{--hero-radius:58% 42% 55% 45% / 28% 28% 72% 72%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="leaf"]{--hero-radius:78% 22% 72% 28% / 48% 52% 48% 52%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="bubbles3"]{--hero-radius:60% 40% 55% 45% / 50% 55% 45% 50%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="bubbles5"]{--hero-radius:48% 52% 50% 50% / 52% 48% 52% 48%}
-.eneles-memory-hero.hero.aurore-hero-morph[data-shape="bubbles7"]{--hero-radius:50% 50% 48% 52% / 48% 52% 50% 50%}
-@media(max-width:760px){.eneles-memory-hero.hero.aurore-hero-morph{min-height:370px!important;padding:46px 22px!important}.eneles-memory-hero.hero.aurore-hero-morph .hero-inner{width:100%!important;max-width:100%!important}}
-@media(max-width:430px){.eneles-memory-hero.hero.aurore-hero-morph{min-height:unset!important;padding:40px 16px!important}}
-@media(prefers-reduced-motion:reduce){.eneles-memory-hero.hero.aurore-hero-morph::before,.eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob{transition:none!important}.eneles-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob-core{animation:none!important}}
+/* Clone fidèle du Hero morphing d'Hesed Archives, adapté à Mémoire. */
+.hesed-memory-hero.hero.aurore-hero-morph{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;min-height:clamp(340px,42vw,480px)!important;height:auto!important;padding:clamp(36px,5vw,58px) clamp(22px,5vw,56px)!important;margin:0 0 28px!important;border:0!important;border-radius:28px!important;overflow:hidden!important;isolation:isolate!important;background:transparent!important}
+.hesed-memory-hero.hero.aurore-hero-morph::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(145deg,var(--hero-theme-start),var(--hero-theme-mid) 55%,var(--hero-theme-end));clip-path:var(--hero-clip);border-radius:var(--hero-radius,50%);opacity:1;transition:clip-path 1s cubic-bezier(.22,.61,.36,1),border-radius 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1),opacity 1s ease;will-change:clip-path,border-radius}
+.hesed-memory-hero.hero.aurore-hero-morph::after{content:"";position:absolute;inset:7px;z-index:0;pointer-events:none;clip-path:var(--hero-clip);border-radius:var(--hero-radius,50%);background:linear-gradient(135deg,color-mix(in srgb,var(--hero-theme-accent) 22%,transparent),transparent 58%);box-shadow:0 18px 48px color-mix(in srgb,var(--hero-theme-accent) 22%,transparent);filter:drop-shadow(0 0 18px color-mix(in srgb,var(--hero-theme-accent) 18%,transparent));opacity:1;transition:clip-path 1s cubic-bezier(.22,.61,.36,1),border-radius 1s cubic-bezier(.22,.61,.36,1),filter 1s ease,opacity 1s ease}
+.hesed-memory-hero.hero.aurore-hero-morph{--hero-theme-start:color-mix(in srgb,var(--accent) 20%,var(--bg));--hero-theme-mid:color-mix(in srgb,var(--accent) 30%,var(--surface));--hero-theme-end:var(--bg);--hero-theme-accent:var(--accent)}
+.hesed-memory-hero.hero.aurore-hero-morph.is-split::before,.hesed-memory-hero.hero.aurore-hero-morph.is-split::after{opacity:.14}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-inner{position:relative!important;z-index:3!important;width:100%!important;max-width:980px!important;margin:0 auto!important;padding:12px 0!important;box-sizing:border-box!important;text-align:center!important;transform:none!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-motif,.hesed-memory-hero.hero.aurore-hero-morph .hero-glow{position:absolute!important;inset:0!important;pointer-events:none!important;z-index:1!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-glow{border-radius:50%;filter:blur(34px);opacity:.18;background:var(--accent-light)}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-glow.g1{top:-35%;left:55%;width:55%;height:85%;background:var(--accent)}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-glow.g2{top:45%;left:-10%;width:55%;height:70%;background:var(--accent-light)}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-rule{width:46px;height:3px;margin:0 auto 16px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-light))}
+.hesed-memory-hero.hero.aurore-hero-morph .eyebrow{margin:0 0 10px;color:var(--accent-light);font-size:.68rem;font-weight:850;letter-spacing:.16em}
+.hesed-memory-hero.hero.aurore-hero-morph h1{position:relative;max-width:100%!important;margin:0;font-size:clamp(2rem,5vw,3.5rem);line-height:1.04;letter-spacing:-.055em;text-wrap:balance}
+.hesed-memory-hero.hero.aurore-hero-morph h1 .accentword{background:linear-gradient(90deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hesed-memory-hero.hero.aurore-hero-morph p.sub{position:relative;max-width:100%!important;margin:14px auto 0;color:var(--muted);font-size:.94rem;line-height:1.65;text-wrap:balance}
+.hesed-memory-hero.hero.aurore-hero-morph .hesed-hero-action{margin-top:22px}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-split-blob{position:absolute;top:50%;left:50%;width:50%;height:50%;z-index:2;pointer-events:none;transform:translate(-50%,-50%) scale(.0001);transition:transform 1s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.hesed-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="1"]{transform:translate(-128%,-58%) scale(.58)}
+.hesed-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="2"]{transform:translate(38%,-114%) scale(.52)}
+.hesed-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob[data-b="3"]{transform:translate(74%,68%) scale(.66)}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-split-blob-core{width:100%;height:100%;opacity:0;border-radius:44% 56% 58% 42% / 48% 42% 58% 52%;background:linear-gradient(135deg,var(--hero-theme-mid),var(--hero-theme-accent) 75%);filter:drop-shadow(0 10px 26px color-mix(in srgb,var(--hero-theme-accent) 28%,transparent));box-shadow:inset 0 0 24px color-mix(in srgb,var(--hero-theme-accent) 16%,transparent);transition:opacity 350ms ease}
+.hesed-memory-hero.hero.aurore-hero-morph.is-split .hero-split-blob-core{opacity:.92}
+.hesed-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="1"] .hero-split-blob-core{animation:hesedHeroSplitFloat 2.2s ease-in-out 1}
+.hesed-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="2"] .hero-split-blob-core{animation:hesedHeroSplitFloat 2.6s ease-in-out 1 .15s}
+.hesed-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob[data-b="3"] .hero-split-blob-core{animation:hesedHeroSplitFloat 2.4s ease-in-out 1 .3s}
+@keyframes hesedHeroSplitFloat{0%{opacity:.88}100%{opacity:.88;transform:translate(0,0) rotate(0deg);border-radius:44% 56% 58% 42% / 48% 42% 58% 52%}33%{transform:translate(-5%,7%) rotate(-7deg) scale(1.06);border-radius:58% 42% 46% 54% / 40% 55% 45% 60%}66%{transform:translate(6%,-6%) rotate(6deg) scale(.94);border-radius:50% 50% 40% 60% / 55% 45% 55% 45%}}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="triangle"]{--hero-radius:34% 66% 63% 37% / 18% 18% 82% 82%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="square"]{--hero-radius:22px}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="cube"]{--hero-radius:18px 32px 18px 32px}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="hexagon"]{--hero-radius:26% 74% 68% 32% / 38% 38% 62% 62%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="octagon"]{--hero-radius:30% 70% 70% 30% / 30% 30% 70% 70%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="dodecagon"]{--hero-radius:38% 62% 58% 42% / 45% 34% 66% 55%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="polygon24"]{--hero-radius:44% 56% 55% 45% / 46% 42% 58% 54%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="circle"]{--hero-radius:50%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="drop"]{--hero-radius:58% 42% 55% 45% / 28% 28% 72% 72%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="leaf"]{--hero-radius:78% 22% 72% 28% / 48% 52% 48% 52%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="bubbles3"]{--hero-radius:60% 40% 55% 45% / 50% 55% 45% 50%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="bubbles5"]{--hero-radius:48% 52% 50% 50% / 52% 48% 52% 48%}
+.hesed-memory-hero.hero.aurore-hero-morph[data-shape="bubbles7"]{--hero-radius:50% 50% 48% 52% / 48% 52% 50% 50%}
+@media(max-width:760px){.hesed-memory-hero.hero.aurore-hero-morph{min-height:370px!important;padding:46px 22px!important}.hesed-memory-hero.hero.aurore-hero-morph .hero-inner{width:100%!important;max-width:100%!important}}
+@media(max-width:430px){.hesed-memory-hero.hero.aurore-hero-morph{min-height:unset!important;padding:40px 16px!important}}
+@media(prefers-reduced-motion:reduce){.hesed-memory-hero.hero.aurore-hero-morph::before,.hesed-memory-hero.hero.aurore-hero-morph .hero-split-blob{transition:none!important}.hesed-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob-core{animation:none!important}}
 
 /* Learning doors use the same proportions and surfaces as Archives. */
-.eneles-learning-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
-.eneles-learning-card,.eneles-learning-card-wide{grid-column:auto!important;min-height:138px;padding:20px 17px;border-radius:34px 22px 30px 42px / 38px 28px 36px 30px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008)),#12101A;border:1px solid #30283F;color:#F8F7FF;box-shadow:0 14px 38px rgba(0,0,0,.22);gap:14px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}
-.eneles-learning-card::before{right:-30px;top:-36px;width:88px;height:88px;border-radius:20px;border-color:color-mix(in srgb,var(--door-accent) 26%,transparent)}
-.eneles-learning-card::after{opacity:.65}
-.eneles-learning-kicker{padding:0;border:0;border-radius:0;color:color-mix(in srgb,var(--door-accent) 68%,#A8A2B5);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;line-height:1.3}
-.eneles-learning-card h3{font-size:1rem;color:#fff;line-height:1.25}
-.eneles-learning-card>p{font-size:.77rem;color:#8F879D;line-height:1.45}
-.eneles-learning-docs{gap:5px;padding-top:9px;border-top:1px solid color-mix(in srgb,var(--door-accent) 20%,#30283F)}
-.eneles-learning-docs span{font-size:.7rem;color:#8F879D;line-height:1.4}
-.eneles-learning-card-wide{display:flex}
-.eneles-learning-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--door-accent) 58%,#30283F);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012)),#15121D;box-shadow:0 20px 46px rgba(0,0,0,.26)}
-.eneles-learning-card:active{transform:translateY(-1px)}
-@media(max-width:1050px){.eneles-learning-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:640px){.eneles-learning-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.eneles-learning-card,.eneles-learning-card-wide{min-height:120px;padding:17px 15px}}
-@media(max-width:430px){.eneles-learning-grid{grid-template-columns:1fr}.eneles-learning-card,.eneles-learning-card-wide{grid-column:auto;min-height:120px}}
-@media(prefers-reduced-motion:reduce){.eneles-memory-hero.hero.aurore-hero-morph::before,.eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob{transition:none!important}.eneles-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob-core{animation:none!important}}
+.hesed-learning-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.hesed-learning-card,.hesed-learning-card-wide{grid-column:auto!important;min-height:138px;padding:20px 17px;border-radius:34px 22px 30px 42px / 38px 28px 36px 30px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008)),#12101A;border:1px solid #30283F;color:#F8F7FF;box-shadow:0 14px 38px rgba(0,0,0,.22);gap:14px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.hesed-learning-card::before{right:-30px;top:-36px;width:88px;height:88px;border-radius:20px;border-color:color-mix(in srgb,var(--door-accent) 26%,transparent)}
+.hesed-learning-card::after{opacity:.65}
+.hesed-learning-kicker{padding:0;border:0;border-radius:0;color:color-mix(in srgb,var(--door-accent) 68%,#A8A2B5);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;line-height:1.3}
+.hesed-learning-card h3{font-size:1rem;color:#fff;line-height:1.25}
+.hesed-learning-card>p{font-size:.77rem;color:#8F879D;line-height:1.45}
+.hesed-learning-docs{gap:5px;padding-top:9px;border-top:1px solid color-mix(in srgb,var(--door-accent) 20%,#30283F)}
+.hesed-learning-docs span{font-size:.7rem;color:#8F879D;line-height:1.4}
+.hesed-learning-card-wide{display:flex}
+.hesed-learning-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--door-accent) 58%,#30283F);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012)),#15121D;box-shadow:0 20px 46px rgba(0,0,0,.26)}
+.hesed-learning-card:active{transform:translateY(-1px)}
+@media(max-width:1050px){.hesed-learning-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.hesed-learning-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.hesed-learning-card,.hesed-learning-card-wide{min-height:120px;padding:17px 15px}}
+@media(max-width:430px){.hesed-learning-grid{grid-template-columns:1fr}.hesed-learning-card,.hesed-learning-card-wide{grid-column:auto;min-height:120px}}
+@media(prefers-reduced-motion:reduce){.hesed-memory-hero.hero.aurore-hero-morph::before,.hesed-memory-hero.hero.aurore-hero-morph .hero-split-blob{transition:none!important}.hesed-memory-hero.hero.aurore-hero-morph.is-split.is-floating .hero-split-blob-core{animation:none!important}}
 /* Le Hero doit rester réellement masqué malgré son display:flex animé. */
-.eneles-memory-hero.hero.aurore-hero-morph[hidden]{display:none!important}
+.hesed-memory-hero.hero.aurore-hero-morph[hidden]{display:none!important}
 
-/* Eneles Mémoire — reprise du langage visuel d’Archives, sans importer ses contenus pédagogiques. */
-.eneles-hero-highlights{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px auto 0;max-width:760px}
-.eneles-hero-highlights span{padding:8px 12px;border:1px solid color-mix(in srgb,var(--hero-theme-accent,var(--accent)) 28%,var(--border));border-radius:999px;background:color-mix(in srgb,var(--surface) 65%,transparent);color:var(--text);font-size:.74rem;font-weight:650;backdrop-filter:blur(8px)}
+/* Hesed Mémoire — reprise du langage visuel d’Archives, sans importer ses contenus pédagogiques. */
+.hesed-hero-highlights{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px auto 0;max-width:760px}
+.hesed-hero-highlights span{padding:8px 12px;border:1px solid color-mix(in srgb,var(--hero-theme-accent,var(--accent)) 28%,var(--border));border-radius:999px;background:color-mix(in srgb,var(--surface) 65%,transparent);color:var(--text);font-size:.74rem;font-weight:650;backdrop-filter:blur(8px)}
 /* Cartes à contours organiques et accents latéraux, uniquement sur les fonctionnalités propres à Mémoire. */
 body[data-page="home"] .home-card,body[data-page="home"] .home-action-card{position:relative;isolation:isolate;overflow:hidden;border-radius:34px 22px 30px 42px / 38px 28px 36px 30px!important;border-color:color-mix(in srgb,var(--accent) 25%,var(--border));background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 70%);box-shadow:0 12px 32px rgba(0,0,0,.13);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
 body[data-page="home"] .home-card::before,body[data-page="home"] .home-action-card::before{content:"";position:absolute;z-index:-1;right:-24px;top:-28px;width:82px;height:82px;border:1px solid color-mix(in srgb,var(--accent-light,var(--accent)) 28%,transparent);border-radius:24px;transform:rotate(24deg);pointer-events:none}
@@ -1117,51 +1117,51 @@ body[data-page="home"] .home-card:hover,body[data-page="home"] .home-action-card
 body[data-page="home"] .home-card:focus-visible,body[data-page="home"] .home-action-card:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px}
 /* Sidebar persistante sur grand écran, tiroir tactile sur mobile. */
 @media(min-width:900px){body[data-page="home"] .app-menu-panel{display:flex!important;visibility:visible!important;position:fixed!important;inset:78px auto 0 0!important;width:246px!important;max-width:246px!important;height:calc(100dvh - 78px)!important;max-height:none!important;padding:18px 14px!important;flex-direction:column!important;gap:7px!important;overflow-y:auto!important;border:0!important;border-right:1px solid var(--border)!important;border-radius:0!important;background:color-mix(in srgb,var(--bg) 96%,var(--surface))!important;box-shadow:8px 0 30px rgba(0,0,0,.08)!important;z-index:900!important;animation:none!important}body[data-page="home"] .app-menu-panel[hidden]{display:flex!important}body[data-page="home"] .app-menu-wrap{position:static!important}body[data-page="home"] .topbar{margin-left:246px}body[data-page="home"] .main-content,body[data-page="home"] .site-footer{margin-left:246px}body[data-page="home"] .app-menu-toggle{position:fixed;left:14px;top:18px;z-index:1100}body[data-page="home"] .brand{margin-left:46px}body[data-page="home"] .app-menu-panel::before{content:"VOTRE ESPACE";display:block;padding:0 10px 12px;color:var(--muted);font-size:.66rem;font-weight:800;letter-spacing:.13em}body[data-page="home"] .app-menu-panel .app-menu-item{display:flex!important;align-items:center;min-height:48px;padding:12px 14px;border:1px solid transparent;border-radius:14px;color:var(--text);text-decoration:none;background:transparent}body[data-page="home"] .app-menu-panel .app-menu-item:hover{background:var(--soft);border-color:var(--border)}body[data-page="home"] .app-menu-panel .app-menu-login{order:9;margin-top:auto;border-color:var(--border)}}
-@media(max-width:899px){body[data-page="home"] .app-menu-panel:not([hidden]){display:flex!important;visibility:visible!important}body[data-page="home"] .app-menu-panel[hidden]{display:none!important}body[data-page="home"] .app-menu-panel::before{content:"ENELES MÉMOIRE";display:block;padding:0 10px 12px;color:var(--muted);font-size:.66rem;font-weight:800;letter-spacing:.13em}}
-.eneles-memory-hero.hero.aurore-hero-morph[hidden]{display:none!important}
-@media(max-width:560px){.eneles-hero-highlights{gap:6px}.eneles-hero-highlights span{font-size:.66rem;padding:7px 9px}body[data-page="home"] .home-card,body[data-page="home"] .home-action-card{border-radius:25px 17px 23px 29px / 29px 20px 27px 24px!important}}
+@media(max-width:899px){body[data-page="home"] .app-menu-panel:not([hidden]){display:flex!important;visibility:visible!important}body[data-page="home"] .app-menu-panel[hidden]{display:none!important}body[data-page="home"] .app-menu-panel::before{content:"HESED MÉMOIRE";display:block;padding:0 10px 12px;color:var(--muted);font-size:.66rem;font-weight:800;letter-spacing:.13em}}
+.hesed-memory-hero.hero.aurore-hero-morph[hidden]{display:none!important}
+@media(max-width:560px){.hesed-hero-highlights{gap:6px}.hesed-hero-highlights span{font-size:.66rem;padding:7px 9px}body[data-page="home"] .home-card,body[data-page="home"] .home-action-card{border-radius:25px 17px 23px 29px / 29px 20px 27px 24px!important}}
 
-/* Reprise fidèle de la géométrie Archives pour Eneles Mémoire : vraie barre latérale persistante, tiroir mobile et Hero complet. */
+/* Reprise fidèle de la géométrie Archives pour Hesed Mémoire : vraie barre latérale persistante, tiroir mobile et Hero complet. */
 #appMenuToggle{z-index:2147483003!important}
 #appMenuPanel{display:none!important}
-.eneles-sidebar-scrim{position:fixed;inset:0;background:rgba(4,3,9,.58);backdrop-filter:blur(3px);z-index:2147483000;opacity:0;pointer-events:none;transition:opacity .22s ease}
-.eneles-sidebar-scrim.is-open{opacity:1;pointer-events:auto}
-.eneles-sidebar{--sb-accent:var(--accent,#9b7bff);position:fixed;z-index:2147483001;top:12px;bottom:12px;left:12px;width:236px;display:flex;flex-direction:column;padding:14px 12px;border:1px solid color-mix(in srgb,var(--sb-accent) 42%,transparent);border-radius:32px;background:radial-gradient(120% 70% at 0 0,color-mix(in srgb,#000 28%,transparent),transparent 58%),linear-gradient(165deg,color-mix(in srgb,var(--sb-accent) 22%,var(--surface,#171520)),color-mix(in srgb,var(--sb-accent) 7%,var(--bg,#0b0a10)));box-shadow:0 24px 50px -18px color-mix(in srgb,var(--sb-accent) 38%,transparent),0 8px 24px rgba(0,0,0,.2);backdrop-filter:blur(18px) saturate(1.15);overflow:hidden;transition:width .24s ease,transform .24s ease}
-.eneles-sidebar-topdots{display:flex;gap:7px;padding:2px 8px 12px}.eneles-sidebar-topdots i{width:8px;height:8px;border-radius:50%;background:var(--sb-accent)}.eneles-sidebar-topdots i:nth-child(2){opacity:.65}.eneles-sidebar-topdots i:nth-child(3){opacity:.35}
-.eneles-sidebar-head{display:flex;align-items:center;justify-content:space-between;padding:0 7px 12px}.eneles-sidebar-brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.08rem;letter-spacing:-.03em}.eneles-sidebar-brand img{width:31px;height:31px;object-fit:contain}.eneles-sidebar-collapse{width:30px;height:30px;border-radius:50%;border:1px solid color-mix(in srgb,var(--sb-accent) 38%,transparent);background:color-mix(in srgb,var(--sb-accent) 13%,transparent);color:var(--text);font-size:1rem;cursor:pointer}
-.eneles-sidebar-caption{padding:12px 12px 7px;font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}.eneles-sidebar-links{display:flex;flex-direction:column;gap:4px;overflow-y:auto;min-height:0;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--sb-accent) 35%,transparent) transparent}.eneles-sidebar-link{display:flex;align-items:center;gap:12px;min-height:45px;padding:10px 12px;border:1px solid transparent;border-radius:15px;color:var(--text);text-decoration:none;font-size:.88rem;font-weight:550;opacity:.82;transition:background .18s ease,border-color .18s ease,transform .18s ease}.eneles-sidebar-link:hover{opacity:1;background:color-mix(in srgb,var(--sb-accent) 12%,transparent);border-color:color-mix(in srgb,var(--sb-accent) 25%,transparent)}.eneles-sidebar-link:active{transform:scale(.985)}.eneles-sidebar-link.is-active{opacity:1;font-weight:750;background:linear-gradient(100deg,color-mix(in srgb,var(--sb-accent) 24%,transparent),color-mix(in srgb,var(--sb-accent) 8%,transparent));border-color:color-mix(in srgb,var(--sb-accent) 30%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}.eneles-sidebar-icon{width:21px;flex:0 0 21px;text-align:center;font-size:1.08rem}.eneles-sidebar-bottom{margin-top:auto;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--sb-accent) 24%,transparent)}.eneles-sidebar-bottom button{width:100%;display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid transparent;border-radius:14px;background:transparent;color:var(--text);text-align:left;font:inherit;font-size:.86rem;cursor:pointer}.eneles-sidebar-bottom button:hover{background:color-mix(in srgb,var(--sb-accent) 12%,transparent)}
-.eneles-sidebar.is-collapsed{width:70px;padding-inline:8px}.eneles-sidebar.is-collapsed .eneles-sidebar-brand span,.eneles-sidebar.is-collapsed .eneles-sidebar-caption,.eneles-sidebar.is-collapsed .eneles-sidebar-label,.eneles-sidebar.is-collapsed .eneles-sidebar-collapse{display:none}.eneles-sidebar.is-collapsed .eneles-sidebar-head{justify-content:center}.eneles-sidebar.is-collapsed .eneles-sidebar-link{justify-content:center;padding-inline:0}.eneles-sidebar.is-collapsed .eneles-sidebar-icon{flex-basis:auto}
-@media(min-width:901px){body.eneles-has-sidebar{padding-left:260px!important;transition:padding-left .24s ease}body.eneles-has-sidebar.eneles-sidebar-collapsed{padding-left:92px!important}body.eneles-has-sidebar .topbar{margin-left:248px}body.eneles-has-sidebar .main-content,body.eneles-has-sidebar .site-footer{margin-left:248px}body.eneles-has-sidebar.eneles-sidebar-collapsed .topbar{margin-left:82px}body.eneles-has-sidebar.eneles-sidebar-collapsed .main-content,body.eneles-has-sidebar.eneles-sidebar-collapsed .site-footer{margin-left:82px}.eneles-sidebar-scrim{display:none!important}.eneles-sidebar-mobile-head{display:none!important}body.eneles-has-sidebar #appMenuToggle{display:none!important}}
-@media(max-width:900px){.eneles-sidebar{top:8px;bottom:8px;left:8px;width:min(290px,84vw);transform:translateX(calc(-100% - 20px));z-index:2147483002}.eneles-sidebar.is-open{transform:translateX(0)}.eneles-sidebar.is-collapsed{width:min(290px,84vw)}.eneles-sidebar-collapse{display:none}.eneles-sidebar-scrim{z-index:2147483001}body.eneles-sidebar-open{overflow:hidden}}
+.hesed-sidebar-scrim{position:fixed;inset:0;background:rgba(4,3,9,.58);backdrop-filter:blur(3px);z-index:2147483000;opacity:0;pointer-events:none;transition:opacity .22s ease}
+.hesed-sidebar-scrim.is-open{opacity:1;pointer-events:auto}
+.hesed-sidebar{--sb-accent:var(--accent,#9b7bff);position:fixed;z-index:2147483001;top:12px;bottom:12px;left:12px;width:236px;display:flex;flex-direction:column;padding:14px 12px;border:1px solid color-mix(in srgb,var(--sb-accent) 42%,transparent);border-radius:32px;background:radial-gradient(120% 70% at 0 0,color-mix(in srgb,#000 28%,transparent),transparent 58%),linear-gradient(165deg,color-mix(in srgb,var(--sb-accent) 22%,var(--surface,#171520)),color-mix(in srgb,var(--sb-accent) 7%,var(--bg,#0b0a10)));box-shadow:0 24px 50px -18px color-mix(in srgb,var(--sb-accent) 38%,transparent),0 8px 24px rgba(0,0,0,.2);backdrop-filter:blur(18px) saturate(1.15);overflow:hidden;transition:width .24s ease,transform .24s ease}
+.hesed-sidebar-topdots{display:flex;gap:7px;padding:2px 8px 12px}.hesed-sidebar-topdots i{width:8px;height:8px;border-radius:50%;background:var(--sb-accent)}.hesed-sidebar-topdots i:nth-child(2){opacity:.65}.hesed-sidebar-topdots i:nth-child(3){opacity:.35}
+.hesed-sidebar-head{display:flex;align-items:center;justify-content:space-between;padding:0 7px 12px}.hesed-sidebar-brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.08rem;letter-spacing:-.03em}.hesed-sidebar-brand img{width:31px;height:31px;object-fit:contain}.hesed-sidebar-collapse{width:30px;height:30px;border-radius:50%;border:1px solid color-mix(in srgb,var(--sb-accent) 38%,transparent);background:color-mix(in srgb,var(--sb-accent) 13%,transparent);color:var(--text);font-size:1rem;cursor:pointer}
+.hesed-sidebar-caption{padding:12px 12px 7px;font-size:.65rem;font-weight:800;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}.hesed-sidebar-links{display:flex;flex-direction:column;gap:4px;overflow-y:auto;min-height:0;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--sb-accent) 35%,transparent) transparent}.hesed-sidebar-link{display:flex;align-items:center;gap:12px;min-height:45px;padding:10px 12px;border:1px solid transparent;border-radius:15px;color:var(--text);text-decoration:none;font-size:.88rem;font-weight:550;opacity:.82;transition:background .18s ease,border-color .18s ease,transform .18s ease}.hesed-sidebar-link:hover{opacity:1;background:color-mix(in srgb,var(--sb-accent) 12%,transparent);border-color:color-mix(in srgb,var(--sb-accent) 25%,transparent)}.hesed-sidebar-link:active{transform:scale(.985)}.hesed-sidebar-link.is-active{opacity:1;font-weight:750;background:linear-gradient(100deg,color-mix(in srgb,var(--sb-accent) 24%,transparent),color-mix(in srgb,var(--sb-accent) 8%,transparent));border-color:color-mix(in srgb,var(--sb-accent) 30%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}.hesed-sidebar-icon{width:21px;flex:0 0 21px;text-align:center;font-size:1.08rem}.hesed-sidebar-bottom{margin-top:auto;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--sb-accent) 24%,transparent)}.hesed-sidebar-bottom button{width:100%;display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid transparent;border-radius:14px;background:transparent;color:var(--text);text-align:left;font:inherit;font-size:.86rem;cursor:pointer}.hesed-sidebar-bottom button:hover{background:color-mix(in srgb,var(--sb-accent) 12%,transparent)}
+.hesed-sidebar.is-collapsed{width:70px;padding-inline:8px}.hesed-sidebar.is-collapsed .hesed-sidebar-brand span,.hesed-sidebar.is-collapsed .hesed-sidebar-caption,.hesed-sidebar.is-collapsed .hesed-sidebar-label,.hesed-sidebar.is-collapsed .hesed-sidebar-collapse{display:none}.hesed-sidebar.is-collapsed .hesed-sidebar-head{justify-content:center}.hesed-sidebar.is-collapsed .hesed-sidebar-link{justify-content:center;padding-inline:0}.hesed-sidebar.is-collapsed .hesed-sidebar-icon{flex-basis:auto}
+@media(min-width:901px){body.hesed-has-sidebar{padding-left:260px!important;transition:padding-left .24s ease}body.hesed-has-sidebar.hesed-sidebar-collapsed{padding-left:92px!important}body.hesed-has-sidebar .topbar{margin-left:248px}body.hesed-has-sidebar .main-content,body.hesed-has-sidebar .site-footer{margin-left:248px}body.hesed-has-sidebar.hesed-sidebar-collapsed .topbar{margin-left:82px}body.hesed-has-sidebar.hesed-sidebar-collapsed .main-content,body.hesed-has-sidebar.hesed-sidebar-collapsed .site-footer{margin-left:82px}.hesed-sidebar-scrim{display:none!important}.hesed-sidebar-mobile-head{display:none!important}body.hesed-has-sidebar #appMenuToggle{display:none!important}}
+@media(max-width:900px){.hesed-sidebar{top:8px;bottom:8px;left:8px;width:min(290px,84vw);transform:translateX(calc(-100% - 20px));z-index:2147483002}.hesed-sidebar.is-open{transform:translateX(0)}.hesed-sidebar.is-collapsed{width:min(290px,84vw)}.hesed-sidebar-collapse{display:none}.hesed-sidebar-scrim{z-index:2147483001}body.hesed-sidebar-open{overflow:hidden}}
 /* Hero : recherche intégrée comme dans Archives, tout en conservant les actions propres à Mémoire. */
-.eneles-memory-hero.hero.aurore-hero-morph{min-height:clamp(390px,44vw,510px)!important;border-radius:30px!important}
-.eneles-memory-hero.hero.aurore-hero-morph p.sub{color:color-mix(in srgb,var(--text) 88%,#fff)!important;max-width:760px!important;font-size:1rem!important}
-.eneles-memory-hero .eneles-memory-search{position:relative;z-index:4;display:flex;gap:8px;align-items:center;width:min(760px,100%);margin:24px auto 0;padding:6px;border:1px solid color-mix(in srgb,var(--hero-theme-accent) 34%,rgba(255,255,255,.22));border-radius:18px;background:color-mix(in srgb,var(--bg) 60%,rgba(12,10,18,.5));box-shadow:0 12px 34px rgba(0,0,0,.16);backdrop-filter:blur(14px)}
-.eneles-memory-search input{flex:1;min-width:0;height:46px;padding:0 14px;border:0;outline:0;background:transparent;color:var(--text);font:inherit;font-size:.88rem}.eneles-memory-search input::placeholder{color:color-mix(in srgb,var(--text) 66%,transparent)}.eneles-memory-search button{height:44px;padding:0 17px;border:0;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;font:inherit;font-size:.82rem;font-weight:750;cursor:pointer}.eneles-memory-search button:focus-visible,.eneles-memory-search input:focus-visible{outline:2px solid var(--accent-light);outline-offset:2px}.eneles-memory-search-status{min-height:1.2em;margin:8px auto 0;color:var(--text);font-size:.75rem;opacity:.9}
-@media(max-width:560px){.eneles-memory-hero.hero.aurore-hero-morph{min-height:unset!important;padding:42px 16px 28px!important}.eneles-memory-search{flex-direction:column;align-items:stretch!important;border-radius:16px!important}.eneles-memory-search input{width:100%;box-sizing:border-box}.eneles-memory-search button{width:100%}.eneles-hero-highlights{margin-top:15px!important}}
+.hesed-memory-hero.hero.aurore-hero-morph{min-height:clamp(390px,44vw,510px)!important;border-radius:30px!important}
+.hesed-memory-hero.hero.aurore-hero-morph p.sub{color:color-mix(in srgb,var(--text) 88%,#fff)!important;max-width:760px!important;font-size:1rem!important}
+.hesed-memory-hero .hesed-memory-search{position:relative;z-index:4;display:flex;gap:8px;align-items:center;width:min(760px,100%);margin:24px auto 0;padding:6px;border:1px solid color-mix(in srgb,var(--hero-theme-accent) 34%,rgba(255,255,255,.22));border-radius:18px;background:color-mix(in srgb,var(--bg) 60%,rgba(12,10,18,.5));box-shadow:0 12px 34px rgba(0,0,0,.16);backdrop-filter:blur(14px)}
+.hesed-memory-search input{flex:1;min-width:0;height:46px;padding:0 14px;border:0;outline:0;background:transparent;color:var(--text);font:inherit;font-size:.88rem}.hesed-memory-search input::placeholder{color:color-mix(in srgb,var(--text) 66%,transparent)}.hesed-memory-search button{height:44px;padding:0 17px;border:0;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;font:inherit;font-size:.82rem;font-weight:750;cursor:pointer}.hesed-memory-search button:focus-visible,.hesed-memory-search input:focus-visible{outline:2px solid var(--accent-light);outline-offset:2px}.hesed-memory-search-status{min-height:1.2em;margin:8px auto 0;color:var(--text);font-size:.75rem;opacity:.9}
+@media(max-width:560px){.hesed-memory-hero.hero.aurore-hero-morph{min-height:unset!important;padding:42px 16px 28px!important}.hesed-memory-search{flex-direction:column;align-items:stretch!important;border-radius:16px!important}.hesed-memory-search input{width:100%;box-sizing:border-box}.hesed-memory-search button{width:100%}.hesed-hero-highlights{margin-top:15px!important}}
 /* Ajustement du canevas : le padding du body réserve déjà la place de la barre. */
-@media(min-width:901px){body.eneles-has-sidebar .topbar,body.eneles-has-sidebar .main-content,body.eneles-has-sidebar .site-footer,body.eneles-has-sidebar.eneles-sidebar-collapsed .topbar,body.eneles-has-sidebar.eneles-sidebar-collapsed .main-content,body.eneles-has-sidebar.eneles-sidebar-collapsed .site-footer{margin-left:0!important}}
+@media(min-width:901px){body.hesed-has-sidebar .topbar,body.hesed-has-sidebar .main-content,body.hesed-has-sidebar .site-footer,body.hesed-has-sidebar.hesed-sidebar-collapsed .topbar,body.hesed-has-sidebar.hesed-sidebar-collapsed .main-content,body.hesed-has-sidebar.hesed-sidebar-collapsed .site-footer{margin-left:0!important}}
 body[data-page="home"] .home-card[hidden],body[data-page="home"] .home-action-card[hidden]{display:none!important}
 
 /* Hero Mémoire : recentré visuellement malgré le décalage réservé à la sidebar. */
 @media(min-width:901px){
-  body.eneles-has-sidebar #enelesMemoryHero{
+  body.hesed-has-sidebar #hesedMemoryHero{
     position:relative!important;
     left:-130px!important;
     filter:drop-shadow(0 18px 28px color-mix(in srgb,var(--accent) 22%,rgba(0,0,0,.24)))!important;
   }
 }
-#enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph::before{
+#hesedMemoryHero.hesed-memory-hero.hero.aurore-hero-morph::before{
   filter:drop-shadow(0 17px 24px color-mix(in srgb,var(--hero-theme-accent,var(--accent)) 27%,rgba(0,0,0,.2)))!important;
 }
-#enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph::after{
+#hesedMemoryHero.hesed-memory-hero.hero.aurore-hero-morph::after{
   box-shadow:0 20px 48px color-mix(in srgb,var(--hero-theme-accent,var(--accent)) 25%,transparent),inset 0 1px 0 rgba(255,255,255,.12)!important;
 }
 @media(max-width:900px){
-  #enelesMemoryHero.eneles-memory-hero.hero.aurore-hero-morph{left:0!important;filter:drop-shadow(0 16px 26px color-mix(in srgb,var(--accent) 22%,rgba(0,0,0,.2)))!important}
+  #hesedMemoryHero.hesed-memory-hero.hero.aurore-hero-morph{left:0!important;filter:drop-shadow(0 16px 26px color-mix(in srgb,var(--accent) 22%,rgba(0,0,0,.2)))!important}
 }
 
-/* Eneles — finitions Material / Flat partagées entre tous les espaces. */
+/* Hesed — finitions Material / Flat partagées entre tous les espaces. */
 html body .brand-mark{
   background-size:contain!important;
   background-position:center!important;
@@ -1169,8 +1169,8 @@ html body .brand-mark{
 }
 html body .brand-mark .brand-logo,
 html body .topbar .brand-mark img,
-html body .eneles-topblock-mark img,
-html body .eneles-sidebar-brand img,
+html body .hesed-topblock-mark img,
+html body .hesed-sidebar-brand img,
 html body .asb-brand img,
 html body .memory-access-logo img,
 html body .aurora-card-helper-mark img{
@@ -1298,7 +1298,7 @@ html body .toast{
 }
 
 
-/* Eneles Mémoire — confinement du sélecteur d’apparence sur petits écrans. */
+/* Hesed Mémoire — confinement du sélecteur d’apparence sur petits écrans. */
 .topbar .header-right,.topbar .appearance,.topbar .color-theme-wrap{
   min-width:0!important;max-width:100%!important;box-sizing:border-box!important;
 }

@@ -1,8 +1,8 @@
 {
-  "name": "aurore-memoire-android",
+  "name": "hesed-memoire-android",
   "version": "0.1.0",
   "private": true,
-  "description": "Application Android Aurore Mémoire compilée par GitHub Actions",
+  "description": "Application Android Hesed Mémoire compilée par GitHub Actions",
   "scripts": {
     "build:web": "node scripts/prepare-web.js && esbuild scripts/native-app-bridge.js --bundle --platform=browser --format=iife --outfile=www/vendor/capacitor-app-bridge.js",
     "android:sync": "cap sync android",

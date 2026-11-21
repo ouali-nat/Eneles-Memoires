@@ -1,7 +1,7 @@
-/* Eneles Mémoire — finition globale des commandes, icônes, compte et barre latérale. */
+/* Hesed Mémoire — finition globale des commandes, icônes, compte et barre latérale. */
 
 /* Le compte et son e-mail restent entièrement dans une capsule flottante. */
-.eneles-archives-topblock.eneles-shared-site-header #enelesTopblockAuth{
+.hesed-archives-topblock.hesed-shared-site-header #hesedTopblockAuth{
   grid-area:account!important;
   display:flex!important;align-items:center!important;justify-content:flex-start!important;
   gap:8px!important;min-width:0!important;width:auto!important;max-width:190px!important;
@@ -17,43 +17,43 @@
              inset 0 1px 0 rgba(255,255,255,.28)!important;
   text-align:left!important;white-space:normal!important;
 }
-.eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-auth-mark{
+.hesed-archives-topblock.hesed-shared-site-header .hesed-topblock-auth-mark{
   display:grid!important;place-items:center!important;
   width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important;
   flex:0 0 30px!important;border-radius:11px!important;
   background:color-mix(in srgb,var(--accent) 17%,var(--surface))!important;
 }
-.eneles-topblock-auth-mark svg{
+.hesed-topblock-auth-mark svg{
   width:17px!important;height:17px!important;fill:none!important;stroke:currentColor!important;
   stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important;
 }
-.eneles-topblock-auth-copy{
+.hesed-topblock-auth-copy{
   display:flex!important;flex-direction:column!important;align-items:flex-start!important;
   justify-content:center!important;gap:2px!important;min-width:0!important;max-width:100%!important;
 }
-.eneles-topblock-auth-name{
+.hesed-topblock-auth-name{
   display:block!important;max-width:100%!important;min-width:0!important;
   overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;
   font-size:.69rem!important;font-weight:820!important;line-height:1.15!important;
 }
-.eneles-topblock-auth-email{
+.hesed-topblock-auth-email{
   display:block!important;max-width:100%!important;min-width:0!important;
   overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;
   color:var(--muted)!important;font-size:.58rem!important;font-weight:580!important;line-height:1.15!important;
 }
 @media(max-width:560px){
-  .eneles-archives-topblock.eneles-shared-site-header #enelesTopblockAuth{
+  .hesed-archives-topblock.hesed-shared-site-header #hesedTopblockAuth{
     max-width:142px!important;min-height:39px!important;padding:5px 7px!important;gap:6px!important;border-radius:13px!important;
   }
-  .eneles-archives-topblock.eneles-shared-site-header .eneles-topblock-auth-mark{
+  .hesed-archives-topblock.hesed-shared-site-header .hesed-topblock-auth-mark{
     width:26px!important;height:26px!important;min-width:26px!important;min-height:26px!important;flex-basis:26px!important;
   }
-  .eneles-topblock-auth-name{font-size:.62rem!important}
-  .eneles-topblock-auth-email{font-size:.53rem!important}
+  .hesed-topblock-auth-name{font-size:.62rem!important}
+  .hesed-topblock-auth-email{font-size:.53rem!important}
 }
 @media(max-width:370px){
-  .eneles-archives-topblock.eneles-shared-site-header #enelesTopblockAuth{max-width:116px!important;padding-inline:6px!important}
-  .eneles-topblock-auth-copy{max-width:76px!important}
+  .hesed-archives-topblock.hesed-shared-site-header #hesedTopblockAuth{max-width:116px!important;padding-inline:6px!important}
+  .hesed-topblock-auth-copy{max-width:76px!important}
 }
 
 /* Logo du tiroir : boîte fixe, image non étirée, texte séparé. */
@@ -102,7 +102,7 @@
 }
 
 /* Icône de réglage discrète à la place des trois points. Les menus restent utilisables. */
-.eneles-options-glyph{
+.hesed-options-glyph{
   display:block!important;width:17px!important;height:17px!important;min-width:17px!important;min-height:17px!important;
   fill:none!important;stroke:currentColor!important;stroke-width:1.7!important;
   stroke-linecap:round!important;stroke-linejoin:round!important;
@@ -111,7 +111,7 @@
 .has-compact-actions>.compact-action-trigger,
 .series-menu-trigger,
 .groups-menu-trigger,
-.eneles-hero-menu-trigger{
+.hesed-hero-menu-trigger{
   display:grid!important;place-items:center!important;
   width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;
   padding:0!important;border:1px solid color-mix(in srgb,var(--accent) 30%,var(--border))!important;
@@ -123,13 +123,13 @@
 .has-compact-actions>.compact-action-trigger:hover,
 .series-menu-trigger:hover,
 .groups-menu-trigger:hover,
-.eneles-hero-menu-trigger:hover{
+.hesed-hero-menu-trigger:hover{
   background:color-mix(in srgb,var(--accent) 15%,var(--surface))!important;
   border-color:color-mix(in srgb,var(--accent) 54%,var(--border))!important;
   transform:translateY(-1px)!important;
 }
 .groups-menu-trigger{position:absolute!important;top:12px!important;right:12px!important;z-index:5!important}
-.eneles-hero-menu-trigger{font-size:0!important}
+.hesed-hero-menu-trigger{font-size:0!important}
 
 /* Icônes audio et document en trait simple, jamais en emoji coloré. */
 .chooser-icon svg,.creation-choice-icon svg,.action-icon svg,.group-card-symbol svg,
@@ -143,8 +143,8 @@
 }
 .memory-row-mark svg{width:21px!important;height:21px!important;min-width:21px!important;min-height:21px!important}
 @media(max-width:560px){
-  .has-compact-actions>.compact-action-trigger,.series-menu-trigger,.groups-menu-trigger,.eneles-hero-menu-trigger{
+  .has-compact-actions>.compact-action-trigger,.series-menu-trigger,.groups-menu-trigger,.hesed-hero-menu-trigger{
     width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;
   }
-  .eneles-options-glyph{width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important}
+  .hesed-options-glyph{width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important}
 }

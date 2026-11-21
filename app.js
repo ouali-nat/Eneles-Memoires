@@ -6,7 +6,7 @@
   script.defer = true;
   document.head.appendChild(script);
 })();
-// Eneles Mémoire — design « pilule flottante » : feuille de style chargée sur toutes les pages, en dernier.
+// Hesed Mémoire — design « pilule flottante » : feuille de style chargée sur toutes les pages, en dernier.
 (function () {
   if (document.querySelector('link[data-aurore-pill]')) return;
   var pill = document.createElement("link");
@@ -16,18 +16,18 @@
   document.head.appendChild(pill);
 })();
 (function () {
-  if (document.querySelector("link[data-eneles-floating]")) return;
+  if (document.querySelector("link[data-hesed-floating]")) return;
   var link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "css/eneles-memory-floating.css?v=20261103-floating-blocks-v1";
-  link.setAttribute("data-eneles-floating", "1");
+  link.href = "css/hesed-memory-floating.css?v=20261103-floating-blocks-v1";
+  link.setAttribute("data-hesed-floating", "1");
   document.head.appendChild(link);
 })();
 
 (function () {
   "use strict";
 
-  // Keep every Eneles Mémoire page on the stable production domain.
+  // Keep every Hesed Mémoire page on the stable production domain.
   // Deployment-specific Vercel URLs are temporary and must never become navigation/share origins.
   var AURORE_CANONICAL_HOST = "aurore-memories-mu.vercel.app";
   var currentHost = String(window.location.hostname || "").toLowerCase();
@@ -46,7 +46,7 @@
     return;
   }
 
-  // Même palette chromatique qu'Eneles Archives : 18 choix harmonisés.
+  // Même palette chromatique qu'Hesed Archives : 18 choix harmonisés.
   var themes = [
     "violet", "rouge", "vert", "bleu", "orange", "rose", "lime", "bordeaux", "azur",
     "jaune", "olive", "chocolat", "sauge", "magenta", "petrole-cuivre", "prune-rouge",
@@ -263,7 +263,7 @@
     if (head) head.remove();
     var grid = colorPanel.querySelector(".color-theme-grid");
     if (!grid) { grid = document.createElement("div"); grid.className = "color-theme-grid"; colorPanel.appendChild(grid); }
-    grid.setAttribute("aria-label", "Palette Eneles des 18 couleurs");
+    grid.setAttribute("aria-label", "Palette Hesed des 18 couleurs");
     grid.innerHTML = themes.map(function (name) {
       var label = themeLabels[name] || name;
       return '<button type="button" class="color-theme-choice theme-color-swatch" data-color-choice="' + name + '" title="' + label + '" aria-label="Couleur ' + label + '" aria-pressed="false" style="--swatch-color:' + themeSwatches[name] + '"><span aria-hidden="true"></span></button>';
@@ -309,9 +309,9 @@
   document.querySelectorAll(".top-actions a[href=\"mes-memoires.html\"]").forEach(function (link) { link.href = "choisir.html"; link.textContent = "Ma bibliothèque"; });
 
   try {
-    if (localStorage.getItem("eneles-memory-palette-design") !== "20261103-v1") {
+    if (localStorage.getItem("hesed-memory-palette-design") !== "20261103-v1") {
       localStorage.setItem("aurore-memory-color-theme", "violet");
-      localStorage.setItem("eneles-memory-palette-design", "20261103-v1");
+      localStorage.setItem("hesed-memory-palette-design", "20261103-v1");
     }
     setTheme(localStorage.getItem("aurore-memory-theme") || "system", false);
     setColor(localStorage.getItem("aurore-memory-color-theme") || "violet", false);
@@ -418,7 +418,7 @@
 
 })();
 
-// Eneles Mémoire: load private cloud backup only on pages that work with personal memorisations.
+// Hesed Mémoire: load private cloud backup only on pages that work with personal memorisations.
 (function () {
   "use strict";
   var page = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
@@ -451,13 +451,13 @@
         await loadScript("memory-cloud-sync.js?v=20261103-compact-success-status-v1");
       }
     } catch (error) {
-      console.warn("Eneles Mémoire : la sauvegarde cloud n’est pas initialisée. Les données locales restent disponibles.", error);
+      console.warn("Hesed Mémoire : la sauvegarde cloud n’est pas initialisée. Les données locales restent disponibles.", error);
     }
   })();
 })();
 
 
-// Eneles Mémoire — action explicite pour actualiser la version installée sans toucher aux données.
+// Hesed Mémoire — action explicite pour actualiser la version installée sans toucher aux données.
 (function installAuroreRefreshAction() {
   "use strict";
   if (window.__auroreRefreshActionInstalled) return;
@@ -479,7 +479,7 @@
     button.id = "auroreRefreshApp";
     button.className = "nav-link aurore-refresh-app";
     button.textContent = "↻ Actualiser";
-    button.setAttribute("aria-label", "Actualiser Eneles Mémoire et charger la version la plus récente");
+    button.setAttribute("aria-label", "Actualiser Hesed Mémoire et charger la version la plus récente");
     button.title = "Actualiser l’application sans effacer vos cartes ni vos mémorisations";
     button.addEventListener("click", async function () {
       if (!navigator.onLine) {
@@ -506,7 +506,7 @@
         announce("Actualisation en cours… vos cartes et mémorisations ne sont pas effacées.");
         window.location.replace(url.toString());
       } catch (error) {
-        console.warn("Actualisation Eneles Mémoire :", error);
+        console.warn("Actualisation Hesed Mémoire :", error);
         button.disabled = false;
         button.textContent = "↻ Actualiser";
         announce("L’actualisation automatique a échoué. Réessayez avec une connexion active.");
@@ -524,7 +524,7 @@
 })();
 
 
-// Eneles Mémoire — notifications réseau, adaptées du composant Eneles Archives.
+// Hesed Mémoire — notifications réseau, adaptées du composant Hesed Archives.
 (function initAuroreNetworkStatus() {
   "use strict";
   if (window.__auroreNetworkStatusInstalled) return;
@@ -634,7 +634,7 @@
       document.documentElement.classList.remove("aurore-offline");
       scheduleProbe();
       if (previous === "offline") {
-        show("online", "Connexion rétablie", "Internet est de nouveau disponible. Eneles peut reprendre la synchronisation de votre espace.", true);
+        show("online", "Connexion rétablie", "Internet est de nouveau disponible. Hesed peut reprendre la synchronisation de votre espace.", true);
       } else if (previous === "unknown") {
         hide();
       } else {
@@ -673,19 +673,19 @@
 })();
 
 
-/* Eneles — charge la même barre latérale fixe/tiroir que la section Archives sur toutes les pages de Mémoire. */
+/* Hesed — charge la même barre latérale fixe/tiroir que la section Archives sur toutes les pages de Mémoire. */
 (function(){
-  if(window.__enelesSidebarAssetsRequested)return;
-  window.__enelesSidebarAssetsRequested=true;
+  if(window.__hesedSidebarAssetsRequested)return;
+  window.__hesedSidebarAssetsRequested=true;
   function load(){
     if(!document.body)return;
-    var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/eneles-archives-alignment.css','css/eneles-mobile-polish.css','css/eneles-archives-topblock.css','css/eneles-memory-global-header.css','css/eneles-memory-global-blocks.css','css/eneles-memory-chooser-layout.css','css/eneles-ui-cleanup.css'];
+    var css=['css/aurore-sidebar.css','css/aurore-sidebar-extra.css','css/hesed-archives-alignment.css','css/hesed-mobile-polish.css','css/hesed-archives-topblock.css','css/hesed-memory-global-header.css','css/hesed-memory-global-blocks.css','css/hesed-memory-chooser-layout.css','css/hesed-ui-cleanup.css'];
     css.forEach(function(h){if(document.querySelector('link[href*="'+h+'"]'))return;var l=document.createElement('link');l.rel='stylesheet';l.href='./'+h+'?v=20261107-clean-icons-sidebar-v1';document.head.appendChild(l)});
-    if(!document.querySelector('script[src*="eneles-sidebar.js"]')){
-      var s=document.createElement('script');s.src='./eneles-sidebar.js?v=20261107-clean-icons-sidebar-v1';document.body.appendChild(s);
+    if(!document.querySelector('script[src*="hesed-sidebar.js"]')){
+      var s=document.createElement('script');s.src='./hesed-sidebar.js?v=20261107-clean-icons-sidebar-v1';document.body.appendChild(s);
     }
-    if(!document.querySelector('script[src*="eneles-global-header.js"]')){
-      var h=document.createElement('script');h.src='./eneles-global-header.js?v=20261107-clean-icons-sidebar-v1';document.body.appendChild(h);
+    if(!document.querySelector('script[src*="hesed-global-header.js"]')){
+      var h=document.createElement('script');h.src='./hesed-global-header.js?v=20261107-clean-icons-sidebar-v1';document.body.appendChild(h);
     }
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load,{once:true});else load();

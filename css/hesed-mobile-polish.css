@@ -1,4 +1,4 @@
-/* Finition mobile et identité visuelle Eneles Mémoire. */
+/* Finition mobile et identité visuelle Hesed Mémoire. */
 :root{--accent:#9B5CFF;--accent-light:#D0A2FF;--accent-deep:#5C20C8}
 html[data-color-theme="violet"]{--accent:#9B5CFF;--accent-light:#D0A2FF;--accent-deep:#5C20C8}
 html[data-color-theme="rouge"]{--accent:#F21D3D;--accent-light:#FF7888;--accent-deep:#A90E27}
@@ -30,7 +30,7 @@ html[data-color-theme="sarcelle-creme"]{--accent:#00B7AE;--accent-light:#9AF3DE;
 .color-theme-choice[data-color-choice="orange"] span{--choice-a:#BD4300!important;--choice-b:#FFC078!important}
 
 /* La carte du Hero reste un rectangle arrondi. L’animation agit sur la lumière, jamais sur son contour. */
-.eneles-memory-hero.hero.aurore-hero-morph{
+.hesed-memory-hero.hero.aurore-hero-morph{
   position:relative!important;isolation:isolate!important;display:flex!important;align-items:center!important;justify-content:center!important;
   width:min(calc(100% - 24px),780px)!important;max-width:780px!important;min-height:0!important;height:auto!important;
   margin:0 auto 30px!important;padding:48px clamp(20px,5vw,56px) 38px!important;
@@ -39,13 +39,13 @@ html[data-color-theme="sarcelle-creme"]{--accent:#00B7AE;--accent-light:#9AF3DE;
   background:linear-gradient(145deg,color-mix(in srgb,var(--accent-deep) 58%,#100A18),color-mix(in srgb,var(--accent) 34%,#160D1D) 52%,color-mix(in srgb,var(--accent-deep) 24%,#0A0810))!important;
   box-shadow:0 24px 58px color-mix(in srgb,var(--accent-deep) 25%,transparent),inset 0 1px 0 rgba(255,255,255,.12)!important;
 }
-.eneles-memory-hero.hero.aurore-hero-morph::before{
+.hesed-memory-hero.hero.aurore-hero-morph::before{
   content:""!important;position:absolute!important;inset:0!important;z-index:0!important;display:block!important;
   clip-path:inset(0 round 28px)!important;border-radius:28px!important;
   background:radial-gradient(ellipse at 82% 12%,color-mix(in srgb,var(--accent-light) 45%,transparent),transparent 38%),radial-gradient(ellipse at 14% 92%,color-mix(in srgb,var(--accent) 42%,transparent),transparent 44%),linear-gradient(145deg,color-mix(in srgb,var(--accent-deep) 36%,#100A18),color-mix(in srgb,var(--accent) 22%,#160D1D) 54%,#0B0911)!important;
   opacity:1!important;transition:background 1s ease,opacity .5s ease!important;
 }
-.eneles-memory-hero.hero.aurore-hero-morph::after{
+.hesed-memory-hero.hero.aurore-hero-morph::after{
   content:""!important;position:absolute!important;inset:1px!important;z-index:1!important;pointer-events:none!important;
   clip-path:inset(0 round 27px)!important;border-radius:27px!important;
   border:1px solid color-mix(in srgb,var(--accent-light) 28%,transparent)!important;
@@ -53,26 +53,26 @@ html[data-color-theme="sarcelle-creme"]{--accent:#00B7AE;--accent-light:#9AF3DE;
   box-shadow:inset 0 0 42px color-mix(in srgb,var(--accent) 18%,transparent),0 16px 44px color-mix(in srgb,var(--accent) 18%,transparent)!important;
   filter:none!important;opacity:1!important;
 }
-.eneles-memory-hero.hero.aurore-hero-morph.is-split::before,.eneles-memory-hero.hero.aurore-hero-morph.is-split::after{opacity:1!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-inner{position:relative!important;z-index:4!important;width:100%!important;max-width:700px!important;margin:0 auto!important;padding:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-motif{
+.hesed-memory-hero.hero.aurore-hero-morph.is-split::before,.hesed-memory-hero.hero.aurore-hero-morph.is-split::after{opacity:1!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-inner{position:relative!important;z-index:4!important;width:100%!important;max-width:700px!important;margin:0 auto!important;padding:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-motif{
   position:absolute!important;inset:0!important;z-index:2!important;pointer-events:none!important;opacity:.13!important;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M30 0 L90 0 L120 52 L90 104 L30 104 L0 52 Z' fill='none' stroke='%23ffffff' stroke-width='0.7'/%3E%3C/svg%3E")!important;
   background-size:120px 104px!important;background-position:center!important;
 }
-.eneles-memory-hero.hero.aurore-hero-morph .hero-glow{position:absolute!important;z-index:2!important;pointer-events:none!important;border-radius:50%!important;filter:blur(58px)!important;opacity:.32!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-glow.g1{width:280px!important;height:260px!important;top:-120px!important;right:-65px!important;left:auto!important;background:var(--accent-light)!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-glow.g2{width:300px!important;height:250px!important;bottom:-130px!important;left:7%!important;top:auto!important;background:var(--accent)!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob{z-index:3!important;opacity:.42!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-split-blob-core{background:linear-gradient(135deg,var(--accent-light),var(--accent))!important;filter:blur(3px)!important;box-shadow:none!important}
-.eneles-memory-hero.hero.aurore-hero-morph .hero-rule{width:56px!important;height:4px!important;margin:0 auto 18px!important;border-radius:4px!important;background:linear-gradient(90deg,var(--accent),var(--accent-light))!important}
-.eneles-memory-hero.hero.aurore-hero-morph .eyebrow{display:block!important;margin:0 0 10px!important;color:var(--accent-light)!important;font-size:.7rem!important;letter-spacing:.2em!important;font-weight:850!important}
-.eneles-memory-hero.hero.aurore-hero-morph h1{margin:0!important;max-width:100%!important;color:#fff!important;font-size:clamp(2rem,5vw,3.25rem)!important;line-height:1.08!important;letter-spacing:-.05em!important;text-align:center!important;text-wrap:balance!important}
-.eneles-memory-hero.hero.aurore-hero-morph h1 .accentword{background:linear-gradient(90deg,var(--accent-light),color-mix(in srgb,var(--accent) 68%,#fff))!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
-.eneles-memory-hero.hero.aurore-hero-morph p.sub{max-width:650px!important;margin:14px auto 0!important;color:rgba(255,255,255,.86)!important;font-size:.98rem!important;line-height:1.6!important;text-align:center!important;text-wrap:balance!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-glow{position:absolute!important;z-index:2!important;pointer-events:none!important;border-radius:50%!important;filter:blur(58px)!important;opacity:.32!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-glow.g1{width:280px!important;height:260px!important;top:-120px!important;right:-65px!important;left:auto!important;background:var(--accent-light)!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-glow.g2{width:300px!important;height:250px!important;bottom:-130px!important;left:7%!important;top:auto!important;background:var(--accent)!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-split-blob{z-index:3!important;opacity:.42!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-split-blob-core{background:linear-gradient(135deg,var(--accent-light),var(--accent))!important;filter:blur(3px)!important;box-shadow:none!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hero-rule{width:56px!important;height:4px!important;margin:0 auto 18px!important;border-radius:4px!important;background:linear-gradient(90deg,var(--accent),var(--accent-light))!important}
+.hesed-memory-hero.hero.aurore-hero-morph .eyebrow{display:block!important;margin:0 0 10px!important;color:var(--accent-light)!important;font-size:.7rem!important;letter-spacing:.2em!important;font-weight:850!important}
+.hesed-memory-hero.hero.aurore-hero-morph h1{margin:0!important;max-width:100%!important;color:#fff!important;font-size:clamp(2rem,5vw,3.25rem)!important;line-height:1.08!important;letter-spacing:-.05em!important;text-align:center!important;text-wrap:balance!important}
+.hesed-memory-hero.hero.aurore-hero-morph h1 .accentword{background:linear-gradient(90deg,var(--accent-light),color-mix(in srgb,var(--accent) 68%,#fff))!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+.hesed-memory-hero.hero.aurore-hero-morph p.sub{max-width:650px!important;margin:14px auto 0!important;color:rgba(255,255,255,.86)!important;font-size:.98rem!important;line-height:1.6!important;text-align:center!important;text-wrap:balance!important}
 
 /* Barre de recherche : surface sobre, rectangulaire arrondie, sans clip-path ni motif intégré. */
-.eneles-memory-hero .eneles-memory-search{
+.hesed-memory-hero .hesed-memory-search{
   position:relative!important;z-index:5!important;isolation:isolate!important;overflow:hidden!important;clip-path:none!important;
   display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;
   width:100%!important;max-width:700px!important;min-width:0!important;min-height:66px!important;
@@ -81,21 +81,21 @@ html[data-color-theme="sarcelle-creme"]{--accent:#00B7AE;--accent-light:#9AF3DE;
   box-shadow:0 12px 30px color-mix(in srgb,var(--accent-deep) 24%,transparent),inset 0 1px 0 rgba(255,255,255,.08)!important;
   -webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;
 }
-.eneles-memory-hero .eneles-memory-search::before,.eneles-memory-hero .eneles-memory-search::after{content:none!important;display:none!important}
-.eneles-memory-hero .eneles-memory-search input{
+.hesed-memory-hero .hesed-memory-search::before,.hesed-memory-hero .hesed-memory-search::after{content:none!important;display:none!important}
+.hesed-memory-hero .hesed-memory-search input{
   position:relative!important;z-index:1!important;display:block!important;flex:1 1 auto!important;width:100%!important;min-width:0!important;min-height:48px!important;
   padding:0 16px!important;border:0!important;border-radius:11px!important;outline:0!important;clip-path:none!important;
   background:transparent!important;color:#fff!important;font:inherit!important;font-size:.9rem!important;box-shadow:none!important;
 }
-.eneles-memory-hero .eneles-memory-search input::placeholder{color:rgba(255,255,255,.68)!important;opacity:1!important}
-.eneles-memory-hero .eneles-memory-search button{
+.hesed-memory-hero .hesed-memory-search input::placeholder{color:rgba(255,255,255,.68)!important;opacity:1!important}
+.hesed-memory-hero .hesed-memory-search button{
   position:relative!important;z-index:1!important;display:inline-flex!important;flex:0 0 auto!important;align-items:center!important;justify-content:center!important;
   width:auto!important;min-width:116px!important;min-height:48px!important;padding:0 19px!important;border:1px solid color-mix(in srgb,var(--accent-light) 34%,transparent)!important;
   border-radius:12px!important;background:linear-gradient(135deg,var(--accent),var(--accent-deep))!important;color:#fff!important;
   font:inherit!important;font-size:.84rem!important;font-weight:800!important;white-space:nowrap!important;
   box-shadow:0 7px 20px color-mix(in srgb,var(--accent) 32%,transparent)!important;
 }
-.eneles-memory-hero .eneles-memory-search-status{position:relative!important;z-index:5!important;min-height:1em!important;margin:7px auto 0!important;color:rgba(255,255,255,.84)!important;text-align:center!important}
+.hesed-memory-hero .hesed-memory-search-status{position:relative!important;z-index:5!important;min-height:1em!important;margin:7px auto 0!important;color:rgba(255,255,255,.84)!important;text-align:center!important}
 
 /* Marque : bloc horizontal plus ample, logo étiré dans son nouveau cartouche. */
 .topbar .brand{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important}
@@ -112,7 +112,7 @@ html[data-color-theme="sarcelle-creme"]{--accent:#00B7AE;--accent-light:#9AF3DE;
   html,body{width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important;padding:0!important;overflow-x:hidden!important}
   html.has-asb body,html.has-asb.asb-collapsed body{padding:0!important}
   body[data-page="home"] .topbar,body[data-page="home"] .main-content,body[data-page="home"] .site-footer,
-  body.eneles-has-sidebar .topbar,body.eneles-has-sidebar .main-content,body.eneles-has-sidebar .site-footer{margin-left:0!important;margin-right:0!important}
+  body.hesed-has-sidebar .topbar,body.hesed-has-sidebar .main-content,body.hesed-has-sidebar .site-footer{margin-left:0!important;margin-right:0!important}
   body[data-page="home"] .main-content,body .main-content{display:block!important;float:none!important;width:min(calc(100% - 30px),760px)!important;max-width:760px!important;margin-left:auto!important;margin-right:auto!important;left:auto!important;right:auto!important;transform:none!important}
   body .wrap{margin-left:auto!important;margin-right:auto!important}
   body .topbar{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
@@ -122,21 +122,21 @@ html[data-color-theme="sarcelle-creme"]{--accent:#00B7AE;--accent-light:#9AF3DE;
   body .topbar .top-actions{display:none!important}
   body .topbar .appearance{display:flex!important;flex-wrap:nowrap!important;gap:5px!important;margin:0!important}
   body .topbar .brand{flex:0 1 auto!important;margin:0!important}
-  .eneles-hero-controls{width:min(calc(100% - 30px),760px)!important;max-width:760px!important;margin:0 auto 8px!important;justify-content:flex-end!important}
-  .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 18px)!important;max-width:720px!important;min-height:0!important;height:auto!important;margin:0 auto 26px!important;padding:38px 22px 30px!important;border-radius:26px!important;left:auto!important;right:auto!important;transform:none!important}
-  .eneles-memory-hero.hero.aurore-hero-morph .hero-inner{width:100%!important;max-width:620px!important;margin:0 auto!important}
-  .eneles-memory-hero.hero.aurore-hero-morph h1{font-size:clamp(2rem,5vw,3rem)!important}
-  .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{flex-direction:row!important;gap:6px!important;width:100%!important;margin-top:23px!important;padding:6px!important;min-height:58px!important}
-  .eneles-memory-hero .eneles-memory-search input{min-width:0!important;min-height:44px!important;padding:0 10px!important;font-size:.84rem!important}
-  .eneles-memory-hero .eneles-memory-search button{min-width:98px!important;min-height:44px!important;padding:0 12px!important;font-size:.77rem!important}
-  .eneles-sidebar{left:8px!important;right:auto!important}
+  .hesed-hero-controls{width:min(calc(100% - 30px),760px)!important;max-width:760px!important;margin:0 auto 8px!important;justify-content:flex-end!important}
+  .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 18px)!important;max-width:720px!important;min-height:0!important;height:auto!important;margin:0 auto 26px!important;padding:38px 22px 30px!important;border-radius:26px!important;left:auto!important;right:auto!important;transform:none!important}
+  .hesed-memory-hero.hero.aurore-hero-morph .hero-inner{width:100%!important;max-width:620px!important;margin:0 auto!important}
+  .hesed-memory-hero.hero.aurore-hero-morph h1{font-size:clamp(2rem,5vw,3rem)!important}
+  .hesed-memory-hero.hero.aurore-hero-morph .hesed-memory-search{flex-direction:row!important;gap:6px!important;width:100%!important;margin-top:23px!important;padding:6px!important;min-height:58px!important}
+  .hesed-memory-hero .hesed-memory-search input{min-width:0!important;min-height:44px!important;padding:0 10px!important;font-size:.84rem!important}
+  .hesed-memory-hero .hesed-memory-search button{min-width:98px!important;min-height:44px!important;padding:0 12px!important;font-size:.77rem!important}
+  .hesed-sidebar{left:8px!important;right:auto!important}
   .asb{left:12px!important;right:auto!important}
 }
 @media (pointer:coarse) and (orientation:portrait) and (max-width:420px){
   body[data-page="home"] .main-content,body .main-content{width:calc(100% - 24px)!important}
-  .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 12px)!important;padding:34px 16px 25px!important}
-  .eneles-memory-hero .eneles-memory-search input{padding:0 7px!important;font-size:.78rem!important}
-  .eneles-memory-hero .eneles-memory-search button{min-width:88px!important;padding:0 9px!important;font-size:.73rem!important}
+  .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 12px)!important;padding:34px 16px 25px!important}
+  .hesed-memory-hero .hesed-memory-search input{padding:0 7px!important;font-size:.78rem!important}
+  .hesed-memory-hero .hesed-memory-search button{min-width:88px!important;padding:0 9px!important;font-size:.73rem!important}
   .topbar .brand-mark{width:56px!important;height:46px!important;min-width:56px!important;flex-basis:56px!important}
 }
 @media (pointer:coarse) and (orientation:landscape){
@@ -148,10 +148,10 @@ html[data-color-theme="sarcelle-creme"]{--accent:#00B7AE;--accent-light:#9AF3DE;
 .asb-brand img{display:block!important;width:42px!important;height:38px!important;flex:0 0 42px!important;object-fit:fill!important;border-radius:10px!important;border:1px solid color-mix(in srgb,var(--accent-light) 42%,transparent)!important;background:var(--surface)!important}
 .asb-brand span{display:flex!important;flex-direction:column!important;line-height:1.15!important}
 .asb-brand small{font-size:.68rem!important;opacity:.68!important;font-weight:600!important}
-@media(prefers-reduced-motion:reduce){.eneles-memory-hero.hero.aurore-hero-morph::before,.eneles-memory-hero.hero.aurore-hero-morph::after{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.hesed-memory-hero.hero.aurore-hero-morph::before,.hesed-memory-hero.hero.aurore-hero-morph::after{transition:none!important}}
 
 
-/* Palette Eneles : mêmes 18 nuances et mêmes contrastes que la palette actuelle d'Archives. */
+/* Palette Hesed : mêmes 18 nuances et mêmes contrastes que la palette actuelle d'Archives. */
 html[data-color-theme="violet"]{--theme-primary:#8B5CF6;--theme-secondary:#C084FC;--theme-strong:#6D28D9;--accent:#8B5CF6;--accent-light:#C084FC;--accent-deep:#6D28D9}
 html[data-color-theme="rouge"]{--theme-primary:#E05260;--theme-secondary:#FF8A96;--theme-strong:#C93648;--accent:#E05260;--accent-light:#FF8A96;--accent-deep:#C93648}
 html[data-color-theme="vert"]{--theme-primary:#2FA66A;--theme-secondary:#75D89C;--theme-strong:#198754;--accent:#2FA66A;--accent-light:#75D89C;--accent-deep:#198754}
@@ -203,15 +203,15 @@ html[data-color-theme] body{background:radial-gradient(circle at 8% 0%,color-mix
 .asb-brand small{font-size:.68rem!important;opacity:.68!important;font-weight:600!important}
 
 /* Hero Mémoire : un peu plus étroit et recherche abaissée, sans toucher à l'animation corrigée. */
-.eneles-memory-hero.hero.aurore-hero-morph{width:min(calc(100% - 38px),740px)!important;max-width:740px!important;margin-left:auto!important;margin-right:auto!important}
-.eneles-memory-hero .eneles-memory-search{margin-top:44px!important}
+.hesed-memory-hero.hero.aurore-hero-morph{width:min(calc(100% - 38px),740px)!important;max-width:740px!important;margin-left:auto!important;margin-right:auto!important}
+.hesed-memory-hero .hesed-memory-search{margin-top:44px!important}
 @media (pointer:coarse) and (orientation:portrait){
-  .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 28px)!important;max-width:700px!important}
-  .eneles-memory-hero .eneles-memory-search{margin-top:36px!important}
+  .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 28px)!important;max-width:700px!important}
+  .hesed-memory-hero .hesed-memory-search{margin-top:36px!important}
 }
 @media (pointer:coarse) and (orientation:portrait) and (max-width:420px){
-  .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 24px)!important;max-width:100%!important}
-  .eneles-memory-hero .eneles-memory-search{margin-top:32px!important}
+  .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 24px)!important;max-width:100%!important}
+  .hesed-memory-hero .hesed-memory-search{margin-top:32px!important}
 }
 
 /* Tiroir latéral : forcer le comportement mobile sur Android même en mode « Site pour ordinateur ». */
@@ -229,10 +229,10 @@ html[data-color-theme] body{background:radial-gradient(circle at 8% 0%,color-mix
   html.asb-collapsed .asb-head{justify-content:space-between!important;padding-inline:6px!important}
 }
 @media (pointer:coarse) and (orientation:portrait){
-  .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:36px!important}
+  .hesed-memory-hero.hero.aurore-hero-morph .hesed-memory-search{margin-top:36px!important}
 }
 @media (pointer:coarse) and (orientation:portrait) and (max-width:420px){
-  .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:32px!important}
+  .hesed-memory-hero.hero.aurore-hero-morph .hesed-memory-search{margin-top:32px!important}
 }
 
 
@@ -243,29 +243,29 @@ html[data-color-theme] body{background:radial-gradient(circle at 8% 0%,color-mix
 .asb .asb-sw[data-color-choice="rose-sable"]{background:#EFC1B5!important}
 .asb .asb-sw[data-color-choice="sarcelle-creme"]{background:#0D6B70!important}
 .asb .asb-sw:focus-visible{outline:2px solid var(--asb-s)!important;outline-offset:3px!important}
-.asb #enelesSidebarShortcuts{margin-top:4px!important;border:1px solid color-mix(in srgb,var(--accent) 18%,transparent)!important;background:color-mix(in srgb,var(--accent) 6%,transparent)!important;border-radius:12px!important}
-.eneles-memory-hero.hero.aurore-hero-morph{width:min(calc(100% - 44px),730px)!important;max-width:730px!important;margin-left:auto!important;margin-right:auto!important}
-.eneles-memory-hero .eneles-memory-search{margin-top:48px!important}
+.asb #hesedSidebarShortcuts{margin-top:4px!important;border:1px solid color-mix(in srgb,var(--accent) 18%,transparent)!important;background:color-mix(in srgb,var(--accent) 6%,transparent)!important;border-radius:12px!important}
+.hesed-memory-hero.hero.aurore-hero-morph{width:min(calc(100% - 44px),730px)!important;max-width:730px!important;margin-left:auto!important;margin-right:auto!important}
+.hesed-memory-hero .hesed-memory-search{margin-top:48px!important}
 @media(pointer:coarse) and (orientation:portrait){
- .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 36px)!important;max-width:690px!important}
- .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:40px!important}
+ .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 36px)!important;max-width:690px!important}
+ .hesed-memory-hero.hero.aurore-hero-morph .hesed-memory-search{margin-top:40px!important}
 }
 @media(pointer:coarse) and (orientation:portrait) and (max-width:420px){
- .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 32px)!important;max-width:100%!important}
- .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:38px!important}
+ .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 32px)!important;max-width:100%!important}
+ .hesed-memory-hero.hero.aurore-hero-morph .hesed-memory-search{margin-top:38px!important}
 }
 
 
 /* Ajustement final demandé : héros légèrement plus étroit, recherche descendue et côtés équilibrés. */
-.eneles-memory-hero.hero.aurore-hero-morph{width:min(calc(100% - 56px),700px)!important;max-width:700px!important;margin-left:auto!important;margin-right:auto!important}
-.eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:58px!important}
+.hesed-memory-hero.hero.aurore-hero-morph{width:min(calc(100% - 56px),700px)!important;max-width:700px!important;margin-left:auto!important;margin-right:auto!important}
+.hesed-memory-hero.hero.aurore-hero-morph .hesed-memory-search{margin-top:58px!important}
 @media(pointer:coarse) and (orientation:portrait){
- .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 40px)!important;max-width:660px!important}
- .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:46px!important}
+ .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 40px)!important;max-width:660px!important}
+ .hesed-memory-hero.hero.aurore-hero-morph .hesed-memory-search{margin-top:46px!important}
 }
 @media(pointer:coarse) and (orientation:portrait) and (max-width:420px){
- .eneles-memory-hero.hero.aurore-hero-morph{width:calc(100% - 28px)!important;max-width:100%!important}
- .eneles-memory-hero.hero.aurore-hero-morph .eneles-memory-search{margin-top:42px!important}
+ .hesed-memory-hero.hero.aurore-hero-morph{width:calc(100% - 28px)!important;max-width:100%!important}
+ .hesed-memory-hero.hero.aurore-hero-morph .hesed-memory-search{margin-top:42px!important}
 }
 /* Contrôles latéraux : cibles tactiles nettes et feedback visible au clavier. */
 .asb .asb-item:focus-visible,.asb .asb-theme-btn:focus-visible,.asb .asb-collapse:focus-visible,.asb-toggle:focus-visible{outline:2px solid var(--asb-s,var(--accent-light))!important;outline-offset:2px!important}

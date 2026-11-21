@@ -1,11 +1,11 @@
 (function(){
   'use strict';
   function init(){
-    var bar=document.getElementById('enelesArchivesTopblock');
+    var bar=document.getElementById('hesedArchivesTopblock');
     if(!bar||bar.dataset.sharedReady==='1'||bar.dataset.ready==='1')return;
     bar.dataset.ready='1';
-    var paletteSlot=document.getElementById('enelesTopblockPaletteSlot');
-    var modeSlot=document.getElementById('enelesTopblockModeSlot');
+    var paletteSlot=document.getElementById('hesedTopblockPaletteSlot');
+    var modeSlot=document.getElementById('hesedTopblockModeSlot');
     var palette=document.querySelector('.topbar .color-theme-wrap');
     if(palette&&paletteSlot){
       paletteSlot.appendChild(palette);
@@ -33,10 +33,10 @@
         button.title=label;
       });
     }
-    var topInput=document.getElementById('enelesTopblockSearchInput');
-    var heroInput=document.getElementById('enelesMemorySearchInput');
-    var heroForm=document.getElementById('enelesMemorySearch');
-    var topForm=document.getElementById('enelesTopblockSearch');
+    var topInput=document.getElementById('hesedTopblockSearchInput');
+    var heroInput=document.getElementById('hesedMemorySearchInput');
+    var heroForm=document.getElementById('hesedMemorySearch');
+    var topForm=document.getElementById('hesedTopblockSearch');
     if(topInput&&heroInput&&heroForm&&topForm){
       topInput.addEventListener('input',function(){
         heroInput.value=topInput.value;
@@ -51,16 +51,16 @@
         heroForm.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
       });
     }
-    var authButton=document.getElementById('enelesTopblockAuth');
+    var authButton=document.getElementById('hesedTopblockAuth');
     if(authButton){
       function syncTopblockAuth(session){
         var connected=!!(session&&session.user);
         var label=authButton.querySelector('span:last-child');
         if(label)label.textContent=connected?'Déconnexion':'Se connecter';
-        authButton.setAttribute('aria-label',connected?'Se déconnecter du compte Eneles ID':'Se connecter avec Eneles ID');
+        authButton.setAttribute('aria-label',connected?'Se déconnecter du compte Hesed ID':'Se connecter avec Hesed ID');
       }
       authButton.addEventListener('click',function(){
-        var account=document.getElementById('enelesSidebarAccount');
+        var account=document.getElementById('hesedSidebarAccount');
         if(account)account.click();
         else if(typeof window.auroreShowAccessGate==='function')window.auroreShowAccessGate();
       });
@@ -74,7 +74,7 @@
         }catch(_){syncTopblockAuth(null)}
       })();
     }
-    var active=bar.querySelector('.eneles-topblock-nav .is-current');
+    var active=bar.querySelector('.hesed-topblock-nav .is-current');
     if(active)active.setAttribute('aria-current','page');
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();

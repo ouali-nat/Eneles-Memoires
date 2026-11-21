@@ -22,7 +22,7 @@
   }
   function itemTitle(item) {
     var h = item.querySelector(".memory-row-main h3, .memory-row-main h2, .audio-item-main strong, .public-learning-card h2, .community-imported-item h3, .community-imported-item h4, .group-card h4, .memory-block-text, .memory-block-number");
-    return (h && h.textContent || "Contenu Eneles").trim();
+    return (h && h.textContent || "Contenu Hesed").trim();
   }
   function importedItem(item) {
     var type = item.dataset.communityType, id = item.dataset.communityId;
@@ -50,7 +50,7 @@
               var audioExt = /ogg/i.test(audioType) ? ".ogg" : /mp4/i.test(audioType) ? ".m4a" : /mpeg|mp3/i.test(audioType) ? ".mp3" : ".webm";
               saveFile(trackName + audioExt, audioBlob, audioType || "application/octet-stream");
             } catch (_) { saveJson(trackName + ".json", { name: trackName, text: track.text || "", language: track.language || "fr-FR", voice: track.voice || "", rate: track.rate || 1, source: track.url || null }); }
-          } else saveJson(trackName + ".json", { format: "Eneles audio text", name: trackName, text: track.text || "", language: track.language || "fr-FR", voice: track.voice || "", rate: track.rate || 1 });
+          } else saveJson(trackName + ".json", { format: "Hesed audio text", name: trackName, text: track.text || "", language: track.language || "fr-FR", voice: track.voice || "", rate: track.rate || 1 });
           if (ti < tracks.length - 1) await new Promise(function (resolve) { window.setTimeout(resolve, 260); });
         }
         return;
@@ -86,7 +86,7 @@
         if (got.blob) {
           var mime = rec.mime || got.blob.type || "", ext = /ogg/i.test(mime) ? ".ogg" : /mp4/i.test(mime) ? ".m4a" : /mpeg|mp3/i.test(mime) ? ".mp3" : ".webm";
           saveFile(filename + ext, got.blob, mime || "application/octet-stream");
-        } else saveJson(filename + ".json", { format: "Eneles audio text", name: rec.name || filename, text: rec.text || "", language: rec.language || "fr-FR", voice: rec.voice || "", rate: rec.rate || 1, createdAt: rec.createdAt || null });
+        } else saveJson(filename + ".json", { format: "Hesed audio text", name: rec.name || filename, text: rec.text || "", language: rec.language || "fr-FR", voice: rec.voice || "", rate: rec.rate || 1, createdAt: rec.createdAt || null });
         if (i < seq.tracks.length - 1) await new Promise(function (resolve) { window.setTimeout(resolve, 260); });
       }
       return;
@@ -162,7 +162,7 @@
     item.dataset.compactMenuReady = "true"; item.classList.add("has-compact-actions");
     var button = item.querySelector(":scope > .series-menu-trigger");
     if (!button) {
-      button = document.createElement("button"); button.type = "button"; button.className = "compact-action-trigger"; button.innerHTML = '<svg class="eneles-options-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>'; button.setAttribute("aria-label", "Ouvrir les options de " + itemTitle(item)); button.setAttribute("aria-haspopup", "dialog");
+      button = document.createElement("button"); button.type = "button"; button.className = "compact-action-trigger"; button.innerHTML = '<svg class="hesed-options-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h7M15 7h5M4 17h3M11 17h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>'; button.setAttribute("aria-label", "Ouvrir les options de " + itemTitle(item)); button.setAttribute("aria-haspopup", "dialog");
       item.insertBefore(button, item.firstChild);
     } else {
       button.classList.add("compact-action-trigger"); button.setAttribute("aria-label", "Ouvrir les options de " + itemTitle(item));

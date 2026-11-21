@@ -1,9 +1,9 @@
 (function(){
   'use strict';
   function init(){
-    const hero=document.querySelector('.eneles-memory-hero.hero');
-    if(!hero||hero.dataset.enelesHeroMorphReady==='1')return;
-    hero.dataset.enelesHeroMorphReady='1';
+    const hero=document.querySelector('.hesed-memory-hero.hero');
+    if(!hero||hero.dataset.hesedHeroMorphReady==='1')return;
+    hero.dataset.hesedHeroMorphReady='1';
     hero.classList.add('aurore-hero-morph');
     function p(x,y){return Math.max(2,Math.min(98,x)).toFixed(2)+'% '+Math.max(2,Math.min(98,y)).toFixed(2)+'%'}
     function poly(sides,round,rotation){
